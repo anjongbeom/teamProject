@@ -11,7 +11,7 @@
         <meta name="author" content="" />
         <title>Stylish Portfolio - Start Bootstrap Template</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/resources/images/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/main/images/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Simple line icons-->
@@ -19,8 +19,8 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/resources/css/styles.css" rel="stylesheet" />
-		<link rel="icon" href="/resources/css/favicon.ico" type="image/x-icon">
+        <link href="/resources/css/main_styles.css" rel="stylesheet" />
+		<link rel="icon" href="/resources/images/main/favicon.ico" type="image/x-icon">
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -121,7 +121,7 @@
                                     <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/resources/images/brandy.jpg" alt="..." />
+                            <img class="img-fluid" src="/resources/images/main/brandy.jpg" alt="..." />
                         </a>
                     </div>
                     <div class="col-lg-6">
@@ -132,7 +132,7 @@
                                     <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/resources/images/scotch_whisky.jpg" alt="..." />
+                            <img class="img-fluid" src="/resources/images/main/scotch_whisky.jpg" alt="..." />
                         </a>
                     </div>
                     <div class="col-lg-6">
@@ -143,7 +143,7 @@
                                     <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/resources/images/beer.jpg" alt="..." />
+                            <img class="img-fluid" src="/resources/images/main/beer.jpg" alt="..." />
                         </a>
                     </div>
                     <div class="col-lg-6">
@@ -154,7 +154,7 @@
                                     <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/resources/images/makgeolli.jpg" alt="..." />
+                            <img class="img-fluid" src="/resources/images/main/makgeolli.jpg" alt="..." />
                         </a>
                     </div>
                 </div>
@@ -196,6 +196,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="/resources/js/scripts.js"></script>
+        <script src="/resources/js/main_scripts.js"></script>
     </body>
 </html>
