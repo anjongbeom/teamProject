@@ -2,9 +2,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="/WEB-INF/views/include/header.jsp"%>
-
-
 <!-- 콘텐츠 시작 { -->
 <div id="wrapper">
 
@@ -78,6 +75,3 @@
 
 	</div>
 	<!-- } 콘텐츠 끝 -->
-
-
-	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

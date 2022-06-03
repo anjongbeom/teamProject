@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="/WEB-INF/views/include/header.jsp"%>
+
 
 
 <!-- 콘텐츠 시작 { -->
@@ -207,4 +207,3 @@ xi. 본 약관을 포함하여 기타 회사가 정한 이용 조건에 위반�
 <!-- } 콘텐츠 끝 -->
 
 
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
