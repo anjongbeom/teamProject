@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.team.service.BoardService;
 import com.kh.team.vo.BoardVo;
-
-import service.BoardService;
 
 
 
@@ -29,6 +28,11 @@ public class BoardController {
 	@RequestMapping(value= "/map", method = RequestMethod.GET)
 	public String map() {
 		return "/board/map_test";
+	}
+	
+	@RequestMapping(value= "/contact", method = RequestMethod.GET)
+	public String contact() {
+		return "/board/contact";
 	}
 	
 	

@@ -1,4 +1,4 @@
-package service;
+package com.kh.team.service;
 
 import java.util.List;
 
