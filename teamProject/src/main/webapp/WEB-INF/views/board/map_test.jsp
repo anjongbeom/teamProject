@@ -16,11 +16,11 @@
 
 		<!-- Contents -->
 		<div class="contents">
-			<div class="tit-sec">
-				<h3>오시는길</h3>
-				<div class="nav">
+			<div class="tit-sec text-center">
+				<h2>오시는길</h2><br>
+				<!-- <div class="nav">
 					Home > <span>오시는길</span>
-				</div>
+				</div> -->
 			</div>
 
 			<article id="ctt" class="ctt_about_2">
@@ -63,15 +63,43 @@
 					<!-- // 콘텐츠 지도 -->
 
 					<!-- </iframe><br> -->
-					<div style="line-height: 22px;">
-						<h3>최고의 명주를 찾고싶으시다면 KA주류교육원을 찾아주세요.</h3>
-						주소 : 울산광역시 남구 삼산로35번길 19 KA주류교육원 <br> 전화번호 : 052-257-7600<br>
-						이메일 : ajb5209@naver.com
+					
+					<div class="text-center" style="line-height: 22px;">
+						<br><h3>KA주류교육원을 찾아주세요.</h3>
+						<p>주소 : 울산광역시 남구 삼산로35번길 19 KA주류교육원 </p>
+						<p>전화번호 : 052-257-7600</p>
+						<p>이메일 : ajb5209@naver.com</p>
 					</div>
+						<!-- Footer-->
+        
+					
 				</div>
 
 			</article>
 		</div>
 
 	</div>
+	<footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/"><i class="icon-social-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/"><i class="icon-social-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="https://github.com/anjongbeom"><i class="icon-social-github"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted small mb-0">Copyright &copy; Alcohol & Liquor Website 2022</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+
+        <script src="/resources/js/main_scripts.js"></script>
 	<!-- } 콘텐츠 끝 -->
