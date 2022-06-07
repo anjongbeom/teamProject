@@ -29,7 +29,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "product/menu1";
+		return "home";
 	}
 	
 	

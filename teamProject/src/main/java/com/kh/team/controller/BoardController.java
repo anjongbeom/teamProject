@@ -20,6 +20,11 @@ public class BoardController {
 		return "/board/map_test";
 	}
 	
+	@RequestMapping(value= "/contact", method = RequestMethod.GET)
+	public String contact() {
+		return "/board/contact";
+	}
+	
 	
 	
 
