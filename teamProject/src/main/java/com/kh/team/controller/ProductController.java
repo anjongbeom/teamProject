@@ -10,7 +10,7 @@ public class ProductController {
 	
 	
 	
-	// ¸Ş´º1À¸·Î Æ÷¿öµå
+	// ë©”ë‰´ 1ìœ¼ë¡œ í¬ì›Œë“œ
 	@RequestMapping(value= "/menu1", method = RequestMethod.GET)
 	public String menu1() {
 		return "/product/menu1";

@@ -39,10 +39,11 @@
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand"><a href="#page-top">Start Bootstrap</a></li>
+                <li class="sidebar-brand"><a href="#page-top">KA주류교육원</a></li>
                 <li class="sidebar-nav-item"><a href="#page-top">Home</a></li>
-                <li class="sidebar-nav-item"><a href="#portfolio">Portfolio</a></li>
-                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">주류 상세 페이지</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">오시는길</a></li>
+                <li class="sidebar-nav-item"><a href="/board/list">게시판</a></li>
             </ul>
         </nav>
        <div id="demo" class="carousel slide" data-ride="carousel">
@@ -135,11 +136,20 @@
         
         <!-- Map 살릴시 사이드 바 이용 안됨 추후 수정 요망-->
         <div class="map" id="contact">
+        <div class="tit-sec text-center">
+				<h2>오시는길</h2><br>
+				
+			</div>
         <iframe src="/resources/map_test.jsp" width="100%" height="450px"></iframe>
-<%--              <%@ include file="/WEB-INF/views/board/map_test.jsp" %>  --%>
         </div> 
         <!-- Footer-->
         <footer class="footer text-center">
+        	<div class="text-center" style="line-height: 22px;">
+						<br><h3>KA주류교육원을 찾아주세요.</h3>
+						<p>주소 : 울산광역시 남구 삼산로35번길 19 KA주류교육원 </p>
+						<p>전화번호 : 052-257-7600</p>
+						<p>이메일 : ajb5209@naver.com</p>
+			</div>
             <div class="container px-4 px-lg-5">
                 <ul class="list-inline mb-5">
                     <li class="list-inline-item">
@@ -154,6 +164,7 @@
                 </ul>
                 <p class="text-muted small mb-0">Copyright &copy; Alcohol & Liquor Website 2022</p>
             </div>
+            
         </footer>
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
