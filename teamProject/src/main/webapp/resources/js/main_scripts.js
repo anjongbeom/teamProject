@@ -4,7 +4,8 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-stylish-portfolio/blob/master/LICENSE)
 */
 
-
+//main_scripts.js:14 Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
+//    at main_scripts.js:14:16 에러 표시는 나나 작동은 이상없음
 window.addEventListener('DOMContentLoaded', event => {
 
     const sidebarWrapper = document.getElementById('sidebar-wrapper');
