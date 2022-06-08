@@ -1,6 +1,9 @@
 
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+	
+	
+	
         
         <!-- Section-->
          <!-- Side widgets-->
@@ -18,6 +21,9 @@
                      <!--Search widget-->                  
                     </div>
                 <!-- Side widgets--> 
+                
+                
+        ${productVo}
                     
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">

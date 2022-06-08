@@ -98,7 +98,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="/product/menu1">
+                        <a class="portfolio-item" href="/product/list">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h1">스카치 위스키</div>

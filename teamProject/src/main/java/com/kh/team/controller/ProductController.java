@@ -41,7 +41,7 @@ public class ProductController {
 //		model.addAttribute("boardList", boardList);
 //		model.addAttribute("productVo", productVo);
 		session.setAttribute("productVo", productVo);
-		return "/board/menu1";
+		return "/product/menu1";
 	}
 
 	
