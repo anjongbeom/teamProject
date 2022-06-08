@@ -9,10 +9,18 @@
 
 	<!-- 글 등록  -->
 	<insert id="create">
-		insert into tal_board(bno, title, content, writer)
-		values(#{bno}, #{title}, #{content, jdbcType=VARCHAR}, #{writer})
+		insert into tal_board(bno, title, content, writer, re_group)
+		values(#{bno}, #{title}, 
+			#{content, jdbcType=VARCHAR}, #{writer},
+			#{bno})
 	</insert>
 	
+	
+	
+	<!-- 리스트 불러오기 -->
+	<select id="list" resultType="BoardVo">
+		select * from tal_board	
+	</select>
 	
 	
 	

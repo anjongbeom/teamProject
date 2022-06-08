@@ -27,6 +27,17 @@ public class BoardVo {
 		this.writer = writer;
 	}
 
+	
+	
+
+	// testInsert юс╫ц©К
+	public BoardVo(int bno, String title, String content, String writer) {
+		super();
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+	}
 
 
 	public BoardVo(int bno, String title, String content, String writer, Date regdate, int viewcnt) {

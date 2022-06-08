@@ -11,20 +11,18 @@ import com.kh.team.vo.PagingDto;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
-	private final static String NAMESPACE = "com.kh.team.mappers.board";
+	private final static String NAMESPACE = "com.kh.team.mappers.board.";
 	
-//	@Autowired
-//	private SqlSession sqlSession;
+	@Autowired
+	private SqlSession sqlSession;
 	
 
 	@Override
 	public boolean create(BoardVo boardVo) {
-		/*
 		int count = sqlSession.insert(NAMESPACE + "create", boardVo);
 		if (count > 0) {
 			return true;
 		}
-		*/
 		return false;
 	}
 
