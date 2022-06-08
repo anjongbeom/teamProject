@@ -29,9 +29,9 @@ public class ProductController {
 	
 	
 	
-	@RequestMapping(value= "/menu1", method = RequestMethod.GET)
+	@RequestMapping(value= "/menu", method = RequestMethod.GET)
 	public String menu1() {
-		return "/product/menu1";
+		return "/product/menu";
 	}
 	
 	
@@ -44,7 +44,7 @@ public class ProductController {
 //		model.addAttribute("boardList", boardList);
 //		model.addAttribute("productVo", productVo);
 		session.setAttribute("productVo", productVo);
-		return "/product/menu1";
+		return "/product/menu";
 	}
 
 	
@@ -59,6 +59,10 @@ public class ProductController {
 		return data;
 	}
 	
+	@RequestMapping(value= "/detail", method = RequestMethod.GET)
+	public String wiskey1() {
+		return "/product/product_detail";
+	}
 	
 
 }

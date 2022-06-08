@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 	
@@ -53,7 +55,7 @@
 	                            <!-- Product actions-->
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 	                                <div class="text-center">
-	                                	<a class="btn btn-outline-dark mt-auto" href="/product_detail/wiskey1">View options</a>
+	                                	<a class="btn btn-outline-dark mt-auto" href="/product/detail">View options</a>
 	                                </div>
 	                            </div>
 	                        </div>
