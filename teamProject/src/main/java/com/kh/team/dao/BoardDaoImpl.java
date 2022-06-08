@@ -47,8 +47,8 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public List<BoardVo> list(PagingDto pagingDto) {
-		// TODO Auto-generated method stub
-		return null;
+		List<BoardVo> list = sqlSession.selectList(NAMESPACE + "list", pagingDto);
+		return list;
 	}
 
 	@Override
