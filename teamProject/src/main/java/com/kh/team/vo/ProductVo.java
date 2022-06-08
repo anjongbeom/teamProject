@@ -11,6 +11,7 @@ public class ProductVo {
 	private String product_expiration_date;
 	private String product_origin;
 	private String product_image;
+	private String product_descript;
 	
 	
 	public ProductVo() {
@@ -19,7 +20,7 @@ public class ProductVo {
 
 	public ProductVo(String product_id, String product_name, String product_price, int product_stock,
 			int product_capacity, int product_alcohol_degree, String product_expiration_date, String product_origin,
-			String product_image) {
+			String product_image, String product_descript) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -30,6 +31,7 @@ public class ProductVo {
 		this.product_expiration_date = product_expiration_date;
 		this.product_origin = product_origin;
 		this.product_image = product_image;
+		this.product_descript = product_descript;
 	}
 
 
@@ -121,6 +123,18 @@ public class ProductVo {
 	public void setProduct_image(String product_image) {
 		this.product_image = product_image;
 	}
+	
+	
+
+
+	public String getProduct_descript() {
+		return product_descript;
+	}
+
+
+	public void setProduct_descript(String product_descript) {
+		this.product_descript = product_descript;
+	}
 
 
 	@Override
@@ -129,10 +143,9 @@ public class ProductVo {
 				+ product_price + ", product_stock=" + product_stock + ", product_capacity=" + product_capacity
 				+ ", product_alcohol_degree=" + product_alcohol_degree + ", product_expiration_date="
 				+ product_expiration_date + ", product_origin=" + product_origin + ", product_image=" + product_image
-				+ "]";
+				+ ", product_descript=" + product_descript + "]";
 	}
 	
-
 	
 	
 }

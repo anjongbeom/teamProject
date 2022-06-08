@@ -10,7 +10,7 @@ public class ProductDetailController {
 	
 	
 	
-	// 메뉴 1으로 포워드
+	// 
 	@RequestMapping(value= "/wiskey1", method = RequestMethod.GET)
 	public String wiskey1() {
 		return "/product_detail/wiskey1";
