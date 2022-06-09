@@ -44,6 +44,8 @@
                 <li class="sidebar-nav-item"><a href="#portfolio">주류 상세 페이지</a></li>
                 <li class="sidebar-nav-item"><a href="#contact">오시는길</a></li>
                 <li class="sidebar-nav-item"><a href="/board/list">게시판</a></li>
+                <li class="sidebar-nav-item"><a href="/member/login">로그인</a></li>
+                <li class="sidebar-nav-item"><a href="/member/Join">회원가입</a></li>
             </ul>
         </nav>
        <div id="demo" class="carousel slide" data-ride="carousel">
