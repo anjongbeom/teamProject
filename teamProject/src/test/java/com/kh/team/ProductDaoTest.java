@@ -24,5 +24,5 @@ public class ProductDaoTest {
 		PagingDto pagingDto = new PagingDto();
 		List<ProductVo> list = productDao.list(pagingDto);
 		System.out.println(list);
-	}
+	} 
 }
