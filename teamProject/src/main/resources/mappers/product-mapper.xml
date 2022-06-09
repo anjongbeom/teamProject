@@ -18,7 +18,7 @@
 	
 	
 	<!-- 리스트 불러오기 -->
-<!-- 	<select id="homeList" resultType="ProductVo"> -->
+<!-- 	<select id="list" resultType="ProductVo"> -->
 <!-- 		select * from tal_product -->
 <!-- 	</select> -->
 	
