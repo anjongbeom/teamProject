@@ -22,4 +22,31 @@ public class ProductDaoImpl implements ProductDao {
 		return list;
 	}
 
+
+	@Override
+	public List<ProductVo> brandyList() {
+		List<ProductVo> brandyList = sqlSession.selectList(NAMESPACE + "brandyList");
+		return brandyList;
+	}
+
+
+	@Override
+	public List<ProductVo> wiskeyList() {
+		List<ProductVo> wiskeyList = sqlSession.selectList(NAMESPACE + "wiskeyList");
+		return wiskeyList;
+	}
+
+
+	@Override
+	public List<ProductVo> beerList() {
+		List<ProductVo> beerList = sqlSession.selectList(NAMESPACE + "beerList");
+		return beerList;
+	}
+
+
+	@Override
+	public List<ProductVo> traditionalList() {
+		List<ProductVo> traditionalList = sqlSession.selectList(NAMESPACE + "traditionalList");
+		return traditionalList;
+	}
 }

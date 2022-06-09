@@ -48,6 +48,31 @@ public class ProductController {
 		session.setAttribute("productVo", productVo);
 		return "/product/menu";
 	}
+	
+	@RequestMapping(value= "/brandyList", method = RequestMethod.GET)
+	public String brandyList(Model model, PagingDto pagingDto, HttpSession session) {
+		List<ProductVo> productVo = productService.brandyList();
+		session.setAttribute("productVo", productVo);
+		return "/product/menu";
+	}
+	@RequestMapping(value= "/wiskeyList", method = RequestMethod.GET)
+	public String wiskeyList(Model model, PagingDto pagingDto, HttpSession session) {
+		List<ProductVo> productVo = productService.wiskeyList();
+		session.setAttribute("productVo", productVo);
+		return "/product/menu";
+	}
+	@RequestMapping(value= "/beerList", method = RequestMethod.GET)
+	public String beerList(Model model, PagingDto pagingDto, HttpSession session) {
+		List<ProductVo> productVo = productService.beerList();
+		session.setAttribute("productVo", productVo);
+		return "/product/menu";
+	}
+	@RequestMapping(value= "/traditionalList", method = RequestMethod.GET)
+	public String traditionalList(Model model, PagingDto pagingDto, HttpSession session) {
+		List<ProductVo> productVo = productService.traditionalList();
+		session.setAttribute("productVo", productVo);
+		return "/product/menu";
+	}
 
 	
 	// 파일 이름으로 서버에서 이미지 가져오기
