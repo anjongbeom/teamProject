@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">
-<%--                     <c:set var="TextValue" value="${productVo.id}" /> --%>
+<%--                     <c:set var="TextValue" value="${productVo.product_id}" /> --%>
 <%--                     <c:choose> --%>
 <%-- 	                    <c:when test=""> --%>
 <!-- 	                    	a로 시작 -->
@@ -43,7 +43,7 @@
                     <div class="mb-4">
                     
                        <!--  <div class="card-header">Side Widget</div> -->
-                        <h2 class="card-title">${productVo.id}</h2>
+                        <h2 class="card-title">${productVo.product_name}</h2>
                         <div style="margin-left: 10px;" class="small text-muted">VAT 별도</div>
                             
                             

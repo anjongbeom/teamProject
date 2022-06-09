@@ -8,6 +8,8 @@ import com.kh.team.vo.ProductVo;
 public interface ProductService {
 	
 	public List<ProductVo> list(PagingDto pagingDto); // �ַ� ��� (Read)
+	public ProductVo detail(String product_id);
+	
 	public List<ProductVo> brandyList();
 	public List<ProductVo> whiskyList();
 	public List<ProductVo> beerList();

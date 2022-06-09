@@ -45,6 +45,13 @@
 		where product_name like '%' || #{keyword} || '%'
 	      order by product_name desc)
   	</select>
+  	
+  	<select id="detail" resultType="ProductVo">
+		select * from tal_product
+		where product_id = #{product_id}
+	</select>
+  	
+  	
 	
 	
 </mapper>

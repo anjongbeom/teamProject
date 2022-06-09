@@ -49,6 +49,20 @@ public class ProductController {
 		return "/product/menu";
 	}
 	
+	
+	// 제품 상세
+	@RequestMapping(value= "/detail", method = RequestMethod.GET)
+	public String detail(String product_id, Model model, PagingDto pagingDto) {
+		ProductVo productVo = productService.detail(product_id);
+		System.out.println("product_id: " + product_id);
+		System.out.println("detail, ProductVo : " + productVo);
+		
+		model.addAttribute("productVo", productVo);
+		return "/product/product_detail";
+	}
+	
+	
+	
 	@RequestMapping(value= "/brandyList", method = RequestMethod.GET)
 	public String brandyList(Model model, PagingDto pagingDto, HttpSession session) {
 		List<ProductVo> productVo = productService.brandyList();
@@ -86,12 +100,6 @@ public class ProductController {
 		return data;
 	}
 	
-	@RequestMapping(value= "/detail", method = RequestMethod.GET)
-	public String wiskey1(ProductVo productVo, Model model) {
-		model.addAttribute("productVo", productVo);
-		
-		return "/product/product_detail";
-	}
 	
 
 }

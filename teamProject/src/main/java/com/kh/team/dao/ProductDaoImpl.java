@@ -22,7 +22,13 @@ public class ProductDaoImpl implements ProductDao {
 		List<ProductVo> list = sqlSession.selectList(NAMESPACE + "list", pagingDto);
 		return list;
 	}
-
+	
+	@Override
+	public ProductVo detail(String product_id) {
+		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "detail", product_id);
+		return productVo;
+	}
+	
 
 	@Override
 	public List<ProductVo> brandyList() {
