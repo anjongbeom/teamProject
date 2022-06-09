@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVo> whiskyList() {
-		List<ProductVo> wiskeyList = productDao.whiskyList();
-		return wiskeyList;
+		List<ProductVo> whiskyList = productDao.whiskyList();
+		return whiskyList;
 	}
 
 	@Override

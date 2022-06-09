@@ -32,8 +32,8 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public List<ProductVo> whiskyList() {
-		List<ProductVo> wiskeyList = sqlSession.selectList(NAMESPACE + "wiskeyList");
-		return wiskeyList;
+		List<ProductVo> whiskyList = sqlSession.selectList(NAMESPACE + "whiskyList");
+		return whiskyList;
 	}
 
 
