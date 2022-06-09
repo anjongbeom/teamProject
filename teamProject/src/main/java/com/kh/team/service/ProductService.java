@@ -6,6 +6,10 @@ import com.kh.team.vo.ProductVo;
 
 public interface ProductService {
 	
-	public List<ProductVo> list(); // аж╥Ы ╦Я╥о (Read)
+	public List<ProductVo> list(); // О©╫ж╥О©╫ О©╫О©╫О©╫ (Read)
+	public List<ProductVo> brandyList();
+	public List<ProductVo> wiskeyList();
+	public List<ProductVo> beerList();
+	public List<ProductVo> traditionalList();
 	
 }

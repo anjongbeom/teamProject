@@ -21,4 +21,28 @@ public class ProductServiceImpl implements ProductService {
 		return list;
 	}
 
+	@Override
+	public List<ProductVo> brandyList() {
+		List<ProductVo> brandyList = productDao.brandyList();
+		return brandyList;
+	}
+
+	@Override
+	public List<ProductVo> wiskeyList() {
+		List<ProductVo> wiskeyList = productDao.wiskeyList();
+		return wiskeyList;
+	}
+
+	@Override
+	public List<ProductVo> beerList() {
+		List<ProductVo> beerList = productDao.beerList();
+		return beerList;
+	}
+
+	@Override
+	public List<ProductVo> traditionalList() {
+		List<ProductVo> traditionalList = productDao.traditionalList();
+		return traditionalList;
+	}
+
 }

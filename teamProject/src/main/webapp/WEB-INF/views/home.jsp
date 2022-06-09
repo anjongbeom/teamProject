@@ -65,6 +65,7 @@
 		    <div class="carousel-item">
 		      <img src="/resources/images/main/main3.png" alt="New York" width="100%" height="auto">
 		    </div>
+		    
 		  </div>
 	
 		  <!-- Left and right controls -->
@@ -83,11 +84,11 @@
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
                     <h3 class="text-secondary mb-0">주류를 더보시려면</h3>
-                    <h2 class="mb-5">술을 배워봅시다</h2>
+                    <h2 class="mb-5"><a href="/product/list" style="color: #F2CB11;">모든 주류 보기</a></h2>
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="/product/brandyList">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h1">브랜디</div>
@@ -98,7 +99,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="/product/list">
+                        <a class="portfolio-item" href="/product/wiskeyList">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h1">스카치 위스키</div>
@@ -109,7 +110,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="/product/beerList">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h1">맥 주</div>
@@ -120,7 +121,7 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="/product/traditionalList">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h1">전통주</div>
