@@ -58,15 +58,15 @@
 							  <tbody class="table-group-divider">							  
 							    <tr>
 							      <th scope="row">원산지</th>
-							      <td>영국</td>
+							      <td>${productVo.product_origin}</td>
 							    </tr>
 							    <tr>
 							      <th scope="row" >용량</th>
-							      <td>700ml</td>
+							      <td>${productVo.product_capacity}ml</td>
 							    </tr>
 							    <tr>
 							      <th scope="row" >알콜도수</th>
-							      <td>40%</td>
+							      <td>${productVo.product_alcohol_degree}%</td>
 							    </tr>
 							    <tr>
 							      <th scope="row" >소비자가격</th>
@@ -74,18 +74,18 @@
 							    </tr>
 							    <tr>
 							      <th scope="row" style="vertical-align: middle;">판매가격</th>
-							      <td style="font-size: 40px; color: #CF492C;">159 Point</td>
+							      <td style="font-size: 40px; color: #CF492C;">${productVo.product_price} Point</td>
 							    </tr>
 							  </tbody>
 							</table>
                             <br><br>
-                            <a  style="float: right;" class="btn btn-danger" href="#!">상품 구매 문의</a>
+                            <a  style="float: right;" class="btn btn-danger" href="/product/basket?product_id=${productVo.product_id}"><span>장바구니에 담기</span></a>
+                            <a  style="float: right; margin-right: 10px;" class="btn btn-primary" href="#!">구매하기</a>
                     </div>
                 </div>
             </div>
              <div class="content">
-		       	아잉 용현아~~~
-		       	내용 넣어줘~~~
+		       	<span style="font-size: 25px; color: #433406;">${productVo.product_descript}</span>
 		        <!--${content}-->
 		     </div>
         </div>

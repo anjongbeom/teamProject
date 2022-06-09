@@ -56,4 +56,10 @@ public class ProductDaoImpl implements ProductDao {
 		List<ProductVo> traditionalList = sqlSession.selectList(NAMESPACE + "traditionalList");
 		return traditionalList;
 	}
+
+	@Override
+	public ProductVo basket(String product_id) {
+		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "basket", product_id);
+		return productVo;
+	}
 }

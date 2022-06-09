@@ -50,6 +50,11 @@
 		select * from tal_product
 		where product_id = #{product_id}
 	</select>
+	
+  	<select id="basket" resultType="ProductVo">
+		select * from tal_product
+		where product_id = #{product_id}
+	</select>
   	
   	
 	

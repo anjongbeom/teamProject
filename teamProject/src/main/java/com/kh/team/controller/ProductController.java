@@ -32,8 +32,17 @@ public class ProductController {
 	
 	
 	@RequestMapping(value= "/menu", method = RequestMethod.GET)
-	public String menu1() {
+	public String menu() {
 		return "/product/menu";
+	}
+	
+	@RequestMapping(value= "/basket", method = RequestMethod.GET)
+	public String basket(String product_id, Model model, PagingDto pagingDto) {
+		ProductVo productVo = productService.basket(product_id);
+		System.out.println("product_id: " + product_id);
+		System.out.println("detail, ProductVo : " + productVo);
+		model.addAttribute("productVo", productVo);
+		return "/product/shopping_basket";
 	}
 	
 	
@@ -54,8 +63,8 @@ public class ProductController {
 	@RequestMapping(value= "/detail", method = RequestMethod.GET)
 	public String detail(String product_id, Model model, PagingDto pagingDto) {
 		ProductVo productVo = productService.detail(product_id);
-		System.out.println("product_id: " + product_id);
-		System.out.println("detail, ProductVo : " + productVo);
+//		System.out.println("product_id: " + product_id);
+//		System.out.println("detail, ProductVo : " + productVo);
 		
 		model.addAttribute("productVo", productVo);
 		return "/product/product_detail";

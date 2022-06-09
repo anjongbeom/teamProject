@@ -54,4 +54,10 @@ public class ProductServiceImpl implements ProductService {
 		return traditionalList;
 	}
 
+	@Override
+	public ProductVo basket(String product_id) {
+		ProductVo productVo = productDao.basket(product_id);
+		return productVo;
+	}
+
 }
