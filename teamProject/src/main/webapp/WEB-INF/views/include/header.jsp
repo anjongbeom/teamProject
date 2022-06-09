@@ -33,11 +33,10 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">주류 종류</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Brandy</a></li>
-                                <li><a class="dropdown-item" href="http://localhost/product/menu1">Scotch Whisky</a></li>
-                                <li><a class="dropdown-item" href="#!">beer</a></li>
-                                <li><a class="dropdown-item" href="#!">traditional liquor
-</a></li>
+                                <li><a class="dropdown-item" href="/product/brandyList">Brandy</a></li>
+                                <li><a class="dropdown-item" href="/product/whiskyList">Scotch Whisky</a></li>
+                                <li><a class="dropdown-item" href="/product/beerList">beer</a></li>
+                                <li><a class="dropdown-item" href="/product/traditionalList">traditional liquor</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -55,8 +54,8 @@
         <header class="bg-dark py-5"> 
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <h1 class="display-4 fw-bolder">깔끔한 한잔</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">우리 KA와 함께 찾아보시죠</p>
                 </div>
             </div>
         </header>

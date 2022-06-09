@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.dao.ProductDao;
+import com.kh.team.vo.PagingDto;
 import com.kh.team.vo.ProductVo;
 
 
@@ -16,8 +17,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDao;
 
 	@Override
-	public List<ProductVo> list() {
-		List<ProductVo> list = productDao.list();
+	public List<ProductVo> list(PagingDto pagingDto) {
+		List<ProductVo> list = productDao.list(pagingDto);
 		return list;
 	}
 
