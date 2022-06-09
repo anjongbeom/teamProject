@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
    
         <!-- Responsive navbar-->
@@ -9,11 +11,21 @@
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="fw-bolder">TITLE</h1>
-                    
+                    <h1 class="fw-bolder">
+<%--                     <c:set var="TextValue" value="${productVo.id}" /> --%>
+<%--                     <c:choose> --%>
+<%-- 	                    <c:when test=""> --%>
+<!-- 	                    	a로 시작 -->
+<%-- 						</c:when> --%>
+<%-- 	                </c:choose>     --%>
+<%-- 	                ${fn:substring(${TextValue}, 0 , 1)} --%>
+                    </h1>
                 </div>
             </div>
         </header>
+        
+<%--         ${productVo} --%>
+        
         <!-- Page content-->
         <div class="container">
             <div class="row">
@@ -31,9 +43,8 @@
                     <div class="mb-4">
                     
                        <!--  <div class="card-header">Side Widget</div> -->
-                        <h2 class="card-title">Featured Post Title</h2>
+                        <h2 class="card-title">${productVo.id}</h2>
                         <div style="margin-left: 10px;" class="small text-muted">VAT 별도</div>
-                            
                             
                             
                             <table class="table table-sm">

@@ -3,12 +3,14 @@ package com.kh.team.controller;
 import java.io.FileInputStream;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,7 +62,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value= "/detail", method = RequestMethod.GET)
-	public String wiskey1() {
+	public String wiskey1(ProductVo productVo, Model model) {
+		model.addAttribute("productVo", productVo);
+		
 		return "/product/product_detail";
 	}
 	
