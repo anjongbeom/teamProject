@@ -31,7 +31,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
 	@Override
-	public List<ProductVo> wiskeyList() {
+	public List<ProductVo> whiskyList() {
 		List<ProductVo> wiskeyList = sqlSession.selectList(NAMESPACE + "wiskeyList");
 		return wiskeyList;
 	}

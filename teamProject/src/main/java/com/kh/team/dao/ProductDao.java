@@ -9,7 +9,7 @@ public interface ProductDao {
 
 	public List<ProductVo> list();
 	public List<ProductVo> brandyList();
-	public List<ProductVo> wiskeyList();
+	public List<ProductVo> whiskyList();
 	public List<ProductVo> beerList();
 	public List<ProductVo> traditionalList();
 

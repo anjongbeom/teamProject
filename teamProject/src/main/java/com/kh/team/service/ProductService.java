@@ -8,7 +8,7 @@ public interface ProductService {
 	
 	public List<ProductVo> list(); // �ַ� ��� (Read)
 	public List<ProductVo> brandyList();
-	public List<ProductVo> wiskeyList();
+	public List<ProductVo> whiskyList();
 	public List<ProductVo> beerList();
 	public List<ProductVo> traditionalList();
 	
