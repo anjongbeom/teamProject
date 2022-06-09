@@ -33,7 +33,8 @@
                 <div class="col-lg-6">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="/resources/images/main/beer.jpg" alt="..." width="482" height="382"/></a>
+                        <a href="#!"><img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" 
+                        	alt="..." style="display:block; margin:auto; width: 282px; height: 382px;" /></a>
                         
                     </div>
                 </div>

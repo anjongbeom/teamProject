@@ -18,12 +18,9 @@ $(document).ready(function() {
 	$(".detail_list").click(function(e) {
 		e.preventDefault();
 		var product_id = $(this).attr("data-id");
-		alert(product_id);
+// 		alert(product_id);
 		location.href="/product/detail?product_id=" + product_id;
 		frmPaging.find("input[name=product_id]").val(product_id);
-
-// 		location.href="/board/read?bno=" + bno;
-// 		frmPaging.find("input[name=bno]").val(bno);
 
 		frmPaging.attr("action", "/product/detail");
 		frmPaging.attr("method", "get");
