@@ -53,9 +53,9 @@ public class ProductController {
 		session.setAttribute("productVo", productVo);
 		return "/product/menu";
 	}
-	@RequestMapping(value= "/wiskeyList", method = RequestMethod.GET)
+	@RequestMapping(value= "/whiskyList", method = RequestMethod.GET)
 	public String wiskeyList(Model model, PagingDto pagingDto, HttpSession session) {
-		List<ProductVo> productVo = productService.wiskeyList();
+		List<ProductVo> productVo = productService.whiskyList();
 		session.setAttribute("productVo", productVo);
 		return "/product/menu";
 	}
