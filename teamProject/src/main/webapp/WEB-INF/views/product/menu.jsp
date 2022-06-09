@@ -17,22 +17,22 @@ $(document).ready(function() {
 
 	$(".detail_list").click(function(e) {
 		e.preventDefault();
-		var id = $(this).attr("data-id");
-		alert(id);
-		
-		
+		var product_id = $(this).attr("data-id");
+		alert(product_id);
+		location.href="/product/detail?product_id=" + product_id;
+		frmPaging.find("input[name=product_id]").val(product_id);
+
 // 		location.href="/board/read?bno=" + bno;
-// 		var frmPaging = $("#frmPaging"); 위쪽 정의
 // 		frmPaging.find("input[name=bno]").val(bno);
-// 		$("#frmPaging > input[name=bno]").val(bno);
-// 		frmPaging.attr("action", "/board/read");
-// 		frmPaging.attr("method", "get");
-// 		frmPaging.submit();
+
+		frmPaging.attr("action", "/product/detail");
+		frmPaging.attr("method", "get");
+		frmPaging.submit();
 	});
 
 
 
-
+	// 검색 버튼 클릭
 	$("#button-search").click(function() {
 		var keyword = $("#keyword").val();
 		console.log("keyword:", keyword);

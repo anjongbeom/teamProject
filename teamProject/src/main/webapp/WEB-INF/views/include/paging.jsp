@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <form id="frmPaging">
+	<input type="hidden" name="product_id" value="">
 	<input type="hidden" name="bno" value="">
 	<input type="hidden" name="page" value="${pagingDto.page}">
 	<input type="hidden" name="perPage" value="${pagingDto.perPage}">

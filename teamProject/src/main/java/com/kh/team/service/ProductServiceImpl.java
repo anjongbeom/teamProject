@@ -21,6 +21,14 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductVo> list = productDao.list(pagingDto);
 		return list;
 	}
+	
+	@Override
+	public ProductVo detail(String product_id) {
+		ProductVo productVo = productDao.detail(product_id);
+		return productVo;
+	}
+	
+	
 
 	@Override
 	public List<ProductVo> brandyList() {
