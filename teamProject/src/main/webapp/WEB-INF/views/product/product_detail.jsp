@@ -67,7 +67,7 @@
 							  </tbody>
 							</table>
                             <br><br>
-                            <a  style="float: right;" class="btn btn-danger" href="#!">상품 문의</a>
+                            <a  style="float: right;" class="btn btn-danger" href="#!">상품 구매 문의</a>
                     </div>
                 </div>
             </div>
