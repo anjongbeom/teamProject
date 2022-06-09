@@ -41,8 +41,8 @@ public class ProductController {
 	@RequestMapping(value= "/list", method = RequestMethod.GET)
 	public String list(Model model, PagingDto pagingDto, HttpSession session) {
 //		pagingDto.setCount(productService.getCount(pagingDto));
-		pagingDto.setPage(pagingDto.getPage());
-		List<ProductVo> productVo = productService.list();
+//		pagingDto.setPage(pagingDto.getPage());
+		List<ProductVo> productVo = productService.list(pagingDto);
 //		model.addAttribute("boardList", boardList);
 //		model.addAttribute("productVo", productVo);
 		session.setAttribute("productVo", productVo);

@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+
 
 <!-- jquery 인식 안돼서 따로 가져옴 -->
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<%@ include file="/WEB-INF/views/include/paging.jsp" %>
+
 <script>
 $(document).ready(function() {
 	var frmPaging = $("#frmPaging");
@@ -26,25 +30,38 @@ $(document).ready(function() {
 // 		frmPaging.submit();
 	});
 
-});	
-</script>	
+
+
+
+	$("#button-search").click(function() {
+		var keyword = $("#keyword").val();
+		console.log("keyword:", keyword);
+		frmPaging.find("input[name=keyword]").val(keyword);	
+		frmPaging.attr("action", "/product/list");
+		frmPaging.attr("method", "get");
+		frmPaging.submit();
+	});
+});
+</script>
 	
         
         <!-- Section-->
          <!-- Side widgets-->
-                <div class="col-lg-4 text-center center">
+         <div style="text-align: center;">
+                <div class="col-lg-4" style="display: inline-block;">
                     <!-- Search widget-->
-                    <div class="card mb-4">
+                    <div class="card mb-4 text-center center"">
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                <input class="form-control" type="text" id="keyword" placeholder="이름을 검색해주세요" value="${pagingDto.keyword}"/>
                                 <button class="btn btn-primary" id="button-search" type="button">Go!</button>
                             </div>
                         </div>
                     </div>  
                      <!--Search widget-->                  
                     </div>
+         </div>
                 <!-- Side widgets--> 
                 
                 

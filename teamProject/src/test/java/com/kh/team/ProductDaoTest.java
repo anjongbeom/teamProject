@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.team.dao.ProductDao;
+import com.kh.team.vo.PagingDto;
 import com.kh.team.vo.ProductVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,7 +21,8 @@ public class ProductDaoTest {
 	
 	@Test
 	public void ListTest() {
-		List<ProductVo> list = productDao.list();
+		PagingDto pagingDto = new PagingDto();
+		List<ProductVo> list = productDao.list(pagingDto);
 		System.out.println(list);
 	}
 }

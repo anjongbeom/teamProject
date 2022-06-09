@@ -18,9 +18,9 @@
 	
 	
 	<!-- 리스트 불러오기 -->
-	<select id="list" resultType="ProductVo">
-		select * from tal_product
-	</select>
+<!-- 	<select id="homeList" resultType="ProductVo"> -->
+<!-- 		select * from tal_product -->
+<!-- 	</select> -->
 	
 	<select id="brandyList" resultType="ProductVo">
 		select * from tal_product
@@ -39,7 +39,12 @@
 		where product_id like '%d%'
 	</select>
 	
-	
+	<select id="list" resultType="ProductVo">
+  		select * from 
+	    (select * from tal_product
+		where product_name like '%' || #{keyword} || '%'
+	      order by product_name desc)
+  	</select>
 	
 	
 </mapper>
