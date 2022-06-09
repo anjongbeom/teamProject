@@ -41,7 +41,7 @@ public class ProductController {
 	@RequestMapping(value= "/list", method = RequestMethod.GET)
 	public String list(Model model, PagingDto pagingDto, HttpSession session) {
 //		pagingDto.setCount(productService.getCount(pagingDto));
-//		pagingDto.setPage(pagingDto.getPage());
+		pagingDto.setPage(pagingDto.getPage());
 		List<ProductVo> productVo = productService.list();
 //		model.addAttribute("boardList", boardList);
 //		model.addAttribute("productVo", productVo);
@@ -75,7 +75,7 @@ public class ProductController {
 	}
 
 	
-	// 파일 이름으로 서버에서 이미지 가져오기
+	// 파일 이름으로 서버에서 이미지 가져오기(제품 이미지 가져올 때 사용)
 	@RequestMapping(value = "/displayImage", method = RequestMethod.GET)
 	@ResponseBody
 	public byte[] displayImage(String filename) throws Exception {

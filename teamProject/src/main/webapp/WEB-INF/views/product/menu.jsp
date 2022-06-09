@@ -3,8 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
+
+<!-- jquery 인식 안돼서 따로 가져옴 -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function() {
+	var frmPaging = $("#frmPaging");
 	
-	
+
+	$(".detail_list").click(function(e) {
+		e.preventDefault();
+		var id = $(this).attr("data-id");
+		alert(id);
+		
+		
+// 		location.href="/board/read?bno=" + bno;
+// 		var frmPaging = $("#frmPaging"); 위쪽 정의
+// 		frmPaging.find("input[name=bno]").val(bno);
+// 		$("#frmPaging > input[name=bno]").val(bno);
+// 		frmPaging.attr("action", "/board/read");
+// 		frmPaging.attr("method", "get");
+// 		frmPaging.submit();
+	});
+
+});	
+</script>	
 	
         
         <!-- Section-->
@@ -56,12 +79,12 @@
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 	                                <div class="text-center">
 
-	                                	<a class="btn btn-outline-dark mt-auto" href="/product/detail">제품 상세보기</a>
+	                                	<a class="btn btn-outline-dark mt-auto detail_list" id="detail_list" data-id="${productVo.product_id}" href="#">제품 상세보기</a>
 	                                </div>
 	                            </div>
 	                        </div>
 	                    </div>
-	                    
+	                     
                    </c:forEach>
                     <!--  // 프로덕트 -->
                     
