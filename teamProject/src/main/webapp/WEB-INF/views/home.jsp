@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
  <style>
-  /* Make the image fully responsive */
+  /* Make the image fully responsive 주석이*/
   .carousel-inner img {
     width: 100%;
     height: 100%;
