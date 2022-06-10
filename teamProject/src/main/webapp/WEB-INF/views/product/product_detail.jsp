@@ -15,12 +15,24 @@ $(document).ready(function() {
 	var amount_result = document.getElementById("amount_result");
 	// 입력 개수 * 금액 표시용 span
 	var total_count = document.getElementById("total_count");
-	
-	
+	showPrice();
+	$("#btn_plus").click(function(){
+		var amount = Number(document.getElementById("amount").value);
+		var price = ${productVo.product_price};
+		amount += 1;
+		total_count.innerHTML = ": " + (amount * price);
+		amount_result.innerHTML = ": " + (amount);
+	});
+	$("#btn_minus").click(function(){
+		var amount = document.getElementById("amount").value;
+		amount -= 1;
+	});
 });
+
 
 //개수 입력 input(number)
 function showPrice() {
+	
 	var amount = document.getElementById("amount").value;
 	var price = ${productVo.product_price};
 	total_count.innerHTML = ": " + (amount * price);
@@ -103,13 +115,15 @@ function showPrice() {
 						</tbody>
 					</table>
 					
-					<button class="btn btn-danger" style="width:40px; display:block; float:left;">-</button>
+					<button class="btn btn-danger" id="btn_minus"
+					 style="width:40px; display:block; float:left;">-</button>
 					
 					<input class="form-control" type="number" min='1' max='1000'
-							style="width:80px; display:block; float:left;" placeholder=""
+							style="width:80px; display:block; float:left;" value="1"
 							id="amount" oninput="showPrice()">
 						
-					<button class="btn btn-primary" style="width:40px; display:block; float:left;">+</button>
+					<button class="btn btn-primary" id="btn_plus" 
+					style="width:40px; display:block; float:left;">+</button>
 				
 					
 					<span id="amount_result" style="display:block; float:right;"></span>

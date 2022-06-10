@@ -19,10 +19,10 @@ public class ExampleSend {
 
     // 4 params(to, from, type, text) are mandatory. must be filled
     HashMap<String, String> params = new HashMap<String, String>();
-    params.put("to", "01036252375");
+    params.put("to", "01025958943");
     params.put("from", "01056605209"); //무조건 자기번호 (인증)
     params.put("type", "SMS");
-    params.put("text", "coolsms 문자테스트");
+    params.put("text", "형동아~~~~!!!");
     params.put("app_version", "test app 1.2"); // application name and version
 
     try {
