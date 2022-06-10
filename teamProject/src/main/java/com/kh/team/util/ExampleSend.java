@@ -2,9 +2,6 @@ package com.kh.team.util;
 
 import java.util.HashMap;
 import org.json.simple.JSONObject;
-
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 /**

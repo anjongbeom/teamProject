@@ -15,15 +15,23 @@ $(document).ready(function() {
 	var amount_result = document.getElementById("amount_result");
 	// 입력 개수 * 금액 표시용 span
 	var total_count = document.getElementById("total_count");
+
 	showPrice();
-	$("#btn_plus").click(function(){
+	
+	$("#btn_plus").click(function() {
+		var amount = Number(document.getElementById("amount").value);
 		amount += 1;
-		total_count.innerHTML = ": " + (amount * price);
-		amount_result.innerHTML = ": " + (amount);
+		document.getElementById("amount").value = amount;
+		showPrice();
 	});
-	$("#btn_minus").click(function(){
-		var amount = document.getElementById("amount").value;
-		amount -= 1;
+	
+	$("#btn_minus").click(function() {
+		var amount = Number(document.getElementById("amount").value);
+		if (amount > 1) {
+			amount -= 1;
+		}
+		document.getElementById("amount").value = amount;
+		showPrice();
 	});
 });
 
@@ -35,12 +43,10 @@ function showPrice() {
 	var price = ${productVo.product_price};
 	total_count.innerHTML = ": " + (amount * price);
 	amount_result.innerHTML = ": " + (amount);
-	
 };
 
 
 </script>
-
 
 	<!-- Responsive navbar-->
 	
@@ -67,9 +73,9 @@ function showPrice() {
 							src="/product/displayImage?filename=${productVo.product_image}"
 							alt="..." style="display: block; margin: auto; width: 282px; height: 382px;" />
 					</a>
-	
 				</div>
 			</div>
+			
 			<!-- Side widgets-->
 			<div class="col-lg-6">
 				<!-- Side widget-->
@@ -117,16 +123,16 @@ function showPrice() {
 					 style="width:40px; display:block; float:left;">-</button>
 					
 					<input class="form-control" type="number" min='1' max='1000'
-							style="width:80px; display:block; float:left;" value="1"
+							style="width:80px; display:block; float:left;" placeholder="" value="1"
 							id="amount" oninput="showPrice()">
 						
 					<button class="btn btn-primary" id="btn_plus" 
 					style="width:40px; display:block; float:left;">+</button>
 				
-					
 					<span id="amount_result" style="display:block; float:right;"></span>
 					<span style="display:block; float:right;">구매 개수</span>
 					<br>
+					
 					<span id="total_count" style="display:block; float:right;"></span>
 					<span style="display:block; float:right;">총 금액</span>
 					<br>
@@ -143,6 +149,7 @@ function showPrice() {
 				</div>
 			</div>
 		</div>
+		
 		<div class="content">
 			<span style="font-size: 25px; color: #433406;">${productVo.product_descript}</span>
 			<!--${content}-->
