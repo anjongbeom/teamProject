@@ -1,97 +1,174 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-   
-        <!-- Responsive navbar-->
-        
-        <!-- Page header with logo and tagline-->
-        <header class="py-5 bg-light border-bottom mb-4">
-            <div class="container">
-                <div class="text-center my-5">
-                    <h1 class="fw-bolder">
-<%--                     <c:set var="TextValue" value="${productVo.product_id}" /> --%>
-<%--                     <c:choose> --%>
-<%-- 	                    <c:when test=""> --%>
-<!-- 	                    	a로 시작 -->
-<%-- 						</c:when> --%>
-<%-- 	                </c:choose>     --%>
-<%-- 	                ${fn:substring(${TextValue}, 0 , 1)} --%>
-                    </h1>
-                </div>
-            </div>
-        </header>
-        
-<%--         ${productVo} --%>
-        
-        <!-- Page content-->
-        <div class="container">
-            <div class="row">
-                <!-- Blog entries-->
-                <div class="col-lg-6">
-                    <!-- Featured blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" 
-                        	alt="..." style="display:block; margin:auto; width: 282px; height: 382px;" /></a>
-                        
-                    </div>
-                </div>
-                <!-- Side widgets-->
-                <div class="col-lg-6">
-                    <!-- Side widget-->
-                    <div class="mb-4">
-                    
-                       <!--  <div class="card-header">Side Widget</div> -->
-                        <h2 class="card-title">${productVo.product_name}</h2>
-                        <div style="margin-left: 10px;" class="small text-muted">VAT 별도</div>
-                            
-                            
-                            <table class="table table-sm">
-                            	<colgroup>
-                            		<col style="width:35%">
-                            		<col style="width:65%">
-                            	</colgroup>
- 							  <thead>
-							  </thead>
-							  <tbody class="table-group-divider">							  
-							    <tr>
-							      <th scope="row">원산지</th>
-							      <td>${productVo.product_origin}</td>
-							    </tr>
-							    <tr>
-							      <th scope="row" >용량</th>
-							      <td>${productVo.product_capacity}ml</td>
-							    </tr>
-							    <tr>
-							      <th scope="row" >알콜도수</th>
-							      <td>${productVo.product_alcohol_degree}%</td>
-							    </tr>
-							    <tr>
-							      <th scope="row" >소비자가격</th>
-							      <td>.-Point</td>
-							    </tr>
-							    <tr>
-							      <th scope="row" style="vertical-align: middle;">판매가격</th>
-							      <td style="font-size: 40px; color: #CF492C;">${productVo.product_price} Point</td>
-							    </tr>
-							  </tbody>
-							</table>
-                            <br><br>
-                            <a  style="float: right;" class="btn btn-danger" href="/product/basket?product_id=${productVo.product_id}"><span>장바구니에 담기</span></a>
-                            <a  style="float: right; margin-right: 10px;" class="btn btn-primary" href="#!">구매하기</a>
-                    </div>
-                </div>
-            </div>
-             <div class="content">
-		       	<span style="font-size: 25px; color: #433406;">${productVo.product_descript}</span>
-		        <!--${content}-->
-		     </div>
-        </div>
-       
-       
 
-   
-       
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>        
+<!-- jquery 인식 안돼서 따로 가져옴 -->
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	
+	//입력한 개수 표시용 span
+	var amount_result = document.getElementById("amount_result");
+	// 입력 개수 * 금액 표시용 span
+	var total_count = document.getElementById("total_count");
+// 	var price = ${productVo.product_price};
+	
+// 	$("#amount").click(function() {
+// 		alert("!!");
+// 	});
+	
+	
+	// span에 input (개수)정보 표시
+// 	amount.oninput = function() {
+// 		amount_result.innerHTML = amount.value;
+// 	};
+	
+
+	// span에 input(개수) * 상품 가격 = total_count정보 표시
+// 	amount.oninput = function() {
+// 		total_count.innerHTML = amount.value * (price);
+// 	};
+	
+	
+	
+});
+
+//개수 입력 input(number)
+function showPrice() {
+	var amount = document.getElementById("amount").value;
+	var price = ${productVo.product_price};
+	total_count.innerHTML = ": " + (amount * price);
+	amount_result.innerHTML = ": " + (amount);
+	
+};
+
+
+</script>
+
+
+	<!-- Responsive navbar-->
+	
+	<!-- Page header with logo and tagline-->
+	<header class="py-5 bg-light border-bottom mb-4">
+		<div class="container">
+			<div class="text-center my-5">
+				<h1 class="fw-bolder"></h1>
+			</div>
+		</div>
+	</header>
+	
+	<%--         ${productVo} --%>
+	
+	<!-- Page content-->
+	<div class="container">
+		<div class="row">
+			<!-- Blog entries-->
+			<div class="col-lg-6">
+				<!-- Featured blog post-->
+				<div class="card mb-4">
+					<a href="#!">
+						<img class="card-img-top"
+							src="/product/displayImage?filename=${productVo.product_image}"
+							alt="..." style="display: block; margin: auto; width: 282px; height: 382px;" />
+					</a>
+	
+				</div>
+			</div>
+			<!-- Side widgets-->
+			<div class="col-lg-6">
+				<!-- Side widget-->
+				<div class="mb-4">
+	
+					<!--  <div class="card-header">Side Widget</div> -->
+					<h2 class="card-title">${productVo.product_name}</h2>
+					<div style="margin-left: 10px;" class="small text-muted">VAT 별도</div>
+	
+					<table class="table table-sm">
+						<colgroup>
+							<col style="width: 35%">
+							<col style="width: 65%">
+						</colgroup>
+						<thead>
+						</thead>
+						<tbody class="table-group-divider">
+							<tr>
+								<th scope="row">원산지</th>
+								<td>${productVo.product_origin}</td>
+							</tr>
+							<tr>
+								<th scope="row">용량</th>
+								<td>${productVo.product_capacity}ml</td>
+							</tr>
+							<tr>
+								<th scope="row">알콜도수</th>
+								<td>${productVo.product_alcohol_degree}%</td>
+							</tr>
+							<tr>
+								<th scope="row">소비자가격</th>
+								<td>.-Point</td>
+							</tr>
+							
+							
+							<tr>
+								<th scope="row" style="vertical-align: middle;">판매가격</th>
+								<td style="font-size: 40px; color: #CF492C;">${productVo.product_price}
+									Point</td>
+							</tr>
+							
+							
+						</tbody>
+					</table>
+					
+					<button class="btn btn-danger" style="width:40px; display:block; float:left;">-</button>
+					
+					<input class="form-control" type="number" min='1' max='1000'
+							style="width:80px; display:block; float:left;" placeholder=""
+							id="amount" oninput="showPrice()">
+						
+					<button class="btn btn-primary" style="width:40px; display:block; float:left;">+</button>
+					
+<!-- 					<input class="form-control" type="number" min='1' max='1000' -->
+<!-- 							style="width:40px; display:block; float:left;" value="22" -->
+<!-- 							id="amount_result" readonly> -->
+					
+					
+					
+					<span id="total_count" style="display:block; float:right;"> 0</span>
+					<span style="display:block; float:right;">총 금액: </span>
+					<br>
+					
+					<span id="amount_result" style="display:block; float:right;"> 0</span>
+					<span style="display:block; float:right;">구매 개수: </span>
+					<br>
+					
+					
+					
+					
+					
+					<a style="float: right;" class="btn btn-danger"
+							href="/product/basket?product_id=${productVo.product_id}">
+						<span>장바구니에 담기</span>
+					</a> 
+					<a style="float: right; margin-right: 10px;"
+						class="btn btn-primary" href="/product/purchase?product_id=${productVo.product_id}&amount=">구매하기
+					</a>
+					
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<span style="font-size: 25px; color: #433406;">${productVo.product_descript}</span>
+			<!--${content}-->
+		</div>
+	</div>
+	
+
+
+
+
+<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+

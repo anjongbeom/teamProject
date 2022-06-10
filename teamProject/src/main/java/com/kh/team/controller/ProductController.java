@@ -36,6 +36,7 @@ public class ProductController {
 		return "/product/menu";
 	}
 	
+	// 장바구니
 	@RequestMapping(value= "/basket", method = RequestMethod.GET)
 	public String basket(String product_id, Model model, PagingDto pagingDto) {
 		ProductVo productVo = productService.basket(product_id);
@@ -65,10 +66,23 @@ public class ProductController {
 		ProductVo productVo = productService.detail(product_id);
 //		System.out.println("product_id: " + product_id);
 //		System.out.println("detail, ProductVo : " + productVo);
-		
 		model.addAttribute("productVo", productVo);
 		return "/product/product_detail";
 	}
+	
+	
+	// 제품 구매
+	@RequestMapping(value= "/purchase", method = RequestMethod.GET)
+	public String purchase(String product_id, Model model, PagingDto pagingDto) {
+		ProductVo productVo = productService.detail(product_id);
+//		System.out.println("product_id: " + product_id);
+//		System.out.println("detail, ProductVo : " + productVo);
+		model.addAttribute("productVo", productVo);
+		return "/product/purchase";
+	}
+	
+	
+	
 	
 	
 	
@@ -96,7 +110,8 @@ public class ProductController {
 		session.setAttribute("productVo", productVo);
 		return "/product/menu";
 	}
-
+ 
+	
 	
 	// 파일 이름으로 서버에서 이미지 가져오기(제품 이미지 가져올 때 사용)
 	@RequestMapping(value = "/displayImage", method = RequestMethod.GET)
@@ -107,6 +122,7 @@ public class ProductController {
 		byte[] data = IOUtils.toByteArray(fis);
 		fis.close();
 		return data;
+		
 	}
 	
 	
