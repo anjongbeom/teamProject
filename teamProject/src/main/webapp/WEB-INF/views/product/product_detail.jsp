@@ -15,24 +15,6 @@ $(document).ready(function() {
 	var amount_result = document.getElementById("amount_result");
 	// 입력 개수 * 금액 표시용 span
 	var total_count = document.getElementById("total_count");
-// 	var price = ${productVo.product_price};
-	
-// 	$("#amount").click(function() {
-// 		alert("!!");
-// 	});
-	
-	
-	// span에 input (개수)정보 표시
-// 	amount.oninput = function() {
-// 		amount_result.innerHTML = amount.value;
-// 	};
-	
-
-	// span에 input(개수) * 상품 가격 = total_count정보 표시
-// 	amount.oninput = function() {
-// 		total_count.innerHTML = amount.value * (price);
-// 	};
-	
 	
 	
 });
@@ -112,13 +94,11 @@ function showPrice() {
 								<td>.-Point</td>
 							</tr>
 							
-							
 							<tr>
 								<th scope="row" style="vertical-align: middle;">판매가격</th>
 								<td style="font-size: 40px; color: #CF492C;">${productVo.product_price}
 									Point</td>
 							</tr>
-							
 							
 						</tbody>
 					</table>
@@ -130,23 +110,14 @@ function showPrice() {
 							id="amount" oninput="showPrice()">
 						
 					<button class="btn btn-primary" style="width:40px; display:block; float:left;">+</button>
+				
 					
-<!-- 					<input class="form-control" type="number" min='1' max='1000' -->
-<!-- 							style="width:40px; display:block; float:left;" value="22" -->
-<!-- 							id="amount_result" readonly> -->
-					
-					
-					
-					<span id="total_count" style="display:block; float:right;"> 0</span>
-					<span style="display:block; float:right;">총 금액: </span>
+					<span id="amount_result" style="display:block; float:right;"></span>
+					<span style="display:block; float:right;">구매 개수</span>
 					<br>
-					
-					<span id="amount_result" style="display:block; float:right;"> 0</span>
-					<span style="display:block; float:right;">구매 개수: </span>
+					<span id="total_count" style="display:block; float:right;"></span>
+					<span style="display:block; float:right;">총 금액</span>
 					<br>
-					
-					
-					
 					
 					
 					<a style="float: right;" class="btn btn-danger"
