@@ -9,7 +9,7 @@
   .carousel-inner img {
     width: 100%;
     height: 100%;
-  }
+  } 
   </style>
     <head>
         <meta charset="utf-8" />
