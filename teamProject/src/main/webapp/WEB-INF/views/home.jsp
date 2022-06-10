@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Stylish Portfolio - Start Bootstrap Template</title>
+        <title>KA주류 교육원에 방문하신걸 환영합니다.</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/resources/main/images/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
