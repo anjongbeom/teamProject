@@ -25,12 +25,10 @@ function showPrice() {
 	var price = ${productVo.product_price};
 	total_count.innerHTML = ": " + (amount * price);
 	amount_result.innerHTML = ": " + (amount);
-	
 };
 
 
 </script>
-
 
 	<!-- Responsive navbar-->
 	
@@ -57,9 +55,9 @@ function showPrice() {
 							src="/product/displayImage?filename=${productVo.product_image}"
 							alt="..." style="display: block; margin: auto; width: 282px; height: 382px;" />
 					</a>
-	
 				</div>
 			</div>
+			
 			<!-- Side widgets-->
 			<div class="col-lg-6">
 				<!-- Side widget-->
@@ -106,15 +104,15 @@ function showPrice() {
 					<button class="btn btn-danger" style="width:40px; display:block; float:left;">-</button>
 					
 					<input class="form-control" type="number" min='1' max='1000'
-							style="width:80px; display:block; float:left;" placeholder=""
+							style="width:80px; display:block; float:left;" placeholder="" value="1"
 							id="amount" oninput="showPrice()">
 						
 					<button class="btn btn-primary" style="width:40px; display:block; float:left;">+</button>
 				
-					
 					<span id="amount_result" style="display:block; float:right;"></span>
 					<span style="display:block; float:right;">구매 개수</span>
 					<br>
+					
 					<span id="total_count" style="display:block; float:right;"></span>
 					<span style="display:block; float:right;">총 금액</span>
 					<br>
@@ -131,6 +129,7 @@ function showPrice() {
 				</div>
 			</div>
 		</div>
+		
 		<div class="content">
 			<span style="font-size: 25px; color: #433406;">${productVo.product_descript}</span>
 			<!--${content}-->
