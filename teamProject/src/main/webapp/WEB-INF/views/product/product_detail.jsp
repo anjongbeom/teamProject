@@ -17,8 +17,6 @@ $(document).ready(function() {
 	var total_count = document.getElementById("total_count");
 	showPrice();
 	$("#btn_plus").click(function(){
-		var amount = Number(document.getElementById("amount").value);
-		var price = ${productVo.product_price};
 		amount += 1;
 		total_count.innerHTML = ": " + (amount * price);
 		amount_result.innerHTML = ": " + (amount);
