@@ -16,7 +16,37 @@ $(document).ready(function() {
 	
 	
 });
+
+function idOverlap(){
+	console.log("idOverlap 호출");
+	console.log("아이디 입력 값 : ", joinForm.id.value);
+	$.ajax({
+		type :"post",/* 전송 방식 */
+		url :"idOverlap", /* 컨트롤러 사용할 때. 내가 보낼 데이터의 주소. */
+		data : {"id" : joinForm.id.value},
+		/* JSON형식 안에 JSON 형식으로 표현한 데이터. 
+	    "파라미터 이름" : 폼태그에 적은 NAME 값.ID입력창의 NAME값.value 여러 개도 가능
+		data :{	"id" : joinForm.id.value, 
+		"id1" : joinForm.password.value}, 이렇게도 사용 가능.					
+		*/
+		dataType : "text",	/* text, xml, html, script, json, jsonp 가능 */
+	    //정상적인 통신을 했다면 function은 백엔드 단에서 데이터를 처리.
+		success : function(data){	
+			if(data=="1"){
+				alert("이 아이디는 사용 가능합니다.");
+			}else{	//ajax가 제대로 안됐을 때 .
+				alert("이 아이디는 사용  불가능합니다.");
+			}
+		},
+		error : function(){
+			alert("아이디 중복 확인 ajax 실행 실패");
+		}
+	});
 	
+}
+
+
+
 
 function passConfirm() {
 // 	alert("ddd");
@@ -24,7 +54,7 @@ function passConfirm() {
 	var member_pw = document.getElementById('member_pw');					//비밀번호 
 	var member_pw2 = document.getElementById('member_pw2');	//비밀번호 확인 값
 	var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
-	var correctColor = "#55aa66";	//맞았을 때 출력되는 색깔.
+	var correctColor = "#77ee77";	//맞았을 때 출력되는 색깔.
 	var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
 	
 	if(member_pw.value == member_pw2.value){ //password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
@@ -135,13 +165,16 @@ function passConfirm() {
 				</div>
 				<div class="col-md-8">
 					<form role="form" action="/member/join_run" method="post">
-					
+						<br>
 						<div class="form-group">
 							<label for="member_id">
 								아이디
 							</label>
 							<input type="text" class="form-control" id="member_id" />
 						</div>
+						<!-- 아이디 유효성 & 중복체크 -->
+						<p id="idValid"></p>
+						
 						
 						<div class="form-group">
 							<label for="member_pw">
@@ -149,6 +182,8 @@ function passConfirm() {
 							</label>
 							<input type="password" class="form-control" id="member_pw" onchange="passConfirm()"/>
 						</div>
+						<!-- 비밀번호 유효성 -->
+						<p id="pwValid"></p>
 						
 						<div class="form-group">
 							<label for="member_pw2">
@@ -156,9 +191,8 @@ function passConfirm() {
 							</label>
 							<input type="password" class="form-control" id="member_pw2" onchange="passConfirm()"/>
 						</div>
-						
-						
-						<p id="confirmMsg">비번 확인</p>
+						<!-- 비밀번호 일치여부 -->
+						<p id="confirmMsg"></p>
 						
 						
 						<div class="form-group">
@@ -167,7 +201,6 @@ function passConfirm() {
 							</label>
 							<input type="text" class="form-control" id="member_name" />
 						</div>
-						
 						<div class="form-group">
 							<label for="nickname">
 								닉네임

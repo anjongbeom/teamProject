@@ -1,9 +1,14 @@
 package com.kh.team.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.team.service.MemberService;
@@ -37,6 +42,14 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	
+	//아이디 중복확인 처리
+	@RequestMapping(value="/idOverlap", method=RequestMethod.POST)
+	public void idOverlap(HttpServletResponse response, @RequestParam("id") String id) throws IOException {
+		//@RequestParam는 요청의 특정 파라미터 값을 찾아낼 때 사용하는 어노테이션
+//		ms.idOverlap(id,response);	//서비스에 있는 idOverlap 호출.
+	}
+
 	
 
 }
