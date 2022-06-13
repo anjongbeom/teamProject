@@ -6,12 +6,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/resources/js/openWin.js"></script>
+<style>
+  .divpop {
+      position: absolute; z-index:999; top:150px; left:500px;
+      width:350px; height:500px; border:1px solid black;background-color:yellow;display:none;
+  }
+  .title_area {font-weight:bold;text-align:center;width:100%}
+  .button_area {position:absolute;bottom:0;left:10px;} 
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
+<%-- <form name="notice_form">
+<div id="divpop1" class="divpop"> 
 	<div id="link" style="text-align: center; font-size: 28px;">
 		<a href="/product/detail?product_id=${productVo.product_id}" 
 			target="_blank"  style="text-decoration: none; color: #E9330F;" 
@@ -29,10 +39,15 @@
 	<br>
 	<div style="text-align: center; font-size: 20px;">
 		${productVo.product_name}
-<%-- 		<a href="/product/detail?product_id=${productVo.product_id}"  --%>
-<%-- 			target="_blank">${productVo.product_name}</a> --%>
+		<a href="/product/detail?product_id=${productVo.product_id}" 
+			target="_blank">${productVo.product_name}</a>
 	</div>
-
+         <div class="button_area">
+             <input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘 하루 이 창을 열지 않음    
+             <a href='#' onclick="javascript:closeWin(1);" onclick="window.close();"><B>[닫기]</B></a>
+         </div>
+    </div>
+</form> --%>
 
 </body>
 </html>

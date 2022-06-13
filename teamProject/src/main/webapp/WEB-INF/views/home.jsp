@@ -12,6 +12,15 @@
     height: 100%;
   } 
   </style>
+  <style>
+  .divpop {
+      position: relative; z-index:999; top:-60px; left:auto; margin: auto;
+      width:350px; height:525px; border:20px solid #BDBDBD;background-color:#fff;display:none;
+  }
+  .title_area {font-weight:bold;text-align:center;width:100%}
+  .button_area {position:absolute;bottom:0;left:10px;} 
+</style>
+  
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -35,13 +44,12 @@
 	  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	  <script language="javascript" src="/resources/js/pop_up.js"></script>
+	  
+	  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	  <script src="/resources/js/openWin.js"></script>
     </head>
     <body id="page-top">
-    <!-- 팝업 -->
-     <a href = "javascript:popup()" target = "blank"></a>
-     <body onload="openwindow('/resources/popup/pop.jsp', 380, 450)">
-     
-     <!-- 팝업 -->
+   
      
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
@@ -66,6 +74,8 @@
 		  
 		  <!-- The slideshow -->
 		  <div class="carousel-inner">
+		  
+	
 		    <div class="carousel-item active">
 		      <img src="/resources/images/main/main1.png" alt="Los Angeles" width="100%" height="auto">
 		    </div>
@@ -91,6 +101,43 @@
         
          <!-- Portfolio-->
         <section class="content-section" id="portfolio">
+        	  <!-- 팝업 -->
+     <a href = "javascript:popup()" target = "blank"></a>
+     <!-- <body onload="openwindow('/resources/popup/pop.jsp', 450, 600)"> -->
+     
+     
+     
+	<form name="notice_form">
+	<div id="divpop1" class="divpop"> 
+	<div id="link" style="text-align: center; font-size: 28px;">
+		<a href="/product/detail?product_id=${productVo.product_id}" 
+			target="_blank"  style="text-decoration: none; color: #E9330F;" 
+			onmouseover="this.style.color='orange';" 
+			onmouseout="this.style.color='#E9330F';">오늘의 추천 주류는?</a>
+	</div>
+	<br>
+	
+	<a href="/product/detail?product_id=${productVo.product_id}" 
+	target="_blank">
+		<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" alt="..." 
+				style="display: block; margin: 0 auto; " width="250" height="328"/>
+	</a>
+	
+	<br>
+	<div style="text-align: center; font-size: 20px;">
+		${productVo.product_name}
+<%-- 		<a href="/product/detail?product_id=${productVo.product_id}"  --%>
+<%-- 			target="_blank">${productVo.product_name}</a> --%>
+	</div>
+         <div class="button_area">
+             <input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘 하루 이 창을 열지 않음    
+             <a href='#' onclick="javascript:closeWin(1);" onclick="window.close();"><B style="float: right; margin-left: 40px;">[닫기]</B></a>
+         </div>
+    </div>
+</form>
+     
+     <!-- 팝업 -->
+        
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
                     <h3 class="text-secondary mb-0">주류를 더보시려면</h3>
