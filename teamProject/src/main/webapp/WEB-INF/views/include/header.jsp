@@ -41,7 +41,7 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                    
+                    	<!-- 수정중 -->
                     	<!-- 장바구니 -->
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
