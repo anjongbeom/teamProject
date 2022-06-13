@@ -19,7 +19,11 @@
 		</div>
 	</header>
 	
-	<%-- ${productVo} --%>
+<%-- 	${productVo} --%>
+<%-- 	${productVo.product_id} --%>
+<%-- 	${amount} --%>
+<%-- 	${param.amount} --%>
+	
 	
 	<!-- Page content-->
 	<div class="container">
@@ -52,25 +56,27 @@
 		
 						<thead>
 							<tr>
-								<th scope="row" colspan="2" width="30%">상품정보</th>
+								<th scope="row" width="10%"></th>
+								<th scope="row" colspan="2" width="50%" style="text-align: center">상품정보</th>
 								<th scope="row"  width="20%">판매자</th>
-								<th scope="row"  width="20%">수량</th>
-								<th scope="row"  width="30%">상품금액</th>
+								<th scope="row"  width="10%">수량</th>
+								<th scope="row"  width="20%">상품금액</th>
 							</tr>
 						</thead>
 						
 							
 						<tbody class="table-group-divider">
 							<tr>
+								<td style="vertical-align:middle"><input type="checkbox" name="item" value="productVo" checked></td>
 								<td>
 									<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}"  
-									alt="..." style="display:block; margin:auto; width: 82px; height: 182px;" />
+									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
 								</td>
 								
-								<td>${productVo.product_name}</td>
-								<td>KA 주류교육원</td>
-								<td>수량 개</td>
-								<td style="font-size: 30px; color: #CF492C;">상품금액 Point</td>
+								<td style="vertical-align:middle">${productVo.product_name}</td>
+								<td style="vertical-align:middle">KA 주류교육원</td>
+								<td style="vertical-align:middle">${param.amount} 개</td>
+								<td style="vertical-align:middle" style="font-size: 30px; color: #CF492C;">${productVo.product_price} Point</td>
 							</tr>
 						</tbody>
 					</table>

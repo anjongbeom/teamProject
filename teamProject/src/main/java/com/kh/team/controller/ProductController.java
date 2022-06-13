@@ -75,11 +75,13 @@ public class ProductController {
 	@RequestMapping(value= "/purchase", method = RequestMethod.GET)
 	public String purchase(String product_id, Model model, PagingDto pagingDto) {
 		ProductVo productVo = productService.detail(product_id);
-//		System.out.println("product_id: " + product_id);
-//		System.out.println("detail, ProductVo : " + productVo);
+
 		model.addAttribute("productVo", productVo);
 		return "/product/purchase";
 	}
+	
+	
+	
 	
 	
 	
@@ -122,7 +124,6 @@ public class ProductController {
 		byte[] data = IOUtils.toByteArray(fis);
 		fis.close();
 		return data;
-		
 	}
 	
 	

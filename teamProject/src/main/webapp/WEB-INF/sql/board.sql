@@ -1,25 +1,25 @@
 
 create table tbl_board (
-	bno number primary key, -- ±Û¹øÈ£(pk)
-	title varchar2(100) not null, -- ±ÛÁ¦¸ñ
-	content varchar2(4000), -- ±Û ³»¿ë()
-	writer varchar2(50) not null, -- ÀÛ¼ºÀÚ
-	regdate date default sysdate, -- ÀÛ¼ºÀÏ
-	viewcnt number default 0 -- Á¶È¸¼ö
+	bno number primary key, -- ï¿½Û¹ï¿½È£(pk)
+	title varchar2(100) not null, -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	content varchar2(4000), -- ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½()
+	writer varchar2(50) not null, -- ï¿½Û¼ï¿½ï¿½ï¿½
+	regdate date default sysdate, -- ï¿½Û¼ï¿½ï¿½ï¿½
+	viewcnt number default 0 -- ï¿½ï¿½È¸ï¿½ï¿½
 );
 
--- ±Û ¹øÈ£¿ë ½ÃÄö½º
-create sequence
+-- ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+create sequence seq_board_bno;
 
--- µ¥ÀÌÅÍ ÀüÃ¼ »èÁ¦
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 truncate table tbl_board;
 
--- ½ÃÄö½º »õ·Î »ý¼º
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 drop sequence seq_board_bno;
 create sequence seq_board_bno;
 
 
--- ´ä±Û °ü·Ã~
+-- ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½~
 
 ALTER TABLE TBL_BOARD 
 ADD (RE_GROUP NUMBER default 0);
@@ -32,10 +32,10 @@ ADD (RE_SEQ NUMBER default 0);
 
 UPDATE TBL_BOARD SET
 RE_GROUP = BNO;
--- ~´ä±Û °ü·Ã
+-- ~ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
--- Ã·ºÎÆÄÀÏ Å×ÀÌºí
+-- Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 
 create table tbl_attach(
 	filename varchar2(50) primary key,
