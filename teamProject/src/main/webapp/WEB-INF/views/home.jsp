@@ -1,4 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page pageEncoding="UTF-8"%>
 
 
@@ -33,8 +34,15 @@
 	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	  <script language="javascript" src="/resources/js/pop_up.js"></script>
     </head>
     <body id="page-top">
+    <!-- 팝업 -->
+     <a href = "javascript:popup()" target = "blank"></a>
+     <body onload="openwindow('/resources/popup/popup.html', 380, 450)">
+     
+     <!-- 팝업 -->
+     
         <!-- Navigation-->
         <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
         <nav id="sidebar-wrapper">
