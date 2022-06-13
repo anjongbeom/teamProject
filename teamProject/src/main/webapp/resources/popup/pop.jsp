@@ -16,7 +16,7 @@
 		<a href="/product/detail?product_id=${productVo.product_id}" 
 			target="_blank"  style="text-decoration: none; color: #E9330F;" 
 			onmouseover="this.style.color='orange';" 
-			onmouseout="this.style.color='';">오늘의 추천 주류는?</a>
+			onmouseout="this.style.color='#E9330F';">오늘의 추천 주류는?</a>
 	</div>
 	<br>
 	
