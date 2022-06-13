@@ -19,11 +19,9 @@
 	
 	
 	<insert id="insertMember">
-		insert into tbl_member
-			  (member_id, member_pw, member_name, nickname, email, 
-				favorite, address, member_tel)
-		values(#{member_id}, #{member_pw}, #{member_name}, #{nickname}, #{email}
-				#{favorite}, #{address}, #{member_tel})
+		insert into tal_member
+			  (member_id, member_pw, member_name, nickname, email, favorite, address, member_tel)
+		values(#{member_id}, #{member_pw}, #{member_name}, #{nickname}, #{email}, #{favorite}, #{address}, #{member_tel})
 	</insert>
 	
 	

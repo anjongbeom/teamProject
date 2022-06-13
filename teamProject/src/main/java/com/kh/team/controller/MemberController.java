@@ -25,7 +25,6 @@ public class MemberController {
 
 	
 	
-	
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
 	public String joinForm() {
 		System.out.println("MemberController, joinForm ");
@@ -41,6 +40,8 @@ public class MemberController {
 		memberService.insertMember(memberVo);
 		return "redirect:/";
 	}
+	
+	
 	
 	
 	//아이디 중복확인 처리

@@ -7,30 +7,32 @@ public class MemberVo {
 	private String member_id;
 	private String member_pw;
 	private String member_name;
-	private String nick_name;
+	private String nickname;
 	private String email;
 	private String favorite;
 	private Date regdate;
 	private Date updatedate;
 	private String member_tel;
 	private int member_point;
+	private String address;
 	
 	public MemberVo() {
 	}
 
-	public MemberVo(String member_id, String member_pw, String member_name, String nick_name, String email,
-			String favorite, Date regdate, Date updatedate, String member_tel, int member_point) {
+	public MemberVo(String member_id, String member_pw, String member_name, String nickname, String email,
+			String favorite, Date regdate, Date updatedate, String member_tel, int member_point, String address) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
-		this.nick_name = nick_name;
+		this.nickname = nickname;
 		this.email = email;
 		this.favorite = favorite;
 		this.regdate = regdate;
 		this.updatedate = updatedate;
 		this.member_tel = member_tel;
 		this.member_point = member_point;
+		this.address = address;
 	}
 
 	public String getMember_id() {
@@ -57,12 +59,12 @@ public class MemberVo {
 		this.member_name = member_name;
 	}
 
-	public String getNick_name() {
-		return nick_name;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public String getEmail() {
@@ -113,13 +115,21 @@ public class MemberVo {
 		this.member_point = member_point;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
-				+ ", nick_name=" + nick_name + ", email=" + email + ", favorite=" + favorite + ", regdate=" + regdate
-				+ ", updatedate=" + updatedate + ", member_tel=" + member_tel + ", member_point=" + member_point + "]";
+				+ ", nickname=" + nickname + ", email=" + email + ", favorite=" + favorite + ", regdate=" + regdate
+				+ ", updatedate=" + updatedate + ", member_tel=" + member_tel + ", member_point=" + member_point
+				+ ", address=" + address + "]";
 	}
-	
-	
+
 	
 }
