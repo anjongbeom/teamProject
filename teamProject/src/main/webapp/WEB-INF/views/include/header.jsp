@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>KA주류교육원</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -35,21 +35,43 @@
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="/product/brandyList">Brandy</a></li>
                                 <li><a class="dropdown-item" href="/product/whiskyList">Scotch Whisky</a></li>
-                                <li><a class="dropdown-item" href="/product/beerList">beer</a></li>
-                                <li><a class="dropdown-item" href="/product/traditionalList">traditional liquor</a></li>
+                                <li><a class="dropdown-item" href="/product/beerList">Beer</a></li>
+                                <li><a class="dropdown-item" href="/product/traditionalList">Traditional liquor</a></li>
                             </ul>
                         </li>
                     </ul>
                     <form class="d-flex">
+                    
+                    	<!-- 장바구니 -->
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
+                        <!-- 알림 기능 예약 메세지 -->
+                        <button id="m" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        	<i class="bi bi-clock"></i>
+ 							Alert
+                        	<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        <!-- 로그인 -->
+                        <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        	<i class="bi bi-door-open"></i>
+ 							Login
+                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                        </button>
+                        
+                        <!-- 회원가입 -->
+                         <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        	<i class="bi bi-people-fill"></i>
+ 							Sign Up
+                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                        </button>
                     </form>
                 </div>
             </div>
         </nav>
+        
         <!-- Header-->
         <header class="bg-dark py-5"> 
             <div class="container px-4 px-lg-5 my-5">

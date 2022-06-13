@@ -15,7 +15,7 @@
 	</properties>
 	<dependencies>
 
-		<!-- commons-logging -->
+	<!-- commons-logging -->
 		<dependency>
 		    <groupId>commons-logging</groupId>
 		    <artifactId>commons-logging</artifactId>

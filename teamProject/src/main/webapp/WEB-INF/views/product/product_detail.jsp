@@ -15,7 +15,7 @@ $(document).ready(function() {
 	var amount_result = document.getElementById("amount_result");
 	// 입력 개수 * 금액 표시용 span
 	var total_count = document.getElementById("total_count");
-	
+
 	showPrice();
 	
 	$("#btn_plus").click(function() {
@@ -33,6 +33,7 @@ $(document).ready(function() {
 		document.getElementById("amount").value = amount;
 		showPrice();
 	});
+<<<<<<< HEAD
 	
 	$("#btn_purchase").click(function(e) {
 	 	var amount = $("#amount").val();
@@ -42,10 +43,14 @@ $(document).ready(function() {
 	
 
 	
+=======
+>>>>>>> branch 'master' of https://github.com/anjongbeom/teamProject.git
 });
+
 
 //개수 입력 input(number)
 function showPrice() {
+	
 	var amount = document.getElementById("amount").value;
 	var price = ${productVo.product_price};
 	total_count.innerHTML = ": " + (amount * price);
@@ -127,13 +132,15 @@ function showPrice() {
 						</tbody>
 					</table>
 					
-					<button class="btn btn-danger" id="btn_minus" style="width:40px; display:block; float:left;">-</button>
+					<button class="btn btn-danger" id="btn_minus"
+					 style="width:40px; display:block; float:left;">-</button>
 					
 					<input class="form-control" type="number" min='1' max='1000'
 							style="width:80px; display:block; float:left;" placeholder="" value="1"
 							id="amount" oninput="showPrice()">
 						
-					<button class="btn btn-primary" id="btn_plus"style="width:40px; display:block; float:left;">+</button>
+					<button class="btn btn-primary" id="btn_plus" 
+					style="width:40px; display:block; float:left;">+</button>
 				
 					<span id="amount_result" style="display:block; float:right;"></span>
 					<span style="display:block; float:right;">구매 개수</span>
