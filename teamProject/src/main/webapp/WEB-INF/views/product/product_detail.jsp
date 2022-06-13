@@ -33,6 +33,18 @@ $(document).ready(function() {
 		document.getElementById("amount").value = amount;
 		showPrice();
 	});
+<<<<<<< HEAD
+	
+	$("#btn_purchase").click(function(e) {
+	 	var amount = $("#amount").val();
+	 	var product_id = "${productVo.product_id}";
+	 	location.href = "/product/purchase?product_id=" + product_id + "&amount=" + amount;
+	});
+	
+
+	
+=======
+>>>>>>> branch 'master' of https://github.com/anjongbeom/teamProject.git
 });
 
 
@@ -44,6 +56,7 @@ function showPrice() {
 	total_count.innerHTML = ": " + (amount * price);
 	amount_result.innerHTML = ": " + (amount);
 };
+
 
 
 </script>
@@ -142,8 +155,11 @@ function showPrice() {
 							href="/product/basket?product_id=${productVo.product_id}">
 						<span>장바구니에 담기</span>
 					</a> 
-					<a style="float: right; margin-right: 10px;"
-						class="btn btn-primary" href="/product/purchase?product_id=${productVo.product_id}&amount=">구매하기
+					
+					<a style="float: right; margin-right: 10px;" id="btn_purchase"
+						class="btn btn-primary" href="#">구매하기			
+						
+<%-- 						/product/purchase?product_id=${productVo.product_id}&amount= --%>
 					</a>
 					
 				</div>
