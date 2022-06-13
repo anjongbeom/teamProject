@@ -22,10 +22,12 @@
 <!-- 		select * from tal_product -->
 <!-- 	</select> -->
 	
+	
 	<select id="brandyList" resultType="ProductVo">
 		select * from tal_product
 		where product_id like '%b%'
 	</select>
+	
 	<select id="whiskyList" resultType="ProductVo">
 		select * from tal_product
 		where product_id like '%a%'
@@ -38,6 +40,14 @@
 		select * from tal_product
 		where product_id like '%d%'
 	</select>
+	
+	
+	<!-- 글 조회 1개-->
+	<select id="read" resultType="ProductVo">
+		select * from tal_product
+		where product_id = #{product_id}
+	</select>
+	
 	
 	<select id="list" resultType="ProductVo">
 		select * from tal_product

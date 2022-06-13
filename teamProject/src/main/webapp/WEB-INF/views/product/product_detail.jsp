@@ -33,7 +33,7 @@ $(document).ready(function() {
 		document.getElementById("amount").value = amount;
 		showPrice();
 	});
-<<<<<<< HEAD
+	
 	
 	$("#btn_purchase").click(function(e) {
 	 	var amount = $("#amount").val();
@@ -42,9 +42,6 @@ $(document).ready(function() {
 	});
 	
 
-	
-=======
->>>>>>> branch 'master' of https://github.com/anjongbeom/teamProject.git
 });
 
 

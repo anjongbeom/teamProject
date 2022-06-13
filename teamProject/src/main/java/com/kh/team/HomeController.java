@@ -31,8 +31,15 @@ public class HomeController {
 	public String home(Locale locale, Model model,
 			HttpSession session, PagingDto pagingDto) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		List<ProductVo> productVo = productService.list(pagingDto); 
+//		List<ProductVo> productVo = productService.list(pagingDto);
+		
+		String product_id = "a00004";
+		ProductVo productVo = productService.read(product_id);
 		session.setAttribute("productVo", productVo);
+		
+		System.out.println("HomeController, product_id: " + product_id);
+		System.out.println("HomeController, productVo: " + productVo);
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);

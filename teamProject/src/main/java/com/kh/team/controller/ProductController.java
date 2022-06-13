@@ -60,6 +60,20 @@ public class ProductController {
 	}
 	
 	
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public String read(String product_id, Model model, PagingDto pagingDto) {
+		System.out.println("ProductController, read, id: " + product_id);
+		System.out.println("ProductController, read, pagingDto: " + pagingDto);
+		
+		ProductVo productVo = productService.read(product_id);
+		model.addAttribute("boardVo", productVo);
+		model.addAttribute("pagingDto", pagingDto);
+		return "board/read";
+	}
+	
+	
+	
+	
 	// 제품 상세
 	@RequestMapping(value= "/detail", method = RequestMethod.GET)
 	public String detail(String product_id, Model model, PagingDto pagingDto) {
