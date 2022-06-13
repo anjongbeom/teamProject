@@ -58,5 +58,12 @@ public class ProductServiceImpl implements ProductService {
 		ProductVo productVo = productDao.basket(product_id);
 		return productVo;
 	}
+	
+	
+	@Override
+	public ProductVo read(String product_id) {
+		ProductVo productVo = productDao.read(product_id);
+		return productVo;
+	}
 
 }

@@ -62,4 +62,10 @@ public class ProductDaoImpl implements ProductDao {
 		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "basket", product_id);
 		return productVo;
 	}
+
+	@Override
+	public ProductVo read(String product_id) {
+		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "read", product_id);
+		return productVo;
+	}
 }

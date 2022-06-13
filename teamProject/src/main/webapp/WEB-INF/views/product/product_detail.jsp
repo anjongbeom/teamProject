@@ -32,8 +32,9 @@ $(document).ready(function() {
 		}
 		document.getElementById("amount").value = amount;
 		showPrice();
-	});
 
+	});
+	
 	
 	$("#btn_purchase").click(function(e) {
 	 	var amount = $("#amount").val();
@@ -43,7 +44,7 @@ $(document).ready(function() {
 	
 
 	
-});
+
 
 
 //개수 입력 input(number)

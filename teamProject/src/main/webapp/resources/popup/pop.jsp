@@ -11,17 +11,23 @@
 </head>
 <body>
 
-<%-- <img src="${productVo.product_id=c00005}" border=0 > --%>
-<%-- <a href="/resources/popup/pop.jsp" target="_blank">${productVo.product_id}</a> --%>
-<!-- dfsdfsdf -->
-
-
-<%-- <c:forEach items="${productVo}" var="productVo"> --%>
-<%-- 	<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" alt="..."  --%>
-<!-- 	                            	height="328"/> -->
-<%-- 	${productVo} --%>
-
-<%-- </c:forEach> --%>
+	<div style="text-align: center; font-size: 28px;">
+		<a href="/product/detail?product_id=${productVo.product_id}" 
+			target="_blank" >오늘의 추천 주류는?</a>
+	</div>
+	<br>
+	
+	<a href="/product/detail?product_id=${productVo.product_id}" target="_blank">
+		<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" alt="..." 
+				style="display: block; margin: 0 auto;" width="250" height="328"/>
+	</a>
+	
+	<br>
+	<div style="text-align: center; font-size: 20px;">
+		${productVo.product_name}
+<%-- 		<a href="/product/detail?product_id=${productVo.product_id}"  --%>
+<%-- 			target="_blank">${productVo.product_name}</a> --%>
+	</div>
 
 
 </body>

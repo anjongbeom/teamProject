@@ -15,5 +15,6 @@ public interface ProductService {
 	public List<ProductVo> whiskyList();
 	public List<ProductVo> beerList();
 	public List<ProductVo> traditionalList();
+	public ProductVo read(String product_id);
 	
 }
