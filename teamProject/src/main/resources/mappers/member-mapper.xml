@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.team.mappers.member">
+
+
+	<!-- 글 등록  -->
+<!-- 	<insert id="create"> -->
+<!-- 		insert into tal_board(board_no, board_title, board_content, writer, re_group) -->
+<!-- 		values(#{board_no}, #{board_title},  -->
+<!-- 			#{board_content, jdbcType=VARCHAR}, #{writer}, -->
+<!-- 			#{board_no}) -->
+<!-- 	</insert> -->
+	
+	
+	
+	
+	<insert id="insertMember">
+		insert into tbl_member
+			  (member_id, member_pw, member_name, nickname, email, 
+				favorite, address, member_tel)
+		values(#{member_id}, #{member_pw}, #{member_name}, #{nickname}, #{email}
+				#{favorite}, #{address}, #{member_tel})
+	</insert>
+	
+	
+	
+</mapper>

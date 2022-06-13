@@ -40,10 +40,11 @@
 	</select>
 	
 	<select id="list" resultType="ProductVo">
-  		select * from 
-	    (select * from tal_product
-		where product_name like '%' || #{keyword} || '%'
-	      order by product_name desc)
+		select * from tal_product
+			<if test="searchType != null and keyword != null">
+				where product_name like '%' || #{keyword} || '%'
+			</if>
+		order by product_name desc
   	</select>
   	
   	<select id="detail" resultType="ProductVo">
