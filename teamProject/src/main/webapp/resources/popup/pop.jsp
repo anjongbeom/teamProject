@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%-- <img src="${productVo.product_id=c00005}" border=0 > --%>
 <a href="/resources/popup/pop.jsp" target="_blank">${productVo}</a>
 </body>
