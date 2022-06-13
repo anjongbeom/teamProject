@@ -39,7 +39,7 @@
     <body id="page-top">
     <!-- 팝업 -->
      <a href = "javascript:popup()" target = "blank"></a>
-     <body onload="openwindow('/resources/popup/popup.html', 380, 450)">
+     <body onload="openwindow('/resources/popup/pop.jsp', 380, 450)">
      
      <!-- 팝업 -->
      
