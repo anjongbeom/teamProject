@@ -19,7 +19,7 @@ public class ExampleSend {
     params.put("to", "01025958943");
     params.put("from", "01056605209"); //무조건 자기번호 (인증)
     params.put("type", "SMS");
-    params.put("text", "형동아~~~~!!!");
+    	params.put("text", "형동아~~~~!!!");
     params.put("app_version", "test app 1.2"); // application name and version
 
     try {
