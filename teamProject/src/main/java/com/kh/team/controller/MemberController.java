@@ -2,7 +2,9 @@ package com.kh.team.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.team.service.MemberService;
 import com.kh.team.vo.MemberVo;
@@ -38,6 +41,53 @@ public class MemberController {
 		return "/member/login_form";
 		
 	}
+	
+	
+	@RequestMapping(value = "/loginRun", method = RequestMethod.POST)
+	public String loginRun(String member_id, String member_pw, HttpSession session, RedirectAttributes rttr, 
+			String saveId, HttpServletResponse response) {
+		System.out.println("member_id: " + member_id);
+		System.out.println("member_pw: " + member_pw);
+		MemberVo memberVo = memberService.getMemberByIdAndPw(member_id, member_pw);
+		
+		if (memberVo == null) {
+			rttr.addFlashAttribute("login_result", "fail");
+			return "redirect:/";
+		} else {
+			session.setAttribute("loginVo", memberVo);
+			if (saveId != null && !saveId.equals("")) {
+				Cookie cookie = new Cookie("saveId", member_id);
+				cookie.setPath("/");
+				cookie.setMaxAge(50 * 50 * 24* 7); // 깨지는지 확인필요
+				response.addCookie(cookie);
+			} else {
+				Cookie cookie = new Cookie("saveId", member_id);
+				cookie.setPath("/");
+				cookie.setMaxAge(0); // 깨지는지 확인필요
+				response.addCookie(cookie);
+			}
+			
+//			String targetLocation = (String)session.getAttribute("targetLocation");
+//			if (targetLocation == null || targetLocation.equals("")) {
+//				return "redirect:/board/list?page=1";
+//			}
+			return "redirect:/product/list" /*+ targetLocation*/;
+		}
+		
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate(); // 
+		// session.setAttribute("a", xxx); -> session.removeAttribute("a") 
+		// session.setAttribute("a", xxx);
+		return "redirect:/member/loginForm";
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/join_run", method = RequestMethod.POST)
 	public String joinRun(MemberVo memberVo, MultipartFile file) {

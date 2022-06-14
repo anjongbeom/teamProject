@@ -61,6 +61,8 @@ function showPrice() {
 
 </script>
 
+
+
 	<!-- Responsive navbar-->
 	
 	<!-- Page header with logo and tagline-->

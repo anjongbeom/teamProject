@@ -16,5 +16,12 @@ public class MemberServiceImpl implements MemberService {
 	public void insertMember(MemberVo memberVo) {
 		memberDao.insertMember(memberVo);
 	}
+	
+	@Override
+	public MemberVo getMemberByIdAndPw(String member_id, String member_pw) {
+		MemberVo memberVo = memberDao.getMemberByIdAndPw(member_id, member_pw);
+		return memberVo;
+	}
+	
 
 }

@@ -11,6 +11,10 @@
 <script>
 $(document).ready(function() {
 	
+	$("#btn_joinForm").click(function() {
+		loca
+		
+	});
 	
 	
 });
@@ -123,15 +127,39 @@ $(document).ready(function() {
  							Alert
                         	<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
+                        
+                        
                         <!-- 로그인 -->
-                        <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        <button id="" 
+                        
+                        	<c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		class="btn btn-dark" 
+	                        		onclick="location.href='/member/logout'"
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		class="btn btn-outline-dark" 
+	                        		onclick="location.href='/member/loginForm'"
+	                        	</c:otherwise>
+                        	</c:choose>
+                       	 	type="button" style="margin-left: 5px;">
                         	<i class="bi bi-door-open"></i>
- 							Login
+                        	
+                        	<c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		Logout
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		Login
+	                        	</c:otherwise>
+                        	</c:choose>
+ 							
                         	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                         
                         <!-- 회원가입 -->
-                         <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                         <button id="btn_joinForm" class="btn btn-outline-dark" type="button" style="margin-left: 5px;"
+                         	onclick="location.href='/member/joinForm'">
                         	<i class="bi bi-people-fill"></i>
  							Sign Up
                         	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
@@ -155,7 +183,12 @@ $(document).ready(function() {
 
 
 
-<!-- 수정중  -->
+
+
+
+
+
+
 <!-- 콘텐츠 시작 { -->
 <div class="container-fluid">
 	<div class="row">
@@ -164,7 +197,7 @@ $(document).ready(function() {
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8">
-					<form role="form" action="/member/join_run" method="post" enctype="multipart/form-data">
+					<form role="form" action="/member/loginRun" method="post" enctype="multipart/form-data">
 						<br>
 						<div class="form-group">
 							<label for="member_id">

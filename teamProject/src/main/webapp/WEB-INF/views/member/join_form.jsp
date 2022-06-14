@@ -122,14 +122,35 @@ function passConfirm() {
                         	<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                         <!-- 로그인 -->
-                        <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        <button id="" 
+                        
+                        	<c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		class="btn btn-dark" 
+	                        		onclick="location.href='/member/logout'"
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		class="btn btn-outline-dark" 
+	                        		onclick="location.href='/member/loginForm'"
+	                        	</c:otherwise>
+                        	</c:choose>
+                       	 	type="button" style="margin-left: 5px;">
                         	<i class="bi bi-door-open"></i>
- 							Login
+                        	
+                        	<c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		Logout
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		Login
+	                        	</c:otherwise>
+                        	</c:choose>
+ 							
                         	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                         
                         <!-- 회원가입 -->
-                         <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                         <button id="" class="btn btn-outline-dark" type="button" style="margin-left: 5px;">
                         	<i class="bi bi-people-fill"></i>
  							Sign Up
                         	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>

@@ -40,8 +40,8 @@ $(document).ready(function() {
 	});
 });
 </script>
-	
-        
+        	
+        ${loginVo}
         <!-- Section-->
          <!-- Side widgets-->
          <div style="text-align: center;">

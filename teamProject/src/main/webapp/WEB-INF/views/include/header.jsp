@@ -55,14 +55,36 @@
                         	<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                         <!-- 로그인 -->
-                        <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        <button id="" 
+                        
+                        	<c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		class="btn btn-dark" 
+	                        		onclick="location.href='/member/logout'"
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		class="btn btn-outline-dark" 
+	                        		onclick="location.href='/member/loginForm'"
+	                        	</c:otherwise>
+                        	</c:choose>
+                       	 	type="button" style="margin-left: 5px;">
                         	<i class="bi bi-door-open"></i>
- 							Login
+                        	
+                        	<c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		Logout
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		Login
+	                        	</c:otherwise>
+                        	</c:choose>
+ 							
                         	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                         
                         <!-- 회원가입 -->
-                         <button id="" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                         <button id="" class="btn btn-outline-dark" type="button" style="margin-left: 5px;"
+                         	onclick="location.href='/member/joinForm'">
                         	<i class="bi bi-people-fill"></i>
  							Sign Up
                         	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
@@ -72,14 +94,14 @@
             </div>
         </nav>
         
-        <!-- Header-->
-        <header class="bg-dark py-5"> 
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">깔끔한 한잔</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">우리 KA와 함께 찾아보시죠</p>
-                </div>
-            </div>
-        </header>
         
-        
+		<!-- Header-->
+	        <header class="bg-dark py-5"> 
+	            <div class="container px-4 px-lg-5 my-5">
+	                <div class="text-center text-white">
+	                    <h1 class="display-4 fw-bolder">깔끔한 한잔</h1>
+	                    <p class="lead fw-normal text-white-50 mb-0">우리 KA와 함께 찾아보시죠</p>
+	                </div>
+	            </div>
+	        </header>
+		<!-- // Header-->
