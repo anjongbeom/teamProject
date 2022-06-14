@@ -41,6 +41,37 @@
                         </li>
                     </ul>
                     <form class="d-flex">
+                    
+                    	<!-- 사용자 아이디 -->
+                    	<!-- 로그인 상태이면 -->
+                    	<button id=""
+                    		<c:choose>
+								<c:when test="${loginVo != null || loginVo==''}"> 
+	                        		class="btn btn-light"  
+	                        		onclick="location.href='/member/logout'"
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        		class="btn btn-outline-dark" 
+	                        		onclick="location.href='/member/loginForm'"
+	                        	</c:otherwise>
+	                        </c:choose>
+							type="button" style="margin-left: 5px;">
+                       	 	
+	                        <c:choose>
+	                        	<c:when test="${loginVo != null || loginVo==''}">
+	                        		<i class="bi bi-globe"></i>
+	                        		${loginVo.member_id} 님 반갑습니다
+	                        	</c:when>
+	                        	<c:otherwise>
+	                        	
+	                        	</c:otherwise>
+                        	</c:choose>
+ 							
+                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>	
+	                        	
+						</button>
+                    
+                    
                     	<!-- 수정중 -->
                     	<!-- 장바구니 -->
                         <button class="btn btn-outline-dark" type="submit">
@@ -54,11 +85,12 @@
  							Alert
                         	<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
+                        
+                        
                         <!-- 로그인 -->
                         <button id="" 
-                        
                         	<c:choose>
-	                        	<c:when test="${loginVo != null || loginVo==''}">
+								<c:when test="${loginVo != null || loginVo==''}">
 	                        		class="btn btn-dark" 
 	                        		onclick="location.href='/member/logout'"
 	                        	</c:when>
@@ -69,7 +101,6 @@
                         	</c:choose>
                        	 	type="button" style="margin-left: 5px;">
                         	<i class="bi bi-door-open"></i>
-                        	
                         	<c:choose>
 	                        	<c:when test="${loginVo != null || loginVo==''}">
 	                        		Logout

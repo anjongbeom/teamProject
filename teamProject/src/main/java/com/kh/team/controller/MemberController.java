@@ -66,12 +66,13 @@ public class MemberController {
 				cookie.setMaxAge(0); // 깨지는지 확인필요
 				response.addCookie(cookie);
 			}
-			
-//			String targetLocation = (String)session.getAttribute("targetLocation");
-//			if (targetLocation == null || targetLocation.equals("")) {
-//				return "redirect:/board/list?page=1";
-//			}
-			return "redirect:/product/list" /*+ targetLocation*/;
+		
+			String targetLocation = (String)session.getAttribute("targetLocation");
+			if (targetLocation == null || targetLocation.equals("")) {
+				return "redirect:/";
+			}
+		
+			return "redirect:" + targetLocation;
 		}
 		
 	}
