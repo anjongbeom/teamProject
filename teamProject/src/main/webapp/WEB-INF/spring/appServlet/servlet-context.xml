@@ -39,28 +39,28 @@
 <!-- 		id="sampleInterceptor"></beans:bean> -->
 		
 		
-<!-- 	<beans:bean -->
-<!-- 		class="com.kh.team.interceptor.AuthInterceptor" -->
-<!-- 		id="AuthInterceptor"> -->
-<!-- 	</beans:bean> -->
+	<beans:bean
+		class="com.kh.team.interceptor.AuthInterceptor"
+		id="AuthInterceptor">
+	</beans:bean>
 		
 	
 <!-- 	인터셉트 -->
-<!-- 	<interceptors> -->
+	<interceptors>
 <!-- 		<interceptor> -->
 <!-- 			<mapping path="/doA"/> -->
 <!-- 			<mapping path="/doB"/> -->
 <!-- 			<beans:ref bean="sampleInterceptor"/> -->
 <!-- 		</interceptor> -->
 		
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/product/purchase/**/*/"/> -->
+		<interceptor>
+			<mapping path="/*"/>
 <!-- 			<mapping path="/comment/**/*/"/> -->
-<!-- 			<exclude-mapping path="/board/list"/> -->
+			<exclude-mapping path="/"/>
 <!-- 			<exclude-mapping path="/board/map"/> -->
-<!-- 			<beans:ref bean="AuthInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 	</interceptors> -->
+			<beans:ref bean="AuthInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 	

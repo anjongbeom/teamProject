@@ -71,7 +71,6 @@ public class MemberController {
 			if (targetLocation == null || targetLocation.equals("")) {
 				return "redirect:/";
 			}
-		
 			return "redirect:" + targetLocation;
 		}
 		
