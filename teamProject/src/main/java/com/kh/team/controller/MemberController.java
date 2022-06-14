@@ -32,10 +32,15 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	public String loginForm() {
+		System.out.println("MemberController, loginForm ");
+		return "/member/login_form";
+		
+	}
 	
 	@RequestMapping(value = "/join_run", method = RequestMethod.POST)
 	public String joinRun(MemberVo memberVo, MultipartFile file) {
-
 		System.out.println("MemberController, join_run, memberVo: " + memberVo);
 		memberService.insertMember(memberVo);
 		return "redirect:/";

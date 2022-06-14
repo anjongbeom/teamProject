@@ -76,7 +76,8 @@
 								<td style="vertical-align:middle">${productVo.product_name}</td>
 								<td style="vertical-align:middle">KA 주류교육원</td>
 								<td style="vertical-align:middle">${param.amount} 개</td>
-								<td style="vertical-align:middle" style="font-size: 30px; color: #CF492C;">${productVo.product_price} Point</td>
+								<td style="vertical-align:middle" style="font-size: 30px; color: #CF492C;"
+									>${param.totalPrice} Point</td>
 							</tr>
 						</tbody>
 					</table>

@@ -46,23 +46,23 @@ $(document).ready(function() {
 
 
 
-function passConfirm() {
+// function passConfirm() {
 // 	alert("ddd");
 /* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
-	var member_pw = document.getElementById('member_pw');					//비밀번호 
-	var member_pw2 = document.getElementById('member_pw2');	//비밀번호 확인 값
-	var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
-	var correctColor = "#77ee77";	//맞았을 때 출력되는 색깔.
-	var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+// 	var member_pw = document.getElementById('member_pw');					//비밀번호 
+// 	var member_pw2 = document.getElementById('member_pw2');	//비밀번호 확인 값
+// 	var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+// 	var correctColor = "#77ee77";	//맞았을 때 출력되는 색깔.
+// 	var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
 	
-	if(member_pw.value == member_pw2.value){ //password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
-		confirmMsg.style.color = correctColor; /* span 태그의 ID(confirmMsg) 사용  */
-		confirmMsg.innerHTML ="비밀번호 일치"; /* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
-	}else{
-		confirmMsg.style.color = wrongColor;
-		confirmMsg.innerHTML ="비밀번호 불일치";
-	}
-}
+// 	if(member_pw.value == member_pw2.value){ //password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+// 		confirmMsg.style.color = correctColor; /* span 태그의 ID(confirmMsg) 사용  */
+// 		confirmMsg.innerHTML ="비밀번호 일치"; /* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+// 	}else{
+// 		confirmMsg.style.color = wrongColor;
+// 		confirmMsg.innerHTML ="비밀번호 불일치";
+// 	}
+// }
 
 
 </script>
@@ -73,6 +73,8 @@ function passConfirm() {
 <!-- 헤더 -->
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- 헤더시작 -->
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -143,8 +145,8 @@ function passConfirm() {
         <header class="bg-dark py-5"> 
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">회원가입</h1>
-                    <p class="lead fw-normal text-white-50 mb-0"> KA와 함께 해주세요</p>
+                    <h1 class="display-4 fw-bolder">로그인</h1>
+                    <p class="lead fw-normal text-white-50 mb-0"> KA 아이디와 비밀번호를 입력해주세요.</p>
                 </div>
             </div>
         </header>
@@ -165,12 +167,9 @@ function passConfirm() {
 					<form role="form" action="/member/join_run" method="post" enctype="multipart/form-data">
 						<br>
 						<div class="form-group">
-							<p style="color: red; float: right;">* 필수 입력</p>
-						
 							<label for="member_id">
 								아이디
 							</label>
-							<span style="color: red;">*</span>
 							<input type="text" class="form-control" id="member_id" name="member_id"/>
 						</div>
 						<!-- 아이디 유효성 & 중복체크 -->
@@ -181,80 +180,12 @@ function passConfirm() {
 							<label for="member_pw">
 								비밀번호
 							</label>
-							<span style="color: red;">*</span>
 							<input type="password" class="form-control" id="member_pw" name="member_pw" 
 								onchange="passConfirm()"/>
 						</div>
-						<!-- 비밀번호 유효성 -->
-						<p id="pwValid"></p>
 						
-						<div class="form-group">
-							<label for="member_pw2">
-								비밀번호 확인
-							</label>
-							<span style="color: red;">*</span>
-							<input type="password" class="form-control" id="member_pw2" 
-								onchange="passConfirm()"/>
-						</div>
-						<!-- 비x밀번호 일치여부 -->
-						<p id="confirmMsg"></p>
-						
-						
-						<div class="form-group">
-							<label for="member_name">
-								회원 이름
-							</label>
-							<span style="color: red;">*</span>
-							<input type="text" class="form-control" id="member_name" name="member_name" />
-						</div>
-						<div class="form-group">
-							<label for="nickname">
-								닉네임
-							</label>
-							<span style="color: red;">*</span>
-							<input type="text" class="form-control" id="nickname" name="nickname"/>
-						</div>
-						
-						
-						<div class="form-group">
-							<label for="email">
-								이메일
-							</label>
-							<input type="email" class="form-control" id="email" name="email"/>
-						</div>
-						
-						<div class="form-group">
-							<label for="favorite">
-								선호 주류
-							</label>
-							<input type="text" class="form-control" id="favorite" name="favorite"/>
-						</div>
-						
-						<div class="form-group">
-							<label for="address">
-								주소
-							</label>
-							<input type="text" class="form-control" id="address" name="address"/>
-						</div>
-						
-						<div class="form-group">
-							<label for="member_tel">
-								전화번호
-							</label>
-							<span style="color: red;">*</span>
-							<input type="text" class="form-control" id="member_tel" name="member_tel" />
-						</div>
-						
-						
-<!-- 						<div class="form-group"> -->
-<!-- 							<label for="exampleInputFile"> -->
-<!-- 								File input -->
-<!-- 							</label> -->
-<!-- 							<input type="file" class="form-control-file" id="exampleInputFile" /> -->
-<!-- 							<p class="help-block"> -->
-<!-- 								Example block-level help text here. -->
-<!-- 							</p> -->
-<!-- 						</div> -->
+			
+						<!-- 아이디 기억 -->
 <!-- 						<div class="checkbox"> -->
 <!-- 							<label> -->
 <!-- 								<input type="checkbox" /> Check me out -->
@@ -263,8 +194,10 @@ function passConfirm() {
 						
 						
 						<button type="submit" class="btn btn-primary">
-							회원가입
+							로그인
 						</button>
+						<a class="btn btn-success"
+							href="/member/joinForm">회원가입</a>
 					</form>
 				</div>
 				<div class="col-md-2">

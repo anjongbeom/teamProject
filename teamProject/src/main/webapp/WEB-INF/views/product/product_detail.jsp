@@ -38,8 +38,10 @@ $(document).ready(function() {
 	
 	$("#btn_purchase").click(function(e) {
 	 	var amount = $("#amount").val();
+	 	var price = ${productVo.product_price};
 	 	var product_id = "${productVo.product_id}";
-	 	location.href = "/product/purchase?product_id=" + product_id + "&amount=" + amount;
+	 	
+	 	location.href = "/product/purchase?product_id=" + product_id + "&amount=" + amount + "&totalPrice=" + (amount * price);
 	});
 	
 
