@@ -25,7 +25,7 @@
 	<context:component-scan base-package="com.kh.team" />
 	
 	
-	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy>  -->
+<!-- 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>  -->
 	
 	
 	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
@@ -39,28 +39,36 @@
 <!-- 		id="sampleInterceptor"></beans:bean> -->
 		
 		
-<!-- 	<beans:bean -->
-<!-- 		class="com.kh.team.interceptor.AuthInterceptor" -->
-<!-- 		id="AuthInterceptor"> -->
-<!-- 	</beans:bean> -->
+	<beans:bean
+		class="com.kh.team.interceptor.AuthInterceptor"
+		id="AuthInterceptor">
+	</beans:bean>
 		
 	
 <!-- 	인터셉트 -->
-<!-- 	<interceptors> -->
+	<interceptors>
 <!-- 		<interceptor> -->
 <!-- 			<mapping path="/doA"/> -->
 <!-- 			<mapping path="/doB"/> -->
 <!-- 			<beans:ref bean="sampleInterceptor"/> -->
 <!-- 		</interceptor> -->
 		
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/product/purchase/**/*/"/> -->
+		<interceptor>
+			<mapping path="/product/**/*/"/>
 <!-- 			<mapping path="/comment/**/*/"/> -->
-<!-- 			<exclude-mapping path="/board/list"/> -->
+			<exclude-mapping path="/product/menu"/>
+			<exclude-mapping path="/product/list"/>
+			<exclude-mapping path="/product/brandyList"/>
+			<exclude-mapping path="/product/whiskyList"/>
+			<exclude-mapping path="/product/beerList"/>
+			<exclude-mapping path="/product/traditionalList"/>
+			<exclude-mapping path="/product/displayImage"/>
+			<exclude-mapping path="/product/read"/>
+			<exclude-mapping path="/product/detail"/>
 <!-- 			<exclude-mapping path="/board/map"/> -->
-<!-- 			<beans:ref bean="AuthInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 	</interceptors> -->
+			<beans:ref bean="AuthInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 	

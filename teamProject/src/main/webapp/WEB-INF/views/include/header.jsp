@@ -51,7 +51,7 @@
 	                        		onclick="location.href='/member/logout'"
 	                        	</c:when>
 	                        	<c:otherwise>
-	                        		class="btn btn-outline-dark" 
+	                        		class="btn btn-outline-white" 
 	                        		onclick="location.href='/member/loginForm'"
 	                        	</c:otherwise>
 	                        </c:choose>
