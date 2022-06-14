@@ -43,7 +43,7 @@ $(document).ready(function() {
 	});
 	
 
-	
+});
 
 
 
@@ -54,8 +54,7 @@ function showPrice() {
 	var price = ${productVo.product_price};
 	total_count.innerHTML = ": " + (amount * price);
 	amount_result.innerHTML = ": " + (amount);
-};
-
+}
 
 
 </script>
