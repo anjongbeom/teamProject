@@ -36,6 +36,40 @@ $(document).ready(function() {
 	});
 	
 	
+	const form = {
+			member_id : '${loginVo.member_id}',
+			product_id : '${productVo.product_id}',
+			product_count : ''
+	}
+	
+	
+	$("#btn_cart").on("click", function(e){
+		form.product_count = $("#amount").val();
+		$.ajax({
+			url: '/cart/add',
+			type: 'POST',
+			data: form,
+			success: function(result){
+					 cartAlert(result);
+			}
+		});
+	});
+	
+	
+	function cartAlert(result){
+		if(result == '0'){
+			alert("장바구니에 추가를 하지 못하였습니다.")
+		} else if(result == '1'){
+			alert("장바구니에 추가되었습니다.");
+		} else if(result == '2'){
+			alert("장바구니에 이미 추가되어져 있습니다.");
+		} else if(result == '5'){
+			alert("로그인이 필요합니다.");	
+		}
+	};
+	
+	
+	
 	$("#btn_purchase").click(function(e) {
 	 	var amount = $("#amount").val();
 	 	var price = ${productVo.product_price};
@@ -43,20 +77,17 @@ $(document).ready(function() {
 	 	
 	 	location.href = "/product/purchase?product_id=" + product_id + "&amount=" + amount + "&totalPrice=" + (amount * price);
 	});
-	
-
 });
 
 
 
 //개수 입력 input(number)
 function showPrice() {
-	
 	var amount = document.getElementById("amount").value;
 	var price = ${productVo.product_price};
 	total_count.innerHTML = ": " + (amount * price);
 	amount_result.innerHTML = ": " + (amount);
-}
+};
 
 
 </script>
@@ -153,7 +184,7 @@ function showPrice() {
 					<br>
 					
 					
-					<a style="float: right;" class="btn btn-danger"
+					<a id="btn_cart" style="float: right;" class="btn btn-danger"
 							href="/product/basket?product_id=${productVo.product_id}">
 						<span>장바구니에 담기</span>
 					</a> 

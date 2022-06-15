@@ -52,6 +52,12 @@
 <!-- 			<mapping path="/doB"/> -->
 <!-- 			<beans:ref bean="sampleInterceptor"/> -->
 <!-- 		</interceptor> -->
+		<interceptor>
+			<mapping path="/cart/**"/>
+			<exclude-mapping path="/cart/add"/>
+			<beans:bean id="CartIntreceptor" class="com.kh.team.interceptor.CartInterceptor"></beans:bean>
+		</interceptor>
+		
 		
 		<interceptor>
 			<mapping path="/product/**/*/"/>
