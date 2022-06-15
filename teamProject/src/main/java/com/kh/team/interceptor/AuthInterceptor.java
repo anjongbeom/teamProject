@@ -24,7 +24,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			System.out.println("queryString: " + queryString); // ����ǥ ��
 			String targetLocation = uri + "?" + queryString;
 			session.setAttribute("targetLocation", targetLocation);
-			response.sendRedirect("/"); // �� ���� Ŭ�� �� ù�������� (�α��� â)
+			response.sendRedirect("/member/loginForm"); // �� ���� Ŭ�� �� ù�������� (�α��� â)
 			return false; //���� ��û ó������ ����
 		}
 		
