@@ -58,8 +58,10 @@
 	
 	<select id="list" resultType="ProductVo">
 		select * from tal_product
-			<if test="searchType != null and keyword != null">
+		<if test="cate_code != null">
 		where cate_code = #{cate_code}
+		</if>
+			<if test="searchType != null and keyword != null">
 				and product_name like '%' || #{pagingDto.keyword} || '%'
 			</if>
 		order by product_name desc
