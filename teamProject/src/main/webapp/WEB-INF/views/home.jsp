@@ -20,7 +20,10 @@
   .title_area {font-weight:bold;text-align:center;width:100%}
   .button_area {position:absolute;bottom:0;left:10px;} 
 </style>
-  
+
+        
+        
+        
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
