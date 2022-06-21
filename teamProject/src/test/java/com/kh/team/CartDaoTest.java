@@ -31,7 +31,7 @@ public class CartDaoTest {
 		cartDto.setProduct_count(count);
 		
 		int result = 0;
-		result = cartDao.addCart(cartDto);
+//		result = cartDao.addCart(cartDto);
 		
 		System.out.println("결과 : " + result);
 	}

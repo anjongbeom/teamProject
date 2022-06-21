@@ -32,16 +32,16 @@ public class CartServiceTest {
 			cartDtO.setProduct_count(product_count);
 		
 		//when
-			int result = cartService.addCart(cartDtO);
+//			int result = cartService.addCart(cartDtO);
 		
 		//then
-			System.out.println("** result : " + result);
+//			System.out.println("** result : " + result);
 		
 		
 	}
 		
 		
-	}
+}
 	
 	
 
