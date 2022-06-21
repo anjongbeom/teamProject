@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,10 +33,9 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">주류 종류</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="/product/brandyList">Brandy</a></li>
-                                <li><a class="dropdown-item" href="/product/whiskyList">Scotch Whisky</a></li>
-                                <li><a class="dropdown-item" href="/product/beerList">Beer</a></li>
-                                <li><a class="dropdown-item" href="/product/traditionalList">Traditional liquor</a></li>
+                                <c:forEach items="${sessionScope.cateList}" var="productCate">
+                                	<li><a class="dropdown-item" href="/product/list?cate_code=${productCate.cate_code}">${productCate.cate_name}</a></li>
+                                </c:forEach>
                             </ul>
                         </li>
                     </ul>
@@ -74,16 +73,21 @@
                     
                     	<!-- 수정중 -->
                     	<!-- 장바구니 -->
-                        <button class="btn btn-outline-dark" type="submit">
+                    	<!-- 추후 카트에 담길 갯수 추가 -->
+                    	<!-- 카트에는 물건에 담은 정보만 표시 하면 페이지를 누를시 장바구니 담긴 정보 출력 구매누를시 구매페이지 전환 -->
+                        <button class="btn btn-outline-dark" type="button"
+                        	 onclick="location.href='/cart/list'">
+<%--                         onclick="location.href='/product/basket/${loginVo.member_id}"> --%>
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                         <!-- 알림 기능 예약 메세지 -->
-                        <button id="m" class="btn btn-outline-dark" type="submit" style="margin-left: 5px;">
+                        <!-- 추후 메세지 담길 갯수 추가 -->
+                        <button id="m" class="btn btn-outline-dark" type="button" style="margin-left: 5px;">
                         	<i class="bi bi-clock"></i>
  							Alert
-                        	<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        	<span class="badge bg-dark text-white ms-1 rounded-pill">카테</span>
                         </button>
                         
                         

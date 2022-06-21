@@ -7,7 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.team.service.CartService;
-import com.kh.team.vo.CartDto;
+import com.kh.team.vo.CartVo;
+import com.kh.team.vo.MemberVo;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,7 +26,7 @@ public class CartServiceTest {
 			String product_id = "a00001";
 			int product_count = 1;
 			
-			CartDto cartDtO = new CartDto(); 
+			CartVo cartDtO = new CartVo(); 
 			cartDtO.setMember_id(member_id);
 			cartDtO.setProduct_id(product_id);
 			cartDtO.setProduct_count(product_count);

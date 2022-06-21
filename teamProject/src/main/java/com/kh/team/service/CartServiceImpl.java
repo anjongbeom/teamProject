@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.dao.CartDao;
-import com.kh.team.vo.CartDto;
+import com.kh.team.vo.CartVo;
+import com.kh.team.vo.MemberVo;
+import com.kh.team.vo.OrderDto;
 @Service
 public class CartServiceImpl implements CartService{
 
@@ -15,17 +17,21 @@ public class CartServiceImpl implements CartService{
 	private CartDao cartDao;
 	
 	@Override
-	public int addCart(CartDto cartDto) {
-		CartDto checkCart = cartDao.checkCart(cartDto);
+	public boolean addCart(CartVo cartVo) {
+//		CartVo checkCart = cartDao.checkCart(cartVo);
+//		System.out.println("checkCart : "+ checkCart);
+//		if(checkCart != null) {
+//			return 2;
+//		}
+		return cartDao.addCart(cartVo);
+	}
+
+	@Override
+	public List<CartVo> getCartList(String member_id) {
+		List<CartVo> cartList = cartDao.getCartList(member_id);
+		System.out.println("cartList: " + cartList); 
 		
-		if(checkCart != null) {
-			return 2;
-		}
-		try {
-			return cartDao.addCart(cartDto);
-		} catch (Exception e) {
-			return 0;
-		}
+		return cartList;
 	}
 
 

@@ -107,10 +107,9 @@ $(document).ready(function() {
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#!">주류 종류</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="/product/brandyList">Brandy</a></li>
-                                <li><a class="dropdown-item" href="/product/whiskyList">Scotch Whisky</a></li>
-                                <li><a class="dropdown-item" href="/product/beerList">Beer</a></li>
-                                <li><a class="dropdown-item" href="/product/traditionalList">Traditional liquor</a></li>
+                                <c:forEach items="${sessionScope.cateList}" var="productCate">
+                                	<li><a class="dropdown-item" href="/product/list?cate_code=${productCate.cate_code}">${productCate.cate_name}</a></li>
+                                </c:forEach>
                             </ul>
                         </li>
                     </ul>

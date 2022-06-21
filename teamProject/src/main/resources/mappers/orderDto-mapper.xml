@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.team.mappers.order">
+
+
+	<!-- 글 등록  -->
+	<insert id="create">
+		insert into tal_cart(login_id, product_id, product_price, product_amount)
+		values(#{login_id}, #{product_id}, #{product_price}, #{product_amount}) 	
+	</insert>
+	
+	
+</mapper>

@@ -31,6 +31,10 @@
 		and member_pw = #{member_pw}
 	</select>
 	
+	<select id="listOrder" resultType="OrderDto">
+		select * from tal_prodct
+		where member_id = #{member_id}
 	
+	</select>
 	
 </mapper>

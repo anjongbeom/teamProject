@@ -40,7 +40,7 @@ $(document).ready(function() {
 	});
 });
 </script>
-        	
+        	<!-- 각 제품에 대해 모든 제품 보는 것 -->
         ${loginVo}
         <!-- Section-->
          <!-- Side widgets-->

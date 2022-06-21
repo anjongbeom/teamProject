@@ -1,6 +1,7 @@
 package com.kh.team.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.team.service.MemberService;
+import com.kh.team.service.ProductService;
 import com.kh.team.vo.MemberVo;
+import com.kh.team.vo.ProductCate;
 
 
 
@@ -25,6 +28,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private ProductService productService;
 
 	
 	
@@ -66,6 +72,10 @@ public class MemberController {
 				cookie.setMaxAge(0); // 깨지는지 확인필요
 				response.addCookie(cookie);
 			}
+			
+//			productService.list(pagingDto)
+			List<ProductCate> cateList = productService.cateList();
+			session.setAttribute("cateList", cateList);
 		
 			String targetLocation = (String)session.getAttribute("targetLocation");
 			if (targetLocation == null || targetLocation.equals("")) {

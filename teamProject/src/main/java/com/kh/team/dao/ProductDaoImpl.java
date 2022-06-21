@@ -1,12 +1,15 @@
 package com.kh.team.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.vo.PagingDto;
+import com.kh.team.vo.ProductCate;
 import com.kh.team.vo.ProductVo;
 
 @Repository
@@ -18,8 +21,11 @@ public class ProductDaoImpl implements ProductDao {
 	
 
 	@Override
-	public List<ProductVo> list(PagingDto pagingDto) {
-		List<ProductVo> list = sqlSession.selectList(NAMESPACE + "list", pagingDto);
+	public List<ProductVo> list(PagingDto pagingDto, String cate_code) {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("pagingDto", pagingDto);
+		paramMap.put("cate_code", cate_code);
+		List<ProductVo> list = sqlSession.selectList(NAMESPACE + "list", paramMap);
 		return list;
 	}
 	
@@ -67,5 +73,11 @@ public class ProductDaoImpl implements ProductDao {
 	public ProductVo read(String product_id) {
 		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "read", product_id);
 		return productVo;
+	}
+
+	@Override
+	public List<ProductCate> cateList() {
+		List<ProductCate> cateList = sqlSession.selectList(NAMESPACE + "cateList");
+		return cateList;
 	}
 }

@@ -15,8 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.team.service.MemberService;
 import com.kh.team.service.ProductService;
+import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.PagingDto;
+import com.kh.team.vo.ProductCate;
 import com.kh.team.vo.ProductVo;
 
 @Controller
@@ -26,6 +29,9 @@ public class HomeController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model,
@@ -37,8 +43,21 @@ public class HomeController {
 		ProductVo productVo = productService.read(product_id);
 		session.setAttribute("productVo", productVo);
 		
-		System.out.println("HomeController, product_id: " + product_id);
-		System.out.println("HomeController, productVo: " + productVo);
+		
+		// 카테 리스트 확인용
+		List<ProductCate> cateList = productService.cateList();
+		session.setAttribute("cateList", cateList);
+		
+		
+		
+		// 홈에서 로그인 한 것처럼만들기
+		MemberVo memberVo = memberService.getMemberByIdAndPw("user01", "1234");
+		session.setAttribute("loginVo", memberVo);
+		
+		
+		
+//		System.out.println("HomeController, product_id: " + product_id);
+//		System.out.println("HomeController, productVo: " + productVo);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);

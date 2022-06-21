@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.team.dao.ProductDao;
 import com.kh.team.vo.PagingDto;
+import com.kh.team.vo.ProductCate;
 import com.kh.team.vo.ProductVo;
 
 
@@ -17,8 +18,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDao productDao;
 
 	@Override
-	public List<ProductVo> list(PagingDto pagingDto) {
-		List<ProductVo> list = productDao.list(pagingDto);
+	public List<ProductVo> list(PagingDto pagingDto, String cate_code) {
+		List<ProductVo> list = productDao.list(pagingDto, cate_code);
 		return list;
 	}
 	
@@ -64,6 +65,12 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVo read(String product_id) {
 		ProductVo productVo = productDao.read(product_id);
 		return productVo;
+	}
+
+	@Override
+	public List<ProductCate> cateList() {
+		List<ProductCate> cateList = productDao.cateList();
+		return cateList;
 	}
 
 }

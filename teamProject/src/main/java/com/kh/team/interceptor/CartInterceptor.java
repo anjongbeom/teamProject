@@ -16,7 +16,7 @@ public class CartInterceptor implements HandlerInterceptor{
 			throws Exception {
 		HttpSession session = request.getSession();
 		
-		MemberVo memberVo = (MemberVo)session.getAttribute("member");
+		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
 		
 		if(memberVo == null) {
 			response.sendRedirect("/member/loginForm");

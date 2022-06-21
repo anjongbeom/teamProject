@@ -36,37 +36,39 @@ $(document).ready(function() {
 	});
 	
 	
-	const form = {
-			member_id : '${loginVo.member_id}',
-			product_id : '${productVo.product_id}',
-			product_count : ''
-	}
+// 	const form = {
+// 			member_id : '${memberVo.member_id}',
+// 			product_id : '${productVo.product_id}',
+// 			product_count : ''
+// 	};
 	
 	
-	$("#btn_cart").on("click", function(e){
-		form.product_count = $("#amount").val();
-		$.ajax({
-			url: '/cart/add',
-			type: 'POST',
-			data: form,
-			success: function(result){
-					 cartAlert(result);
-			}
-		});
-	});
+// 	$("#btn_cart").on("click", function(e){
+		
+// 		form.product_count = $("#amount").val();
+		
+// 		$.ajax({
+// 			url: '/cart/add',
+// 			type: 'POST',
+// 			data: form,
+// 			success: function(result){
+// 					 cartAlert(result);
+// 			}
+// 		});
+// 	});
 	
-	
-	function cartAlert(result){
-		if(result == '0'){
-			alert("장바구니에 추가를 하지 못하였습니다.")
-		} else if(result == '1'){
-			alert("장바구니에 추가되었습니다.");
-		} else if(result == '2'){
-			alert("장바구니에 이미 추가되어져 있습니다.");
-		} else if(result == '5'){
-			alert("로그인이 필요합니다.");	
-		}
-	};
+	/* 추후 삭제 */
+// 	function cartAlert(result){
+// 		if(result == '0'){
+// 			alert("장바구니에 추가를 하지 못하였습니다.")
+// 		} else if(result == '1'){
+// 			alert("장바구니에 추가되었습니다.");
+// 		} else if(result == '2'){
+// 			alert("장바구니에 이미 추가되어져 있습니다.");
+// 		} else if(result == '5'){
+// 			alert("로그인이 필요합니다.");	
+// 		}
+// 	};
 	
 	
 	
@@ -77,9 +79,37 @@ $(document).ready(function() {
 	 	
 	 	location.href = "/product/purchase?product_id=" + product_id + "&amount=" + amount + "&totalPrice=" + (amount * price);
 	});
+	
+	
+	$("#btn_cart").click(function(e) {
+		e.preventDefault();
+// 		var login_id = "${loginVo.member_id}";
+	 	var product_id = "${productVo.product_id}";
+// 	 	var price = ${productVo.product_price};
+	 	var product_count = $("#amount").val();
+
+
+		// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
+		var sData = {
+				"product_id"	: product_id,
+				"product_count": product_count
+		};
+		console.log(sData);
+		var url = "/cart/basket";
+		$.get(url, sData, function(rData) {
+// 			console.log(rData);
+			if (rData == "true") {
+				alert("성공");
+			}
+		});
+	});
+	
+	
+	
+	
+	
+	
 });
-
-
 
 //개수 입력 input(number)
 function showPrice() {
@@ -91,7 +121,7 @@ function showPrice() {
 
 
 </script>
-
+<%@ include file="/WEB-INF/views/include/order.jsp"%>
 
 
 	<!-- Responsive navbar-->
@@ -158,10 +188,17 @@ function showPrice() {
 							
 							<tr>
 								<th scope="row" style="vertical-align: middle;">판매가격</th>
-								<td style="font-size: 40px; color: #CF492C;">${productVo.product_price}
-									Point</td>
+								<td style="font-size: 25px; color: #CF492C;">${productVo.product_price}
+									Point
+									</td>
+							</tr>
+							<tr>
+								<th scope="row" style="vertical-align: middle;">적립 포인트 :</th>
+								<td style="font-size: 18px; color: blue;">${Math.floor(productVo.product_price*0.2)}Point</td>
 							</tr>
 							
+								
+								
 						</tbody>
 					</table>
 					
@@ -185,7 +222,7 @@ function showPrice() {
 					
 					
 					<a id="btn_cart" style="float: right;" class="btn btn-danger"
-							href="/product/basket?product_id=${productVo.product_id}">
+							href="#">
 						<span>장바구니에 담기</span>
 					</a> 
 					

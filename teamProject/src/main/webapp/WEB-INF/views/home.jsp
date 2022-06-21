@@ -144,50 +144,63 @@
                     <h2 class="mb-5"><a href="/product/list" style="color: #F2CB11;">모든 주류 보기</a></h2>
                 </div>
                 <div class="row gx-0">
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="/product/brandyList">
+                <c:forEach items="${sessionScope.cateList}" var="productCate">
+                	<div class="col-lg-6">
+                        <a class="portfolio-item" href="/product/list?cate_code=${productCate.cate_code}">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h1">브랜디</div>
-                                    <p class="mb-0 h2">과일의 발효액을 증류시켜 숙성시킨 것입니다!</p>
+                                    <div class="h1">${productCate.cate_type}</div>
+                                    <p class="mb-0 h2">${productCate.cate_desc}</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="/resources/images/main/brandy.jpg" alt="..." />
+                            <img class="img-fluid" src="/resources/images/main/${productCate.cate_image}" alt="..." />
                         </a>
                     </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="/product/whiskyList">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h1">스카치 위스키</div>
-                                    <p class="mb-0 h2">스코틀랜드에서 증류되고 숙성된 위스키입니다!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="/resources/images/main/scotch_whisky.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="/product/beerList">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h1">맥 주</div>
-                                    <p class="mb-0 h2">보리를 가공한 맥아를 발효시키고 이를 주재료로 향신료인 홉을 첨가하여 맛을 낸 술입니다!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="/resources/images/main/beer.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="/product/traditionalList">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h1">전통주</div>
-                                    <p class="mb-0 h2">한국의 전통 주류 문화에 속하는 술입니다!</p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="/resources/images/main/makgeolli.jpg" alt="..." />
-                        </a>
-                    </div>
+                 </c:forEach>
+<!--                     <div class="col-lg-6"> -->
+<!--                         <a class="portfolio-item" href="/product/list?cate_code=a"> -->
+<!--                             <div class="caption"> -->
+<!--                                 <div class="caption-content"> -->
+<!--                                     <div class="h1">브랜디</div> -->
+<!--                                     <p class="mb-0 h2">과일의 발효액을 증류시켜 숙성시킨 것입니다!</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <img class="img-fluid" src="/resources/images/main/brandy.jpg" alt="..." /> -->
+<!--                         </a> -->
+<!--                     </div> -->
+<!--                     <div class="col-lg-6"> -->
+<!--                         <a class="portfolio-item" href="/product/list?cate_code=b"> -->
+<!--                             <div class="caption"> -->
+<!--                                 <div class="caption-content"> -->
+<!--                                     <div class="h1">스카치 위스키</div> -->
+<!--                                     <p class="mb-0 h2">스코틀랜드에서 증류되고 숙성된 위스키입니다!</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <img class="img-fluid" src="/resources/images/main/scotch_whisky.jpg" alt="..." /> -->
+<!--                         </a> -->
+<!--                     </div> -->
+<!--                     <div class="col-lg-6"> -->
+<!--                         <a class="portfolio-item" href="/product/list?cate_code=c"> -->
+<!--                             <div class="caption"> -->
+<!--                                 <div class="caption-content"> -->
+<!--                                     <div class="h1">맥 주</div> -->
+<!--                                     <p class="mb-0 h2">보리를 가공한 맥아를 발효시키고 이를 주재료로 향신료인 홉을 첨가하여 맛을 낸 술입니다!</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <img class="img-fluid" src="/resources/images/main/beer.jpg" alt="..." /> -->
+<!--                         </a> -->
+<!--                     </div> -->
+<!--                     <div class="col-lg-6"> -->
+<!--                         <a class="portfolio-item" href="/product/list?cate_code=d"> -->
+<!--                             <div class="caption"> -->
+<!--                                 <div class="caption-content"> -->
+<!--                                     <div class="h1">전통주</div> -->
+<!--                                     <p class="mb-0 h2">한국의 전통 주류 문화에 속하는 술입니다!</p> -->
+<!--                                 </div> -->
+<!--                             </div> -->
+<!--                             <img class="img-fluid" src="/resources/images/main/makgeolli.jpg" alt="..." /> -->
+<!--                         </a> -->
+<!--                     </div> -->
                 </div>
             </div>
         </section> 

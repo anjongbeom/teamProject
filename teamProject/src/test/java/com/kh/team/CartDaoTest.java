@@ -9,7 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.team.dao.CartDao;
-import com.kh.team.vo.CartDto;
+import com.kh.team.vo.CartVo;
+import com.kh.team.vo.MemberVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/**/*.xml")
@@ -24,7 +25,7 @@ public class CartDaoTest {
 		String product_id = "a00001";
 		int count = 2;
 		
-		CartDto cartDto = new CartDto();
+		CartVo cartDto = new CartVo();
 		cartDto.setMember_id(member_id);
 		cartDto.setProduct_id(product_id);
 		cartDto.setProduct_count(count);
@@ -33,8 +34,7 @@ public class CartDaoTest {
 		result = cartDao.addCart(cartDto);
 		
 		System.out.println("결과 : " + result);
-		
-	}	
+	}
 
 	
 	/* 카트 삭제 */
@@ -42,7 +42,6 @@ public class CartDaoTest {
 	@Test
 	public void deleteCartTest() {
 		int cartid = 1;
-		
 		cartDao.deleteCart(cartid);
 
 	}
@@ -53,7 +52,7 @@ public class CartDaoTest {
 		int cartid = 3;
 		int count = 5;
 		
-		CartDto cartDto = new CartDto();
+		CartVo cartDto = new CartVo();
 		cartDto.setCartid(cartid);
 		cartDto.setProduct_count(count);
 		
@@ -62,23 +61,7 @@ public class CartDaoTest {
 	}
 
 	
-	/* 카트 목록 */ 
-
-	@Test
-	public void getCartTest() {
-		String member_id = "user01";
-		
-		
-		List<CartDto> list = cartDao.getCart(member_id);
-		for(CartDto cartDto : list) {
-			System.out.println(cartDto);
-			cartDto.initSaleTotal();
-			System.out.println("init cart : " + cartDto);
-		}
-		
-		
 	
-	}
 	/* 카트 확인 */
 
 	@Test
@@ -87,11 +70,11 @@ public class CartDaoTest {
 		String member_id = "user01";
 		String product_id = "a00001";
 		
-		CartDto cartDto = new CartDto();
+		CartVo cartDto = new CartVo();
 		cartDto.setMember_id(member_id);
 		cartDto.setProduct_id(product_id);
 		
-		CartDto resutlCart = cartDao.checkCart(cartDto);
+		CartVo resutlCart = cartDao.checkCart(cartDto);
 		System.out.println("결과 : " + resutlCart);
 		
 	}

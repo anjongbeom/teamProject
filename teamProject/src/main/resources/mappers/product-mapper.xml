@@ -20,26 +20,33 @@
 	<!-- 리스트 불러오기 -->
 <!-- 	<select id="list" resultType="ProductVo"> -->
 <!-- 		select * from tal_product -->
+<!-- 		where cate_code = '?' -->
 <!-- 	</select> -->
 	
-	
-	<select id="brandyList" resultType="ProductVo">
-		select * from tal_product
-		where product_id like '%b%'
+	<!-- 카테 목록 -->
+	<select id="cateList" resultType="ProductCate">
+		select * from tal_product_cate
+		order by cate_code
 	</select>
 	
-	<select id="whiskyList" resultType="ProductVo">
-		select * from tal_product
-		where product_id like '%a%'
-	</select>
-	<select id="beerList" resultType="ProductVo">
-		select * from tal_product
-		where product_id like '%c%'
-	</select>
-	<select id="traditionalList" resultType="ProductVo">
-		select * from tal_product
-		where product_id like '%d%'
-	</select>
+	
+<!-- 	<select id="brandyList" resultType="ProductVo"> -->
+<!-- 		select * from tal_product -->
+<!-- 		where product_id like '%b%' -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="whiskyList" resultType="ProductVo"> -->
+<!-- 		select * from tal_product -->
+<!-- 		where product_id like '%a%' -->
+<!-- 	</select> -->
+<!-- 	<select id="beerList" resultType="ProductVo"> -->
+<!-- 		select * from tal_product -->
+<!-- 		where product_id like '%c%' -->
+<!-- 	</select> -->
+<!-- 	<select id="traditionalList" resultType="ProductVo"> -->
+<!-- 		select * from tal_product -->
+<!-- 		where product_id like '%d%' -->
+<!-- 	</select> -->
 	
 	
 	<!-- 글 조회 1개-->
@@ -52,7 +59,8 @@
 	<select id="list" resultType="ProductVo">
 		select * from tal_product
 			<if test="searchType != null and keyword != null">
-				where product_name like '%' || #{keyword} || '%'
+		where cate_code = #{cate_code}
+				and product_name like '%' || #{pagingDto.keyword} || '%'
 			</if>
 		order by product_name desc
   	</select>
@@ -62,10 +70,7 @@
 		where product_id = #{product_id}
 	</select>
 	
-  	<select id="basket" resultType="ProductVo">
-		select * from tal_product
-		where product_id = #{product_id}
-	</select>
+  	
   	
   	
 	
