@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.team.mappers.manager">
+
+
+	<!-- 제품 총 개수 -->
+		<select id="getCount" resultType="int">
+			select count(*) from tal_product
+			<include refid="search"></include>
+		</select>
+	
+	<!-- 제품 목록 -->
+	<select id="getStockList" resultType="ProductVo">
+		select * from
+			(select rownum rnum, a.* from
+				(select * from tal_product
+					<include refid="search"></include>
+				 order by cate_code desc, product_id asc) a)
+		where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 검색 조건 -->
+	<sql id="search">
+		<if test="searchType != null and keyword != null">
+			<choose>
+			
+				<when test='searchType == "pn" '>
+					where product_name like '%' || #{keyword} || '%'
+				</when>
+				
+				<when test='searchType == "pi" '>
+					where product_id like '%' || #{keyword} || '%'	
+				</when>
+				
+				<when test='searchType == "cc" '>
+					where cate_code like '%' || #{keyword} || '%'
+				</when>
+				
+<!-- 					<when test='searchType == "tc" '> -->
+<!-- 						where title like '%' || #{keyword} || '%'	 -->
+<!-- 						or	content like '%' || #{keyword} || '%'	 -->
+<!-- 					</when> -->
+					
+<!-- 					<when test='searchType == "tcw" '> -->
+<!-- 						where title like '%' || #{keyword} || '%'	 -->
+<!-- 						or	content like '%' || #{keyword} || '%' -->
+<!-- 						or	writer like '%' || #{keyword} || '%' -->
+<!-- 					</when> -->
+				
+			</choose>
+		</if>
+	</sql>
+		
+		
+	<!-- 주문된 제품 목록 -->
+	<select id="getOrderedList" resultType="OrderVo">
+		select order_no,
+			order_date,
+			fk_member_id as member_id,
+			fk_order_status_code as order_status_code
+		from tal_order
+	</select>
+	
+	
+	<!-- 주문된 제품 상세 목록 -->
+	<select id="getOrderedDetailList" resultType="OrderedDtailDto">
+		select od.order_detail_no,
+		    p.product_image,
+		    od.fk_product_id as product_id,
+		    od.order_product_amount,
+		    o.fk_member_id as member_id, 
+		    od.fk_order_detail_status_code as order_detail_status_code
+		from tal_order o, tal_order_detail od, tal_product p
+		where o.order_no = od.fk_order_no
+		and od.fk_product_id = p.product_id
+		and order_no = #{order_no}
+	</select>
+	
+		
+	<!-- 주문된 제품 상세 하나 얻기 -->
+	<select id="getOneOrderedDetail" resultType="OrderedDtailDto">
+		select od.order_detail_no,
+		    p.product_image,
+		    od.fk_product_id as product_id,
+		    od.order_product_amount,
+		    o.fk_member_id as member_id, 
+		    od.fk_order_detail_status_code as order_detail_status_code
+		from tal_order o, tal_order_detail od, tal_product p
+		where o.order_no = od.fk_order_no
+		and od.fk_product_id = p.product_id
+		and order_detail_no = #{order_detail_no}
+	</select>	
+		
+	
+	<!-- 주문된 하나의 컬럼 승인(해당 제품의 재고 감소) -->
+	<update id="orderApproval">
+		update tal_product set PRODUCT_STOCK = PRODUCT_STOCK - #{order_product_amount}
+		where product_id = #{product_id}
+	</update>
+		
+		
+	<!-- 승인된 컬럼 데이터(fk_order_detail_status_code) 2로 변경 -->
+	<delete id="deleteApprovedData">
+		update tal_order_detail set fk_order_detail_status_code = 2
+		where order_detail_no = #{order_detail_no}
+	</delete>
+	
+		
+</mapper>
