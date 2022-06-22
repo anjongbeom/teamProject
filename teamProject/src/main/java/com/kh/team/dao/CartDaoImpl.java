@@ -8,10 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.vo.CartDto;
 import com.kh.team.vo.CartVo;
-import com.kh.team.vo.MemberVo;
-import com.kh.team.vo.OrderDto;
-import com.kh.team.vo.ProductVo;
+import com.kh.team.vo.SummaryDto;
 @Repository
 public class CartDaoImpl implements CartDao{
 
@@ -33,11 +32,7 @@ public class CartDaoImpl implements CartDao{
 		return false;
 	}
 
-	@Override
-	public int deleteCart(int cartId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
 	public int modifyCount(CartVo cartDto) {
@@ -45,6 +40,14 @@ public class CartDaoImpl implements CartDao{
 		return 0;
 	}
 
+
+	@Override
+	public CartVo checkCart(CartVo cartDto) {
+		
+		return null;
+	}
+
+	
 	@Override
 	public List<CartVo> getCartList(String member_Id) {
 		List<CartVo> list = sqlSession.selectList(NAMESPACE + "getCartList",member_Id);
@@ -52,9 +55,30 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Override
-	public CartVo checkCart(CartVo cartDto) {
-		
-		return null;
+	public List<CartDto> getOrderList(CartDto cartDto) {
+//		System.out.println("CartDaoImpl, getOrderList, cartDto:" + cartDto);
+		List<CartDto> orderList = sqlSession.selectList(NAMESPACE + "getOrderList", cartDto);
+//		System.out.println("CartDaoImpl, getOrderList, orderList:" + orderList);
+		return orderList;
 	}
+
+	@Override
+	public SummaryDto getTotalSummary(SummaryDto summaryDto) {
+		SummaryDto totalSummary = sqlSession.selectOne(NAMESPACE + "getTotalSummary", summaryDto);
+//		System.out.println("CartDaoImpl, getTotalSummary, totalSummary:" + totalSummary);
+		return totalSummary;
+	}
+
+	@Override
+	public void deleteCart(CartDto cartDto) throws Exception {
+		System.out.println("발자취 다오+ cartDto:" +cartDto);
+		sqlSession.delete(NAMESPACE+"deleteCart", cartDto);
+//		if(num == 0) {
+//			return true;
+//		}
+//		return false;
+		
+	}
+
 
 }

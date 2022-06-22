@@ -15,25 +15,19 @@
 	
 	
 	<!-- 카트 삭제 -->
-	<delete id="deleteCart">	
-		delete from tal_cart where cartId = #{cartId}
+<!-- 	<delete id="deleteCart">	 -->
+<!-- 		delete from tal_cart where cart_id = #{cart_id} -->
 	
-	</delete>
+<!-- 	</delete> -->
 	
 	<!-- 카트 수량 수정 -->
 	<update id="modifyCount">	
-		update tal_cart set product_Count=#{product_Count} where cartId = #{cartId}
+		update tal_cart set product_Count=#{product_Count} where cart_id = #{cart_id}
 	
 	</update>
 	
 	
-	<!-- 카트 목록 -->
-	<select id="getCartList" resultType="CartVo">
-		select a.cart_id, a.member_id, a.product_id, a.product_count, b.product_name, b.product_price, b.product_discount
-		from tal_cart a left outer join tal_product b on a.product_id = b.product_id
-		where member_Id = #{member_id}
-        order by cart_id
-	</select>
+	
 	
 	<!-- 카트 확인 -->
 	<select id="checkCart" resultType="CartVo">	
@@ -46,6 +40,43 @@
 		select * from tal_cart
 		where member_Id = #{member_Id}
 	</select>
+	
+	<select id="getOrderList" resultType="CartDto">
+		select b.cart_id, a.product_name ,a.product_price as point_earned, a.product_image,
+			a.product_id, b.product_count as product_amount,
+			(a.product_price*b.product_count) as total_price,b.member_id
+		from tal_cart b full join tal_product a on a.product_id = b. product_id
+		where b.member_id = #{member_id}
+		order by b.cart_id
+	</select>
+	
+	
+	<select id="getTotalSummary" resultType="SummaryDto">
+		select sum(a.product_price * b.product_count) as sum_total_price,
+			sum(b.product_count) as sum_product_amount,
+			sum(a.product_price) as sum_point_earned
+		from tal_cart b full join tal_product a on a.product_id = b.product_id
+		where b.member_id = #{member_id}
+	</select>
+	
+	<!-- 카트 목록 -->
+	<select id="getCartList" resultType="CartVo">
+		select a.cart_id, a.member_id, a.product_id, a.product_count, b.product_name, b.product_price, b.product_discount
+		from tal_cart a left outer join tal_product b on a.product_id = b.product_id
+		where member_Id = #{member_id}
+        order by cart_id
+	</select>
+	
+	
+		<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+		delete from tal_cart 
+			where cart_id = #{cart_id}
+	</delete>	
+
+	
+	
+	
 	
 	
 </mapper>

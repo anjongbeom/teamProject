@@ -118,7 +118,7 @@
                     	<!-- 추후 카트에 담길 갯수 추가 -->
                     	<!-- 카트에는 물건에 담은 정보만 표시 하면 페이지를 누를시 장바구니 담긴 정보 출력 구매누를시 구매페이지 전환 -->
                         <button class="btn btn-outline-dark" type="button"
-                        	 onclick="location.href='/cart/list'">
+                        	 onclick="location.href='/cart/orderList'">
 <%--                         onclick="location.href='/product/basket/${loginVo.member_id}"> --%>
                             <i class="bi-cart-fill me-1"></i>
                             Cart

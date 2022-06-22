@@ -5,19 +5,25 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.service.CartService;
+import com.kh.team.vo.CartDto;
 import com.kh.team.vo.CartVo;
 import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.OrderDto;
 import com.kh.team.vo.PagingDto;
+import com.kh.team.vo.ProductVo;
+import com.kh.team.vo.SummaryDto;
 
 @Controller
 @RequestMapping("/cart")
@@ -45,6 +51,23 @@ public class CartController {
 		return "cart/list";
 	}
 	
+	@RequestMapping(value= "/orderList", method = RequestMethod.GET)
+	public String orderList(CartDto cartDto, Model model,SummaryDto summaryDto,
+			PagingDto pagingDto, HttpSession session) {
+		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+		cartDto.setMember_id(loginVo.getMember_id());
+		summaryDto.setMember_id(loginVo.getMember_id());
+		List<CartDto> orderList = cartService.getOrderList(cartDto);
+		System.out.println("orderList:" + orderList);
+		model.addAttribute("orderList", orderList);
+		SummaryDto totalSummary = cartService.getTotalSummary(summaryDto);
+		model.addAttribute("totalSummary",totalSummary);
+		return "cart/list";
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value= "/add", method = RequestMethod.GET)
 	@ResponseBody
@@ -53,7 +76,7 @@ public class CartController {
 		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
 		String  member_id = loginVo.getMember_id();
 		cartVo.setMember_id(member_id);
-		System.out.println("basket, cartVo:" + cartVo);
+		System.out.println("cart, cartVo:" + cartVo);
 //		model.addAttribute("cardVo", cartVo);
 		// 로그인한 사용자의 ?
 //		String login_id = request.getParameter("login_id");
@@ -80,6 +103,36 @@ public class CartController {
 		System.out.println("CartController, basket, result:" + result);
 		return String.valueOf(result);
 	}
+	
+	
+	//카트 삭제
+	@ResponseBody
+	@RequestMapping(value= "/deleteCart", method = RequestMethod.POST)
+	public int deleteCart(HttpSession session,
+	@RequestParam(value = "chk[]") List<String> chArr, CartDto cartDto) throws Exception {
+		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+		String member_id = loginVo.getMember_id();
+		System.out.println("발자취 컨트롤 cartDto: " + cartDto);
+		int result = 0;
+		int cart_id = 0;
+		
+		if(loginVo != null) {
+			cartDto.setMember_id(member_id);
+			
+			for(String i : chArr) {
+				cart_id = Integer.parseInt(i);
+				cartDto.setCart_id(cart_id);
+				cartService.deleteCart(cartDto);
+			}
+			
+			result = 1;
+			
+		}
+		
+		return result;
+	}
+	
+	
 	
 	
 	
