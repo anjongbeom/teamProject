@@ -33,7 +33,7 @@
 								<th scope="row" width="5%"></th>
 								<th scope="row" colspan="1" width="10%" style="text-align: center">상세 주문 번호</th>
 								<th scope="row" colspan="1" width="20%" style="text-align: center">상품 이미지</th>
-								<th scope="row"  width="20%" style="text-align: center">상품 아이디(상품명으로 변경)</th>
+								<th scope="row"  width="20%" style="text-align: center">상품명</th>
 								<th scope="row"  width="10%" style="text-align: center">주문 수량</th>
 								<th scope="row"  width="20%" style="text-align: center">주문자 아이디</th>
 								<th scope="row"  width="20%" style="text-align: center">주문 상태</th>
@@ -52,11 +52,11 @@
 									<img class="card-img-top" src="/product/displayImage?filename=${orderedDto.product_image}"  
 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
 								</td>
-								<td style="vertical-align:middle; text-align: center;">${orderedDto.product_id}</td>
+								<td style="vertical-align:middle; text-align: center;">${orderedDto.product_kor_name}</td>
 								<td style="vertical-align:middle; text-align: center;">${orderedDto.order_product_amount}</td>
 								<td style="vertical-align:middle; text-align: center;">${orderedDto.member_id}</td>
 								<td style="vertical-align:middle; text-align: center; font-size: 15px; color: #CF492C;" 
-																					>${orderedDto.order_detail_status_code}</td>
+																					>${orderedDto.order_detail_status_descript}</td>
 							</tr>
 						</c:forEach>
 						</tbody>

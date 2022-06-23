@@ -21,7 +21,7 @@ public interface ManagerDao {
 	// 체크된 품목들 승인하기
 	public OrderedDtailDto getOneOrderedDetail(int order_detail_no); // 주문된 하나의 상세 품목 얻기
 	public boolean orderApproval(OrderedDtailDto ordered_detail); // 체크한 품목 승인
-	public boolean deleteApprovedData(int order_detail_no); // 승인된 주문상세 정보 삭제
+	public boolean updateApprovedDataToSecond(int order_detail_no); // 승인된 컬럼 데이터(fk_order_detail_status_code) 2로 변경 
 	
 	
 }

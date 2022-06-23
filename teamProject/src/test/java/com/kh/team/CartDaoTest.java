@@ -42,7 +42,7 @@ public class CartDaoTest {
 	@Test
 	public void deleteCartTest() {
 		int cartid = 1;
-		cartDao.deleteCart(cartid);
+//		cartDao.deleteCart(cartid);
 
 	}
 	/* 카트 수량 수정 */

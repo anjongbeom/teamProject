@@ -72,10 +72,10 @@ public class ManagerDaoImpl implements ManagerDao{
 		return false;
 	}
 	
-	// 승인된 주문상세 정보 삭제
+	// 승인된 컬럼 데이터(fk_order_detail_status_code) 2로 변경 
 	@Override
-	public boolean deleteApprovedData(int order_detail_no) {
-		int delete_approval_data_result = sqlSession.update(NAMESPACE + "deleteApprovedData", order_detail_no);
+	public boolean updateApprovedDataToSecond(int order_detail_no) {
+		int delete_approval_data_result = sqlSession.update(NAMESPACE + "updateApprovedDataToSecond", order_detail_no);
 		if (delete_approval_data_result > 0) {
 			return true;
 		}
