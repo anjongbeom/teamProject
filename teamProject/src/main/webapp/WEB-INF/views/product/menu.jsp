@@ -83,7 +83,7 @@ $(document).ready(function() {
 	                            <div class="card-body p-4">
 	                                <div class="text-center">
 	                                    <!-- Product name-->
-	                                    <h5 class="fw-bolder">${productVo.product_name}</h5>
+	                                    <h5 class="fw-bolder">${productVo.product_kor_name}</h5>
 	                                    <!-- Product price-->
 	                                    ${productVo.product_price} point
 	                                </div>

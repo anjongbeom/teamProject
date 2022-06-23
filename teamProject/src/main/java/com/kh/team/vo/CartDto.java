@@ -5,6 +5,7 @@ public class CartDto {
 	private int product_amount;
 	private String product_image;
 	private String product_name;
+	private String product_kor_name;
 	private String product_id;
 	private int total_price;
 	private String member_id;
@@ -18,14 +19,15 @@ public class CartDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CartDto(int cart_id, int product_amount, String product_image, String product_name, String product_id,
-			int total_price, String member_id, int point_earned, int sum_total_price, int sum_product_amount,
-			int sum_point_earned) {
+	public CartDto(int cart_id, int product_amount, String product_image, String product_name, String product_kor_name,
+			String product_id, int total_price, String member_id, int point_earned, int sum_total_price,
+			int sum_product_amount, int sum_point_earned) {
 		super();
 		this.cart_id = cart_id;
 		this.product_amount = product_amount;
 		this.product_image = product_image;
 		this.product_name = product_name;
+		this.product_kor_name = product_kor_name;
 		this.product_id = product_id;
 		this.total_price = total_price;
 		this.member_id = member_id;
@@ -65,6 +67,14 @@ public class CartDto {
 
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+
+	public String getProduct_kor_name() {
+		return product_kor_name;
+	}
+
+	public void setProduct_kor_name(String product_kor_name) {
+		this.product_kor_name = product_kor_name;
 	}
 
 	public String getProduct_id() {
@@ -126,13 +136,10 @@ public class CartDto {
 	@Override
 	public String toString() {
 		return "CartDto [cart_id=" + cart_id + ", product_amount=" + product_amount + ", product_image=" + product_image
-				+ ", product_name=" + product_name + ", product_id=" + product_id + ", total_price=" + total_price
-				+ ", member_id=" + member_id + ", point_earned=" + point_earned + ", sum_total_price=" + sum_total_price
-				+ ", sum_product_amount=" + sum_product_amount + ", sum_point_earned=" + sum_point_earned + "]";
+				+ ", product_name=" + product_name + ", product_kor_name=" + product_kor_name + ", product_id="
+				+ product_id + ", total_price=" + total_price + ", member_id=" + member_id + ", point_earned="
+				+ point_earned + ", sum_total_price=" + sum_total_price + ", sum_product_amount=" + sum_product_amount
+				+ ", sum_point_earned=" + sum_point_earned + "]";
 	}
-
-	
-
-	
 
 }
