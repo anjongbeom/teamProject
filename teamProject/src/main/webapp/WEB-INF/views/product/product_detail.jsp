@@ -95,7 +95,7 @@ $(document).ready(function() {
 				"product_count": product_count
 		};
 		console.log(sData);
-		var url = "/cart/basket";
+		var url = "/cart/addCart";
 		$.get(url, sData, function(rData) {
 // 			console.log(rData);
 			if (rData == "true") {
@@ -158,7 +158,7 @@ function showPrice() {
 				<div class="mb-4">
 	
 					<!--  <div class="card-header">Side Widget</div> -->
-					<h2 class="card-title">${productVo.product_name}</h2>
+					<h2 class="card-title">${productVo.product_kor_name}</h2>
 					<div style="margin-left: 10px;" class="small text-muted">VAT 별도</div>
 	
 					<table class="table table-sm">

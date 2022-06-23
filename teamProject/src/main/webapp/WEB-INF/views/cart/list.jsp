@@ -49,7 +49,6 @@ $("#selectDelete_btn").click(function(){
 });
 </script>
 
-{cartDto}
 			<div class="col-lg-12">
 				<div class="mb-4">
 					<h2 class="card-title" style="text-align: center; margin-top: 40px;">장바구니</h2>
@@ -93,7 +92,7 @@ $("#selectDelete_btn").click(function(){
 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
 								</td>
 <!-- 								Math.floor(param.totalPrice*0.05) -->
-								<td style="vertical-align:middle; text-align: center;">${CartDto.product_name} </td>
+								<td style="vertical-align:middle; text-align: center;">${CartDto.product_kor_name} </td>
 								<td style="vertical-align:middle; text-align: center;">KA 주류교육원</td>
 								<td style="vertical-align:middle; text-align: center;">${CartDto.product_amount} 개</td>
 								<td style="vertical-align:middle; text-align: center;">Point</td>
@@ -154,7 +153,7 @@ $("#selectDelete_btn").click(function(){
 					
 							<div class="row">
 								<div class="col-md-12 ">
-					
+<!-- 					구매하기 할때 정보를 넘기는데 넘겨야할 정보는  -->
 					<a style="float:right; margin-right:30px;" class="btn btn-primary text-align-right"
 						href="/product/purchase">구매하기
 					</a>

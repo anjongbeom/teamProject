@@ -69,9 +69,9 @@ public class CartController {
 	
 	
 	
-	@RequestMapping(value= "/add", method = RequestMethod.GET)
+	@RequestMapping(value= "/addCart", method = RequestMethod.GET)
 	@ResponseBody
-	public String add(Model model, PagingDto pagingDto, 
+	public String addCart(Model model, PagingDto pagingDto, 
 			HttpSession session, CartVo cartVo)throws Exception  {
 		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
 		String  member_id = loginVo.getMember_id();
@@ -100,7 +100,7 @@ public class CartController {
 //		System.out.println("basket,model product_amount: " + product_amount);
 		
 		boolean result = cartService.addCart(cartVo);
-		System.out.println("CartController, basket, result:" + result);
+		System.out.println("CartController, list, result:" + result);
 		return String.valueOf(result);
 	}
 	

@@ -75,7 +75,7 @@
 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
 								</td>
 								
-								<td style="vertical-align:middle; text-align: center;">${productVo.product_name}</td>
+								<td style="vertical-align:middle; text-align: center;">${productVo.product_kor_name}</td>
 								<td style="vertical-align:middle; text-align: center;">KA 주류교육원</td>
 								<td style="vertical-align:middle; text-align: center;">${param.amount} 개</td>
 								<td style="vertical-align:middle; text-align: center;">${Math.floor(param.totalPrice*0.05)}Point</td>

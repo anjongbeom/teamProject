@@ -1,7 +1,7 @@
 package com.kh.team.vo;
 
 public class ProductVo {
-	
+
 	private String product_id;
 	private String product_name;
 	private String product_price;
@@ -14,13 +14,15 @@ public class ProductVo {
 	private String product_descript;
 	private int product_discount;
 	private String cate_code;
-	
+	private String product_kor_name;
+
 	public ProductVo() {
 	}
 
 	public ProductVo(String product_id, String product_name, String product_price, int product_stock,
 			int product_capacity, int product_alcohol_degree, String product_expiration_date, String product_origin,
-			String product_image, String product_descript, int product_discount, String cate_code) {
+			String product_image, String product_descript, int product_discount, String cate_code,
+			String product_kor_name) {
 		super();
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -34,6 +36,7 @@ public class ProductVo {
 		this.product_descript = product_descript;
 		this.product_discount = product_discount;
 		this.cate_code = cate_code;
+		this.product_kor_name = product_kor_name;
 	}
 
 	public String getProduct_id() {
@@ -132,6 +135,14 @@ public class ProductVo {
 		this.cate_code = cate_code;
 	}
 
+	public String getProduct_kor_name() {
+		return product_kor_name;
+	}
+
+	public void setProduct_kor_name(String product_kor_name) {
+		this.product_kor_name = product_kor_name;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVo [product_id=" + product_id + ", product_name=" + product_name + ", product_price="
@@ -139,11 +150,7 @@ public class ProductVo {
 				+ ", product_alcohol_degree=" + product_alcohol_degree + ", product_expiration_date="
 				+ product_expiration_date + ", product_origin=" + product_origin + ", product_image=" + product_image
 				+ ", product_descript=" + product_descript + ", product_discount=" + product_discount + ", cate_code="
-				+ cate_code + "]";
+				+ cate_code + ", product_kor_name=" + product_kor_name + "]";
 	}
-
-	
-	
-
 
 }
