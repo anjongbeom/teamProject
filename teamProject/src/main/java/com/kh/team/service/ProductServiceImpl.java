@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.team.dao.ProductDao;
+import com.kh.team.vo.CartVo;
 import com.kh.team.vo.PagingDto;
 import com.kh.team.vo.ProductCate;
 import com.kh.team.vo.ProductVo;
@@ -73,4 +75,40 @@ public class ProductServiceImpl implements ProductService {
 		return cateList;
 	}
 
+	@Override
+	public boolean addCart(CartVo cartVo) {
+		return productDao.addCart(cartVo);
+	}
+
+	@Override
+	public void deleteCart(String str) throws Exception {
+		System.out.println("발자취 서비스 cartDto:" + str);
+		productDao.deleteCart(str);
+	}
+
+	@Override
+	public void insertOrder(String member_id) throws Exception {
+		System.out.println("발자취 서비스 cartDto:" + member_id);
+		productDao.insertOrder(member_id);
+	}
+
+	@Override
+	public boolean insertOrderDetail(String product_id, int product_count) throws Exception {
+			return productDao.insertOrderDetail(product_id, product_count);
+	}
+	
+	@Transactional
+	@Override
+	public boolean transInsertOrder(String product_id, int product_count, String member_id) {
+		try {
+			productDao.insertOrderDetail(product_id, product_count);
+			productDao.insertOrder(member_id);
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

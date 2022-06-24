@@ -75,8 +75,22 @@
 	</delete>	
 
 	
+
+	<insert id="insertOrder">
+		insert into tal_order
+		values(seq_order_no.nextval, sysdate,
+		(select distinct member_id from tal_cart
+ 			where member_id = #{member_id}), 1)
+	</insert>
 	
-	
+	<insert id="insertOrderDetail">
+		insert into tal_order_detail
+		values(seq_order_detail_no.nextval, 
+			(select product_count from tal_cart where cart_id=#{cart_id}),
+			1, (select max(order_no) from tal_order), (select product_id
+				 from tal_cart
+				 where cart_id=#{cart_id}))
+	</insert>
 	
 	
 </mapper>

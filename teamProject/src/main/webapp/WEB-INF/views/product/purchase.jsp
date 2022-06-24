@@ -9,7 +9,85 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 	<!-- Responsive navbar-->
-	
+<script>
+$(document).ready(function() {
+
+
+//	구매 버튼에도 이정보 넘겨줄것
+$("#selectpurchase_btn").click(function(e) {
+	e.preventDefault();
+ 	var product_id = "${productVo.product_id}";
+ 	var product_count = "${param.amount}" ;
+
+
+	// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
+	var sData = {
+			"product_id"	: product_id,
+			"product_count": product_count
+	};
+	console.log(sData);
+	var url = "/product/sellProduct";
+	$.get(url, sData, function(rData) {
+//			console.log(rData);
+		if (rData == "true") {
+			alert("성공");
+		}
+	});
+});
+
+// $("#selectpurchase_btn").click(function(){
+// 	 var confirm_val = confirm("구매합니까?");
+	 
+// 	 if(confirm_val) {
+// 	  var checkArr = new Array();
+	  
+// 	  $("input[name='chk']:checked").each(function(){
+// 	   checkArr.push($(this).attr("data-product_id"));
+// 	  });
+// 	   console.log(checkArr);
+// //	    console.log(JSON.stringify(checkArr));
+// 	  $.ajax({
+// 	   url : "/product/purchaseProduct",
+// 	   type : "post",
+// 	   data : { chk : checkArr},
+// 	   success : function(result){
+// 		   console.log(result);
+	    
+// 	   }
+// 	  });
+// 	} 
+// });
+
+
+// $("#selectpurchase_btn").click(function(){
+	 
+// 	 if(confirm_val) {
+// 	  var checkArr = new Array();
+	  
+// 	  $("input[name='chk']:checked").each(function(){
+// 	   checkArr.push($(this).attr("data-product_id"));
+// 	  });
+	   
+// 	  $.ajax({
+// 	   url : "/product/deleteCart",
+// 	   type : "post",
+// 	   data : { chk : checkArr },
+// 	   success : function(result){
+// 		   if(result == 1){
+// 			   location.href = "/product/list";
+// 		   } else {
+// 			   alert("삭제 실패")
+// 		   }
+	    
+// 	   }
+// 	  });
+// 	 } 
+// 	});
+
+});
+</script>
+member_id : ${loginVo.member_id}
+param.amount: ${param.amount}
 	<!-- Page header with logo and tagline-->
 	<header class="py-5 bg-light border-bottom mb-4">
 		<div class="container">
@@ -69,7 +147,8 @@
 							
 						<tbody class="table-group-divider">
 							<tr>
-								<td style="vertical-align:middle"><input type="checkbox" name="item" value="productVo" checked></td>
+								<td style="vertical-align:middle"><input type="checkbox" 
+								name="chk" value="productVo" data-product_id="${productVo.product_id}" checked></td>
 								<td>
 									<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}"  
 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
@@ -89,7 +168,8 @@
 					<br> 
 					
 					<a
-						style="float: right; margin-right: 10px;" class="btn btn-primary"
+						style="float: right; margin-right: 10px;" id="selectpurchase_btn" 
+						class="btn btn-primary"
 						href="/product/purchase">구매하기
 					</a>
 					

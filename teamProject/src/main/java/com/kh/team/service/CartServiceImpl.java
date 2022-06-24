@@ -53,14 +53,26 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public void deleteCart(CartDto cartDto) throws Exception {
-		System.out.println("발자취 서비스 cartDto:" + cartDto);
-		cartDao.deleteCart(cartDto);
+	public void deleteCart(String str) throws Exception {
+		System.out.println("발자취 서비스 cartDto:" + str);
+		cartDao.deleteCart(str);
 		
 		
 	}
+
+	@Override
+	public void insertOrder(String member_id) throws Exception {
+		System.out.println("발자취 서비스 cartDto:" + member_id);
+		cartDao.insertOrder(member_id);
+		
+	}
+
 	
-	
+	@Override
+	public void insertOrderDetail(String str) throws Exception {
+		System.out.println("발자취 서비스 cartDto:" + str);
+		cartDao.insertOrderDetail(str);
+	}
 
 
 }

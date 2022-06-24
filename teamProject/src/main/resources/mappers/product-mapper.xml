@@ -14,8 +14,7 @@
 <!-- 			#{content, jdbcType=VARCHAR}, #{writer}, -->
 <!-- 			#{bno}) -->
 <!-- 	</insert> -->
-	
-	
+
 	
 	<!-- 리스트 불러오기 -->
 <!-- 	<select id="list" resultType="ProductVo"> -->
@@ -72,9 +71,40 @@
 		where product_id = #{product_id}
 	</select>
 	
+	
+	
+	<!-- 	구매에도 추가 -->
+	<insert id="addCart">
+		insert into tal_cart(cart_id, member_id, product_id, product_count)
+		values(seq_cart_id.nextval, #{member_id}, #{product_id}, #{product_count}) 	
+	</insert>
+	
+  		<!-- 구매와 동시에 카트 삭제 -->
+	<delete id="deleteCart">
+		delete from tal_cart 
+			where cart_id = #{cart_id}
+	</delete>	
   	
   	
-  	
+<!--   	db로 넘어감 -->
+  	<insert id="insertOrder">
+		insert into tal_order
+		values(seq_order_no.nextval, sysdate,
+		(select distinct member_id from tal_cart
+ 			where member_id = #{member_id}), 1)
+	</insert>
+	
+	<insert id="insertOrderDetail">
+		insert into tal_order_detail
+		(order_detail_no,
+order_product_amount
+,fk_order_detail_status_code
+,fk_order_no
+,fk_product_id)
+		values(seq_order_detail_no.nextval, 
+			#{product_count},
+			1, (select max(order_no) from tal_order),#{product_id})
+	</insert>
 	
 	
 </mapper>

@@ -11,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.service.ProductService;
+import com.kh.team.vo.CartDto;
+import com.kh.team.vo.CartVo;
 import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.OrderDto;
 import com.kh.team.vo.PagingDto;
@@ -87,6 +90,80 @@ public class ProductController {
 		return "/product/purchase";
 	}
 	
+	
+
+//	@RequestMapping(value= "/addCart", method = RequestMethod.GET)
+//	@ResponseBody
+//	public String addCart(Model model, PagingDto pagingDto, 
+//			HttpSession session, CartVo cartVo)throws Exception  {
+//		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+//		String  member_id = loginVo.getMember_id();
+//		cartVo.setMember_id(member_id);
+//		System.out.println("cart, cartVo:" + cartVo);
+//		boolean result = productService.addCart(cartVo);
+//		System.out.println("CartController, list, result:" + result);
+//		return String.valueOf(result);
+//	}
+//	
+//	
+//	//카트 삭제
+//	@ResponseBody
+//	@RequestMapping(value= "/deleteCart", method = RequestMethod.POST)
+//	public int deleteCart(HttpSession session,
+//	@RequestParam(value = "chk[]") List<String> chArr, CartDto cartDto) throws Exception {
+//		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+//		String member_id = loginVo.getMember_id();
+//		System.out.println("발자취 컨트롤 cartDto: " + cartDto);
+//		int result = 0;
+//		String cart_id = "";
+//		
+//		if(loginVo != null) {
+//			cartDto.setMember_id(member_id);
+//			
+//			for(String i : chArr) {
+//				cart_id = i;
+//				productService.deleteCart(cart_id);
+//			}
+//			
+//			result = 1;
+//			
+//		}
+//		
+//		return result;
+//	}
+	
+	
+	//제품 구매창에서 바로 구매 할시 관리자 DB로 바로 넘어감
+		@RequestMapping(value = "/sellProduct", method = RequestMethod.GET)
+		@ResponseBody
+		public String sellProduct(HttpSession session,ProductVo productVo,int product_count) throws Exception {
+			MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+			String member_id = loginVo.getMember_id();
+			System.out.println("productVo:"+productVo);
+			System.out.println("product_count:"+product_count);
+			boolean result=productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
+					
+			return String.valueOf(result);
+			
+		}
+//		//제품 구매창에서 바로 구매 할시 관리자 DB로 바로 넘어감
+//		@RequestMapping(value = "/purchaseProduct", method = RequestMethod.POST)
+//		@ResponseBody
+//		public String purchase(@RequestParam(value="chk[]") List<String> chk,
+//				HttpSession session,ProductVo productVo) throws Exception {
+//			MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+//			String member_id = loginVo.getMember_id();
+//			
+////			System.out.println(chk.size());	
+//			productService.insertOrder(member_id);
+//			for (String str : chk) {
+//				System.out.println("str:"+str); 
+//				productService.insertOrderDetail(str);
+//				productService.deleteCart(str);
+//			}			
+//			return "true";
+//			
+//		}
 	
 //	
 //	@RequestMapping(value= "/brandyList", method = RequestMethod.GET)
