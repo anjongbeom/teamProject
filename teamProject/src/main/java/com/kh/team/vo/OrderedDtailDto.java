@@ -5,6 +5,7 @@ public class OrderedDtailDto {
 	private int order_detail_no;
 	private String product_image;
 	private String product_id;
+	private int product_price;
 	private int order_product_amount;
 	private String member_id;
 	private String order_detail_status_code;
@@ -16,13 +17,14 @@ public class OrderedDtailDto {
 	}
 
 
-	public OrderedDtailDto(int order_detail_no, String product_image, String product_id, int order_product_amount,
-			String member_id, String order_detail_status_code, String product_kor_name,
+	public OrderedDtailDto(int order_detail_no, String product_image, String product_id, int product_price,
+			int order_product_amount, String member_id, String order_detail_status_code, String product_kor_name,
 			String order_detail_status_descript) {
 		super();
 		this.order_detail_no = order_detail_no;
 		this.product_image = product_image;
 		this.product_id = product_id;
+		this.product_price = product_price;
 		this.order_product_amount = order_product_amount;
 		this.member_id = member_id;
 		this.order_detail_status_code = order_detail_status_code;
@@ -61,6 +63,16 @@ public class OrderedDtailDto {
 	}
 
 
+	public int getProduct_price() {
+		return product_price;
+	}
+
+
+	public void setProduct_price(int product_price) {
+		this.product_price = product_price;
+	}
+
+
 	public int getOrder_product_amount() {
 		return order_product_amount;
 	}
@@ -84,8 +96,8 @@ public class OrderedDtailDto {
 	public String getOrder_detail_status_code() {
 		return order_detail_status_code;
 	}
-
-
+	
+	
 	public void setOrder_detail_status_code(String order_detail_status_code) {
 		this.order_detail_status_code = order_detail_status_code;
 	}
@@ -114,12 +126,12 @@ public class OrderedDtailDto {
 	@Override
 	public String toString() {
 		return "OrderedDtailDto [order_detail_no=" + order_detail_no + ", product_image=" + product_image
-				+ ", product_id=" + product_id + ", order_product_amount=" + order_product_amount + ", member_id="
-				+ member_id + ", order_detail_status_code=" + order_detail_status_code + ", product_kor_name="
-				+ product_kor_name + ", order_detail_status_descript=" + order_detail_status_descript + "]";
+				+ ", product_id=" + product_id + ", product_price=" + product_price + ", order_product_amount="
+				+ order_product_amount + ", member_id=" + member_id + ", order_detail_status_code="
+				+ order_detail_status_code + ", product_kor_name=" + product_kor_name
+				+ ", order_detail_status_descript=" + order_detail_status_descript + "]";
 	}
-	
-	
+
 	
 	
 	

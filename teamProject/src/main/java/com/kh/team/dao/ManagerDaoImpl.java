@@ -1,6 +1,8 @@
 package com.kh.team.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +41,8 @@ public class ManagerDaoImpl implements ManagerDao{
 
 	// 주문된 목록 
 	@Override
-	public List<OrderVo> getOrderedList() {
-		List<OrderVo> list = sqlSession.selectList(NAMESPACE + "getOrderedList");
+	public List<OrderVo> getOrderedList(int order_status_code) {
+		List<OrderVo> list = sqlSession.selectList(NAMESPACE + "getOrderedList", order_status_code);
 		return list;
 	}
 	
@@ -81,5 +83,39 @@ public class ManagerDaoImpl implements ManagerDao{
 		}
 		return false;
 	}
+
+	// 주문자의 포인트 차감
+	@Override
+	public void updateApprovedPointForMember(OrderedDtailDto ordered_detail) {
+		sqlSession.update(NAMESPACE + "updateApprovedPointForMember", ordered_detail);
+	}
+	
+	
+	
+	
+	// 주문안의 주문상세 상태코드들 얻기 
+	@Override
+	public List<Map<String,Object>> getNumberOfOrderDetailStatusCode(int order_detail_no) {
+		List<Map<String,Object>> result = sqlSession.selectList(NAMESPACE + "getNumberOfOrderDetailStatusCode", order_detail_no);
+		return result;
+	}
+	
+	
+//	order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 변경
+	public void updateOrderStatusCode(int order_no) {
+		System.out.println("order_no : " + order_no);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("order_no", order_no);
+		sqlSession.update(NAMESPACE + "updateOrderStatusCode1", map);
+		
+	}
+	
+	// detail_no로 order_no 얻기
+	public int getOrderNoByDetailNo(int order_detail_no) {
+		int result = sqlSession.selectOne(NAMESPACE + "getOrderNoByDetailNo", order_detail_no);
+		return result;
+	}
+	
+	
 	
 }

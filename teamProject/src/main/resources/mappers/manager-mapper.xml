@@ -23,38 +23,57 @@
 		where rnum between #{startRow} and #{endRow}
 	</select>
 	
-	<!-- 검색 조건 -->
+	<!-- 제품 검색 조건 -->
 	<sql id="search">
 		<if test="searchType != null and keyword != null">
 			<choose>
-			
 				<when test='searchType == "pn" '>
 					where product_name like '%' || #{keyword} || '%'
 				</when>
-				
 				<when test='searchType == "pi" '>
 					where product_id like '%' || #{keyword} || '%'	
 				</when>
-				
 				<when test='searchType == "cc" '>
 					where cate_code like '%' || #{keyword} || '%'
 				</when>
-				
 			</choose>
 		</if>
 	</sql>
+	
+	
+	
+	
 		
-		
-	<!-- 주문된 제품 목록 fk_order_status_code = 1 -->
+	<!-- 주문된 제품 목록 order_status_code 로 조회 -->
 	<select id="getOrderedList" resultType="OrderVo">
 		select order_no,
 			order_date,
 			fk_member_id as member_id,
 			fk_order_status_code as order_status_code
 		from tal_order
-		where fk_order_status_code = 1
+		where fk_order_status_code = #{order_status_code}
 		order by order_no desc
 	</select>
+	
+	<!-- 주문된 제품 검색 조건 -->
+<!-- 	<sql id="search"> -->
+<!-- 		<if test="searchType != null and keyword != null"> -->
+<!-- 			<choose> -->
+<!-- 				<when test='searchType == "pn" '> -->
+<!-- 					where product_name like '%' || #{keyword} || '%' -->
+<!-- 				</when> -->
+<!-- 				<when test='searchType == "pi" '> -->
+<!-- 					where product_id like '%' || #{keyword} || '%'	 -->
+<!-- 				</when> -->
+<!-- 				<when test='searchType == "cc" '> -->
+<!-- 					where cate_code like '%' || #{keyword} || '%' -->
+<!-- 				</when> -->
+<!-- 			</choose> -->
+<!-- 		</if> -->
+<!-- 	</sql> -->
+	
+	
+	
 	
 	
 	<!-- 주문된 제품 상세 목록 -->
@@ -64,13 +83,11 @@
 		order by order_detail_no desc
 	</select>
 	
-		
 	<!-- 주문된 제품 상세 하나 얻기 -->
 	<select id="getOneOrderedDetail" resultType="OrderedDtailDto">
 		<include refid="getOrderedDetail"></include>
 		and order_detail_no = #{order_detail_no}
 	</select>	
-	
 	
 	<!-- 제품 상세 목록용 -->
 	<sql id="getOrderedDetail">
@@ -78,6 +95,7 @@
 		    p.product_image,
 		    od.fk_product_id as product_id,
 		    p.product_kor_name,
+		    p.product_price,
 		    od.order_product_amount,
 		    o.fk_member_id as member_id, 
 		    od.fk_order_detail_status_code as order_detail_status_code,
@@ -95,12 +113,53 @@
 		where product_id = #{product_id}
 	</update>
 		
-		
 	<!-- 승인된 컬럼 데이터(fk_order_detail_status_code) 2로 변경 -->
-	<delete id="updateApprovedDataToSecond">
+	<update id="updateApprovedDataToSecond">
 		update tal_order_detail set fk_order_detail_status_code = 2
 		where order_detail_no = #{order_detail_no}
-	</delete>
+	</update>
+	
+	<!-- 승인 후 해당 포인트 멤버에서 차감 -->
+	<update id="updateApprovedPointForMember">
+		update tal_member set member_point = member_point - (#{product_price} * #{order_product_amount})
+		where member_id = #{member_id}
+	</update>
+
+	
+	
+	<!-- !! order_detail_no를 받아서 참조하는 order_no를 얻고 이 주문에 포함된 -->
+	<!-- 	FK_ORDER_DETAIL_STATUS_CODE 종류들을 얻기 -->
+	<select id="getNumberOfOrderDetailStatusCode" resultType="Map">
+		select distinct FK_ORDER_DETAIL_STATUS_CODE
+	        from TAL_ORDER o, TAL_ORDER_DETAIL od
+	        where o.order_no = od.fk_order_no
+	        and order_no = 
+				(select order_no 
+					from tal_order o, tal_order_detail od
+					where o.order_no = od.fk_order_no
+					and od.order_detail_no = #{order_detail_no})
+	</select>
+	
+	<!-- order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 2로 변경-> -->
+	<update id="updateOrderStatusCode1">
+		update tal_order set fk_order_status_code = 2
+		<include refid="updateTest"></include>
+	</update>
+	
+	<sql id ="updateTest">
+		<if test="order_no != null or order_no != 0">
+			where order_no = #{order_no}
+		</if>
+	</sql>
+	
+	<!--  detail_no로 order_no 얻기 -->
+	<select id="getOrderNoByDetailNo" resultType="int">
+		select order_no 
+			from tal_order o , tal_order_detail od
+			where o.order_no = od. fk_order_no
+			and order_detail_no = #{order_detail_no}
+	</select>
+	
 	
 		
 </mapper>
