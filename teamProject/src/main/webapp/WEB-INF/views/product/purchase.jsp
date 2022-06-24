@@ -35,55 +35,6 @@ $("#selectpurchase_btn").click(function(e) {
 	});
 });
 
-// $("#selectpurchase_btn").click(function(){
-// 	 var confirm_val = confirm("구매합니까?");
-	 
-// 	 if(confirm_val) {
-// 	  var checkArr = new Array();
-	  
-// 	  $("input[name='chk']:checked").each(function(){
-// 	   checkArr.push($(this).attr("data-product_id"));
-// 	  });
-// 	   console.log(checkArr);
-// //	    console.log(JSON.stringify(checkArr));
-// 	  $.ajax({
-// 	   url : "/product/purchaseProduct",
-// 	   type : "post",
-// 	   data : { chk : checkArr},
-// 	   success : function(result){
-// 		   console.log(result);
-	    
-// 	   }
-// 	  });
-// 	} 
-// });
-
-
-// $("#selectpurchase_btn").click(function(){
-	 
-// 	 if(confirm_val) {
-// 	  var checkArr = new Array();
-	  
-// 	  $("input[name='chk']:checked").each(function(){
-// 	   checkArr.push($(this).attr("data-product_id"));
-// 	  });
-	   
-// 	  $.ajax({
-// 	   url : "/product/deleteCart",
-// 	   type : "post",
-// 	   data : { chk : checkArr },
-// 	   success : function(result){
-// 		   if(result == 1){
-// 			   location.href = "/product/list";
-// 		   } else {
-// 			   alert("삭제 실패")
-// 		   }
-	    
-// 	   }
-// 	  });
-// 	 } 
-// 	});
-
 });
 </script>
 member_id : ${loginVo.member_id}
@@ -176,11 +127,6 @@ param.amount: ${param.amount}
 				</div>
 			</div>
 		
-<!-- 			<div class="content"> -->
-<!-- 				<span style="font-size: 25px; color: #433406;"> 배송지</span> -->
-				
-<!-- 			</div> -->
-			
 			
 		</div> <!-- <div class="row">  -->
 	</div> <!-- // Container -->
