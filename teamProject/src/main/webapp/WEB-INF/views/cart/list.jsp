@@ -58,18 +58,13 @@ $("#selectpurchase_btn").click(function(){
    checkArr.push($(this).attr("data-cart_id"));
   });
    console.log(checkArr);
-//    console.log(JSON.stringify(checkArr));
   $.ajax({
    url : "/cart/purchaseCart",
    type : "post",
    data : { chk : checkArr },
    success : function(result){
 	   console.log(result);
-// 	   if(result == true){
-// 		   location.href = "/cart/orderList";
-// 	   } else {
-// 		   alert("주문 실패")
-// 	   }
+
     
    }
   });
@@ -77,7 +72,7 @@ $("#selectpurchase_btn").click(function(){
 });
 });
 </script>
-${orderList}
+
 			<div class="col-lg-12">
 				<div class="mb-4">
 					<h2 class="card-title" style="text-align: center; margin-top: 40px;">장바구니</h2>
@@ -115,7 +110,7 @@ ${orderList}
 						<c:forEach items="${orderList}" var="CartDto" varStatus="status">
 							<tr>
 								<td style="vertical-align:middle; text-align: center;"><input type="checkbox"
-								name="chk" value="productVo" data-cart_id="${CartDto.cart_id}"></td>
+								name="chk" value="productVo" data-cart_id="${CartDto.cart_id}" checked="checked"></td>
 								<td>
 									<img class="card-img-top" src="/product/displayImage?filename=${CartDto.product_image}"  
 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
