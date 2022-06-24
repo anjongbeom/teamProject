@@ -31,5 +31,10 @@ public interface CartDao {
 
 	public SummaryDto getTotalSummary(SummaryDto summaryDto);
 	
-	public void deleteCart(CartDto cartDto) throws Exception;
+	public void deleteCart(String str) throws Exception;
+
+	public void insertOrder(String member_id) throws Exception;
+	
+	public void insertOrderDetail(String str) throws Exception;
+	
 }

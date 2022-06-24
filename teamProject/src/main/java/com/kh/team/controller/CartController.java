@@ -2,15 +2,12 @@ package com.kh.team.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +17,7 @@ import com.kh.team.service.CartService;
 import com.kh.team.vo.CartDto;
 import com.kh.team.vo.CartVo;
 import com.kh.team.vo.MemberVo;
-import com.kh.team.vo.OrderDto;
 import com.kh.team.vo.PagingDto;
-import com.kh.team.vo.ProductVo;
 import com.kh.team.vo.SummaryDto;
 
 @Controller
@@ -58,15 +53,14 @@ public class CartController {
 		cartDto.setMember_id(loginVo.getMember_id());
 		summaryDto.setMember_id(loginVo.getMember_id());
 		List<CartDto> orderList = cartService.getOrderList(cartDto);
-		System.out.println("orderList:" + orderList);
+//		System.out.println("orderList:" + orderList);
 		model.addAttribute("orderList", orderList);
 		SummaryDto totalSummary = cartService.getTotalSummary(summaryDto);
 		model.addAttribute("totalSummary",totalSummary);
 		return "cart/list";
 	}
 	
-	
-	
+
 	
 	
 	@RequestMapping(value= "/addCart", method = RequestMethod.GET)
@@ -77,28 +71,6 @@ public class CartController {
 		String  member_id = loginVo.getMember_id();
 		cartVo.setMember_id(member_id);
 		System.out.println("cart, cartVo:" + cartVo);
-//		model.addAttribute("cardVo", cartVo);
-		// 로그인한 사용자의 ?
-//		String login_id = request.getParameter("login_id");
-//		String product_id = request.getParameter("product_id");
-//		String product_price = request.getParameter("product_price");
-//		String product_amount = request.getParameter("product_amount");
-		
-//		System.out.println("basket, login_id: " + login_id);
-//		System.out.println("basket, product_id: " + product_id);
-//		System.out.println("basket, product_price: " + product_price);
-//		System.out.println("basket, product_amount: " + product_amount);
-		
-//		model.addAttribute("login_id", login_id);
-//		model.addAttribute("product_id", product_id);
-//		model.addAttribute("product_price", product_price);
-//		model.addAttribute("product_amount", product_amount);
-		
-//		System.out.println("basket,model login_id: " + login_id);
-//		System.out.println("basket,model product_id: " + product_id);
-//		System.out.println("basket,model product_price: " + product_price);
-//		System.out.println("basket,model product_amount: " + product_amount);
-		
 		boolean result = cartService.addCart(cartVo);
 		System.out.println("CartController, list, result:" + result);
 		return String.valueOf(result);
@@ -114,15 +86,16 @@ public class CartController {
 		String member_id = loginVo.getMember_id();
 		System.out.println("발자취 컨트롤 cartDto: " + cartDto);
 		int result = 0;
-		int cart_id = 0;
+		String cart_id = "";
 		
 		if(loginVo != null) {
 			cartDto.setMember_id(member_id);
 			
 			for(String i : chArr) {
-				cart_id = Integer.parseInt(i);
-				cartDto.setCart_id(cart_id);
-				cartService.deleteCart(cartDto);
+				cart_id = i;
+//				cartDto.setCart_id(cart_id);
+				cartService.deleteCart(cart_id);
+//				cartService.deleteCart(cartDto);
 			}
 			
 			result = 1;
@@ -130,6 +103,26 @@ public class CartController {
 		}
 		
 		return result;
+	}
+	
+	
+	//장바구니에서 체크한 상품에 대해서 구매시 DB로 넘어가면서 장바구니 클리어함.
+	@RequestMapping(value = "/purchaseCart", method = RequestMethod.POST)
+	@ResponseBody
+	public String purchaseCart(@RequestParam(value="chk[]") List<String> chk,
+			HttpSession session, CartDto cartDto) throws Exception {
+		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+		String member_id = loginVo.getMember_id();
+		System.out.println(chk.size());	//2
+		cartService.insertOrder(member_id);
+		for (String str : chk) {
+			System.out.println("str:"+str); //str:62 str:63
+			cartService.insertOrderDetail(str);
+			cartService.deleteCart(str);
+		}
+		
+		return "true";
+		
 	}
 	
 	

@@ -46,9 +46,38 @@ $("#selectDelete_btn").click(function(){
   });
  } 
 });
+
+
+$("#selectpurchase_btn").click(function(){
+ var confirm_val = confirm("구매합니까?");
+ 
+ if(confirm_val) {
+  var checkArr = new Array();
+  
+  $("input[name='chk']:checked").each(function(){
+   checkArr.push($(this).attr("data-cart_id"));
+  });
+   console.log(checkArr);
+//    console.log(JSON.stringify(checkArr));
+  $.ajax({
+   url : "/cart/purchaseCart",
+   type : "post",
+   data : { chk : checkArr },
+   success : function(result){
+	   console.log(result);
+// 	   if(result == true){
+// 		   location.href = "/cart/orderList";
+// 	   } else {
+// 		   alert("주문 실패")
+// 	   }
+    
+   }
+  });
+ } 
+});
 });
 </script>
-
+${orderList}
 			<div class="col-lg-12">
 				<div class="mb-4">
 					<h2 class="card-title" style="text-align: center; margin-top: 40px;">장바구니</h2>
@@ -154,9 +183,10 @@ $("#selectDelete_btn").click(function(){
 							<div class="row">
 								<div class="col-md-12 ">
 <!-- 					구매하기 할때 정보를 넘기는데 넘겨야할 정보는  -->
-					<a style="float:right; margin-right:30px;" class="btn btn-primary text-align-right"
-						href="/product/purchase">구매하기
-					</a>
+					<button type="button" style="float:right; margin-right:30px;" id="selectpurchase_btn"
+					class="btn btn-primary text-align-right"
+						>구매하기
+					</button>
 					</div>
 					</div>
 				</div>

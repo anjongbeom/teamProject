@@ -70,15 +70,34 @@ public class CartDaoImpl implements CartDao{
 	}
 
 	@Override
-	public void deleteCart(CartDto cartDto) throws Exception {
-		System.out.println("발자취 다오+ cartDto:" +cartDto);
-		sqlSession.delete(NAMESPACE+"deleteCart", cartDto);
-//		if(num == 0) {
-//			return true;
-//		}
-//		return false;
+	public void deleteCart(String str) throws Exception {
+		System.out.println("발자취 다오+ str:" +str);
+		sqlSession.delete(NAMESPACE+"deleteCart", str);
 		
 	}
+	@Override
+	public void insertOrder(String member_id) throws Exception {
+		System.out.println("발자취 다오+ cartDto:" +member_id);
+		sqlSession.insert(NAMESPACE+"insertOrder", member_id);
+	}
+
+
+
+	@Override
+	public void insertOrderDetail(String str) throws Exception {
+		System.out.println("발자취 다오+ cartDto:" +str);
+		sqlSession.insert(NAMESPACE+"insertOrderDetail", str);
+	}
+
+	
+	
+
+
+	
+
+
+
+	
 
 
 }

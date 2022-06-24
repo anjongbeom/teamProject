@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.vo.CartVo;
 import com.kh.team.vo.PagingDto;
 import com.kh.team.vo.ProductCate;
 import com.kh.team.vo.ProductVo;
@@ -79,5 +80,41 @@ public class ProductDaoImpl implements ProductDao {
 	public List<ProductCate> cateList() {
 		List<ProductCate> cateList = sqlSession.selectList(NAMESPACE + "cateList");
 		return cateList;
+	}
+
+	@Override
+	public boolean addCart(CartVo cartVo) {
+		int num = sqlSession.insert(NAMESPACE + "addCart", cartVo);
+		if (num > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void deleteCart(String str) throws Exception {
+		System.out.println("발자취 다오+ str:" +str);
+		sqlSession.delete(NAMESPACE+"deleteCart", str);
+		
+	}
+
+	@Override
+	public void insertOrder(String member_id) throws Exception {
+		System.out.println("발자취 다오+ cartDto:" +member_id);
+		sqlSession.insert(NAMESPACE+"insertOrder", member_id);
+		
+	}
+
+	@Override
+	public boolean insertOrderDetail(String product_id,int product_count) throws Exception {
+		Map<String, Object> parameter =new HashMap<>();
+		parameter.put("product_id",product_id);
+		parameter.put("product_count",product_count);
+		int count=sqlSession.insert(NAMESPACE+"insertOrderDetail", parameter);
+		if(count>0) {
+			return true;
+		}
+		return false;
+		
 	}
 }
