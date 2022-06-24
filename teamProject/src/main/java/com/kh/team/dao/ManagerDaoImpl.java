@@ -116,6 +116,18 @@ public class ManagerDaoImpl implements ManagerDao{
 		return result;
 	}
 	
+//	order_no로 fk_member_id를 얻기
+	public String getMemberIdByOrderNo(int order_no) {
+		String result = sqlSession.selectOne(NAMESPACE + "getMemberIdByOrderNo", order_no);
+		return result;
+	}
+	
+	
+//	order_no로  member_tel를 얻기 
+	public String getMemberTelByMemberId(int order_no) {
+		String result = sqlSession.selectOne(NAMESPACE + "getMemberTelByMemberId", order_no);
+		return result;
+	}
 	
 	
 }

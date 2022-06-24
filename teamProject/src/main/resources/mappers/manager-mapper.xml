@@ -161,5 +161,24 @@
 	</select>
 	
 	
+	<!-- order_no로 fk_member_id를 얻기 -->
+	<select id="getMemberIdByOrderNo" resultType="String">
+		select fk_member_id
+			from tal_order
+			where order_no = #{order_no}
+	</select>
+	
+	
+	<!-- order_no로 member_tel를 얻기 -->
+	<select id="getMemberTelByOrderNo" resultType="String">
+		select member_tel from tal_member
+		where member_id = 
+			(select fk_member_id
+			from tal_order
+			where order_no = #{order_no})
+	</select>
+	
+	
+	
 		
 </mapper>

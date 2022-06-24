@@ -24,4 +24,9 @@ public interface ManagerService {
 	
 	public int getOrderNoByDetailNo(int order_detail_no); // detail_no로 order_no 얻기
 	
+	
+	public String getMemberIdByOrderNo(int order_no); // order_no로 fk_member_id를 얻기
+	
+	public String getMemberTelByMemberId(int order_no); //	order_no로  member_tel를 얻기
+	
 }

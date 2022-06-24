@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.dao.ManagerDao;
+import com.kh.team.util.ExampleSend;
 import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.OrderVo;
 import com.kh.team.vo.OrderedDtailDto;
@@ -62,8 +63,10 @@ public class ManagerServiceImpl implements ManagerService {
 	@Override
 	public boolean orderApproval(String[] checked_list) {
 
+		/*
 		for (String order_detail_no : checked_list) { // 체크된 항목들의 detail_no를 배열로 향상된 for
 			int parse_order_detail_no = Integer.parseInt(order_detail_no);
+			
 			
 			// 테스트 중 (ORDER_STATUS_CODE 세분화(폐기 예정 ^^)를 위해) 
 			List<Map<String,Object>> codes = managerDao.getNumberOfOrderDetailStatusCode(parse_order_detail_no); // parse_order_detail_no로 주문안에 상세상태코드들 얻기
@@ -98,7 +101,7 @@ public class ManagerServiceImpl implements ManagerService {
 				// FK_ORDER_STATUS_CODE가 1 -> 3(부분) or 1 -> 4(전체 발송완료)
 				// ORDER_DETAIL_STATUS_CODE가 1인 것을 (order_no)로 조회해서 없으면 
 				
-				int order_no = managerDao.getOrderNoByDetailNo(parse_order_detail_no);
+				int order_no = managerDao.getOrderNoByDetailNo(parse_order_detail_no); // detail_no로 order_no 얻기
 				System.out.println("orderApproval, order_no : " + order_no);
 				managerDao.updateOrderStatusCode(order_no);
 				
@@ -110,8 +113,23 @@ public class ManagerServiceImpl implements ManagerService {
 			if (apporoval_result && update_result) {
 				Overall_result = true;
 			}
-
 		}
+		
+		*/
+		
+		
+		
+		// sms 자동 발송
+		String first_detail_no = checked_list[0];
+		int order_no = managerDao.getOrderNoByDetailNo(Integer.parseInt(first_detail_no)); // detail_no로 order_no 얻기
+		String member_id = managerDao.getMemberIdByOrderNo(order_no);
+		
+//		String reciever = "";
+//		String content = ""; 
+//		ExampleSend.sender(reciever, content);
+		
+		
+		
 		return true; // 결과 수정 필요!!!!
 	}
 		
@@ -132,7 +150,18 @@ public class ManagerServiceImpl implements ManagerService {
 		return 0;
 	}
 	
+	// order_no로 fk_member_id를 얻기
+	@Override
+	public String getMemberIdByOrderNo(int order_no) {
+		return "";
+	}
 	
+	// order_no로  member_tel를 얻기
+	@Override
+	public String getMemberTelByMemberId(int order_no) {
+		
+		return null;
+	}
 
 	
 }
