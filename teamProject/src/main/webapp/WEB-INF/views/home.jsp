@@ -125,13 +125,7 @@
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
-                        <!-- 알림 기능 예약 메세지 -->
-                        <!-- 추후 메세지 담길 갯수 추가 -->
-                        <button id="m" class="btn btn-outline-dark" type="button" style="margin-left: 5px;">
-                        	<i class="bi bi-clock"></i>
- 							Alert
-                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-                        </button>
+                      
                         
                         
                         <!-- 로그인 -->
