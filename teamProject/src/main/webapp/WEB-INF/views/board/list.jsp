@@ -104,7 +104,7 @@ $(document).ready(function() {
 			<div class="jumbotron">
 				<h2>글목록</h2>
 				<p>
-					<a class="btn btn-primary btn-large" href="/board/createForm">글쓰기</a>
+					<a class="btn btn-primary btn-large" href="/board/review">글쓰기</a>
 				</p>
 			</div>
 			

@@ -16,37 +16,25 @@
 					<form role="form" class="form-inline">
 						<div class="form-group">
 							 
-							<label for="exampleInputEmail1">
-								Email address
+							<label for="review_title">
+								제목
 							</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" />
+							<input type="text" class="form-control" id="review_title" />
 						</div>
 						<div class="form-group">
 							 
-							<label for="exampleInputPassword1">
-								Password
+							<label for="review_content">
+								CONTENT
 							</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" />
+							<input type="text" class="form-control" id="review_content" />
 						</div>
 						<div class="form-group">
 							 
-							<label for="exampleInputFile">
-								File input
+							<label for="InputFile">
+								파일 선택
 							</label>
-							<input type="file" class="form-control-file" id="exampleInputFile" />
-							<p class="help-block">
-								Example block-level help text here.
-							</p>
+							<input type="file" class="form-control-file" id="InputFile" />
 						</div>
-						<div class="checkbox">
-							 
-							<label>
-								<input type="checkbox" /> Check me out
-							</label>
-						</div> 
-						<button type="submit" class="btn btn-primary">
-							Submit
-						</button>
 					</form>
 					<form role="form">
 						<div class="form-group">
@@ -56,33 +44,13 @@
 							</label>
 							<input type="email" class="form-control" id="exampleInputEmail1" />
 						</div>
-						<div class="form-group">
-							 
-							<label for="exampleInputPassword1">
-								Password
-							</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" />
-						</div>
-						<div class="form-group">
-							 
-							<label for="exampleInputFile">
-								File input
-							</label>
-							<input type="file" class="form-control-file" id="exampleInputFile" />
-							<p class="help-block">
-								Example block-level help text here.
-							</p>
-						</div>
-						<div class="checkbox">
-							 
-							<label>
-								<input type="checkbox" /> Check me out
-							</label>
-						</div> 
+						
+						
+						
 						<button type="submit" class="btn btn-primary">
 							Submit
 						</button>
-					</form><img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+					</form>
 				</div>
 				<div class="col-md-2">
 				</div>
