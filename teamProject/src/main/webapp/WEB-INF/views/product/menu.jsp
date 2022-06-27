@@ -41,7 +41,6 @@ $(document).ready(function() {
 });
 </script>
         	<!-- 각 제품에 대해 모든 제품 보는 것 -->
-        ${loginVo}
         <!-- Section-->
          <!-- Side widgets-->
          <div style="text-align: center;">
@@ -76,8 +75,10 @@ $(document).ready(function() {
 	                        <div class="card h-100">
 	                        
 	                            <!-- Product image-->
-	                            <img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" alt="..." 
-	                            	height="328"/>
+	                            <img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}" alt="..."  height="328"
+<%-- 	                            	id="detail_list"  style="cursor: pointer;" 
+										onclick="javascript:location.href='/product/detail?product_id=' + ${productVo.product_id};" --%>
+	                            	data-id="${productVo.product_id}" />
 	                            
 	                            <!-- Product details-->
 	                            <div class="card-body p-4">
