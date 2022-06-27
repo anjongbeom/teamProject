@@ -2,6 +2,7 @@ package com.kh.team.util;
 
 import java.util.HashMap;
 import org.json.simple.JSONObject;
+import org.springframework.stereotype.Component;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -13,8 +14,9 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
  */
 
 // run as > java application
-public class ExampleSend {
-	public static void sender(String reciever, String content) {
+@Component
+public class SmsSendUtil {
+	public void sendSms(String reciever, String content) {
 		String api_key = "NCSSXOI2LYFRNU6U";
 		String api_secret = "6M8BHGPVUJDSXBF1M6JDTQXHLB4T0BEF";
 		Message coolsms = new Message(api_key, api_secret);

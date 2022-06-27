@@ -40,9 +40,6 @@
 		</if>
 	</sql>
 	
-	
-	
-	
 		
 	<!-- 주문된 제품 목록 order_status_code 로 조회 -->
 	<select id="getOrderedList" resultType="OrderVo">
@@ -71,9 +68,6 @@
 <!-- 			</choose> -->
 <!-- 		</if> -->
 <!-- 	</sql> -->
-	
-	
-	
 	
 	
 	<!-- 주문된 제품 상세 목록 -->
@@ -141,7 +135,7 @@
 	</select>
 	
 	<!-- order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 2로 변경-> -->
-	<update id="updateOrderStatusCode1">
+	<update id="updateOrderStatusCode">
 		update tal_order set fk_order_status_code = 2
 		<include refid="updateTest"></include>
 	</update>
@@ -177,6 +171,8 @@
 			from tal_order
 			where order_no = #{order_no})
 	</select>
+	
+	
 	
 	
 	

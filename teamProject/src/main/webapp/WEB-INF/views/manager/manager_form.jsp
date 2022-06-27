@@ -71,7 +71,6 @@
                             </div>
                             
                             
-                            
                             <!-- 메일링 테스트 -->
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
@@ -82,14 +81,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
-                            
-                            
-                            
-                            
+                           
                         </div> <!--  /관리 메인 카드 -->
-                        
                         
                         <!-- 메인 카드 아래부분 -->
                        

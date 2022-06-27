@@ -106,7 +106,7 @@ public class ManagerDaoImpl implements ManagerDao{
 		System.out.println("order_no : " + order_no);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("order_no", order_no);
-		sqlSession.update(NAMESPACE + "updateOrderStatusCode1", map);
+		sqlSession.update(NAMESPACE + "updateOrderStatusCode", map);
 		
 	}
 	
