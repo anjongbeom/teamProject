@@ -79,7 +79,7 @@
                                 	<li><a class="dropdown-item" href="/product/list?cate_code=${productCate.cate_code}">${productCate.cate_name}</a></li>
                                 </c:forEach>
                             </ul>
-                            <li class="nav-item"><a class="nav-link" href="http://localhost/nonboard/list">문갑 수정중</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/nonBoard/list">문갑 수정중</a></li>
                         </li>
                     </ul>
                     <form class="d-flex">
