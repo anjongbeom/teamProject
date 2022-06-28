@@ -2,6 +2,8 @@ package com.kh.team.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import com.kh.team.vo.PagingDto;
 @RequestMapping("/board")
 public class BoardController {
 	
+//	@Resource(name="boardService")
 	@Autowired
 	private BoardService boardService;
 	

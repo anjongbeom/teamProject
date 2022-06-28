@@ -334,7 +334,7 @@
         <footer class="footer text-center">
         	<div class="text-center" style="line-height: 22px;">
 						<br><h3>KA주류교육원을 찾아주세요.</h3>
-						<p>주소 : 울산광역시 남구 삼산로35번길 19 KA주류교육원 </p>
+						<p>주소 : 울산광역시 남구 삼산로35번길 19 KA주류교육원</p>
 						<p>전화번호 : 052-257-7600</p>
 						<p>이메일 : ajb5209@naver.com</p>
 			</div>

@@ -19,6 +19,10 @@ tr.tr_list:hover {
  	background-color: yellow;
 }
 
+td {
+	vertical-align: middle;
+}
+
 </style>
 
 <script>
@@ -149,8 +153,6 @@ $(document).ready(function() {
 			</div>
 			
 			
-			
-			
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table">
@@ -166,24 +168,23 @@ $(document).ready(function() {
 							</tr>
 						</thead>
 						<tbody>
-							
 						<c:forEach items="${stock_list}" var="productVo">
-							<tr class="tr_list" data-bno="${productVo.product_id}">
-								<td>#</td>
-								<td>${productVo.product_image}</td>
-								<td>${productVo.product_name}</td>
+							<tr class="tr_list" data-bno="${productVo.product_id}" style=" justify-content:center;">
+								<td style= "vertical-align:middle;">#</td>
+								<td style= "vertical-align:middle;">
+								<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}"  
+									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
+								</td>
+								<td>${productVo.product_kor_name}</td>
 								<td>${productVo.product_price}</td>
 								<td>${productVo.product_stock}</td>
 								<td>${productVo.product_discount}</td>
 								<td>${productVo.cate_code}</td>
-								
 							</tr>
 						</c:forEach>
-							
 						</tbody>
 					</table>
 				</div>
-			</div>
 		</div>
 	</div>
 	
