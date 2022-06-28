@@ -80,8 +80,8 @@
                                 </c:forEach>
                             </ul>                            
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="/nonBoard/list">문갑 수정중</a></li>
-                    </ul>
+<!--                         <li class="nav-item"><a class="nav-link" href="/nonBoard/list">문갑 수정중</a></li>
+ -->                    </ul>
                     <form class="d-flex">
                     
                     	<!-- 사용자 아이디 -->
