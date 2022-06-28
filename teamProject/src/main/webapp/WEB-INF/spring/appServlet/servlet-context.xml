@@ -43,7 +43,10 @@
 		class="com.kh.team.interceptor.AuthInterceptor"
 		id="AuthInterceptor">
 	</beans:bean>
-		
+	<beans:bean 
+		class="com.kh.team.interceptor.CartInterceptor"
+		id="CartInterceptor">
+	</beans:bean>	
 	
 <!-- 	인터셉트 -->
 	<interceptors>
@@ -52,15 +55,16 @@
 <!-- 			<mapping path="/doB"/> -->
 <!-- 			<beans:ref bean="sampleInterceptor"/> -->
 <!-- 		</interceptor> -->
-		<interceptor>
-			<mapping path="/cart/**"/>
-			<exclude-mapping path="/cart/add"/>
-			<beans:bean id="CartIntreceptor" class="com.kh.team.interceptor.CartInterceptor"></beans:bean>
-		</interceptor>
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/cart/**/*/"/> -->
+<!-- 			<exclude-mapping path="/cart/"/> -->
+<!-- 			<beans:ref bean="CartInterceptor"/> -->
+<!-- 		</interceptor> -->
 		
 		
 		<interceptor>
 			<mapping path="/product/**/*/"/>
+			<mapping path="/cart/**/*/"/>
 <!-- 			<mapping path="/comment/**/*/"/> -->
 			<exclude-mapping path="/product/menu"/>
 			<exclude-mapping path="/product/list"/>
