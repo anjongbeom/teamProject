@@ -6,40 +6,34 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.kh.team.vo.MemberVo;
 
-public class CartInterceptor implements HandlerInterceptor{
+public class CartInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		
 		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
-		
+		System.out.println("memberVo:" +memberVo);
 		if(memberVo == null) {
+			String uri = request.getRequestURI();
+			String queryString = request.getQueryString();
+			System.out.println("uri: " + uri); // ����ǥ ��
+			System.out.println("queryString: " + queryString); // ����ǥ ��
+			String targetLocation = uri + "?" + queryString;
+			session.setAttribute("targetLocation", targetLocation);
 			response.sendRedirect("/member/loginForm");
 			return false;
 		} else {
 			return true;
 		}
+			
+		
 	
 	
-	}
-
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 
 	

@@ -17,6 +17,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		HttpSession session = request.getSession();
 		MemberVo memberVo = (MemberVo) session.getAttribute("loginVo");
+		System.out.println("memberVo:" +memberVo);
 		if (memberVo == null) {
 			String uri = request.getRequestURI();
 			String queryString = request.getQueryString();
