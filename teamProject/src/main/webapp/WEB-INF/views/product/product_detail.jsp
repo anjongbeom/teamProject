@@ -83,25 +83,34 @@ $(document).ready(function() {
 	
 	$("#btn_cart").click(function(e) {
 		e.preventDefault();
-// 		var login_id = "${loginVo.member_id}";
-	 	var product_id = "${productVo.product_id}";
-// 	 	var price = ${productVo.product_price};
-	 	var product_count = $("#amount").val();
-
-
-		// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
-		var sData = {
-				"product_id"	: product_id,
-				"product_count": product_count
-		};
-		console.log(sData);
-		var url = "/cart/addCart";
-		$.get(url, sData, function(rData) {
-// 			console.log(rData);
-			if (rData == "true") {
-				alert("성공");
-			}
-		});
+		var loginVo = "${loginVo}";
+// 		console.log("loginVo: ", loginVo);
+		if(loginVo == null || loginVo == ""){
+			console.log("loginVo: ", loginVo);
+			window.location.href = "/member/loginForm";
+			
+		} else {
+		
+	// 		var login_id = "${loginVo.member_id}";
+		 	var product_id = "${productVo.product_id}";
+	// 	 	var price = ${productVo.product_price};
+		 	var product_count = $("#amount").val();
+	
+	
+			// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
+			var sData = {
+					"product_id"	: product_id,
+					"product_count": product_count
+			};
+			console.log(sData);
+			var url = "/cart/addCart";
+			$.get(url, sData, function(rData) {
+	// 			console.log(rData);
+				if (rData == "true") {
+					alert("성공");
+				}
+			});
+		}
 	});
 	
 
