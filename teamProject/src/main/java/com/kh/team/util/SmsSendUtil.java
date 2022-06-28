@@ -38,6 +38,6 @@ public class SmsSendUtil {
 		} catch (CoolsmsException e) {
 			System.out.println(e.getMessage());
 			System.out.println(e.getCode());
-		}
+		} 
 	}	
 }
