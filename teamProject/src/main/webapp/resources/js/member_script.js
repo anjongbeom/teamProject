@@ -16,10 +16,12 @@ function idOverlap(){
 //		JSON형식 안에 JSON 형식으로 표현한 데이터. 
 //	    "파라미터 이름" : 폼태그에 적은 NAME 값.ID입력창의 NAME값.value 여러 개 가능 
 //		dataType : "text",	/* text, xml, html, script, json, jsonp  
-		success : function(data){	
-			if(data=="true"){
+		success : function(rdata){	
+			console.log("rdata: ", rdata);
+			if(rdata == "null"){
 				alert("이 아이디는 사용 가능합니다.");
-			}else{	//ajax가 제대로 안됐을 때 .
+				return "true";
+			} else{	//ajax가 제대로 안됐을 때 .
 				alert("이 아이디는 사용 불가능합니다.");
 			}
 		},
@@ -48,6 +50,23 @@ function passConfirm() {
 		confirmMsg.style.color = wrongColor;
 		confirmMsg.innerHTML ="비밀번호 불일치";
 	}
+}
+
+/* 빈칸 체크 */
+function blankCheck() {
+	var member_id = document.getElementById('member_id');
+	var member_pw = document.getElementById('member_pw');
+	var member_name = document.getElementById('member_name');
+	var nickname = document.getElementById('nickname');
+	var email = document.getElementById('email');
+	var favorite = document.getElementById('favorite');
+	var address = document.getElementById('address');
+	var member_tel = document.getElementById('member_tel');
+	
+	
+	
+	
+	
 }
 
 

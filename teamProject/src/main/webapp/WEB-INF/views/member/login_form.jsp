@@ -12,7 +12,6 @@
 $(document).ready(function() {
 	
 	$("#btn_joinForm").click(function() {
-		loca
 		
 	});
 	
@@ -184,10 +183,6 @@ $(document).ready(function() {
 
 
 
-
-
-
-
 <!-- 콘텐츠 시작 { -->
 <div class="container-fluid">
 	<div class="row">
@@ -228,8 +223,8 @@ $(document).ready(function() {
 						<button type="submit" class="btn btn-primary">
 							로그인
 						</button>
-						<a class="btn btn-success"
-							href="/member/joinForm">회원가입</a>
+							<a class="btn btn-success" href="/member/joinForm" >회원가입</a>
+						
 					</form>
 				</div>
 				<div class="col-md-2">
