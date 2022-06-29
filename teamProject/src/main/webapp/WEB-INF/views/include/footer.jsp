@@ -7,7 +7,7 @@
         
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; KA주류교육원</p><br>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; 테이스팅 포 유</p><br>
             	<p class="m-0 text-center text-white">대 표: 김용현 </p><br>
             	<p class="m-0 text-center text-white">tel: 010-1234-5678 </p> 
             </div>

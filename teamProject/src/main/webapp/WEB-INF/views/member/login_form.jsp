@@ -84,7 +84,7 @@ $(document).ready(function() {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>KA주류교육원</title>
+        <title>테이스팅 포 유</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -96,16 +96,16 @@ $(document).ready(function() {
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="http://localhost">KA 주류교육원</a>
+                <a class="navbar-brand" href="http://localhost">테이스팅 포 유</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://localhost/#portfolio">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://localhost">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="http://localhost/board/list">Board</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">주류 종류</a></li>
+                                <li><a class="dropdown-item" href="/product/list">주류 종류</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <c:forEach items="${sessionScope.cateList}" var="productCate">
                                 	<li><a class="dropdown-item" href="/product/list?cate_code=${productCate.cate_code}">${productCate.cate_name}</a></li>
@@ -173,7 +173,7 @@ $(document).ready(function() {
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">로그인</h1>
-                    <p class="lead fw-normal text-white-50 mb-0"> KA 아이디와 비밀번호를 입력해주세요.</p>
+                    <p class="lead fw-normal text-white-50 mb-0"> 테이스팅 포 유 아이디와 비밀번호를 입력해주세요.</p>
                 </div>
             </div>
         </header>
