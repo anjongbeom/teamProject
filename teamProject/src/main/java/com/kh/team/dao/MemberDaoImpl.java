@@ -41,6 +41,7 @@ public class MemberDaoImpl implements MemberDao{
 	public String idOverlap(String member_id) {
 		System.out.println("DaoImpl, member_id: " + member_id);
 		String result = sqlSession.selectOne(NAMESPACE + "idOverlap", member_id);
+		System.out.println("MemberDaoimpl, result: "+ result);
 		return result;
 	}
 

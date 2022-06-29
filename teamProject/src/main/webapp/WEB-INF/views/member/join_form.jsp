@@ -11,20 +11,58 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
 <script src="/resources/js/member_script.js"></script>
 
-<!-- <script type="text/javascript" src="test.js" /> -->
-
 <script>
-var member_id;
+
+
 $(document).ready(function() {
+	var id_duplication = document.getElementById("id_duplication");
+	var id_duplication = document.getElementById("id_duplication");
+	
+	var member_id_validity = "false";
 	
 	$("#btn_id_check").click(function() {
-		member_id = document.getElementById("member_id").value;
-// 		console.log("member_id : ", member_id);
+// 		member_id = document.getElementById("member_id").value;
+// 		member_id_validity = idOverlap();
+// 		console.log("member_id_validity: ", member_id_validity);
 		
+		member_id = document.getElementById("member_id").value;
+		
+// 		console.log("idOverlap 호출");
+		console.log("아이디 입력 값 : ", member_id);
+		
+		$.ajax({
+			type :"post",
+			url :"/member/idOverlap",
+			data : {"member_id" : member_id},
+//			JSON형식 안에 JSON 형식으로 표현한 데이터. 
+//		    "파라미터 이름" : 폼태그에 적은 NAME 값.ID입력창의 NAME값.value 여러 개 가능 
+//			dataType : "text",	/* text, xml, html, script, json, jsonp  
+			success : function(rdata){	
+				console.log("rdata: ", rdata);
+				if(rdata == "null"){
+					alert("이 아이디는 사용 가능합니다.");
+					member_id_validity = "true";
+				} else{	//ajax가 제대로 안됐을 때 .
+					alert("이 아이디는 사용 불가능합니다.");
+				}
+			},
+			error : function(){
+				alert("아이디 중복 확인 ajax 실행 실패");
+			}
+		});
+		
+// 		console.log("member_id_validity: " , member_id_validity);
+		console.log("document.id_duplication.value: " , document.id_duplication.value);
 		
 	});
+	
+// 	$("#btn_join").click(function(e) {
+// 		e.preventDefault();
+		
+// 	});
 	
 });
 
@@ -48,7 +86,9 @@ $(document).ready(function() {
         <link href="/resources/css/menu_styles.css" rel="stylesheet" />
     </head>
     
+    
     <body>
+    	
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -140,6 +180,7 @@ $(document).ready(function() {
 				</div>
 				<div class="col-md-8">
 					<form role="form" action="/member/join_run" method="post" enctype="multipart/form-data">
+					<input type="hidden" id="id_duplication" name="id_duplication" value="id_uncheck">
 						<br>
 						<div class="form-group">
 							<p style="color: red; float: right;">* 필수 입력</p>
@@ -148,13 +189,12 @@ $(document).ready(function() {
 								아이디
 							</label>
 							<span style="color: red;">*</span>
-							<button class="btn btn-primary" type="button" id="btn_id_check" onclick="idOverlap()">중복 확인
+							<button class="btn btn-primary" type="button" id="btn_id_check" >중복 확인
 							</button>
-							<input type="text" class="form-control" id="member_id" name="member_id" value=""/>
+							<input type="text" class="form-control" id="member_id" name="member_id" value="" required/>
 						</div>
 						<!-- 아이디 유효성 & 중복체크 -->
 						<p id="idValid"></p>
-						
 						
 						<div class="form-group">
 							<label for="member_pw">
@@ -162,7 +202,7 @@ $(document).ready(function() {
 							</label>
 							<span style="color: red;">*</span>
 							<input type="password" class="form-control" id="member_pw" name="member_pw" 
-								onchange="passConfirm()"/>
+								onchange="passConfirm()" required/>
 						</div>
 						<!-- 비밀번호 유효성 -->
 						<p id="pwValid"></p>
@@ -173,25 +213,24 @@ $(document).ready(function() {
 							</label>
 							<span style="color: red;">*</span>
 							<input type="password" class="form-control" id="member_pw2" 
-								onchange="passConfirm()"/>
+								onchange="passConfirm()" required/>
 						</div>
-						<!-- 비x밀번호 일치여부 -->
+						<!-- 비밀번호 일치여부 -->
 						<p id="confirmMsg"></p>
-						
 						
 						<div class="form-group">
 							<label for="member_name">
 								회원 이름
 							</label>
 							<span style="color: red;">*</span>
-							<input type="text" class="form-control" id="member_name" name="member_name" />
+							<input type="text" class="form-control" id="member_name" name="member_name" required/>
 						</div>
 						<div class="form-group">
 							<label for="nickname">
 								닉네임
 							</label>
 							<span style="color: red;">*</span>
-							<input type="text" class="form-control" id="nickname" name="nickname"/>
+							<input type="text" class="form-control" id="nickname" name="nickname" required/>
 						</div>
 						
 						
@@ -199,7 +238,8 @@ $(document).ready(function() {
 							<label for="email">
 								이메일
 							</label>
-							<input type="email" class="form-control" id="email" name="email"/>
+							<span style="color: red;">*</span>
+							<input type="email" class="form-control" id="email" name="email" required/>
 						</div>
 						
 						<div class="form-group">
@@ -213,7 +253,8 @@ $(document).ready(function() {
 							<label for="address">
 								주소
 							</label>
-							<input type="text" class="form-control" id="address" name="address"/>
+							<span style="color: red;">*</span>
+							<input type="text" class="form-control" id="address" name="address" required/>
 						</div>
 						
 						<div class="form-group">
@@ -221,29 +262,15 @@ $(document).ready(function() {
 								전화번호
 							</label>
 							<span style="color: red;">*</span>
-							<input type="text" class="form-control" id="member_tel" name="member_tel" />
+							<input type="text" class="form-control" id="member_tel" name="member_tel" required/>
 						</div>
 						
+						<div style="display:flex; justify-content: flex-end; align-items:center; padding-bottom: 10px">
+							<button type="submit" class="btn btn-primary" id="btn_join">
+								회원가입
+							</button>
+						</div>
 						
-<!-- 						<div class="form-group"> -->
-<!-- 							<label for="exampleInputFile"> -->
-<!-- 								File input -->
-<!-- 							</label> -->
-<!-- 							<input type="file" class="form-control-file" id="exampleInputFile" /> -->
-<!-- 							<p class="help-block"> -->
-<!-- 								Example block-level help text here. -->
-<!-- 							</p> -->
-<!-- 						</div> -->
-<!-- 						<div class="checkbox"> -->
-<!-- 							<label> -->
-<!-- 								<input type="checkbox" /> Check me out -->
-<!-- 							</label> -->
-<!-- 						</div>  -->
-						
-						
-						<button type="submit" class="btn btn-primary">
-							회원가입
-						</button>
 					</form>
 				</div>
 				<div class="col-md-2">
