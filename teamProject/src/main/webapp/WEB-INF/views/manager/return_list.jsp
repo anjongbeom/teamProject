@@ -21,7 +21,7 @@
 				<!-- Side widget-->
 				<div class="mb-4">
 		
-				<form action="/manager/orderApproval">
+				<form action="/manager/returnApproval">
 					<!--  <div class="card-header">Side Widget</div> -->
 					<h2 class="card-title">반품 요청  품목</h2>
 					<div style="margin-left: 10px;" class="small text-muted"></div>
@@ -41,11 +41,10 @@
 						</thead>
 						
 						<tbody class="table-group-divider">
-						<c:forEach items="${sessionScope.ordered_detail_List}" var="orderedDto">
+						<c:forEach items="${return_list}" var="orderedDto">
 							<tr>
-						
 								<td style="vertical-align:middle">
-									<input type="checkbox" name="checked_list" value="${orderedDto.order_detail_no}" 
+									<input type="checkbox" name="checked_return_list" value="${orderedDto.order_detail_no}" 
 										data-order_detail_no="${orderedDto.order_detail_no}" checked></td>
 								<td style="vertical-align:middle; text-align: center;">${orderedDto.order_detail_no}</td>
 								<td>
@@ -61,7 +60,6 @@
 						</c:forEach>
 						</tbody>
 					</table>
-					
 					
 					<button type="submit" style="float: right; margin-right: 10px;" 
 						class="btn btn-primary">체크된 항목 반품승인</button>

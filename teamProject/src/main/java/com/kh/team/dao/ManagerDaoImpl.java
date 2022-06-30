@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.vo.OrderVo;
-import com.kh.team.vo.OrderedDtailDto;
+import com.kh.team.vo.OrderedDetailDto;
 import com.kh.team.vo.PagingDto;
 import com.kh.team.vo.ProductVo;
 
@@ -48,8 +48,8 @@ public class ManagerDaoImpl implements ManagerDao{
 	
 	// 주문된 상세 목록
 	@Override
-	public List<OrderedDtailDto> getOrderedDetailList(int order_no) {
-		List<OrderedDtailDto> list = sqlSession.selectList(NAMESPACE + "getOrderedDetailList", order_no);
+	public List<OrderedDetailDto> getOrderedDetailList(int order_no) {
+		List<OrderedDetailDto> list = sqlSession.selectList(NAMESPACE + "getOrderedDetailList", order_no);
 		return list;
 	}
 	
@@ -58,15 +58,15 @@ public class ManagerDaoImpl implements ManagerDao{
 	
 	// 체크한 상세 품목얻기 by order_detail_no
 	@Override
-	public OrderedDtailDto getOneOrderedDetail(int order_detail_no) {
-		OrderedDtailDto list = sqlSession.selectOne(NAMESPACE + "getOneOrderedDetail", order_detail_no);
+	public OrderedDetailDto getOneOrderedDetail(int order_detail_no) {
+		OrderedDetailDto list = sqlSession.selectOne(NAMESPACE + "getOneOrderedDetail", order_detail_no);
 		return list;
 	}
 	
 
 	// 주문 승인(해당품목 재고감소)
 	@Override
-	public boolean orderApproval(OrderedDtailDto ordered_detail) {
+	public boolean orderApproval(OrderedDetailDto ordered_detail) {
 		int approval_result = sqlSession.update(NAMESPACE + "orderApproval", ordered_detail);
 		if (approval_result > 0) {
 			return true;
@@ -86,8 +86,8 @@ public class ManagerDaoImpl implements ManagerDao{
 
 	// 주문자의 포인트 차감
 	@Override
-	public void updateApprovedPointForMember(OrderedDtailDto ordered_detail) {
-		sqlSession.update(NAMESPACE + "updateApprovedPointForMember", ordered_detail);
+	public void updateApprovedPointForMember(OrderedDetailDto ordered_detail_dto) {
+		sqlSession.update(NAMESPACE + "updateApprovedPointForMember", ordered_detail_dto);
 	}
 	
 	
@@ -101,13 +101,10 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 	
 	
-//	order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 변경
-	public void updateOrderStatusCode(int order_no) {
-		System.out.println("order_no : " + order_no);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("order_no", order_no);
-		sqlSession.update(NAMESPACE + "updateOrderStatusCode", map);
-		
+	// order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 변경 (서비스에서 ORDER_STATUS_CODE를 set)
+	public void updateOrderStatusCode(OrderedDetailDto ordered_detail_dto) {
+		System.out.println("ordered_detail_dto : " + ordered_detail_dto);
+		sqlSession.update(NAMESPACE + "updateOrderStatusCode", ordered_detail_dto);
 	}
 	
 	// detail_no로 order_no 얻기
@@ -116,18 +113,62 @@ public class ManagerDaoImpl implements ManagerDao{
 		return result;
 	}
 	
-//	order_no로 fk_member_id를 얻기
+	// order_no로 fk_member_id를 얻기
 	public String getMemberIdByOrderNo(int order_no) {
 		String result = sqlSession.selectOne(NAMESPACE + "getMemberIdByOrderNo", order_no);
 		return result;
 	}
 	
 	
-//	order_no로  member_tel를 얻기 
+	// order_no로  member_tel를 얻기 
 	public String getMemberTelByMemberId(int order_no) {
 		String result = sqlSession.selectOne(NAMESPACE + "getMemberTelByMemberId", order_no);
 		return result;
 	}
+	
+	// 반품 목록 얻기
+	@Override
+	public List<OrderedDetailDto> getReturnedList(int order_detail_status_code) {
+		List<OrderedDetailDto> return_list = sqlSession.selectList(NAMESPACE + "getReturnedList", order_detail_status_code);
+		return return_list;
+	}
+	
+	
+	// 반품 승인된 컬럼 데이터(fk_order_detail_status_code) 6으로 변경 
+	@Override
+	public boolean updateApprovedDataToSixth(int order_detail_no) {
+		int delete_approval_data_result = sqlSession.update(NAMESPACE + "updateApprovedDataToSixth", order_detail_no);
+		if (delete_approval_data_result > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	// order_detail_no로 OrderedDetailDto 정보 얻기
+	@Override
+	public OrderedDetailDto getOrderedDetailByOrderDetailNo(int order_detail_no) {
+		
+		// int -> map
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("map_order_detail_no", order_detail_no);
+		OrderedDetailDto orderedDetailDto = sqlSession.selectOne(NAMESPACE + "getOrderedDetailByOrderDetailNo", map);
+		return orderedDetailDto;
+	}
+	
+	// 반품 회원의 포인트 환불
+	@Override
+	public void updateRefundPointForMember(OrderedDetailDto ordered_detail_dto) {
+		Map<String, Object> map = new HashMap<String, Object>();
+//		int test_num = 10;
+//		map.put("test_num", test_num);
+		map.put("ordered_detail_dto", ordered_detail_dto);
+		
+		sqlSession.update(NAMESPACE + "updateRefundPointForMember", ordered_detail_dto);
+	}
+
+	
+	
 	
 	
 }

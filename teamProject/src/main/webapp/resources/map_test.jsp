@@ -59,9 +59,7 @@
 
 					<!-- </iframe><br> -->
 					
-					
-						<!-- Footer-->
-        
+					<!-- Footer-->
 					
 				</div>
 

@@ -1,35 +1,49 @@
 package com.kh.team.vo;
 
-public class OrderedDtailDto {
+public class OrderedDetailDto {
 	
+	private int order_no;
 	private int order_detail_no;
 	private String product_image;
 	private String product_id;
 	private int product_price;
 	private int order_product_amount;
 	private String member_id;
+	private String order_status_code;
 	private String order_detail_status_code;
 	private String product_kor_name;
 	private String order_detail_status_descript;
 	
 	
-	public OrderedDtailDto() {
+	public OrderedDetailDto() {
 	}
 
 
-	public OrderedDtailDto(int order_detail_no, String product_image, String product_id, int product_price,
-			int order_product_amount, String member_id, String order_detail_status_code, String product_kor_name,
-			String order_detail_status_descript) {
+	public OrderedDetailDto(int order_no, int order_detail_no, String product_image, String product_id,
+			int product_price, int order_product_amount, String member_id, String order_status_code,
+			String order_detail_status_code, String product_kor_name, String order_detail_status_descript) {
 		super();
+		this.order_no = order_no;
 		this.order_detail_no = order_detail_no;
 		this.product_image = product_image;
 		this.product_id = product_id;
 		this.product_price = product_price;
 		this.order_product_amount = order_product_amount;
 		this.member_id = member_id;
+		this.order_status_code = order_status_code;
 		this.order_detail_status_code = order_detail_status_code;
 		this.product_kor_name = product_kor_name;
 		this.order_detail_status_descript = order_detail_status_descript;
+	}
+
+
+	public int getOrder_no() {
+		return order_no;
+	}
+
+
+	public void setOrder_no(int order_no) {
+		this.order_no = order_no;
 	}
 
 
@@ -93,11 +107,21 @@ public class OrderedDtailDto {
 	}
 
 
+	public String getOrder_status_code() {
+		return order_status_code;
+	}
+
+
+	public void setOrder_status_code(String order_status_code) {
+		this.order_status_code = order_status_code;
+	}
+
+
 	public String getOrder_detail_status_code() {
 		return order_detail_status_code;
 	}
-	
-	
+
+
 	public void setOrder_detail_status_code(String order_detail_status_code) {
 		this.order_detail_status_code = order_detail_status_code;
 	}
@@ -116,23 +140,21 @@ public class OrderedDtailDto {
 	public String getOrder_detail_status_descript() {
 		return order_detail_status_descript;
 	}
-
-
+	
+	
 	public void setOrder_detail_status_descript(String order_detail_status_descript) {
 		this.order_detail_status_descript = order_detail_status_descript;
 	}
-
-
+	
+	
 	@Override
 	public String toString() {
-		return "OrderedDtailDto [order_detail_no=" + order_detail_no + ", product_image=" + product_image
-				+ ", product_id=" + product_id + ", product_price=" + product_price + ", order_product_amount="
-				+ order_product_amount + ", member_id=" + member_id + ", order_detail_status_code="
-				+ order_detail_status_code + ", product_kor_name=" + product_kor_name
-				+ ", order_detail_status_descript=" + order_detail_status_descript + "]";
+		return "OrderedDetailDto [order_no=" + order_no + ", order_detail_no=" + order_detail_no + ", product_image="
+				+ product_image + ", product_id=" + product_id + ", product_price=" + product_price
+				+ ", order_product_amount=" + order_product_amount + ", member_id=" + member_id + ", order_status_code="
+				+ order_status_code + ", order_detail_status_code=" + order_detail_status_code + ", product_kor_name="
+				+ product_kor_name + ", order_detail_status_descript=" + order_detail_status_descript + "]";
 	}
-
-	
 	
 	
 	
