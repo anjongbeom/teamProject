@@ -1,6 +1,8 @@
 package com.kh.team.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,79 +17,90 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
 
 	@Override
 	public boolean create(BoardVo boardVo) {
 		int count = sqlSession.insert(NAMESPACE + "create", boardVo);
+		if(count > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public BoardVo read(int bno) {
+		BoardVo boardVo = sqlSession.selectOne(NAMESPACE + "read", bno);
+		return boardVo;
+	}
+
+	@Override
+	public boolean update(BoardVo boardVo) {
+		int count = sqlSession.update(NAMESPACE + "update", boardVo);
 		if (count > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	
-	@Override
-	public BoardVo read(int bno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean update(BoardVo boardVo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	public boolean delete(int bno) {
-		// TODO Auto-generated method stub
+		int count = sqlSession.delete(NAMESPACE+"delete",bno);
+		if (count > 0) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public List<BoardVo> list(PagingDto pagingDto) {
-		List<BoardVo> list = sqlSession.selectList(NAMESPACE + "list", pagingDto);
+		List<BoardVo> list = sqlSession.selectList(
+				NAMESPACE + "list", pagingDto);
 		return list;
 	}
 
 	@Override
-	public int getCount(PagingDto pagingDto) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getCount(PagingDto paginDto) {
+		int count = sqlSession.selectOne(NAMESPACE + "getCount" , paginDto);
+		return count;
 	}
 
 	@Override
 	public boolean insertReply(BoardVo boardVo) {
-		// TODO Auto-generated method stub
+		int count = sqlSession.insert(NAMESPACE + "insertReply",boardVo);
+		if (count > 0) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
-	public void updateRESeq(BoardVo boardVo) {
-		// TODO Auto-generated method stub
+	public void updateReSeq(BoardVo boardVo) {
+		sqlSession.update(NAMESPACE + "updateReSeq", boardVo);
 		
 	}
 
 	@Override
 	public void updateViewCnt(int bno) {
-		// TODO Auto-generated method stub
+		sqlSession.update(NAMESPACE + "updateViewCnt", bno);
 		
 	}
 
 	@Override
 	public int getNextBno() {
-		// TODO Auto-generated method stub
-		return 0;
+		int bno = sqlSession.selectOne(NAMESPACE + "getNextBno");
+		System.out.println("getNextBno, bno:" + bno);
+		return bno;
 	}
 
 	@Override
 	public void insertAttach(String filename, int bno) {
-		// TODO Auto-generated method stub
-		
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		parameter.put("filename", filename);
+		parameter.put("bno", bno);
+		sqlSession.insert(NAMESPACE + "insertAttach", parameter);
 	}
+
 	
-	
-	
+
 
 }

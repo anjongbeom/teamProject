@@ -50,7 +50,6 @@ $("#selectDelete_btn").click(function(){
 
 $("#selectpurchase_btn").click(function(){
  var confirm_val = confirm("구매합니까?");
- 
  if(confirm_val) {
   var checkArr = new Array();
   
@@ -63,12 +62,12 @@ $("#selectpurchase_btn").click(function(){
    type : "post",
    data : { chk : checkArr },
    success : function(result){
-	   console.log(result);
-
-    
+	   console.log("result :",result);
+	   
    }
   });
  } 
+setTimeout("location.reload()",1000);
 });
 });
 </script>
@@ -179,7 +178,7 @@ $("#selectpurchase_btn").click(function(){
 								<div class="col-md-12 ">
 <!-- 					구매하기 할때 정보를 넘기는데 넘겨야할 정보는  -->
 					<button type="button" style="float:right; margin-right:30px;" id="selectpurchase_btn"
-					class="btn btn-primary text-align-right"
+					class="btn btn-primary text-align-right" 
 						>구매하기
 					</button>
 					</div>
