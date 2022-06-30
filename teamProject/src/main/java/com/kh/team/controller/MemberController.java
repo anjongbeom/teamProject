@@ -59,7 +59,7 @@ public class MemberController {
 		
 		if (memberVo == null) {
 			rttr.addFlashAttribute("login_result", "fail");
-			return "redirect:/";
+			return "redirect:/member/loginForm";
 		} else {
 			session.setAttribute("loginVo", memberVo);
 			if (saveId != null && !saveId.equals("")) {

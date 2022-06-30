@@ -107,7 +107,7 @@ $(document).ready(function() {
 			$.get(url, sData, function(rData) {
 	// 			console.log(rData);
 				if (rData == "true") {
-					alert("성공");
+					alert("장바구니에 물품이 담겼습니다.");
 				}
 			});
 		}
