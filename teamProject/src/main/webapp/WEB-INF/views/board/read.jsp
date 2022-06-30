@@ -203,6 +203,7 @@ $(document).ready(function(){
 							<input type="text" class="form-control" id="writer" 
 							name="writer" value="${boardVo.writer}" readonly="readonly"/>
 						</div>
+						<div style="height: 10px;"></div>
 						<button type="button" class="btn btn-primary"
 						id="btnUpdate">수정</button>
 						<button type="submit" class="btn btn-success"
@@ -210,6 +211,7 @@ $(document).ready(function(){
 						<a class="btn btn-danger"  id="btnDelete"
 						href="${boardVo.bno}">삭제</a>
 						<a class="btn btn-warning" href="/board/replyForm?bno=${boardVo.bno}">답글</a>
+						
 						</form>
 					</div>
 				</div>
