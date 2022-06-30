@@ -18,17 +18,23 @@
 
 
 $(document).ready(function() {
-	var id_duplication = document.getElementById("id_duplication");
-	var id_duplication = document.getElementById("id_duplication");
+	var frm_join = document.getElementById("frm_join");
 	
-	var member_id_validity = "false";
+// 	var member_id_validity = "false";
 	
 	$("#btn_id_check").click(function() {
 // 		member_id = document.getElementById("member_id").value;
 // 		member_id_validity = idOverlap();
 // 		console.log("member_id_validity: ", member_id_validity);
 		
-		member_id = document.getElementById("member_id").value;
+		var id_duplication = document.getElementById("id_duplication");
+		var member_id = document.getElementById("member_id").value;
+		
+		console.log("id_duplication.value : ", id_duplication.attr("value"));
+		
+		id_duplication.attr("value", "id_checked");
+		
+		console.log("id_duplication.value : ", id_duplication);
 		
 // 		console.log("idOverlap 호출");
 		console.log("아이디 입력 값 : ", member_id);
@@ -55,7 +61,7 @@ $(document).ready(function() {
 		});
 		
 // 		console.log("member_id_validity: " , member_id_validity);
-		console.log("document.id_duplication.value: " , document.id_duplication.value);
+// 		console.log("document.frm_join.id_duplication.value: " , document.frm_join.id_duplication.value);
 		
 	});
 	
@@ -77,7 +83,7 @@ $(document).ready(function() {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>KA주류교육원</title>
+        <title>테이스팅 포 유</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -92,7 +98,7 @@ $(document).ready(function() {
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="http://localhost">KA 주류교육원</a>
+                <a class="navbar-brand" href="http://localhost">테이스팅 포 유</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -161,7 +167,7 @@ $(document).ready(function() {
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">회원가입</h1>
-                    <p class="lead fw-normal text-white-50 mb-0"> KA와 함께 해주세요</p>
+                    <p class="lead fw-normal text-white-50 mb-0"> 테이스팅 포 유와 함께 해주세요</p>
                 </div>
             </div>
         </header>
@@ -179,7 +185,7 @@ $(document).ready(function() {
 				<div class="col-md-2">
 				</div>
 				<div class="col-md-8">
-					<form role="form" action="/member/join_run" method="post" enctype="multipart/form-data">
+					<form role="form" action="/member/join_run" method="post" enctype="multipart/form-data" id ="frm_join">
 					<input type="hidden" id="id_duplication" name="id_duplication" value="id_uncheck">
 						<br>
 						<div class="form-group">
