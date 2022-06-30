@@ -30,15 +30,15 @@ $("#selectpurchase_btn").click(function(e) {
 	$.get(url, sData, function(rData) {
 //			console.log(rData);
 		if (rData == "true") {
-			alert("성공");
+			alert("주문 완료");
 		}
 	});
 });
 
 });
 </script>
-member_id : ${loginVo.member_id}
-param.amount: ${param.amount}
+<%-- member_id : ${loginVo.member_id} --%>
+<%-- param.amount: ${param.amount} --%>
 	<!-- Page header with logo and tagline-->
 	<header class="py-5 bg-light border-bottom mb-4">
 		<div class="container">
