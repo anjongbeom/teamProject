@@ -7,13 +7,94 @@
 <mapper namespace="com.kh.team.mappers.board">
 
 
-	<!-- 글 등록  -->
-	<insert id="create">
-		insert into tal_board(board_no, board_title, board_content, writer, re_group)
-		values(#{board_no}, #{board_title}, 
-			#{board_content, jdbcType=VARCHAR}, #{writer},
-			#{board_no})
+  	<select id="getNextBno" resultType="int">
+  		select seq_board_bno.nextval from dual
+  	</select>
+  	
+  	<insert id="insertAttach">
+  		insert into tal_attach(filename, bno)
+  		values(#{filename}, #{bno})
+  	</insert>
+  
+  	<insert id="create">
+  		insert into tal_board (bno, title, content, writer, re_group)
+  		values (#{bno}, #{title}, #{content, jdbcType=VARCHAR},
+  		 #{writer} , #{bno})
+  	</insert>
+  	<select id="read" resultType="BoardVo">
+  		select * from tal_board  	
+  		where bno = #{bno}
+  	</select>
+  	<update id="update">
+  		update tal_board set
+  			title = #{title},
+  			content = #{content, jdbcType=VARCHAR},
+  			writer = #{writer}
+  		where bno = #{bno}
+  	</update>
+  	<delete id="delete">
+  		delete from tal_board
+  		where bno = #{bno}
+  	</delete>
+  	<select id="list" resultType="BoardVo">
+  		select * from (select rownum rnum, a. * from
+	    (select * from tal_board
+	    <include refid="search"></include>
+	      order by re_group desc, re_seq asc) a)
+		where rnum between #{startRow} and #{endRow}
+  	</select>
+  	<select id="getCount" resultType="int">
+  		select count(*) from tal_board
+  		<include refid="search"></include>
+  	</select>
+  	<sql id="search">
+  		<if test="searchType != null and keyword != null">
+	    <choose>
+	    	<when test='searchType =="t"'>
+	    		where title like '%' || #{keyword} || '%'
+	    	</when>
+	    	<when test='searchType =="c"'>
+	    		where content like '%' || #{keyword} || '%'
+	    	</when>
+	    	<when test='searchType =="w"'>
+	    		where writer like '%' || #{keyword} || '%'
+	    	</when>
+	    	<when test='searchType =="tc"'>
+	    		where title like '%' || #{keyword} || '%'
+	    		or content like '%' || #{keyword} || '%'
+	    	</when>
+	    	<when test='searchType =="tcw"'>
+	    		where title like '%' || #{keyword} || '%'
+	    		or content like '%' || #{keyword} || '%'
+	    		or writer like '%' || #{keyword} || '%'
+	    	</when>
+	    </choose>	    
+	    </if>
+  	</sql>
+<!--   답글쓰기	 -->
+	<insert id="insertReply">
+		insert into tal_board
+			(bno, title, content, writer,
+			 re_group, re_level, re_seq)
+		values
+			(seq_board_bno.nextval, #{title}, #{content}, #{writer},
+			#{re_group}, #{re_level} + 1, #{re_seq} + 1)
 	</insert>
+<!--   	답글 순서 조정  -->
+  	<update id="updateReSeq">
+  		<![CDATA[
+   			update tal_board set 
+  				re_seq = re_seq + 1 
+  			where re_group = #{re_group} 
+   			and re_seq > #{re_seq} 
+  			]]>
+  	</update>
+  	
+  	<update id="updateViewCnt">
+  		update tal_board set
+  			viewcnt = viewcnt + 1
+  		where bno = #{bno}
+  	</update>
 	
 	
 	
