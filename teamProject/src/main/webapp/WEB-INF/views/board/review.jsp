@@ -89,7 +89,7 @@ $(function(){
 		<div class="col-md-12">
 			<div class="jumbotron">
 				<h2>
-					글쓰기 폼
+					리뷰 작성
 				</h2>
 				<p><a class="btn btn-primary btn-large" href="/board/list?page=1">글목록</a></p>
 			</div>
