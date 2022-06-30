@@ -62,7 +62,6 @@
 						</tbody>
 					</table>
 					
-					
 					<button type="submit" style="float: right; margin-right: 10px;" 
 						class="btn btn-primary">체크된 항목 승인</button>
 					
@@ -74,11 +73,6 @@
 				</div>
 			</div>
 		
-<!-- 			<div class="content"> -->
-<!-- 				<span style="font-size: 25px; color: #433406;"> 배송지</span> -->
-				
-<!-- 			</div> -->
-			
 			
 		</div> <!-- <div class="row">  -->
 	</div> <!-- // Container -->
