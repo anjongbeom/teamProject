@@ -255,8 +255,7 @@ ${loginVo }
 								<td></td>
 								<td></td>
 								<td></td>
-<%-- 								<c:choose> --%>
-<%-- 									<c:when test="${loginVo.member_id == commentVo.member_id}"> --%>
+
 									<td>
 										<button type="button" 
 										class="btn btn-sm btn-warning btnCommentModify">수정</button>
@@ -267,12 +266,7 @@ ${loginVo }
 										<button type="button" 
 										class="btn btn-sm btn-danger btnCommentDelete">삭제</button>
 									</td>
-<%-- 									</c:when> --%>
-<%-- 									<c:otherwise> --%>
-<!-- 										<td></td> -->
-<!-- 										<td></td> -->
-<%-- 									</c:otherwise> --%>
-<%-- 								</c:choose> --%>
+
 							</tr>
 						</table>
 						<table class="table" id="table_comment_list">

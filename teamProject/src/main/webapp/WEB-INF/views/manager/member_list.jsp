@@ -74,7 +74,7 @@ $(document).ready(function() {
 // 		var frmPaging = $("#frmPaging"); 위쪽 정의
 		frmPaging.find("input[name=page]").val(page);
 		// action을 생략하면 브라우저 주소창의 현재 경로가 action값이 됨
-		frmPaging.attr("action", "/manager/stockList");
+		frmPaging.attr("action", "/manager/memberList");
 		// method를 생략하면 get이 기본 값이 됨
 		frmPaging.attr("method", "get");
 		frmPaging.submit();
@@ -195,8 +195,6 @@ $(document).ready(function() {
 								<td>${memberVo.address}</td>
 								<td>${memberVo.member_tel}</td>
 								<td>${memberVo.member_point}</td>
-								
-								
 								
 							</tr>
 						</c:forEach>
