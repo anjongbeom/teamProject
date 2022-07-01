@@ -13,7 +13,7 @@ public interface ManagerService {
 
 	public boolean createStock(); // 재고 등록
 	public List<ProductVo> getStockList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
-	public int getCount(PagingDto pagingDto); // 테스트용 get
+	public int getProductCount(PagingDto pagingDto); // 제품 개수 얻기
 	
 	// 주문 승인하기
 	public List<OrderVo> getOrderedList(int order_status_code); // 주문된 목록
@@ -34,6 +34,7 @@ public interface ManagerService {
 	
 	// 멤버 리스트
 	public List<MemberVo> getMemberList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
+	public int getMemberCount(PagingDto pagingDto); // 멤버 개수 얻기
 	
 	
 }

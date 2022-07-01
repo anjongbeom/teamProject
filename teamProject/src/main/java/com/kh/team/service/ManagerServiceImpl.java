@@ -53,9 +53,10 @@ public class ManagerServiceImpl implements ManagerService {
 		return result;
 	}
 
+	// 제품 개수 얻기
 	@Override
-	public int getCount(PagingDto pagingDto) {
-		int count = managerDao.getCount(pagingDto);
+	public int getProductCount(PagingDto pagingDto) {
+		int count = managerDao.getProductCount(pagingDto);
 		return count;
 	}
 
@@ -183,19 +184,15 @@ public class ManagerServiceImpl implements ManagerService {
 			System.out.println("Dto: " + ordered_detail_dto);
 			
 			boolean apporoval_result = managerDao.orderRefund(ordered_detail_dto); // ! 반품 승인(재고 증가)
-			
 			//~
-			ordered_detail_dto.setOrder_detail_status_code("7"); //	order_detail_no으로 fk_order_detail_status_code를 7로 변경
+			ordered_detail_dto.setOrder_detail_status_code("7");
 			managerDao.updateOrderDetailStatusCode(ordered_detail_dto); // ! 해당 ORDER_DETAIL_STATUS_CODE  5 -> 7로
 			// ~//
 			
 			// ordered_detail_dto를 넘겨줘서 반품한 member_id, product_id, product_price, product_amount 사용하기 (회원에게 포인트 환급)
 			managerDao.updateRefundPointForMember(ordered_detail_dto); // ! 반품 회원의 포인트 환불
-			
-//			int order_no = managerDao.getOrderNoByDetailNo(parse_order_detail_no); // ! detail_no로 order_no 얻기
-			ordered_detail_dto.setOrder_status_code("6"); // ! Order_status_code를 6으로 set
+			ordered_detail_dto.setOrder_status_code("6");
 			managerDao.updateOrderStatusCode(ordered_detail_dto);// ! order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 6로 변경 
-			
 			
 		}
 	}
@@ -206,6 +203,13 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<MemberVo> getMemberList(PagingDto pagingDto) {
 		List<MemberVo> member_list = managerDao.getMemberList(pagingDto);
 		return member_list;
+	}
+	
+	// 멤버 개수 얻기
+	@Override
+	public int getMemberCount(PagingDto pagingDto) {
+		int count = managerDao.getMemberCount(pagingDto);
+		return count;
 	}
 	
 	

@@ -8,32 +8,32 @@
 
 
 	<!-- 제품 총 개수 -->
-		<select id="getCount" resultType="int">
-			select count(*) from tal_product
-			<include refid="search"></include>
-		</select>
+	<select id="getProductCount" resultType="int">
+		select count(*) from tal_product
+		<include refid="searchProduct"></include>
+	</select>
 	
 	<!-- 제품 목록 -->
 	<select id="getStockList" resultType="ProductVo">
 		select * from
 			(select rownum rnum, a.* from
 				(select * from tal_product
-					<include refid="search"></include>
+					<include refid="searchProduct"></include>
 				 order by cate_code desc, product_id asc) a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	<!-- 제품 검색 조건 -->
-	<sql id="search">
+	<sql id="searchProduct">
 		<if test="searchType != null and keyword != null">
 			<choose>
-				<when test='searchType == "pn" '>
-					where product_name like '%' || #{keyword} || '%'
+				<when test='searchType == "pkn"'>
+					where product_kor_name like '%' || #{keyword} || '%'
 				</when>
-				<when test='searchType == "pi" '>
+				<when test='searchType == "pi"'>
 					where product_id like '%' || #{keyword} || '%'	
 				</when>
-				<when test='searchType == "cc" '>
+				<when test='searchType == "cc"'>
 					where cate_code like '%' || #{keyword} || '%'
 				</when>
 			</choose>
@@ -52,41 +52,26 @@
 		order by order_no desc
 	</select>
 	
-	<!-- 주문된 제품 검색 조건 -->
-<!-- 	<sql id="search"> -->
-<!-- 		<if test="searchType != null and keyword != null"> -->
-<!-- 			<choose> -->
-<!-- 				<when test='searchType == "pn" '> -->
-<!-- 					where product_name like '%' || #{keyword} || '%' -->
-<!-- 				</when> -->
-<!-- 				<when test='searchType == "pi" '> -->
-<!-- 					where product_id like '%' || #{keyword} || '%'	 -->
-<!-- 				</when> -->
-<!-- 				<when test='searchType == "cc" '> -->
-<!-- 					where cate_code like '%' || #{keyword} || '%' -->
-<!-- 				</when> -->
-<!-- 			</choose> -->
-<!-- 		</if> -->
-<!-- 	</sql> -->
-	
+
 	
 	<!-- 주문된 제품 상세 목록 -->
 	<select id="getOrderedDetailList" resultType="OrderedDetailDto">
-		<include refid="getOrderedDetail"></include>
+		<include refid="getDtoJoin"></include>
+		and od.fk_order_detail_status_code = 1
 		and order_no = #{order_no}
 		order by order_detail_no desc
 	</select>
 	
 	<!-- 주문된 제품 상세 하나 얻기 -->
 	<select id="getOneOrderedDetail" resultType="OrderedDetailDto">
-		<include refid="getOrderedDetail"></include>
+		<include refid="getDtoJoin"></include>
+		and od.fk_order_detail_status_code = 1
 		and order_detail_no = #{order_detail_no}
 	</select>
 	
-	
-	<!-- 제품 상세 목록용 -->
-	<sql id="getOrderedDetail">
-		select o.order_no, 
+	<!-- 주문 처리용 DTO 컬럼 조인으로 얻기 -->
+	<sql id="getDtoJoin">
+		select o.order_no,  
 			od.order_detail_no,
 		    p.product_image,
 		    od.fk_product_id as product_id,
@@ -101,8 +86,8 @@
 		where o.order_no = od.fk_order_no
 		and od.fk_product_id = p.product_id
 		and odsc.order_detail_status_code = od.fk_order_detail_status_code
-		and od.fk_order_detail_status_code = 1
 	</sql>
+	
 	
 	<!-- 주문된 하나의 컬럼 승인(해당 제품의 재고 감소) -->
 	<update id="orderApproval">
@@ -221,28 +206,6 @@
 	</select>
 	
 	
-	<sql id="getDtoJoin">
-		select o.order_no,  
-			od.order_detail_no,
-		    p.product_image,
-		    od.fk_product_id as product_id,
-		    p.product_kor_name,
-		    p.product_price,
-		    od.order_product_amount,
-		    o.fk_member_id as member_id, 
-		    o.fk_order_status_code as order_status_code, 
-		    od.fk_order_detail_status_code as order_detail_status_code,
-		    odsc.order_detail_status_descript
-		from tal_order o, tal_order_detail od, tal_product p, tal_order_detail_status_code odsc
-		where o.order_no = od.fk_order_no
-		and od.fk_product_id = p.product_id
-		and odsc.order_detail_status_code = od.fk_order_detail_status_code
-	</sql>
-	
-	
-	
-	
-	
 	
 	
 	<!-- order_detail_no로 OrderedDetailDto 정보 얻기 -->
@@ -267,12 +230,35 @@
 		select * from
 			(select rownum rnum, a.* from
 				(select * from tal_member
-					<include refid="search"></include>
+					<include refid="searchMember"></include>
 				 order by member_id desc) a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
 	
 	
+	<!-- 멤버 검색 조건 -->
+	<sql id="searchMember">
+		<if test="searchType != null and keyword != null">
+			<choose>
+				<when test='searchType == "mn" '>
+					where member_name like '%' || #{keyword} || '%'
+				</when>
+				<when test='searchType == "ad" '>
+					where address like '%' || #{keyword} || '%'	
+				</when>
+				<when test='searchType == "mt" '>
+					where member_tel like '%' || #{keyword} || '%'
+				</when>
+			</choose>
+		</if>
+	</sql>
+	
+	
+	<!-- 멤버 총 개수 -->
+	<select id="getMemberCount" resultType="int">
+		select count(*) from tal_member
+		<include refid="searchMember"></include>
+	</select>
 	
 	
 		

@@ -63,7 +63,7 @@ $(document).ready(function() {
 // 		var frmPaging = $("#frmPaging"); 위쪽 정의
 		frmPaging.find("input[name=perPage]").val(perPage);
 		frmPaging.find("input[name=page]").val(1);
-		frmPaging.attr("action", "/manager/stockList");
+		frmPaging.attr("action", "/manager/memberList");
 		frmPaging.attr("method", "get");
 		frmPaging.submit();
 	});
@@ -90,7 +90,7 @@ $(document).ready(function() {
 		frmPaging.find("input[name=searchType]").val(searchType);
 		frmPaging.find("input[name=keyword]").val(keyword);
 		frmPaging.find("input[name=page]").val(1);
-		frmPaging.attr("action", "/manager/MemeberList");
+		frmPaging.attr("action", "/manager/memberList");
 		frmPaging.attr("method", "get");
 		frmPaging.submit();
 		
@@ -128,23 +128,21 @@ $(document).ready(function() {
 					
 					<!--  검색 -->
 					<select name="search" id="searchType" style="margin-left:30px">
-						<option value="pn"
-							<c:if test="${pagingDto.searchType=='pn'}">
+						<option value="mn"
+							<c:if test="${pagingDto.searchType=='mn'}">
 								selected
 							</c:if>
-						>제품 이름</option>
-							
-						<option value="pi"
-							<c:if test="${pagingDto.searchType=='pi'}">
+						>멤버 이름</option>
+						<option value="ad"
+							<c:if test="${pagingDto.searchType=='ad'}">
 								selected
 							</c:if>
-						>제품 아이디</option>
-						<option value="cc"
-							<c:if test="${pagingDto.searchType=='cc'}">
+						>주소</option>
+						<option value="mt"
+							<c:if test="${pagingDto.searchType=='mt'}">
 								selected
 							</c:if>
-						>카테고리 코드</option>
-					
+						>전화번호</option>
 					
 					</select>
 					<input type="text" id="keyword" value="${pagingDto.keyword}">
@@ -159,31 +157,26 @@ $(document).ready(function() {
 						<thead>
 							<tr>
 								<th>#</th>
-								<td>MEMBER_ID</td>
-								<td>MEMBER_PW</td>
-								<td>MEMBER_NAME</td>
-								<td>NICKNAME</td>
-								<td>EMAIL</td>
-								<td>FAVORITE</td>
-								<td>REGDATE</td>
-								<td>UPDATEDATE</td>
-								<td>ADDRESS</td>
-								<td>MEMBER_TEL</td>
-								<td>MEMBER_POINT</td>
+								<td>아이디</td>
+								<td>패스워드</td>
+								<td>이름</td>
+								<td>닉네임</td>
+								<td>이메일</td>
+								<td>선호 주류</td>
+								<td>등록일</td>
+								<td>업데이트일</td>
+								<td>주소</td>
+								<td>전화번호</td>
+								<td>포인트</td>
 							</tr>
 						</thead>
 						<tbody>
-<!-- 						MEMBER_ID, MEMBER_PW, MEMBER_NAME, NICKNAME, EMAIL,  -->
-<!-- 						FAVORITE, REGDATE, UPDATEDATE, ADDRESS, MEMBER_TEL, -->
-<!-- 						 MEMBER_POINT -->
+
 						
 						<c:forEach items="${member_list}" var="memberVo">
 							<tr class="tr_list" data-bno="${memberVo.member_id}" style=" justify-content:center;">
 								<td style= "vertical-align:middle;">#</td>
-<!-- 								<td style= "vertical-align:middle;"> -->
-<%-- 								<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}"   --%>
-<!-- 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" /> -->
-<!-- 								</td> -->
+
 								<td>${memberVo.member_id}</td>
 								<td>${memberVo.member_pw}</td>
 								<td>${memberVo.member_name}</td>
