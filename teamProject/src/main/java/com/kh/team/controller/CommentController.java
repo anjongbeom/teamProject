@@ -24,7 +24,7 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 
-	
+	  
 	@RequestMapping(value = "/insertComment", method = RequestMethod.POST)
 	public String insertComment(CommentVo commentVo) {
 		boolean result = commentService.insertComment(commentVo);
