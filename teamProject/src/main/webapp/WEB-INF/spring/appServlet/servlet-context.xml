@@ -65,7 +65,10 @@
 		<interceptor>
 			<mapping path="/product/**/*/"/>
 			<mapping path="/cart/**/*/"/>
+			<mapping path="/board/**/*/"/>
+			
 <!-- 			<mapping path="/comment/**/*/"/> -->
+			<exclude-mapping path="/board/list"/>
 			<exclude-mapping path="/product/menu"/>
 			<exclude-mapping path="/product/list"/>
 			<exclude-mapping path="/product/brandyList"/>

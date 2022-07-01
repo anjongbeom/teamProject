@@ -89,7 +89,7 @@ $(function(){
 		<div class="col-md-12">
 			<div class="jumbotron">
 				<h2>
-					리뷰 작성
+					게시글 작성
 				</h2>
 				<p><a class="btn btn-primary btn-large" href="/board/list?page=1">글목록</a></p>
 			</div>
@@ -111,23 +111,23 @@ $(function(){
 						</div>
 						
 						<!-- 업로드 영역 -->
-						<div>
-							<label>첨부할 파일을 드래그 &amp; 드롭하세요.</label>
-							<div id="fileDrop"></div>
-						</div>
+<!-- 						<div> -->
+<!-- 							<label>첨부할 파일을 드래그 &amp; 드롭하세요.</label> -->
+<!-- 							<div id="fileDrop"></div> -->
+<!-- 						</div> -->
 						
 						<!-- 업로드 항목 템플릿 -->
-						<div class="divUploaded" style="display: none;">
-							<img src="/resources/images/defualt.png" height="100"><br>
-							<span>default.png</span>
-							<a href="#" class="a_delete">&times;</a>
-						</div>
+<!-- 						<div class="divUploaded" style="display: none;"> -->
+<!-- 							<img src="/resources/images/defualt.png" height="100"><br> -->
+<!-- 							<span>default.png</span> -->
+<!-- 							<a href="#" class="a_delete">&times;</a> -->
+<!-- 						</div> -->
 						
 						<!-- 업로드 항목 템플릿 -->
-						<div id="uploadedList" style="clear: both;">
-						</div>
+<!-- 						<div id="uploadedList" style="clear: both;"> -->
+<!-- 						</div> -->
 										
-						
+						<div style="height: 10px;"></div>
 						<div style="clear: both; display: flex; align-items: center; justify-content: flex-end;">
 						<button type="submit" class="btn btn-primary">
 							작성완료

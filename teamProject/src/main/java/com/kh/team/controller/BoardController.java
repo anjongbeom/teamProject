@@ -34,9 +34,9 @@ public class BoardController {
 		return "/product/menu1";
 	}
 	
-	@RequestMapping(value= "/review", method = RequestMethod.GET)
+	@RequestMapping(value= "/createBoard", method = RequestMethod.GET)
 	public String review() {
-		return "/board/review";
+		return "/board/createBoard";
 	}
 	
 
