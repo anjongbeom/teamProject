@@ -2,6 +2,7 @@ package com.kh.team.service;
 
 import java.util.List;
 
+import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.OrderVo;
 import com.kh.team.vo.OrderedDetailDto;
 import com.kh.team.vo.PagingDto;
@@ -29,5 +30,10 @@ public interface ManagerService {
 	// 반품 승인하기
 	public List<OrderedDetailDto> getReturnedList(int order_detail_status_code); // 반품 요청목록 얻기
 	public void returnApproval(String[] checked_return_list); // 체크한 반품품목 승인
+	
+	
+	// 멤버 리스트
+	public List<MemberVo> getMemberList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
+	
 	
 }

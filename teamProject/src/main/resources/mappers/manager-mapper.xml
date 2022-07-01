@@ -258,7 +258,21 @@
 		where member_id = #{member_id}
 	</update>
 	
-	<!--  -->
+	
+	
+	
+	
+	<!-- 멤버 목록 얻기 -->
+	<select id="getMemberList" resultType="MemberVo">
+		select * from
+			(select rownum rnum, a.* from
+				(select * from tal_member
+					<include refid="search"></include>
+				 order by member_id desc) a)
+		where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	
 	
 	
 		

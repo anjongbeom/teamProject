@@ -45,7 +45,8 @@ public class ManagerServiceImpl implements ManagerService {
 		boolean result = managerDao.createStock();
 		return result;
 	}
-
+	
+	// 제품 목록 얻기
 	@Override
 	public List<ProductVo> getStockList(PagingDto pagingDto) {
 		List<ProductVo> result = managerDao.getStockList(pagingDto);
@@ -198,5 +199,17 @@ public class ManagerServiceImpl implements ManagerService {
 			
 		}
 	}
+	
+	
+	// 멤버 리스트
+	@Override
+	public List<MemberVo> getMemberList(PagingDto pagingDto) {
+		List<MemberVo> member_list = managerDao.getMemberList(pagingDto);
+		return member_list;
+	}
+	
+	
+	
+	
 
 }

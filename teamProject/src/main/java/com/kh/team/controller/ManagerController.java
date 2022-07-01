@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.service.ManagerService;
 import com.kh.team.util.MailSenderUtil;
+import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.OrderVo;
 import com.kh.team.vo.OrderedDetailDto;
 import com.kh.team.vo.PagingDto;
@@ -134,6 +135,21 @@ public class ManagerController {
 		return "redirect:/manager/return_list";
 	}
 								
+	
+	
+	// 멤버 리스트로 이동
+	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
+	public String memberList(HttpSession session, PagingDto pagingDto) {
+		System.out.println("MemberController, memberList ");
+		pagingDto.setCount(managerService.getCount(pagingDto)); // getCount -> list()
+		pagingDto.setPage(pagingDto.getPage());
+		
+		// getMemberList(pagingDto)
+		List<MemberVo> member_list = managerService.getMemberList(pagingDto);
+		session.setAttribute("member_list", member_list);
+		
+		return "/manager/member_list";
+	}
 	
 	
 	
