@@ -101,30 +101,33 @@ $("#selectpurchase_btn").click(function(e) {
 								<td style="vertical-align:middle"><input type="checkbox" 
 								name="chk" value="productVo" data-product_id="${productVo.product_id}" checked></td>
 								<td>
-									<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}"  
-									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
+									<img class="card-img-top" 
+									src="/product/displayImage?filename=${productVo.product_image}"  
+									alt="..." style="display:block; margin:auto; 
+									width: 122px; height: 182px;" />
 								</td>
 								
-								<td style="vertical-align:middle; text-align: center;">${productVo.product_kor_name}</td>
+								<td style="vertical-align:middle; 
+								text-align: center;">${productVo.product_kor_name}</td>
 								<td style="vertical-align:middle; text-align: center;">KA 주류교육원</td>
 								<td style="vertical-align:middle; text-align: center;">${param.amount} 개</td>
-								<td style="vertical-align:middle; text-align: center;">${Math.floor(param.totalPrice*0.05)}Point</td>
-								<td style="vertical-align:middle; text-align: center; font-size: 15px; color: #CF492C;" 
+								<td style="vertical-align:middle; 
+								text-align: center;">${Math.floor(param.totalPrice*0.05)}Point</td>
+								<td style="vertical-align:middle; 
+								text-align: center; font-size: 15px; color: #CF492C;" 
 									>${param.totalPrice} Point</td>
 							</tr>
 						</tbody>
 					</table>
-					
-					<br> 
-					<br> 
-					
+					<div style="height: 20px;"></div>
 					<a
 						style="float: right; margin-right: 10px;" id="selectpurchase_btn" 
-						class="btn btn-primary"
-						href="/product/purchase">구매하기
+						class="btn btn-primary" href="/product/purchase">구매하기
 					</a>
+					<div style="height: 10px;"></div>
 					
 				</div>
+				<div style="height: 15px;"></div>
 			</div>
 		
 			

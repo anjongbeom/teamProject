@@ -70,9 +70,7 @@ public class CartController {
 		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
 		String  member_id = loginVo.getMember_id();
 		cartVo.setMember_id(member_id);
-		System.out.println("cart, cartVo:" + cartVo);
 		boolean result = cartService.addCart(cartVo);
-		System.out.println("CartController, list, result:" + result);
 		return String.valueOf(result);
 	}
 	

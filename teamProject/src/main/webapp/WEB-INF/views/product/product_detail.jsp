@@ -176,36 +176,27 @@ function showPrice() {
 						<thead>
 						</thead>
 						<tbody class="table-group-divider">
-							<tr>
-								<th scope="row">원산지</th>
+							<tr><th scope="row">원산지</th>
 								<td>${productVo.product_origin}</td>
 							</tr>
-							<tr>
-								<th scope="row">용량</th>
+							<tr><th scope="row">용량</th>
 								<td>${productVo.product_capacity}ml</td>
 							</tr>
-							<tr>
-								<th scope="row">알콜도수</th>
+							<tr><th scope="row">알콜도수</th>
 								<td>${productVo.product_alcohol_degree}%</td>
 							</tr>
-							<tr>
-								<th scope="row">소비자가격</th>
+							<tr><th scope="row">소비자가격</th>
 								<td>.-Point</td>
 							</tr>
-							
-							<tr>
-								<th scope="row" style="vertical-align: middle;">판매가격</th>
+							<tr><th scope="row" style="vertical-align: middle;">판매가격</th>
 								<td style="font-size: 25px; color: #CF492C;">${productVo.product_price}
 									Point
 									</td>
 							</tr>
-							<tr>
-								<th scope="row" style="vertical-align: middle;">적립 포인트 :</th>
-								<td style="font-size: 18px; color: blue;">${Math.floor(productVo.product_price*0.2)}Point</td>
+							<tr><th scope="row" style="vertical-align: middle;">적립 포인트 :</th>
+								<td style="font-size: 18px;
+								 color: blue;">${Math.floor(productVo.product_price*0.2)}Point</td>
 							</tr>
-							
-								
-								
 						</tbody>
 					</table>
 					
@@ -244,8 +235,8 @@ function showPrice() {
 		</div>
 		
 		<div class="content">
-			<span style="font-size: 25px; color: #433406;">${productVo.product_descript}</span>
-			<!--${content}-->
+			<span style="font-size: 25px;
+			 color: #433406;">${productVo.product_descript}</span>
 		</div>
 	</div>
 	

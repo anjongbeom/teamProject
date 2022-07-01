@@ -63,7 +63,6 @@ $("#selectpurchase_btn").click(function(){
    data : { chk : checkArr },
    success : function(result){
 	   console.log("result :",result);
-	   
    }
   });
  } 
@@ -92,7 +91,7 @@ setTimeout("location.reload()",1000);
 							<tr>
 								<th scope="row" width="10%">
 								<input type="checkbox" id="cbx_chkAll"
-								name="item" value="productVo">전체선택</th>
+								name="item" value="productVo" checked="checked">전체선택</th>
 								<th scope="row" colspan="1" width="20%" style="text-align: center">상품정보</th>
 								<th scope="row" colspan="1" width="20%" style="text-align: center">상품이름</th>
 								<th scope="row"  width="20%" style="text-align: center">판매자</th>
@@ -142,29 +141,20 @@ setTimeout("location.reload()",1000);
 										<table class="table table-bordered">
 											<tbody>
 												<tr>
+													<td style="text-align: center;">총 적립금액 :</td>
 													<td style="text-align: center;">
-														총 적립금액 :
-													</td>
-													<td style="text-align: center;">
-														${totalSummary.sum_point_earned}Point
-													</td>
+													${totalSummary.sum_point_earned}Point</td>
 												</tr>
 												<tr>
+													<td style="text-align: center;">총 개수 :</td>
 													<td style="text-align: center;">
-														총 개수 :
-													</td>
-													<td style="text-align: center;">
-														${totalSummary.sum_product_amount} 개
-													</td>
+														${totalSummary.sum_product_amount} 개</td>
 												</tr>
 												<tr>
-													<td style="text-align: center;">
-														총 합계 포인트
-													</td>
-													<td style="text-align: center;">
-														${totalSummary.sum_total_price}Point
-													</td>
-													</tr>
+													<td style="text-align: center;">총 합계 포인트
+													</td><td style="text-align: center;">
+														${totalSummary.sum_total_price}Point</td>
+												</tr>
 											</tbody>
 										</table>
 									</div>

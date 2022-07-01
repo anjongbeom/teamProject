@@ -61,7 +61,6 @@ $(document).ready(function(){
 		var url = "/comment/commentList/" + bno;
 		var loginVo_member_id = "${loginVo.member_id}";
 		$.get(url, function(rData){
-// 			console.log("rData:", rData);
 			$("#table_comment_list tr:gt(0)").remove();
 			$.each(rData,function(){
 				var tr = $("#table_clone tr").clone();
@@ -72,8 +71,6 @@ $(document).ready(function(){
 				tds.eq(3).text(this.regdate);
 				tds.find(".btnCommentDelete").attr("data-cno", this.cno);
 				tds.find(".btnCommentModify").attr("data-cno", this.cno);
-				console.log("cloginVo_member_id : " + loginVo_member_id );
-				console.log("this.member_id : " + this.member_id );
 				if (loginVo_member_id != this.member_id) {
 					tds.find(".btnCommentDelete").attr("disabled", "disabled");
 					tds.find(".btnCommentModify").attr("disabled", "disabled");
@@ -182,8 +179,7 @@ $(document).ready(function(){
 </script>
 <%@ include file="/WEB-INF/views/include/paging.jsp" %>
 <!-- 	<div class="content-wrapper"> -->
-${commentList}
-${loginVo }
+
 <div class="container-fluid">
 
 		<div class="row">
