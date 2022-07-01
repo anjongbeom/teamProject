@@ -28,16 +28,19 @@ public class ManagerDaoImpl implements ManagerDao{
 		return false;
 	}
 
+	// 제품 목록 얻기
 	@Override
 	public List<ProductVo> getStockList(PagingDto pagingDto) {
+		System.out.println("pagingDto: " + pagingDto);
 		List<ProductVo> list = sqlSession.selectList(NAMESPACE + "getStockList", pagingDto);
 		return list;
 	}
 
 	
+	// 제품 개수 얻기
 	@Override
-	public int getCount(PagingDto pagingDto) {
-		int count = sqlSession.selectOne(NAMESPACE + "getCount", pagingDto);
+	public int getProductCount(PagingDto pagingDto) {
+		int count = sqlSession.selectOne(NAMESPACE + "getProductCount", pagingDto);
 		return count;
 	}
 
@@ -205,13 +208,19 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 	
 	
+	// 멤버 목록 얻기
 	@Override
 	public List<MemberVo> getMemberList(PagingDto pagingDto) {
 		List<MemberVo> member_list = sqlSession.selectList(NAMESPACE + "getMemberList", pagingDto);
 		return member_list;
 	}
 	
-	
+	// 제품 개수 얻기
+	@Override
+	public int getMemberCount(PagingDto pagingDto) {
+		int count = sqlSession.selectOne(NAMESPACE + "getMemberCount", pagingDto);
+		return count;
+	}
 	
 	
 	

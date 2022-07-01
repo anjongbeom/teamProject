@@ -51,10 +51,12 @@ public class ManagerController {
 		return "/manager/stock_creation";
 	}
 	
+	
+	// 재고 리스트 얻기
 	@RequestMapping(value = "/stockList", method = RequestMethod.GET)
 	public String stockList(HttpSession session, PagingDto pagingDto) {
 		System.out.println("MemberController, stockList ");
-		pagingDto.setCount(managerService.getCount(pagingDto)); // getCount -> list()
+		pagingDto.setCount(managerService.getProductCount(pagingDto)); // getCount -> list()
 		pagingDto.setPage(pagingDto.getPage());
 		
 		List<ProductVo> stock_list = managerService.getStockList(pagingDto);
@@ -131,20 +133,18 @@ public class ManagerController {
 								OrderedDetailDto orderedDtailDto, HttpServletRequest request) {
 		String[] checked_return_list = request.getParameterValues("checked_return_list");
 		managerService.returnApproval(checked_return_list);
-		
-		return "redirect:/manager/return_list";
+		return "redirect:/manager/managerForm";
 	}
-								
+
 	
 	
 	// 멤버 리스트로 이동
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
 	public String memberList(HttpSession session, PagingDto pagingDto) {
 		System.out.println("MemberController, memberList ");
-		pagingDto.setCount(managerService.getCount(pagingDto)); // getCount -> list()
+		pagingDto.setCount(managerService.getMemberCount(pagingDto)); // getCount -> list()
 		pagingDto.setPage(pagingDto.getPage());
 		
-		// getMemberList(pagingDto)
 		List<MemberVo> member_list = managerService.getMemberList(pagingDto);
 		session.setAttribute("member_list", member_list);
 		

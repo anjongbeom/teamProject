@@ -126,10 +126,10 @@ $(document).ready(function() {
 					</select>
 					
 					
-					<!--  검색 -->
+					<!-- 검색   -->
 					<select name="search" id="searchType" style="margin-left:30px">
-						<option value="pn"
-							<c:if test="${pagingDto.searchType=='pn'}">
+						<option value="pkn"
+							<c:if test="${pagingDto.searchType=='pkn'}">
 								selected
 							</c:if>
 						>제품 이름</option>
@@ -144,7 +144,6 @@ $(document).ready(function() {
 								selected
 							</c:if>
 						>카테고리 코드</option>
-					
 					
 					</select>
 					<input type="text" id="keyword" value="${pagingDto.keyword}">
@@ -168,9 +167,9 @@ $(document).ready(function() {
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${stock_list}" var="productVo">
+						<c:forEach items="${stock_list}" var="productVo" varStatus="status">
 							<tr class="tr_list" data-bno="${productVo.product_id}" style=" justify-content:center;">
-								<td style= "vertical-align:middle;">#</td>
+								<td style= "vertical-align:middle;">${status.count}</td>
 								<td style= "vertical-align:middle;">
 								<img class="card-img-top" src="/product/displayImage?filename=${productVo.product_image}"  
 									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
@@ -202,7 +201,6 @@ $(document).ready(function() {
 						
 					<li class="page-item">
 					<c:forEach begin="${pagingDto.startPage}" end="${pagingDto.endPage}" var="i">
-						
 						<li 
 							<c:choose>
 								<c:when test="${i == param.page}">
@@ -216,7 +214,6 @@ $(document).ready(function() {
 							<a href="${i}"
 								class="page-link">${i}</a>
 						</li>
-					
 					</c:forEach>
 					<c:if test="${pagingDto.endPage != pagingDto.totalPage}">
 					<li>
