@@ -149,6 +149,17 @@
 		</if>
 	</sql>
 	
+	<!-- order_no의 주문 상태 코드(fk_order_detail_status_code)를  #{order_detail_status_code}로 변경-> -->
+	<update id="updateOrderDetailStatusCode">
+		update tal_order_detail set fk_order_detail_status_code = #{order_detail_status_code}
+		where order_detail_no = #{order_detail_no}
+	</update>
+	
+	
+	
+	
+	<!--  ~로 ~얻기  -->
+	
 	<!--  detail_no로 order_no 얻기 -->
 	<select id="getOrderNoByDetailNo" resultType="int">
 		select order_no 
@@ -157,14 +168,12 @@
 			and order_detail_no = #{order_detail_no}
 	</select>
 	
-	
 	<!-- order_no로 fk_member_id를 얻기 -->
 	<select id="getMemberIdByOrderNo" resultType="String">
 		select fk_member_id
 			from tal_order
 			where order_no = #{order_no}
 	</select>
-	
 	
 	<!-- order_no로 member_tel를 얻기 -->
 	<select id="getMemberTelByOrderNo" resultType="String">
@@ -175,6 +184,28 @@
 			where order_no = #{order_no})
 	</select>
 	
+	<!-- member_id로 memberVo 얻기 -->
+	<select id="getMemberVoById" resultType="MemberVo">
+		select * from tal_member
+		where member_id = #{member_id}
+	</select>
+	
+	
+	<!-- MessageToSendVo 얻기 -->
+	<select id="getMessageToSendVo" resultType="MessageToSendVo">
+		select * from tal_message_to_send
+	</select>
+	
+	
+	
+	<!-- 반품 -->
+	
+	<!-- 반품된 하나의 컬럼 승인(해당 제품의 재고 증가) -->
+	<update id="orderRefund">
+		update tal_product set PRODUCT_STOCK = PRODUCT_STOCK + #{order_product_amount}
+		where product_id = #{product_id}
+	</update>
+	
 	
 	<!-- 반품 승인된 컬럼 데이터(fk_order_detail_status_code) 6으로 변경 -->
 	<update id="updateApprovedDataToSixth">
@@ -183,10 +214,14 @@
 	</update>
 	
 	
-	
-	
 	<!-- 반품(FK_ORDER_DETAIL_STATUS_CODE = 5) 요청목록 얻기 -->
 	<select id="getReturnedList" resultType="OrderedDetailDto">
+		<include refid="getDtoJoin"></include>
+		and od.FK_ORDER_DETAIL_STATUS_CODE = #{order_detail_status_code}
+	</select>
+	
+	
+	<sql id="getDtoJoin">
 		select o.order_no,  
 			od.order_detail_no,
 		    p.product_image,
@@ -202,27 +237,17 @@
 		where o.order_no = od.fk_order_no
 		and od.fk_product_id = p.product_id
 		and odsc.order_detail_status_code = od.fk_order_detail_status_code
-		and od.FK_ORDER_DETAIL_STATUS_CODE = 5
-	</select>
+	</sql>
+	
+	
+	
+	
+	
 	
 	
 	<!-- order_detail_no로 OrderedDetailDto 정보 얻기 -->
 	<select id="getOrderedDetailByOrderDetailNo" resultType="OrderedDetailDto">
-		select o.order_no, 
-			od.order_detail_no,
-		    p.product_image,
-		    od.fk_product_id as product_id,
-		    p.product_kor_name,
-		    p.product_price,
-		    od.order_product_amount,
-		    o.fk_member_id as member_id, 
-		    o.fk_order_status_code as order_status_code, 
-		    od.fk_order_detail_status_code as order_detail_status_code,
-		    odsc.order_detail_status_descript
-		from tal_order o, tal_order_detail od, tal_product p, tal_order_detail_status_code odsc
-		where o.order_no = od.fk_order_no
-		and od.fk_product_id = p.product_id
-		and odsc.order_detail_status_code = od.fk_order_detail_status_code
+		<include refid="getDtoJoin"></include>
 		and od.order_detail_no = #{map_order_detail_no}
 
 	</select>
@@ -232,7 +257,6 @@
 		update tal_member set member_point = member_point + (#{product_price} * #{order_product_amount})
 		where member_id = #{member_id}
 	</update>
-	
 	
 	<!--  -->
 	

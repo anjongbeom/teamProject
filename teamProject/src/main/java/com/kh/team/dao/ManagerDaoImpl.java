@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.vo.MemberVo;
+import com.kh.team.vo.MessageToSendVo;
 import com.kh.team.vo.OrderVo;
 import com.kh.team.vo.OrderedDetailDto;
 import com.kh.team.vo.PagingDto;
@@ -66,8 +68,8 @@ public class ManagerDaoImpl implements ManagerDao{
 
 	// 주문 승인(해당품목 재고감소)
 	@Override
-	public boolean orderApproval(OrderedDetailDto ordered_detail) {
-		int approval_result = sqlSession.update(NAMESPACE + "orderApproval", ordered_detail);
+	public boolean orderApproval(OrderedDetailDto ordered_detail_dto) {
+		int approval_result = sqlSession.update(NAMESPACE + "orderApproval", ordered_detail_dto);
 		if (approval_result > 0) {
 			return true;
 		}
@@ -103,9 +105,18 @@ public class ManagerDaoImpl implements ManagerDao{
 	
 	// order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 변경 (서비스에서 ORDER_STATUS_CODE를 set)
 	public void updateOrderStatusCode(OrderedDetailDto ordered_detail_dto) {
-		System.out.println("ordered_detail_dto : " + ordered_detail_dto);
+		System.out.println("updateOrderStatusCode, ordered_detail_dto : " + ordered_detail_dto);
 		sqlSession.update(NAMESPACE + "updateOrderStatusCode", ordered_detail_dto);
 	}
+	
+	// order_detail_no의 주문 상태 코드(ORDER_DETAIL_STATUS_CODE)를 변경 (서비스에서 ORDER_DETAIL_STATUS_CODE를 set)
+	public void updateOrderDetailStatusCode(OrderedDetailDto ordered_detail_dto) {
+		System.out.println("updateOrderDetailStatusCode, ordered_detail_dto : " + ordered_detail_dto);
+		sqlSession.update(NAMESPACE + "updateOrderDetailStatusCode", ordered_detail_dto);
+	}
+	
+	
+	
 	
 	// detail_no로 order_no 얻기
 	public int getOrderNoByDetailNo(int order_detail_no) {
@@ -129,10 +140,22 @@ public class ManagerDaoImpl implements ManagerDao{
 	// 반품 목록 얻기
 	@Override
 	public List<OrderedDetailDto> getReturnedList(int order_detail_status_code) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("order_detail_status_code", order_detail_status_code);
 		List<OrderedDetailDto> return_list = sqlSession.selectList(NAMESPACE + "getReturnedList", order_detail_status_code);
 		return return_list;
 	}
 	
+	
+	// 반품 승인(해당품목 재고증가)
+	@Override
+	public boolean orderRefund(OrderedDetailDto ordered_detail_dto) {
+		int refund_result = sqlSession.update(NAMESPACE + "orderRefund", ordered_detail_dto);
+		if (refund_result > 0) {
+			return true;
+		}
+		return false;
+	}
 	
 	// 반품 승인된 컬럼 데이터(fk_order_detail_status_code) 6으로 변경 
 	@Override
@@ -167,7 +190,19 @@ public class ManagerDaoImpl implements ManagerDao{
 		sqlSession.update(NAMESPACE + "updateRefundPointForMember", ordered_detail_dto);
 	}
 
+	// member_id로 Vo얻기
+	@Override
+	public MemberVo getMemberVoById(String member_id) {
+		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "getMemberVoById", member_id);
+		return memberVo;
+	}
 	
+	// MessageToSendVo 리스트 얻기
+	@Override
+	public List<MessageToSendVo> getMessageToSendVo() {
+		List<MessageToSendVo> messageToSendVo = sqlSession.selectList(NAMESPACE + "getMessageToSendVo");
+		return messageToSendVo;
+	}
 	
 	
 	
