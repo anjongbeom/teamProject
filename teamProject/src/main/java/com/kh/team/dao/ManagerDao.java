@@ -3,6 +3,8 @@ package com.kh.team.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.team.vo.MemberVo;
+import com.kh.team.vo.MessageToSendVo;
 import com.kh.team.vo.OrderVo;
 import com.kh.team.vo.OrderedDetailDto;
 import com.kh.team.vo.PagingDto;
@@ -21,21 +23,25 @@ public interface ManagerDao {
 	
 	// 체크된 품목들 주문 승인하기
 	public OrderedDetailDto getOneOrderedDetail(int order_detail_no); // 주문된 하나의 상세 품목 얻기
-	public boolean orderApproval(OrderedDetailDto ordered_detail); // 체크한 품목 승인
+	public boolean orderApproval(OrderedDetailDto ordered_detail_dto); // 체크한 품목 승인(재고 감소)
 	public boolean updateApprovedDataToSecond(int order_detail_no); // 승인된 컬럼 데이터(fk_order_detail_status_code) 2로 변경 
 	public void updateApprovedPointForMember(OrderedDetailDto ordered_detail_dto); // OrderedDtailDto[]를 넘겨줘서 해당 포인트 차감
 	public List<Map<String,Object>> getNumberOfOrderDetailStatusCode(int order_detail_no); // 주문 안의 주문상세 상태코드 얻기
 	
 	public void updateOrderStatusCode(OrderedDetailDto ordered_detail_dto); // order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 변경
+	public void updateOrderDetailStatusCode(OrderedDetailDto ordered_detail_dto); // order_detail_no의 주문 상태 코드(ORDER_Detail_STATUS_CODE)를 변경
 	
 	// ~로 ~얻기
 	public int getOrderNoByDetailNo(int order_detail_no); // detail_no로 order_no 얻기
 	public String getMemberIdByOrderNo(int order_no); // order_no로 fk_member_id를 얻기
 	public String getMemberTelByMemberId(int order_no); //	order_no로  member_tel를 얻기
+	public MemberVo getMemberVoById(String member_id); // member_id로 MemberVo 얻기
+	public List<MessageToSendVo> getMessageToSendVo(); // MessageToSendVo 리스트 얻기
 	
 	
 	// 체크된 품목들 반품 승인하기
 	public List<OrderedDetailDto> getReturnedList(int order_detail_status_code); // 반품 요청목록 얻기
+	public boolean orderRefund(OrderedDetailDto ordered_detail_dto); // 반품 승인 (재고 증가)
 	boolean updateApprovedDataToSixth(int order_detail_no); // 반품 승인된 컬럼 데이터(fk_order_detail_status_code) 6으로 변경 
 	public OrderedDetailDto getOrderedDetailByOrderDetailNo(int order_detail_no); // order_detail_no로 OrderedDetailDto 정보 얻기
 	public void updateRefundPointForMember(OrderedDetailDto ordered_detail_dto); // 반품 회원의 포인트 환불
