@@ -205,5 +205,14 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 	
 	
+	@Override
+	public List<MemberVo> getMemberList(PagingDto pagingDto) {
+		List<MemberVo> member_list = sqlSession.selectList(NAMESPACE + "getMemberList", pagingDto);
+		return member_list;
+	}
+	
+	
+	
+	
 	
 }

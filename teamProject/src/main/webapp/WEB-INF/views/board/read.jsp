@@ -59,6 +59,7 @@ $(document).ready(function(){
 	function getCommentList(){
 		var bno = "${boardVo.bno}";
 		var url = "/comment/commentList/" + bno;
+		var loginVo_member_id = "${loginVo.member_id}";
 		$.get(url, function(rData){
 // 			console.log("rData:", rData);
 			$("#table_comment_list tr:gt(0)").remove();
@@ -66,15 +67,23 @@ $(document).ready(function(){
 				var tr = $("#table_clone tr").clone();
 				var tds = tr.find("td");
 				tds.eq(0).text(this.cno);
-				tds.eq(1).text(this.content); 
+				tds.eq(1).text(this.content);
 				tds.eq(2).text(this.member_id);
 				tds.eq(3).text(this.regdate);
 				tds.find(".btnCommentDelete").attr("data-cno", this.cno);
 				tds.find(".btnCommentModify").attr("data-cno", this.cno);
+				console.log("cloginVo_member_id : " + loginVo_member_id );
+				console.log("this.member_id : " + this.member_id );
+				if (loginVo_member_id != this.member_id) {
+					tds.find(".btnCommentDelete").attr("disabled", "disabled");
+					tds.find(".btnCommentModify").attr("disabled", "disabled");
+				}
+				
 				$("#table_comment_list").append(tr);
 			});
 		});
 	}
+	
 	
 	$("#table_comment_list").on("click", ".btnCommentDelete", function(){
 // 		console.log("댓글 삭제 버튼");
@@ -246,8 +255,8 @@ ${loginVo }
 								<td></td>
 								<td></td>
 								<td></td>
-								<c:choose>
-									<c:when test="${loginVo.member_id == commentVo.member_id}">
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${loginVo.member_id == commentVo.member_id}"> --%>
 									<td>
 										<button type="button" 
 										class="btn btn-sm btn-warning btnCommentModify">수정</button>
@@ -258,12 +267,12 @@ ${loginVo }
 										<button type="button" 
 										class="btn btn-sm btn-danger btnCommentDelete">삭제</button>
 									</td>
-									</c:when>
-									<c:otherwise>
-										<td></td>
-										<td></td>
-									</c:otherwise>
-								</c:choose>
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> --%>
+<!-- 										<td></td> -->
+<!-- 										<td></td> -->
+<%-- 									</c:otherwise> --%>
+<%-- 								</c:choose> --%>
 							</tr>
 						</table>
 						<table class="table" id="table_comment_list">

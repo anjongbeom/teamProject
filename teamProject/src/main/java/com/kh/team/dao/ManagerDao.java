@@ -47,4 +47,7 @@ public interface ManagerDao {
 	public void updateRefundPointForMember(OrderedDetailDto ordered_detail_dto); // 반품 회원의 포인트 환불
 	
 	
+	// 멤버 리스트
+	public List<MemberVo> getMemberList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
+	
 }
