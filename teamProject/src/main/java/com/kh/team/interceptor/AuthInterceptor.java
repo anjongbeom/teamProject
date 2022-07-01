@@ -10,7 +10,7 @@ import com.kh.team.vo.MemberVo;
 
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
-	// �α��� �Ǿ����� �ʴٸ� �α��� â���� �̵� (session-loginVo)
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, 
 			HttpServletResponse response, Object handler)
@@ -21,15 +21,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		if (memberVo == null) {
 			String uri = request.getRequestURI();
 			String queryString = request.getQueryString();
-			System.out.println("uri: " + uri); // ����ǥ ��
-			System.out.println("queryString: " + queryString); // ����ǥ ��
+			System.out.println("uri: " + uri); 
+			System.out.println("queryString: " + queryString); 
 			String targetLocation = uri + "?" + queryString;
 			session.setAttribute("targetLocation", targetLocation);
-			response.sendRedirect("/member/loginForm"); // �� ���� Ŭ�� �� ù�������� (�α��� â)
-			return false; //���� ��û ó������ ����
+			response.sendRedirect("/member/loginForm");
+			return false;
 		}
 		
-		return true; // ���� ��û�� ó����
+		return true; 
 	}
 
 }

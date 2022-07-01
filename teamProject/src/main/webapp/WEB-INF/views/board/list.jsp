@@ -178,24 +178,7 @@ $(document).ready(function() {
 								<td>${boardVo.bno}</td>
 								<td class="td_list" data-bno="${boardVo.bno}" style="padding-left:${boardVo.re_level * 40}px">${fn:replace(boardVo.title, pagingDto.keyword, '<span class=k_span>' += pagingDto.keyword += '</span>')}</td>
  <%-- 								<td>${boardVo.title}</td> --%> <%--위가 하이라이트 k_span 입히는 부분 --%>
-								<td>
-								<c:choose>
-									<c:when test="${loginVo.userid == boardVo.writer}">
-										${boardVo.writer}
-									</c:when>
-								
-								<c:otherwise>
-									<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-										${boardVo.writer}
-									</button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										 <a class="dropdown-item disabled" href="#">메뉴</a> 
-										 <a class="dropdown-item" href="#">쪽지보내기</a> 
-										 <a class="dropdown-item" href="/member/getMemberById?userid=${boardVo.writer}">회원정보보기</a>
-									</div>
-								</c:otherwise>
-								</c:choose>	
-								</td>
+								<td>${boardVo.writer}</td>
 								
 								<td>${boardVo.regdate}</td>
 								<td>${boardVo.viewcnt}</td>

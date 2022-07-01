@@ -8,9 +8,9 @@
 <!-- 	댓글 등록 -->
 	<insert id="insertComment">
 		insert into tal_comment
-			(cno, bno, content, userid)
+			(cno, bno, content, member_id)
 		values
-			(seq_comment_cno.nextval, #{bno}, #{content}, #{userid})
+			(seq_comment_cno.nextval, #{bno}, #{content}, #{member_id})
 	</insert>
 	
 <!-- 	댓글 목록 -->

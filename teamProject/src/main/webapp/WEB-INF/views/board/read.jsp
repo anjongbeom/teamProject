@@ -39,11 +39,11 @@ $(document).ready(function(){
 	
 	$("#btnCommentInsert").click(function(){
 		var content = $("#c_content").val(); 
-		var userid = $("#c_userid").val();
+		var member_id = $("#c_member_id").val();
 		var bno = "${boardVo.bno}";
 		var sData = {
 				"content" : content,
-				"userid"  : userid,
+				"member_id"  : member_id,
 				"bno" 	  : bno
 		};
 // 		console.log("sData: ", sData);
@@ -54,6 +54,7 @@ $(document).ready(function(){
 				getCommentList();
 			}
 		});
+		setTimeout("location.reload()",500);
 	});
 	function getCommentList(){
 		var bno = "${boardVo.bno}";
@@ -66,7 +67,7 @@ $(document).ready(function(){
 				var tds = tr.find("td");
 				tds.eq(0).text(this.cno);
 				tds.eq(1).text(this.content); 
-				tds.eq(2).text(this.userid);
+				tds.eq(2).text(this.member_id);
 				tds.eq(3).text(this.regdate);
 				tds.find(".btnCommentDelete").attr("data-cno", this.cno);
 				tds.find(".btnCommentModify").attr("data-cno", this.cno);
@@ -172,6 +173,8 @@ $(document).ready(function(){
 </script>
 <%@ include file="/WEB-INF/views/include/paging.jsp" %>
 <!-- 	<div class="content-wrapper"> -->
+${commentList}
+${loginVo }
 <div class="container-fluid">
 
 		<div class="row">
@@ -204,12 +207,16 @@ $(document).ready(function(){
 							name="writer" value="${boardVo.writer}" readonly="readonly"/>
 						</div>
 						<div style="height: 10px;"></div>
-						<button type="button" class="btn btn-primary"
-						id="btnUpdate">수정</button>
-						<button type="submit" class="btn btn-success"
-						id="btnUpdateRun" style="display: none;">수정완료</button>
-						<a class="btn btn-danger"  id="btnDelete"
-						href="${boardVo.bno}">삭제</a>
+						<c:choose>
+							<c:when test="${loginVo.member_id == boardVo.writer}">
+							<button type="button" class="btn btn-primary"
+							id="btnUpdate">수정</button>
+							<button type="submit" class="btn btn-success"
+							id="btnUpdateRun" style="display: none;">수정완료</button>
+							<a class="btn btn-danger"  id="btnDelete"
+							href="${boardVo.bno}">삭제</a>
+							</c:when>
+						</c:choose>
 						<a class="btn btn-warning" href="/board/replyForm?bno=${boardVo.bno}">답글</a>
 						
 						</form>
@@ -224,7 +231,7 @@ $(document).ready(function(){
 					</div>
 					<div class="col-md-2" >
 					<input type="text" class="form-control"
-					id="c_userid" placeholder="아이디를 입력해주세요">
+					id="c_member_id" value="${loginVo.member_id}" readonly="readonly">
 					</div>
 					<div class="col-md-1" >
 					<button type="button" class="btn btn-sm btn-primary"
@@ -239,16 +246,24 @@ $(document).ready(function(){
 								<td></td>
 								<td></td>
 								<td></td>
-								<td>
-									<button type="button" 
-									class="btn btn-sm btn-warning btnCommentModify">수정</button>
-									<button type="button" class="btn btn-sm btn-success btnCommentModifyFinish"
-										 style="display: none;">수정완료</button>
-								</td>
-								<td>
-									<button type="button" 
-									class="btn btn-sm btn-danger btnCommentDelete">삭제</button>
-								</td>
+								<c:choose>
+									<c:when test="${loginVo.member_id == commentVo.member_id}">
+									<td>
+										<button type="button" 
+										class="btn btn-sm btn-warning btnCommentModify">수정</button>
+										<button type="button" class="btn btn-sm btn-success btnCommentModifyFinish"
+											 style="display: none;">수정완료</button>
+									</td>
+									<td>
+										<button type="button" 
+										class="btn btn-sm btn-danger btnCommentDelete">삭제</button>
+									</td>
+									</c:when>
+									<c:otherwise>
+										<td></td>
+										<td></td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 						</table>
 						<table class="table" id="table_comment_list">
@@ -265,6 +280,7 @@ $(document).ready(function(){
 				</div>
 		
 	</div>
+	
 </div>
 <!-- 	</div> -->
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>

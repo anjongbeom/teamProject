@@ -6,7 +6,7 @@ public class CommentVo {
 	private int cno;
 	private int bno;
 	private String content;
-	private String userid;
+	private String member_id;
 	private Date regdate;
 
 	public CommentVo() {
@@ -14,12 +14,12 @@ public class CommentVo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommentVo(int cno, int bno, String content, String userid, Date regdate) {
+	public CommentVo(int cno, int bno, String content, String member_id, Date regdate) {
 		super();
 		this.cno = cno;
 		this.bno = bno;
 		this.content = content;
-		this.userid = userid;
+		this.member_id = member_id;
 		this.regdate = regdate;
 	}
 
@@ -47,12 +47,12 @@ public class CommentVo {
 		this.content = content;
 	}
 
-	public String getUserid() {
-		return userid;
+	public String getMember_id() {
+		return member_id;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
 	public Date getRegdate() {
@@ -65,8 +65,10 @@ public class CommentVo {
 
 	@Override
 	public String toString() {
-		return "CommentVo [cno=" + cno + ", bno=" + bno + ", content=" + content + ", userid=" + userid + ", regdate="
-				+ regdate + "]";
+		return "CommentVo [cno=" + cno + ", bno=" + bno + ", content=" + content + ", member_id=" + member_id
+				+ ", regdate=" + regdate + "]";
 	}
+
+	
 
 }

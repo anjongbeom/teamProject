@@ -2,7 +2,10 @@ package com.kh.team.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,8 +32,9 @@ public class CommentController {
 	}
 	
 	@RequestMapping(value = "/commentList/{bno}", method = RequestMethod.GET)
-	public List<CommentVo> commentList(@PathVariable("bno") int bno){
+	public List<CommentVo> commentList(@PathVariable("bno") int bno,HttpSession session){
 		List<CommentVo> commentList = commentService.commentList(bno);
+		session.setAttribute("commentList", commentList);
 		return commentList;
 		
 	}

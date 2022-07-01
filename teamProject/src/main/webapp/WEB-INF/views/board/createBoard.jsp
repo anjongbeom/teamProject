@@ -107,7 +107,8 @@ $(function(){
 						</div>
 						<div class="form-group">
 							<label for="writer">작성자</label>
-							<input type="text" class="form-control" id="writer" name="writer"/>
+							<input type="text" class="form-control" id="writer" 
+							name="writer" value="${loginVo.member_id}" readonly="readonly"/>
 						</div>
 						
 						<!-- 업로드 영역 -->
