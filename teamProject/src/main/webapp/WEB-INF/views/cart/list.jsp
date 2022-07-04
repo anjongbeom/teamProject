@@ -21,53 +21,53 @@ $(document).ready(function() {
 	});
 
 
-$("#selectDelete_btn").click(function(){
- var confirm_val = confirm("정말 삭제하시겠습니까?");
- 
- if(confirm_val) {
-  var checkArr = new Array();
-  
-  $("input[name='chk']:checked").each(function(){
-   checkArr.push($(this).attr("data-cart_id"));
-  });
-   
-  $.ajax({
-   url : "/cart/deleteCart",
-   type : "post",
-   data : { chk : checkArr },
-   success : function(result){
-	   if(result == 1){
-		   location.href = "/cart/orderList";
-	   } else {
-		   alert("삭제 실패")
-	   }
-    
-   }
-  });
- } 
-});
+	$("#selectDelete_btn").click(function(){
+		var confirm_val = confirm("정말 삭제하시겠습니까?");
+	 
+		if(confirm_val) {
+			var checkArr = new Array();
+		  
+			$("input[name='chk']:checked").each(function(){
+			checkArr.push($(this).attr("data-cart_id"));
+			});
+		   
+			$.ajax({
+				url : "/cart/deleteCart",
+				type : "post",
+				data : { chk : checkArr },
+				success : function(result){
+					if(result == 1){
+						location.href = "/cart/orderList";
+					} else {
+					alert("삭제 실패")
+					}
+				}
+			});
+		}
+	});
 
 
-$("#selectpurchase_btn").click(function(){
- var confirm_val = confirm("구매합니까?");
- if(confirm_val) {
-  var checkArr = new Array();
-  
-  $("input[name='chk']:checked").each(function(){
-   checkArr.push($(this).attr("data-cart_id"));
-  });
-   console.log(checkArr);
-  $.ajax({
-   url : "/cart/purchaseCart",
-   type : "post",
-   data : { chk : checkArr },
-   success : function(result){
-	   console.log("result :",result);
-   }
-  });
- } 
-setTimeout("location.reload()",1000);
-});
+	$("#selectpurchase_btn").click(function(){
+		var confirm_val = confirm("구매합니까?");
+		if(confirm_val) {
+		var checkArr = new Array();
+		
+		$("input[name='chk']:checked").each(function(){
+				checkArr.push($(this).attr("data-cart_id"));
+		});
+		console.log(checkArr);
+		$.ajax({
+			url : "/cart/purchaseCart",
+			type : "post",
+			data : { chk : checkArr },
+			success : function(result){
+				console.log("result :",result);
+			}
+		});
+	} 
+		setTimeout("location.reload()",1000);
+	});
+	
 });
 </script>
 

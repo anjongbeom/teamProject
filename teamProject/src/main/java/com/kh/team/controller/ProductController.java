@@ -85,7 +85,6 @@ public class ProductController {
 	@RequestMapping(value= "/purchase", method = RequestMethod.GET)
 	public String purchase(String product_id, Model model, PagingDto pagingDto) {
 		ProductVo productVo = productService.detail(product_id);
-
 		model.addAttribute("productVo", productVo);
 		return "/product/purchase";
 	}
@@ -139,9 +138,9 @@ public class ProductController {
 		public String sellProduct(HttpSession session,ProductVo productVo,int product_count) throws Exception {
 			MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
 			String member_id = loginVo.getMember_id();
-			System.out.println("productVo:"+productVo);
-			System.out.println("product_count:"+product_count);
-			boolean result=productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
+			System.out.println("productVo:" + productVo);
+			System.out.println("product_count:" + product_count);
+			boolean result = productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
 					
 			return String.valueOf(result);
 			
