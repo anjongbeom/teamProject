@@ -13,7 +13,7 @@ import com.kh.team.vo.ProductVo;
 public interface ManagerDao {
 
 	
-	public boolean createStock(); // 재고 등록
+	public boolean createStock(ProductVo productVo); // 제품 등록 실행
 	public List<ProductVo> getStockList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
 	public int getProductCount(PagingDto pagingDto); // 테스트용 get
 	

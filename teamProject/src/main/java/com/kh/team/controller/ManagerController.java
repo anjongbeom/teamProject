@@ -2,19 +2,15 @@ package com.kh.team.controller;
 
 import java.util.List;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.service.ManagerService;
 import com.kh.team.util.MailSenderUtil;
@@ -39,20 +35,33 @@ public class ManagerController {
 	private JavaMailSender mailSender;
 
 	
+	// 매니저 폼
 	@RequestMapping(value = "/managerForm", method = RequestMethod.GET)
 	public String managerForm() {
 		System.out.println("MemberController, managerForm ");
 		return "/manager/manager_form";
 	}
 	
+	// 제품 등록 페이지
+	@RequestMapping(value = "/stockCreateForm", method = RequestMethod.GET)
+	public String stockCreateForm() {
+		System.out.println("MemberController, stock_create_form");
+		return "/manager/stock_create_form";
+	}
+	
+	// 제품 등록 실행
 	@RequestMapping(value = "/stockCreation", method = RequestMethod.GET)
-	public String stockCreation() {
-		System.out.println("MemberController, stockCreation ");
-		return "/manager/stock_creation";
+	public String stockCreation(ProductVo productVo) {
+		System.out.println("MemberController, stockCreation");
+		boolean create_product_result = managerService.createStock(productVo);
+		
+		return "redirect:/manager/stock_list";
 	}
 	
 	
-	// 재고 리스트 얻기
+	
+	
+	// 제품 리스트 얻기
 	@RequestMapping(value = "/stockList", method = RequestMethod.GET)
 	public String stockList(HttpSession session, PagingDto pagingDto) {
 		System.out.println("MemberController, stockList ");
@@ -152,6 +161,13 @@ public class ManagerController {
 	}
 	
 	
+	// 멤버 정보로 이동
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public String memberInfo(HttpSession session, Model model, PagingDto pagingDto) {
+		
+		
+		return "/manager/member_info";
+	}
 	
 
 }

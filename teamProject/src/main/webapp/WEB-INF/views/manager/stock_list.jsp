@@ -106,9 +106,9 @@ $(document).ready(function() {
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron">
-				<h2>재고 목록</h2>
+				<h2>제품 목록</h2>
 				<p>
-					<a class="btn btn-primary btn-large" href="/manager/stockCreation">재고 등록</a>
+					<a class="btn btn-primary btn-large" href="/manager/stockCreation">제품 등록</a>
 				</p>
 			</div>
 			
@@ -161,7 +161,7 @@ $(document).ready(function() {
 								<th>제품 이미지</th>
 								<th>제품 이름</th>
 								<th>제품 가격</th>
-								<th>재고 수량</th>
+								<th>제품 수량</th>
 								<th>할인 가격</th>
 								<th>카테고리 코드</th>
 							</tr>
