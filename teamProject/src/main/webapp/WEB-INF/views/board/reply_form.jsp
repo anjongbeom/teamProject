@@ -31,11 +31,14 @@ ${boardVo.content}</textarea>
 						</div>
 						<div class="form-group">
 							<label for="writer">작성자</label>
-							<input type="text" class="form-control" id="writer" name="writer"/>
+							<input type="text" class="form-control" value="${boardVo.writer}"
+							 id="writer" name="writer" readonly="readonly"/>
 						</div>
+						<div style="height: 50px; margin-top: 10px;">
 						<button type="submit" class="btn btn-primary">
 							작성완료
 						</button>
+						</div>
 					</form>
 				</div>
 			</div>
