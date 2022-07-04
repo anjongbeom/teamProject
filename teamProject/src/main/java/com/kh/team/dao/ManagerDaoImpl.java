@@ -23,8 +23,13 @@ public class ManagerDaoImpl implements ManagerDao{
 	private SqlSession sqlSession;
 	
 	
+	// 제품 등록 실행
 	@Override
-	public boolean createStock() {
+	public boolean createStock(ProductVo productVo) {
+		int insert_count = sqlSession.insert(NAMESPACE + "createStock", productVo);
+		if (insert_count > 0) {
+			return true;
+		}
 		return false;
 	}
 

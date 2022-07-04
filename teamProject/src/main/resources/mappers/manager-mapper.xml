@@ -7,6 +7,17 @@
 <mapper namespace="com.kh.team.mappers.manager">
 
 
+	<!-- 제품 등록 -->
+	<insert id="createStock">
+		insert into tal_product
+		values(#{product_id}, #{product_name}, #{product_price}, #{product_stock}, #{product_capacity}, 
+			#{product_alcohol_degree}, #{product_expiration_date}, #{product_origin}, 
+			#{product_image}, #{product_descript}, #{product_discount}, #{cate_code}, #{product_kor_name})
+	
+	</insert>
+	
+
+
 	<!-- 제품 총 개수 -->
 	<select id="getProductCount" resultType="int">
 		select count(*) from tal_product

@@ -40,9 +40,11 @@ public class ManagerServiceImpl implements ManagerService {
 	@Autowired
 	private JavaMailSender mailSender;
 
+	
+	// 제품 등록 실행
 	@Override
-	public boolean createStock() {
-		boolean result = managerDao.createStock();
+	public boolean createStock(ProductVo productVo) {
+		boolean result = managerDao.createStock(productVo);
 		return result;
 	}
 	

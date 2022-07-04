@@ -46,12 +46,12 @@ $(document).ready(function() {
 	
 	
 	$(".tr_list").click(function() {
-		var product_id = $(this).attr("data-product_id");
+		var member_id = $(this).attr("data-mid");
 // 		location.href="/board/read?bno=" + bno;
 // 		var frmPaging = $("#frmPaging"); 위쪽 정의
-		frmPaging.find("input[name=product_id]").val(product_id);
+		frmPaging.find("input[name=member_id]").val(product_id);
 // 		$("#frmPaging > input[name=bno]").val(bno);
-		frmPaging.attr("action", "/manager/readMember"); // 생성 필요
+		frmPaging.attr("action", "/manager/memberInfo"); // 생성 필요
 		frmPaging.attr("method", "get");
 		frmPaging.submit();
 	});
@@ -174,7 +174,7 @@ $(document).ready(function() {
 
 						
 						<c:forEach items="${member_list}" var="memberVo">
-							<tr class="tr_list" data-bno="${memberVo.member_id}" style=" justify-content:center;">
+							<tr class="tr_list" data-mid="${memberVo.member_id}" style=" justify-content:center;">
 								<td style= "vertical-align:middle;">#</td>
 
 								<td>${memberVo.member_id}</td>
