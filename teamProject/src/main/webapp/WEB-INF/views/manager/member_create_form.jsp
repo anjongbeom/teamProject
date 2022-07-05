@@ -70,13 +70,11 @@
 					<td><label>멤버 포인트(MEMBER_POINT)</label><td>
 					<td><input type="text" class="form-control" id="member_point" name="member_point"><td>
 				</tr>
-			
-			
-			
 				<tr>
-					<td colspan="2"><button type="submit" class="btn btn-primary"
+					<td><label></label></td>
+					<td></td>
+					<td><button type="submit" class="btn btn-primary" style="float: right;"
 							>등록</button></td>
-					
 				</tr>
 			</table>
 			</form>	

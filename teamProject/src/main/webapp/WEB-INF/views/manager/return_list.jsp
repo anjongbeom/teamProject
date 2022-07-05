@@ -10,7 +10,16 @@
 
 <%@ include file="/WEB-INF/views/include/manager_paging.jsp" %>
 
-
+<script>
+$(document).ready(function() {
+	var frmReturnApproval = $("#frmReturnApproval");
+	$("#submitReturnConfirm").click(function(e){
+		e.preventDefault();
+		alert("반품 요청이 승인되었습니다.");
+		frmReturnApproval.submit();
+	});
+});
+</script>
 	
 	<!-- Page content-->
 	<div class="container">
@@ -21,7 +30,7 @@
 				<!-- Side widget-->
 				<div class="mb-4">
 		
-				<form action="/manager/returnApproval">
+				<form action="/manager/returnApproval" method="get" id="frmReturnApproval">
 					<!--  <div class="card-header">Side Widget</div> -->
 					<h2 class="card-title">반품 요청  품목</h2>
 					<div style="margin-left: 10px;" class="small text-muted"></div>
@@ -61,7 +70,7 @@
 						</tbody>
 					</table>
 					
-					<button type="submit" style="float: right; margin-right: 10px;" 
+					<button type="submit" style="float: right; margin-right: 10px;" id="submitReturnConfirm"
 						class="btn btn-primary">체크된 항목 반품승인</button>
 					
 				</form>
