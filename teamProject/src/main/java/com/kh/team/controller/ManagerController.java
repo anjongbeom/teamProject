@@ -200,32 +200,17 @@ public class ManagerController {
 	}
 	
 	
-	// 제품 수정 폼
+	// 멤버 정보 폼
 	@RequestMapping(value = "/memberInfoForm", method = RequestMethod.GET)
-	public String memberInfoForm(MemberVo memberVo, Model model, PagingDto pagingDto) {
-		System.out.println("managerController, memberInfoForm: " + memberVo);
-//		ProductVo productVo = managerService.getProductInfoById(product_id);
-//		model.addAttribute("productVo", productVo);
-//		model.addAttribute("pagingDto", pagingDto);
+	public String memberInfoForm(String member_id, Model model, PagingDto pagingDto) {
+		System.out.println("managerController, memberInfoForm: " + member_id);
 		
-		
-		return "/manager/member_info_form";
+		MemberVo memberVo = managerService.getMemberInfoById(member_id);
+		model.addAttribute("memberVo", memberVo);
+		return "/manager/member/member_info_form";
 	}
 	
-	/*
-	MEMBER_ID,
-	MEMBER_PW, 
-	MEMBER_NAME, 
-	NICKNAME, 
-	EMAIL, 
-	FAVORITE, 
-	REGDATE, 
-	UPDATEDATE, 
-	ADDRESS, 
-	MEMBER_TEL, 
-	MEMBER_POINT, 
-	BANDATE
-	*/
+	
 	
 
 }
