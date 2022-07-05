@@ -101,8 +101,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public boolean transInsertOrder(String product_id, int product_count, String member_id) {
 		try {
-			productDao.insertOrderDetail(product_id, product_count);
 			productDao.insertOrder(member_id);
+			productDao.insertOrderDetail(product_id, product_count);
 			return true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

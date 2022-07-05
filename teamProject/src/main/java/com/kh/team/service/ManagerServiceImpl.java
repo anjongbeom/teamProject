@@ -54,6 +54,16 @@ public class ManagerServiceImpl implements ManagerService {
 		List<ProductVo> result = managerDao.getStockList(pagingDto);
 		return result;
 	}
+	
+	
+	@Override
+	public ProductVo getProductInfoById(String product_id) {
+		ProductVo productVo = managerDao.getProductInfoById(product_id);
+		return productVo;
+	}
+	
+	
+	
 
 	// 제품 개수 얻기
 	@Override
@@ -200,6 +210,15 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 	
 	
+	// 멤버 등록 실행
+	@Override
+	public boolean createMember(MemberVo memberVo) {
+		boolean result = managerDao.createMember(memberVo);
+		return result;
+	}
+	
+	
+	
 	// 멤버 리스트
 	@Override
 	public List<MemberVo> getMemberList(PagingDto pagingDto) {
@@ -213,6 +232,8 @@ public class ManagerServiceImpl implements ManagerService {
 		int count = managerDao.getMemberCount(pagingDto);
 		return count;
 	}
+	
+	
 	
 	
 	

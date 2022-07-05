@@ -123,28 +123,25 @@ public class ProductController {
 //				cart_id = i;
 //				productService.deleteCart(cart_id);
 //			}
-//			
 //			result = 1;
-//			
 //		}
-//		
 //		return result;
 //	}
 	
 	
-	//제품 구매창에서 바로 구매 할시 관리자 DB로 바로 넘어감
-		@RequestMapping(value = "/sellProduct", method = RequestMethod.GET)
-		@ResponseBody
-		public String sellProduct(HttpSession session,ProductVo productVo,int product_count) throws Exception {
-			MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
-			String member_id = loginVo.getMember_id();
-			System.out.println("productVo:" + productVo);
-			System.out.println("product_count:" + product_count);
-			boolean result = productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
-					
-			return String.valueOf(result);
-			
-		}
+	// 제품 구매창에서 바로 구매 할시 관리자 DB로 바로 넘어감
+	@RequestMapping(value = "/sellProduct", method = RequestMethod.GET)
+	@ResponseBody
+	public String sellProduct(HttpSession session,ProductVo productVo,int product_count) throws Exception {
+		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+		String member_id = loginVo.getMember_id();
+		System.out.println("productVo:" + productVo);
+		System.out.println("product_count:" + product_count);
+		boolean result = productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
+				
+		return String.valueOf(result);
+		
+	}
 //		//제품 구매창에서 바로 구매 할시 관리자 DB로 바로 넘어감
 //		@RequestMapping(value = "/purchaseProduct", method = RequestMethod.POST)
 //		@ResponseBody

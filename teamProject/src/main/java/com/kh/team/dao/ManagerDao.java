@@ -14,8 +14,9 @@ public interface ManagerDao {
 
 	
 	public boolean createStock(ProductVo productVo); // 제품 등록 실행
-	public List<ProductVo> getStockList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
-	public int getProductCount(PagingDto pagingDto); // 테스트용 get
+	public List<ProductVo> getStockList(PagingDto pagingDto); // 제품 목록 얻기
+	public ProductVo getProductInfoById(String product_id); // id로 제품 정보 얻기 
+	public int getProductCount(PagingDto pagingDto); // 제품 총개수 얻기
 	
 	// 주문된 목록, 상세 목록 매니저 확인 페이지
 	public List<OrderVo> getOrderedList(int order_status_code); // 주문된 목록
@@ -46,6 +47,9 @@ public interface ManagerDao {
 	public OrderedDetailDto getOrderedDetailByOrderDetailNo(int order_detail_no); // order_detail_no로 OrderedDetailDto 정보 얻기
 	public void updateRefundPointForMember(OrderedDetailDto ordered_detail_dto); // 반품 회원의 포인트 환불
 	
+	
+	// 멤버 등록
+	public boolean createMember(MemberVo memberVo); // 멤버 등록
 	
 	// 멤버 리스트
 	public List<MemberVo> getMemberList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)

@@ -93,14 +93,14 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void deleteCart(String str) throws Exception {
-		System.out.println("발자취 다오+ str:" +str);
+		System.out.println("발자취 다오 + str:" +str);
 		sqlSession.delete(NAMESPACE+"deleteCart", str);
 		
 	}
 
 	@Override
 	public void insertOrder(String member_id) throws Exception {
-		System.out.println("발자취 다오+ cartDto:" +member_id);
+		System.out.println("발자취 다오 + cartDto:" + member_id);
 		sqlSession.insert(NAMESPACE+"insertOrder", member_id);
 		
 	}
@@ -108,8 +108,8 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public boolean insertOrderDetail(String product_id,int product_count) throws Exception {
 		Map<String, Object> parameter =new HashMap<>();
-		parameter.put("product_id",product_id);
-		parameter.put("product_count",product_count);
+		parameter.put("product_id", product_id);
+		parameter.put("product_count", product_count);
 		int count=sqlSession.insert(NAMESPACE+"insertOrderDetail", parameter);
 		if(count>0) {
 			return true;

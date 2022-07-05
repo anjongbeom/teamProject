@@ -12,8 +12,11 @@ public interface ManagerService {
 
 
 	public boolean createStock(ProductVo productVo); // 제품 등록
-	public List<ProductVo> getStockList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)
+	public List<ProductVo> getStockList(PagingDto pagingDto); // 제품 목록 얻기
+	
+	public ProductVo getProductInfoById(String product_id); // id로 제품 정보 얻기
 	public int getProductCount(PagingDto pagingDto); // 제품 개수 얻기
+	
 	
 	
 	// 주문 승인하기
@@ -32,6 +35,9 @@ public interface ManagerService {
 	public List<OrderedDetailDto> getReturnedList(int order_detail_status_code); // 반품 요청목록 얻기
 	public void returnApproval(String[] checked_return_list); // 체크한 반품품목 승인
 	
+	
+	// 멤버 등록
+	public boolean createMember(MemberVo memberVo); // 멤버 등록
 	
 	// 멤버 리스트
 	public List<MemberVo> getMemberList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)

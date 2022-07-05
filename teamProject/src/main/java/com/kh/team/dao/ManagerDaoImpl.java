@@ -49,6 +49,16 @@ public class ManagerDaoImpl implements ManagerDao{
 		return count;
 	}
 
+	
+	// id로 제품 정보 얻기
+	@Override
+	public ProductVo getProductInfoById(String product_id) {
+		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "getProductInfoById", product_id);
+		return productVo;
+	}
+	
+	
+	
 	// 주문된 목록 
 	@Override
 	public List<OrderVo> getOrderedList(int order_status_code) {
@@ -211,6 +221,19 @@ public class ManagerDaoImpl implements ManagerDao{
 		List<MessageToSendVo> messageToSendVo = sqlSession.selectList(NAMESPACE + "getMessageToSendVo");
 		return messageToSendVo;
 	}
+	
+	
+	
+	// 멤버 등록 실행
+	@Override
+	public boolean createMember(MemberVo memberVo) {
+		int insert_count = sqlSession.insert(NAMESPACE + "createMember", memberVo);
+		if (insert_count > 0) {
+			return true;
+		}
+		return false;
+	}
+
 	
 	
 	// 멤버 목록 얻기
