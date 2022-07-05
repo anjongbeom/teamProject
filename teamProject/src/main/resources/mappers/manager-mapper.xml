@@ -313,5 +313,23 @@
 		where member_id = #{member_id}
 	</select>
 	
+	<!-- 멤버 정보 수정 -->
+	<update id="memberModify">
+		update tal_member set
+			member_pw = #{member_pw},
+			member_name = #{member_name}, 
+			nickname = #{nickname}, 
+			email = #{email}, 
+			favorite = #{favorite}, 
+			regdate = #{regdate}, 
+			updatedate = to_date(#{updatedate}, 'yyyy-MM-dd HH:mm:ss'), 
+			address = #{address},
+			member_tel = #{member_tel}, 
+			member_point = #{member_point},
+			bandate = #{bandate}
+		where member_id = #{member_id}
+	</update>
+	
+	
 		
 </mapper>

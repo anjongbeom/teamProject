@@ -199,7 +199,7 @@ public class ManagerController {
 		List<MemberVo> member_list = managerService.getMemberList(pagingDto);
 		session.setAttribute("member_list", member_list);
 		
-		return "/manager/member/member_list";
+		return "/manager/member_list";
 	}
 	
 	
@@ -210,8 +210,21 @@ public class ManagerController {
 		
 		MemberVo memberVo = managerService.getMemberInfoById(member_id);
 		model.addAttribute("memberVo", memberVo);
-		return "/manager/member/member_info_form";
+		return "/manager/member_info_form";
 	}
+	
+	
+	// 멤버 정보 수정  
+	@RequestMapping(value = "/memberModifyRun", method = RequestMethod.GET)
+	public String memberModifRun(MemberVo memberVo, Model model, PagingDto pagingDto, RedirectAttributes rttr) {
+		System.out.println("memberModifyRun, memberVo: " + memberVo);
+		boolean update_result = managerService.memberModify(memberVo);
+		rttr.addFlashAttribute("update_result", update_result);
+		return "redirect:/manager/memberList";
+	}
+	
+	
+	
 	
 	
 	

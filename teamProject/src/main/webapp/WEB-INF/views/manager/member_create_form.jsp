@@ -23,7 +23,9 @@ $(document).ready(function() {
 		
 		
 		<h2>멤버 등록</h2>
+
 		<form role="form" action="/manager/memberCreation" method="post" id="frmRegistApproval">
+
 		<table class="table">
 				<tr>
 					<td><label for="product_id">멤버 아이디(MEMBER_ID)</label><td>
