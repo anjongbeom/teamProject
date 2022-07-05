@@ -142,7 +142,6 @@ public class ProductController {
 			System.out.println("productVo:"+productVo);
 			System.out.println("product_count:"+product_count);
 			boolean result=productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
-					
 			return String.valueOf(result);
 			
 		}
