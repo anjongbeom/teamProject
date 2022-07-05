@@ -6,7 +6,16 @@
 
 <%@ include file="/WEB-INF/views/include/manager_header.jsp"%>      
 
-
+<script>
+$(document).ready(function() {
+	var frmRegistApproval = $("#frmRegistApproval");
+	$("#regist_btn").click(function(e){
+		e.preventDefault();
+		alert("회원 등록이 승인되었습니다.");
+		frmRegistApproval.submit();
+	});
+});
+</script>
 
 <div class="container-fluid px-4">
 	<div class="row">
@@ -14,7 +23,7 @@
 		
 		
 		<h2>멤버 등록</h2>
-		<form role="form" action="memberCreation" method="post">
+		<form role="form" action="/manager/memberCreation" method="post" id="frmRegistApproval">
 		<table class="table">
 				<tr>
 					<td><label for="product_id">멤버 아이디(MEMBER_ID)</label><td>
@@ -73,7 +82,7 @@
 				<tr>
 					<td><label></label></td>
 					<td></td>
-					<td><button type="submit" class="btn btn-primary" style="float: right;"
+					<td><button type="button" class="btn btn-primary" style="float: right;" id="regist_btn"
 							>등록</button></td>
 				</tr>
 			</table>

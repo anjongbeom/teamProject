@@ -221,6 +221,7 @@ public class ManagerServiceImpl implements ManagerService {
 	// 멤버 등록 실행
 	@Override
 	public boolean createMember(MemberVo memberVo) {
+		System.out.println("serviceImpl,createMember,MemberVo memberVo"+memberVo);
 		boolean result = managerDao.createMember(memberVo);
 		return result;
 	}

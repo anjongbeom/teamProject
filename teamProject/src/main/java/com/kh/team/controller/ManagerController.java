@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.team.service.ManagerService;
 import com.kh.team.util.MailSenderUtil;
@@ -177,10 +178,12 @@ public class ManagerController {
 	
 	// 멤버 등록 실행
 	@RequestMapping(value = "/memberCreation", method = RequestMethod.POST)
-	public String memberCreation(MemberVo memberVo) {
+	public String memberCreation(MemberVo memberVo , RedirectAttributes rttr) {
 		System.out.println("MemberController, memberCreation");
-		boolean create_product_result = managerService.createMember(memberVo);
-		return "redirect:/manager/stockList";
+		boolean memberCreation_result = managerService.createMember(memberVo);
+		System.out.println("memberCreation_result"+memberCreation_result);
+		rttr.addFlashAttribute("memberCreation_result", memberCreation_result);
+		return "redirect:/manager/stock_list";
 	}
 	
 	

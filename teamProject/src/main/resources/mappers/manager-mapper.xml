@@ -265,7 +265,7 @@
 	<insert id="createMember">
 		insert into tal_member
 		values(#{member_id}, #{member_pw}, #{member_name}, #{nickname}, #{email},
-			#{favorite}, #{regdate}, #{updatedate}, #{member_tel}, #{member_point}, #{address})
+			#{favorite}, #{regdate}, #{updatedate}, #{member_tel}, #{member_point}, #{address},#{bandate})
 	</insert>
 	
 	

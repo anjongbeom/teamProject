@@ -232,6 +232,7 @@ public class ManagerDaoImpl implements ManagerDao{
 	// 멤버 등록 실행
 	@Override
 	public boolean createMember(MemberVo memberVo) {
+		System.out.println("managerDaoImpl,createMember,MemberVo" + memberVo);
 		int insert_count = sqlSession.insert(NAMESPACE + "createMember", memberVo);
 		if (insert_count > 0) {
 			return true;
