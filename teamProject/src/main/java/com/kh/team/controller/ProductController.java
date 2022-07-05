@@ -85,7 +85,6 @@ public class ProductController {
 	@RequestMapping(value= "/purchase", method = RequestMethod.GET)
 	public String purchase(String product_id, Model model, PagingDto pagingDto) {
 		ProductVo productVo = productService.detail(product_id);
-
 		model.addAttribute("productVo", productVo);
 		return "/product/purchase";
 	}
@@ -124,11 +123,8 @@ public class ProductController {
 //				cart_id = i;
 //				productService.deleteCart(cart_id);
 //			}
-//			
 //			result = 1;
-//			
 //		}
-//		
 //		return result;
 //	}
 	

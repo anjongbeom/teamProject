@@ -111,10 +111,10 @@ public class CartController {
 			HttpSession session, CartDto cartDto) throws Exception {
 		MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
 		String member_id = loginVo.getMember_id();
-		System.out.println(chk.size());	//2
+		System.out.println(chk.size());	// 2
 		cartService.insertOrder(member_id);
 		for (String str : chk) {
-			System.out.println("str:"+str); //str:62 str:63
+			System.out.println("str:" + str); //str:62 str:63
 			cartService.insertOrderDetail(str);
 			cartService.deleteCart(str);
 		}

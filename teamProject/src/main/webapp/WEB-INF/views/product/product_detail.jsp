@@ -71,7 +71,6 @@ $(document).ready(function() {
 // 	};
 	
 	
-	
 	$("#btn_purchase").click(function(e) {
 	 	var amount = $("#amount").val();
 	 	var price = ${productVo.product_price};
@@ -88,14 +87,11 @@ $(document).ready(function() {
 		if(loginVo == null || loginVo == ""){
 			console.log("loginVo: ", loginVo);
 			window.location.href = "/member/loginForm";
-			
 		} else {
-		
 	// 		var login_id = "${loginVo.member_id}";
 		 	var product_id = "${productVo.product_id}";
 	// 	 	var price = ${productVo.product_price};
 		 	var product_count = $("#amount").val();
-	
 	
 			// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
 			var sData = {
@@ -105,15 +101,13 @@ $(document).ready(function() {
 			console.log(sData);
 			var url = "/cart/addCart";
 			$.get(url, sData, function(rData) {
-	// 			console.log(rData);
+			// console.log(rData);
 				if (rData == "true") {
 					alert("장바구니에 물품이 담겼습니다.");
 				}
 			});
 		}
 	});
-	
-
 	
 	
 });

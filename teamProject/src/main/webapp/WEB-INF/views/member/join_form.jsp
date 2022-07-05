@@ -30,13 +30,9 @@ $(document).ready(function() {
 		var id_duplication = document.getElementById("id_duplication");
 		var member_id = document.getElementById("member_id").value;
 		
-		console.log("id_duplication.value : ", id_duplication.attr("value"));
-		
-		id_duplication.attr("value", "id_checked");
-		
-		console.log("id_duplication.value : ", id_duplication);
-		
-// 		console.log("idOverlap 호출");
+// 		console.log("id_duplication.value : ", id_duplication.attr("value"));
+// 		id_duplication.attr("value", "id_checked");
+		console.log("id_duplication : ", id_duplication); // value="id_unchecked"
 		console.log("아이디 입력 값 : ", member_id);
 		
 		$.ajax({
@@ -65,10 +61,7 @@ $(document).ready(function() {
 		
 	});
 	
-// 	$("#btn_join").click(function(e) {
-// 		e.preventDefault();
-		
-// 	});
+
 	
 });
 

@@ -162,11 +162,11 @@ $(document).ready(function() {
 								<td>이름</td>
 								<td>닉네임</td>
 								<td>이메일</td>
-								<td>선호 주류</td>
-								<td>등록일</td>
-								<td>업데이트일</td>
-								<td>주소</td>
-								<td>전화번호</td>
+<!-- 								<td>선호 주류</td> -->
+<!-- 								<td>등록일</td> -->
+<!-- 								<td>업데이트일</td> -->
+<!-- 								<td>주소</td> -->
+<!-- 								<td>전화번호</td> -->
 								<td>포인트</td>
 							</tr>
 						</thead>
@@ -182,11 +182,11 @@ $(document).ready(function() {
 								<td>${memberVo.member_name}</td>
 								<td>${memberVo.nickname}</td>
 								<td>${memberVo.email}</td>
-								<td>${memberVo.favorite}</td>
-								<td>${memberVo.regdate}</td>
-								<td>${memberVo.updatedate}</td>
-								<td>${memberVo.address}</td>
-								<td>${memberVo.member_tel}</td>
+<%-- 								<td>${memberVo.favorite}</td> --%>
+<%-- 								<td>${memberVo.regdate}</td> --%>
+<%-- 								<td>${memberVo.updatedate}</td> --%>
+<%-- 								<td>${memberVo.address}</td> --%>
+<%-- 								<td>${memberVo.member_tel}</td> --%>
 								<td>${memberVo.member_point}</td>
 								
 							</tr>

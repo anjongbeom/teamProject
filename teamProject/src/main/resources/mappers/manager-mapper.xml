@@ -13,16 +13,22 @@
 		values(#{product_id}, #{product_name}, #{product_price}, #{product_stock}, #{product_capacity}, 
 			#{product_alcohol_degree}, #{product_expiration_date}, #{product_origin}, 
 			#{product_image}, #{product_descript}, #{product_discount}, #{cate_code}, #{product_kor_name})
-	
 	</insert>
 	
-
 
 	<!-- 제품 총 개수 -->
 	<select id="getProductCount" resultType="int">
 		select count(*) from tal_product
 		<include refid="searchProduct"></include>
 	</select>
+	
+	
+	<!-- id로 제품 정보 얻기 -->
+	<select id="getProductInfoById" resultType="ProductVo">
+		select * from tal_product
+		where product_id = #{product_id}
+	</select>
+	
 	
 	<!-- 제품 목록 -->
 	<select id="getStockList" resultType="ProductVo">
@@ -232,6 +238,15 @@
 		where member_id = #{member_id}
 	</update>
 	
+	
+	
+	
+	<!-- 멤버 등록 -->
+	<insert id="createMember">
+		insert into tal_member
+		values(#{member_id}, #{member_pw}, #{member_name}, #{nickname}, #{email},
+			#{favorite}, #{regdate}, #{updatedate}, #{member_tel}, #{member_point}, #{address})
+	</insert>
 	
 	
 	

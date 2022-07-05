@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.team.service.ManagerService;
 import com.kh.team.util.MailSenderUtil;
+import com.kh.team.vo.BoardVo;
 import com.kh.team.vo.MemberVo;
 import com.kh.team.vo.OrderVo;
 import com.kh.team.vo.OrderedDetailDto;
@@ -42,7 +44,7 @@ public class ManagerController {
 		return "/manager/manager_form";
 	}
 	
-	// 제품 등록 페이지
+	// 제품 등록 폼
 	@RequestMapping(value = "/stockCreateForm", method = RequestMethod.GET)
 	public String stockCreateForm() {
 		System.out.println("MemberController, stock_create_form");
@@ -73,6 +75,26 @@ public class ManagerController {
 		
 		return "/manager/stock_list";
 	}
+	
+	
+	// 제품 수정 폼
+	@RequestMapping(value = "/stockModifyForm", method = RequestMethod.GET)
+	public String stockModifyForm(String product_id, Model model, PagingDto pagingDto) {
+		System.out.println("managerController, stockModifyForm" + product_id);
+		ProductVo productVo = managerService.getProductInfoById(product_id);
+		model.addAttribute("productVo", productVo);
+		model.addAttribute("pagingDto", pagingDto);
+		
+		return "/manager/stock_modify_form";
+	}
+	
+	// 제품 수정 실행
+	@RequestMapping(value = "/stockModifyRun", method = RequestMethod.GET)
+	public String stockModifyRun(ProductVo productVo, Model model, PagingDto pagingDto) {
+		
+		return "redirect:/manager/stock_list";
+	}
+	
 	
 	
 	// 주문된 목록
@@ -144,8 +166,29 @@ public class ManagerController {
 		managerService.returnApproval(checked_return_list);
 		return "redirect:/manager/managerForm";
 	}
-
 	
+	
+	
+	// 멤버 등록 폼 -> 회원가입으로 대체하기
+	@RequestMapping(value = "/memberCreateForm", method = RequestMethod.GET)
+	public String memberCreateForm() {
+		System.out.println("MemberController, memberCreateForm");
+		return "/manager/member_create_form";
+	}
+		
+	
+	
+	// 멤버 등록 실행
+	@RequestMapping(value = "/memberCreation", method = RequestMethod.POST)
+	public String memberCreation(MemberVo memberVo) {
+		System.out.println("MemberController, memberCreation");
+		boolean create_product_result = managerService.createMember(memberVo);
+		return "redirect:/manager/stock_list";
+	}
+	
+	
+		
+		
 	
 	// 멤버 리스트로 이동
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
@@ -164,7 +207,6 @@ public class ManagerController {
 	// 멤버 정보로 이동
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
 	public String memberInfo(HttpSession session, Model model, PagingDto pagingDto) {
-		
 		
 		return "/manager/member_info";
 	}
