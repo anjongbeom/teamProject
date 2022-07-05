@@ -15,12 +15,14 @@ public class MemberVo {
 	private String member_tel;
 	private int member_point;
 	private String address;
+	private Date bandate;
 	
 	public MemberVo() {
 	}
 
 	public MemberVo(String member_id, String member_pw, String member_name, String nickname, String email,
-			String favorite, Date regdate, Date updatedate, String member_tel, int member_point, String address) {
+			String favorite, Date regdate, Date updatedate, String member_tel, int member_point, String address,
+			Date bandate) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -33,6 +35,7 @@ public class MemberVo {
 		this.member_tel = member_tel;
 		this.member_point = member_point;
 		this.address = address;
+		this.bandate = bandate;
 	}
 
 	public String getMember_id() {
@@ -123,13 +126,23 @@ public class MemberVo {
 		this.address = address;
 	}
 
+	public Date getBandate() {
+		return bandate;
+	}
+
+	public void setBandate(Date bandate) {
+		this.bandate = bandate;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [member_id=" + member_id + ", member_pw=" + member_pw + ", member_name=" + member_name
 				+ ", nickname=" + nickname + ", email=" + email + ", favorite=" + favorite + ", regdate=" + regdate
 				+ ", updatedate=" + updatedate + ", member_tel=" + member_tel + ", member_point=" + member_point
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", bandate=" + bandate + "]";
 	}
+	
+	
 
 	
 }

@@ -76,14 +76,14 @@ public class ManagerController {
 	
 	
 	// 제품 수정 폼
-	@RequestMapping(value = "/stockModifyForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/stockInfoForm", method = RequestMethod.GET)
 	public String stockModifyForm(String product_id, Model model, PagingDto pagingDto) {
 		System.out.println("managerController, stockModifyForm: " + product_id);
 		ProductVo productVo = managerService.getProductInfoById(product_id);
 		model.addAttribute("productVo", productVo);
 		model.addAttribute("pagingDto", pagingDto);
 		
-		return "/manager/stock_modify_form";
+		return "/manager/stock_info_form";
 	}
 	
 	// 제품 수정 실행
@@ -125,12 +125,10 @@ public class ManagerController {
 	public String orderApproval(HttpSession session, PagingDto pagingDto,
 							OrderedDetailDto orderedDtailDto, HttpServletRequest request) {
 		String[] checked_list = request.getParameterValues("checked_list");
-//			for (String order_detail_no : checked_list) {
+//			for (String order_detail_no : checked_list) { // 체크 항목 확인용
 //				System.out.println(order_detail_no); }
 		managerService.orderApproval(checked_list);
-//		MailSenderTest email = new MailSenderTest();
-//		mailSenderUtil.sendMail("서비스에서 util 테스트중", "서비스에서 util테스트중", "ajb5209@naver.com", "kerk0214@gmail.com");
-		
+
 		return "redirect:/manager/orderedList"; 
 	}
 	
@@ -202,12 +200,32 @@ public class ManagerController {
 	}
 	
 	
-	// 멤버 정보로 이동
-	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
-	public String memberInfo(HttpSession session, Model model, PagingDto pagingDto) {
+	// 제품 수정 폼
+	@RequestMapping(value = "/memberInfoForm", method = RequestMethod.GET)
+	public String memberInfoForm(MemberVo memberVo, Model model, PagingDto pagingDto) {
+		System.out.println("managerController, memberInfoForm: " + memberVo);
+//		ProductVo productVo = managerService.getProductInfoById(product_id);
+//		model.addAttribute("productVo", productVo);
+//		model.addAttribute("pagingDto", pagingDto);
 		
-		return "/manager/member_info";
+		
+		return "/manager/member_info_form";
 	}
+	
+	/*
+	MEMBER_ID,
+	MEMBER_PW, 
+	MEMBER_NAME, 
+	NICKNAME, 
+	EMAIL, 
+	FAVORITE, 
+	REGDATE, 
+	UPDATEDATE, 
+	ADDRESS, 
+	MEMBER_TEL, 
+	MEMBER_POINT, 
+	BANDATE
+	*/
 	
 
 }

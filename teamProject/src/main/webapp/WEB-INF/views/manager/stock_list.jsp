@@ -47,7 +47,7 @@ td {
 		$(".tr_list").click(function() {
 			var product_id = $(this).attr("data-pid");
 			product_paging.find("input[name=product_id]").val(product_id);
-			product_paging.attr("action", "/manager/stockModifyForm");
+			product_paging.attr("action", "/manager/stockInfoForm");
 			product_paging.attr("method", "get");
 			product_paging.submit();
 		});

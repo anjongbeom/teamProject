@@ -51,7 +51,7 @@ $(document).ready(function() {
 // 		var frmPaging = $("#frmPaging"); 위쪽 정의
 		frmPaging.find("input[name=member_id]").val(product_id);
 // 		$("#frmPaging > input[name=bno]").val(bno);
-		frmPaging.attr("action", "/manager/memberInfo"); // 생성 필요
+		frmPaging.attr("action", "/manager/memberInfoForm"); // 생성 필요
 		frmPaging.attr("method", "get");
 		frmPaging.submit();
 	});
