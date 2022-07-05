@@ -56,6 +56,14 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 	
 	
+	// 제품 수정 실행
+	@Override
+	public void stockModifyRun(ProductVo productVo) {
+		managerDao.stockModifyRun(productVo);
+	}
+	
+	
+	// 제품 아이디로 제품 정보얻기
 	@Override
 	public ProductVo getProductInfoById(String product_id) {
 		ProductVo productVo = managerDao.getProductInfoById(product_id);
@@ -232,6 +240,7 @@ public class ManagerServiceImpl implements ManagerService {
 		int count = managerDao.getMemberCount(pagingDto);
 		return count;
 	}
+
 	
 	
 	

@@ -40,6 +40,13 @@ public class ManagerDaoImpl implements ManagerDao{
 		List<ProductVo> list = sqlSession.selectList(NAMESPACE + "getStockList", pagingDto);
 		return list;
 	}
+	
+	
+	// 제품 수정 실행
+	@Override
+	public void stockModifyRun(ProductVo productVo) {
+		sqlSession.update(NAMESPACE + "stockModifyRun", productVo);
+	}
 
 	
 	// 제품 개수 얻기

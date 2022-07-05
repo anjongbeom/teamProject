@@ -40,24 +40,23 @@ public class ManagerController {
 	// 매니저 폼
 	@RequestMapping(value = "/managerForm", method = RequestMethod.GET)
 	public String managerForm() {
-		System.out.println("MemberController, managerForm ");
+		System.out.println("MemberController, managerForm: ");
 		return "/manager/manager_form";
 	}
 	
 	// 제품 등록 폼
 	@RequestMapping(value = "/stockCreateForm", method = RequestMethod.GET)
 	public String stockCreateForm() {
-		System.out.println("MemberController, stock_create_form");
+		System.out.println("MemberController, stock_create_form: ");
 		return "/manager/stock_create_form";
 	}
 	
 	// 제품 등록 실행
 	@RequestMapping(value = "/stockCreation", method = RequestMethod.GET)
 	public String stockCreation(ProductVo productVo) {
-		System.out.println("MemberController, stockCreation");
-		boolean create_product_result = managerService.createStock(productVo);
-		
-		return "redirect:/manager/stock_list";
+		System.out.println("MemberController, stockCreation: ");
+		managerService.createStock(productVo);
+		return "redirect:/manager/stockList";
 	}
 	
 	
@@ -66,10 +65,9 @@ public class ManagerController {
 	// 제품 리스트 얻기
 	@RequestMapping(value = "/stockList", method = RequestMethod.GET)
 	public String stockList(HttpSession session, PagingDto pagingDto) {
-		System.out.println("MemberController, stockList ");
+		System.out.println("MemberController, stockList: ");
 		pagingDto.setCount(managerService.getProductCount(pagingDto)); // getCount -> list()
 		pagingDto.setPage(pagingDto.getPage());
-		
 		List<ProductVo> stock_list = managerService.getStockList(pagingDto);
 		session.setAttribute("stock_list", stock_list);
 		
@@ -80,7 +78,7 @@ public class ManagerController {
 	// 제품 수정 폼
 	@RequestMapping(value = "/stockModifyForm", method = RequestMethod.GET)
 	public String stockModifyForm(String product_id, Model model, PagingDto pagingDto) {
-		System.out.println("managerController, stockModifyForm" + product_id);
+		System.out.println("managerController, stockModifyForm: " + product_id);
 		ProductVo productVo = managerService.getProductInfoById(product_id);
 		model.addAttribute("productVo", productVo);
 		model.addAttribute("pagingDto", pagingDto);
@@ -91,8 +89,9 @@ public class ManagerController {
 	// 제품 수정 실행
 	@RequestMapping(value = "/stockModifyRun", method = RequestMethod.GET)
 	public String stockModifyRun(ProductVo productVo, Model model, PagingDto pagingDto) {
-		
-		return "redirect:/manager/stock_list";
+		System.out.println("managerController, stockModifyRun: " + productVo);
+		managerService.stockModifyRun(productVo);
+		return "redirect:/manager/stockList";
 	}
 	
 	
@@ -183,11 +182,10 @@ public class ManagerController {
 	public String memberCreation(MemberVo memberVo) {
 		System.out.println("MemberController, memberCreation");
 		boolean create_product_result = managerService.createMember(memberVo);
-		return "redirect:/manager/stock_list";
+		return "redirect:/manager/stockList";
 	}
 	
 	
-		
 		
 	
 	// 멤버 리스트로 이동
@@ -200,7 +198,7 @@ public class ManagerController {
 		List<MemberVo> member_list = managerService.getMemberList(pagingDto);
 		session.setAttribute("member_list", member_list);
 		
-		return "/manager/member_list";
+		return "/manager/member/member_list";
 	}
 	
 	

@@ -13,10 +13,10 @@ public interface ManagerService {
 
 	public boolean createStock(ProductVo productVo); // 제품 등록
 	public List<ProductVo> getStockList(PagingDto pagingDto); // 제품 목록 얻기
+	public void stockModifyRun(ProductVo productVo); // 제품 수정 실행
 	
 	public ProductVo getProductInfoById(String product_id); // id로 제품 정보 얻기
 	public int getProductCount(PagingDto pagingDto); // 제품 개수 얻기
-	
 	
 	
 	// 주문 승인하기

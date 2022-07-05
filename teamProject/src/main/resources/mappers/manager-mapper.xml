@@ -57,6 +57,26 @@
 		</if>
 	</sql>
 	
+	
+	<update id="stockModifyRun">
+		update tal_product set
+			product_name = #{product_name}, 
+			product_price = #{product_price}, 
+			product_stock = #{product_stock}, 
+			product_capacity = #{product_capacity}, 
+			product_alcohol_degree = #{product_alcohol_degree}, 
+			product_expiration_date = #{product_expiration_date}, 
+			product_origin = #{product_origin}, 
+			product_image = #{product_image},
+			product_descript = #{product_descript}, 
+			product_discount = #{product_discount}, 
+			cate_code = #{cate_code}, 
+			product_kor_name = #{product_kor_name}
+		where product_id = #{product_id}
+	</update>
+	
+	
+	
 		
 	<!-- 주문된 제품 목록 order_status_code 로 조회 -->
 	<select id="getOrderedList" resultType="OrderVo">

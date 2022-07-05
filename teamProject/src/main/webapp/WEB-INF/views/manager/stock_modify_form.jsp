@@ -11,7 +11,7 @@
 		
 		
 		<h2>제품 수정</h2>
-		<form role="form" action="stockCreation" method="get">
+		<form role="form" action="stockModifyRun" method="get">
 		<table class="table">
 				<tr>
 					<td><label for="product_id">제품 아이디(PRODUCT_ID)</label><td>
