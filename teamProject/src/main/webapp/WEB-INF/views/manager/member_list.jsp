@@ -32,18 +32,11 @@ $(document).ready(function() {
 	var create_result = "${create_result}";
 	var delete_result = "${delete_result}";
 	var reply_result = "${reply_result}";
+	var update_result = "${update_result}";
 	
-	console.log("create_result: " , create_result);
-	if (create_result == "true") {
-		alert("글 쓰기 완료");
+	if (update_result == "true") {
+		alert("멤버 수정 완료");
 	}
-	if (delete_result == "true") {
-		alert("글 삭제 완료");
-	}
-	if (reply_result == "true") {
-		alert("글 작성 완료");
-	}
-	
 	
 	$(".tr_list").click(function() {
 		var member_id = $(this).attr("data-mid");

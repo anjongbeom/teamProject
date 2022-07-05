@@ -10,19 +10,19 @@ public class MemberVo {
 	private String nickname;
 	private String email;
 	private String favorite;
-	private Date regdate;
-	private Date updatedate;
+	private String regdate;
+	private String updatedate;
 	private String member_tel;
 	private int member_point;
 	private String address;
-	private Date bandate;
+	private String bandate;
 	
 	public MemberVo() {
 	}
 
 	public MemberVo(String member_id, String member_pw, String member_name, String nickname, String email,
-			String favorite, Date regdate, Date updatedate, String member_tel, int member_point, String address,
-			Date bandate) {
+			String favorite, String regdate, String updatedate, String member_tel, int member_point, String address,
+			String bandate) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -86,19 +86,19 @@ public class MemberVo {
 		this.favorite = favorite;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
-	public Date getUpdatedate() {
+	public String getUpdatedate() {
 		return updatedate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
+	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
 	}
 
@@ -126,11 +126,11 @@ public class MemberVo {
 		this.address = address;
 	}
 
-	public Date getBandate() {
+	public String getBandate() {
 		return bandate;
 	}
 
-	public void setBandate(Date bandate) {
+	public void setBandate(String bandate) {
 		this.bandate = bandate;
 	}
 
@@ -141,8 +141,7 @@ public class MemberVo {
 				+ ", updatedate=" + updatedate + ", member_tel=" + member_tel + ", member_point=" + member_point
 				+ ", address=" + address + ", bandate=" + bandate + "]";
 	}
-	
-	
 
 	
+
 }

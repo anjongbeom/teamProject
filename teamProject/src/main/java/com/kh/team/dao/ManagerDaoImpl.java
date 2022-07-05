@@ -258,6 +258,16 @@ public class ManagerDaoImpl implements ManagerDao{
 		return memberVo;
 	}
 	
+	// 멤버 정보 수정
+	@Override
+	public boolean memberModify(MemberVo memberVo) {
+		int update_count = sqlSession.update(NAMESPACE + "memberModify", memberVo);
+		if (update_count > 0) {
+			return true;
+		}
+		return false;
+	}
+	
 	
 	// 멤버 개수 얻기
 	@Override

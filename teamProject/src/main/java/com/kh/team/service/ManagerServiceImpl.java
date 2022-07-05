@@ -241,14 +241,20 @@ public class ManagerServiceImpl implements ManagerService {
 		return count;
 	}
 
+
+	// 멤버 수정 실행
+	@Override
+	public boolean memberModify(MemberVo memberVo) {
+		boolean result =  managerDao.memberModify(memberVo);
+		return result;
+	}
 	
+	// 멤버 아이디로 멤버정보 얻기
 	@Override
 	public MemberVo getMemberInfoById(String member_id) {
 		MemberVo memberVo = managerDao.getMemberInfoById(member_id);
 		return memberVo;
 	}
-	
-	
 	
 	
 
