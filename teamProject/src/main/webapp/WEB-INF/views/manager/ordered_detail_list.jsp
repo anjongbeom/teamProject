@@ -10,7 +10,16 @@
 
 <%@ include file="/WEB-INF/views/include/manager_paging.jsp" %>
 
-
+<script>
+$(document).ready(function() {
+	var frmApproval = $("#frmApproval");
+	$("#submitConfirm").click(function(e){
+		e.preventDefault();
+		alert("주문 요청이 승인되었습니다.");
+		frmApproval.submit();
+	});
+});
+</script>
 	
 	<!-- Page content-->
 	<div class="container">
@@ -21,7 +30,7 @@
 				<!-- Side widget-->
 				<div class="mb-4">
 		
-				<form action="/manager/orderApproval">
+				<form action="/manager/orderApproval" method="get" id="frmApproval">
 					<!--  <div class="card-header">Side Widget</div> -->
 					<h2 class="card-title">요청 주문별  품목</h2>
 					<div style="margin-left: 10px;" class="small text-muted"></div>
@@ -62,7 +71,7 @@
 						</tbody>
 					</table>
 					
-					<button type="submit" style="float: right; margin-right: 10px;" 
+					<button type="button" style="float: right; margin-right: 10px;" id="submitConfirm"
 						class="btn btn-primary">체크된 항목 승인</button>
 					
 				</form>
