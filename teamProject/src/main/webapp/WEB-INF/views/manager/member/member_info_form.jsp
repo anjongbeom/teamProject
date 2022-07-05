@@ -5,92 +5,125 @@
 <%@ include file="/WEB-INF/views/include/manager_header.jsp"%>      
 
 
+<!-- 데이트피커 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<script>
+
+
+$(document).ready(function() {
+	
+	$("#datepicker").datepicker({
+		dateFormat: 'yy-mm-dd', //날짜 표시 형식 설정                
+		showOtherMonths: true, //이전 달과 다음 달 날짜를 표시              
+		showMonthAfterYear:true, //연도 표시 후 달 표시               
+		changeYear: true, //연도 선택 콤보박스               
+		changeMonth: true, //월 선택 콤보박스                               
+		showOn: "both", //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시                 
+		yearSuffix: "년", //연도 뒤에 나오는 텍스트 지정                
+		monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],                 
+		monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],                
+		dayNamesMin: ['일','월','화','수','목','금','토'],                 
+		dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],                
+		minDate: "-1M", // -1D:하루전, -1M:한달전, -1Y:일년전                
+		maxDate: "+1M", // +1D:하루후, -1M:한달후, -1Y:일년후                
+// 		buttonImage: "image/calendar.gif", //버튼에 띄워줄 이미지 경로                
+// 		buttonImageOnly: true, //디폴트 버튼 대신 이미지 띄워줌                
+// 		buttonText: "선택", //버튼 마우스오버 시 보이는 텍스트               
+	});
+	
+});
+</script>
+
+
 <div class="container-fluid px-4">
 	<div class="row">
 		<div class="col-md-7">
 		
 		
-		<h2>제품 수정</h2>
+		<h2>제품 정보</h2>
 		<form role="form" action="stockModifyRun" method="get">
 		<table class="table">
 				<tr>
-					<td><label for="MEMBER_ID">제품 아이디(MEMBER_ID)</label><td>
+					<td><label for="MEMBER_ID">멤버 아이디(MEMBER_ID)</label><td>
 					<td><input type="text" class="form-control" 
-						id="product_id" name="product_id" value="${productVo.member_id}"
+						id="product_id" name="product_id" value="${memberVo.member_id}"
 						 style="width:100%;"><td>
 				</tr>
 				<tr>
-					<td><label>제품 이름(MEMBER_PW)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.member_pw}"
+					<td><label>멤버 비밀번호(MEMBER_PW)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.member_pw}"
 						id="product_name" name="product_name"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 가격(MEMBER_NAME)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.member_name}"
+					<td><label>멤버 이름(MEMBER_NAME)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.member_name}"
 						id="product_price" name="product_price"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 수량(NICKNAME)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.nickname}"
+					<td><label>닉네임(NICKNAME)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.nickname}"
 						id="product_stock" name="product_stock"><td>
 				</tr>
 		
 				<tr>
-					<td><label>제품 용량(EMAIL)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.email}"
+					<td><label>이메일(EMAIL)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.email}"
 						id="product_capacity" name="product_capacity"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 도수(FAVORITE)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.favorite}"
+					<td><label>선호주류(FAVORITE)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.favorite}"
 						id="product_alcohol_degree" name="product_alcohol_degree"><td>
 				</tr>
 		
 				<tr>
-					<td><label>제품 유효기간(REGDATE)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.regdate}"
+					<td><label>등록일(REGDATE)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.regdate}"
 						id="product_expiration_date" name="product_expiration_date"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 원산지(UPDATEDATE)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.updatedate}"
+					<td><label>수정일(UPDATEDATE)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.updatedate}"
 						id="product_origin" name="product_origin"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 이미지(ADDRESS)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.address}"
+					<td><label>주소(ADDRESS)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.address}"
 						id="product_image" name="product_image"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 설명(MEMBER_TEL)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.member_tel}"
+					<td><label>전화번호(MEMBER_TEL)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.member_tel}"
 						id="product_descript" name="product_descript"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 할인가(MEMBER_POINT)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.member_point}"
+					<td><label>보유 포인트(MEMBER_POINT)</label><td>
+					<td><input type="text" class="form-control" value="${memberVo.member_point}"
 						id="product_discount" name="product_discount"><td>
 				</tr>
 			
 				<tr>
-					<td><label>제품 카테고리(BANDATE)</label><td>
-					<td><input type="text" class="form-control" value="${productVo.bandate}"
-						id="cate_code" name="cate_code"><td>
+					<td><label>정지기간(BANDATE)</label><td>
+					<td>
+						<input type="text" id="datepicker" name="datepicker" class="form-control col-xs-12" />
+					<td>
 				</tr>
-			
 			
 			
 				<tr>
 					<td colspan="2"><button type="submit" class="btn btn-primary"
 							>수정</button></td>
-					
 				</tr>
 			</table>
 			</form>	

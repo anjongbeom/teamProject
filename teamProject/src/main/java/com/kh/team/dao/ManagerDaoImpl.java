@@ -208,8 +208,6 @@ public class ManagerDaoImpl implements ManagerDao{
 	@Override
 	public void updateRefundPointForMember(OrderedDetailDto ordered_detail_dto) {
 		Map<String, Object> map = new HashMap<String, Object>();
-//		int test_num = 10;
-//		map.put("test_num", test_num);
 		map.put("ordered_detail_dto", ordered_detail_dto);
 		
 		sqlSession.update(NAMESPACE + "updateRefundPointForMember", ordered_detail_dto);
@@ -250,7 +248,18 @@ public class ManagerDaoImpl implements ManagerDao{
 		return member_list;
 	}
 	
-	// 제품 개수 얻기
+	// 멤버 정보얻기 아이디로
+	@Override
+	public MemberVo getMemberInfoById(String member_id) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("member_id", member_id);
+		System.out.println("DaoImpl, map: " + map);
+		MemberVo memberVo = sqlSession.selectOne(NAMESPACE + "getMemberInfoById", map);
+		return memberVo;
+	}
+	
+	
+	// 멤버 개수 얻기
 	@Override
 	public int getMemberCount(PagingDto pagingDto) {
 		int count = sqlSession.selectOne(NAMESPACE + "getMemberCount", pagingDto);

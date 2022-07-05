@@ -38,6 +38,8 @@ public interface ManagerService {
 	
 	// 멤버 등록
 	public boolean createMember(MemberVo memberVo); // 멤버 등록
+	public MemberVo getMemberInfoById(String member_id); // 멤버 정보 얻기
+	
 	
 	// 멤버 리스트
 	public List<MemberVo> getMemberList(PagingDto pagingDto); // 재고 총 개수 얻기(paging에 필요)

@@ -49,7 +49,7 @@
 	
 	
 	<!-- member_id로 멤버 정보얻기 -->
-	<select id="getMemberInfo" resultType="MemberVo">
+	<select id="getMemberInfoById" resultType="MemberVo">
 		select * from tal_member
 		where member_id = #{member_id}
 	</select>

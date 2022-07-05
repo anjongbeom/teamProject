@@ -27,7 +27,7 @@ td {
 
 <script>
 $(document).ready(function() {
-	var frmPaging = $("#frmPaging");
+	var member_paging = $("#member_paging");
 	
 	var create_result = "${create_result}";
 	var delete_result = "${delete_result}";
@@ -47,37 +47,32 @@ $(document).ready(function() {
 	
 	$(".tr_list").click(function() {
 		var member_id = $(this).attr("data-mid");
-// 		location.href="/board/read?bno=" + bno;
-// 		var frmPaging = $("#frmPaging"); 위쪽 정의
-		frmPaging.find("input[name=member_id]").val(product_id);
-// 		$("#frmPaging > input[name=bno]").val(bno);
-		frmPaging.attr("action", "/manager/memberInfoForm"); // 생성 필요
-		frmPaging.attr("method", "get");
-		frmPaging.submit();
+		member_paging.find("input[name=member_id]").val(member_id);
+		member_paging.attr("action", "/manager/memberInfoForm"); // 생성 필요
+		member_paging.attr("method", "get");
+		member_paging.submit();
 	});
 	
 	
 	$("#perPage").change(function() {
 		var perPage = $(this).val();
 		console.log(perPage);
-// 		var frmPaging = $("#frmPaging"); 위쪽 정의
-		frmPaging.find("input[name=perPage]").val(perPage);
-		frmPaging.find("input[name=page]").val(1);
-		frmPaging.attr("action", "/manager/memberList");
-		frmPaging.attr("method", "get");
-		frmPaging.submit();
+		member_paging.find("input[name=perPage]").val(perPage);
+		member_paging.find("input[name=page]").val(1);
+		member_paging.attr("action", "/manager/memberList");
+		member_paging.attr("method", "get");
+		member_paging.submit();
 	});
 	
 	$("a.page-link").click(function(e) {
 		e.preventDefault();
 		var page = $(this).attr("href");
-// 		var frmPaging = $("#frmPaging"); 위쪽 정의
-		frmPaging.find("input[name=page]").val(page);
+		member_paging.find("input[name=page]").val(page);
 		// action을 생략하면 브라우저 주소창의 현재 경로가 action값이 됨
-		frmPaging.attr("action", "/manager/memberList");
+		member_paging.attr("action", "/manager/memberList");
 		// method를 생략하면 get이 기본 값이 됨
-		frmPaging.attr("method", "get");
-		frmPaging.submit();
+		member_paging.attr("method", "get");
+		member_paging.submit();
 	});
 	
 	
@@ -87,12 +82,12 @@ $(document).ready(function() {
 		var keyword = $("#keyword").val();
 		console.log("searchType:", searchType);
 		console.log("keyword:", keyword);
-		frmPaging.find("input[name=searchType]").val(searchType);
-		frmPaging.find("input[name=keyword]").val(keyword);
-		frmPaging.find("input[name=page]").val(1);
-		frmPaging.attr("action", "/manager/memberList");
-		frmPaging.attr("method", "get");
-		frmPaging.submit();
+		member_paging.find("input[name=searchType]").val(searchType);
+		member_paging.find("input[name=keyword]").val(keyword);
+		member_paging.find("input[name=page]").val(1);
+		member_paging.attr("action", "/manager/memberList");
+		member_paging.attr("method", "get");
+		member_paging.submit();
 		
 	});
 	
@@ -100,7 +95,7 @@ $(document).ready(function() {
 
 </script>
 
-<%@ include file="/WEB-INF/views/include/paging.jsp" %>
+<%@ include file="/WEB-INF/views/include/member_paging.jsp" %>
 
 <div class="container-fluid">
 	<div class="row">

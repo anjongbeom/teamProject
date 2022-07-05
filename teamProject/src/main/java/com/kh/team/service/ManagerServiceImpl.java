@@ -242,7 +242,11 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	
-	
+	@Override
+	public MemberVo getMemberInfoById(String member_id) {
+		MemberVo memberVo = managerDao.getMemberInfoById(member_id);
+		return memberVo;
+	}
 	
 	
 	
