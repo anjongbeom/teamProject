@@ -20,7 +20,7 @@ $(document).ready(function() {
 		else $("#cbx_chkAll").prop("checked", true); 
 	});
 
-
+/*
 $("#selectDelete_btn").click(function(){
  var confirm_val = confirm("정말 삭제하시겠습니까?");
  
@@ -32,7 +32,7 @@ $("#selectDelete_btn").click(function(){
   });
    
   $.ajax({
-   url : "/cart/deleteCart",
+   url : "/mypage/deleteCart",
    type : "post",
    data : { chk : checkArr },
    success : function(result){
@@ -46,10 +46,10 @@ $("#selectDelete_btn").click(function(){
   });
  } 
 });
-
-
+*/
+/*
 $("#selectpurchase_btn").click(function(){
- var confirm_val = confirm("구매합니까?");
+ var confirm_val = confirm("재구매합니까?");
  if(confirm_val) {
   var checkArr = new Array();
   
@@ -68,12 +68,19 @@ $("#selectpurchase_btn").click(function(){
  } 
 setTimeout("location.reload()",1000);
 });
+*/
+
+
+$("#return_btn").click(function(){
+	
+});
+
 });
 </script>
 
 			<div class="col-lg-12">
 				<div class="mb-4">
-					<h2 class="card-title" style="text-align: center; margin-top: 40px;">장바구니</h2>
+					<h2 class="card-title" style="text-align: center; margin-top: 40px;">마이 쇼핑</h2>
 					
 					
 				
@@ -81,7 +88,7 @@ setTimeout("location.reload()",1000);
 			<div class="col-md-1">
 			</div>
 				<div class="col-md-10">
-					<div class="small text-muted">VAT 별도</div>
+					<div class="small text-muted"></div>
 					<div class="delete"><button type="button"  id="selectDelete_btn"
 						class="btn btn-warning delete_btn" style="float: right; margin-right: 10px; margin-bottom: 20px;"
 					 	data-cart_id="${CartDto.cart_id}">선택삭제</button></div>
@@ -166,10 +173,11 @@ setTimeout("location.reload()",1000);
 					
 							<div class="row">
 								<div class="col-md-12 ">
-<!-- 					구매하기 할때 정보를 넘기는데 넘겨야할 정보는  -->
-					<button type="button" style="float:right; margin-right:30px;" id="selectpurchase_btn"
+					<!-- 구매하기 할때 정보를 넘기는데 넘겨야할 정보는  -->
+					
+					<button type="button" style="float:right; margin-right:30px;" id="return_btn"
 					class="btn btn-primary text-align-right" 
-						>구매하기
+						>반품요청
 					</button>
 					</div>
 					</div>

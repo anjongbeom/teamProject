@@ -13,7 +13,10 @@
         <title>테이스팅 포 유</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- nav bar font -->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Bootstrap icons-->
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/menu_styles.css" rel="stylesheet" />
@@ -71,12 +74,20 @@
 	                        	
 						</button>
                     
+
+<!--   						<button class="btn btn-outline-dark" type="button"  -->
+<!--                         	 onclick="location.href='/mypage/mypageList'"> -->
+<!--                             <i class="fa-solid fa-house-user"></i> -->
+<!-- 							My -->
+<!--                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span> -->
+<!--                         </button> -->
+						
                     
                     	<!-- 수정중 -->
                     	<!-- 장바구니 -->
                     	<!-- 추후 카트에 담길 갯수 추가 -->
                     	<!-- 카트에는 물건에 담은 정보만 표시 하면 페이지를 누를시 장바구니 담긴 정보 출력 구매누를시 구매페이지 전환 -->
-                        <button class="btn btn-outline-dark" type="button"
+                        <button class="btn btn-outline-dark" type="button" style="margin-left: 5px;"
                         	 onclick="location.href='/cart/orderList'">
 <%--                         onclick="location.href='/product/basket/${loginVo.member_id}"> --%>
                             <i class="bi-cart-fill me-1"></i>
@@ -84,6 +95,8 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                        
+                       
+                      
                         
                         
                         <!-- 로그인 -->
