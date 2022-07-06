@@ -177,7 +177,7 @@
 <!--      /헤더추가  -->
 
         <!-- Navigation-->
-        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <a class="menu-toggle rounded" href="#"><i class="fa-solid fa-align-justify"></i></a>
         <nav id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand"><a href="#page-top">테이스팅 포 유</a></li>
@@ -362,7 +362,7 @@
             
         </footer>
         <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fa-solid fa-angles-up"></i></a>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

@@ -68,7 +68,7 @@
 		insert into tal_order_detail
 			(order_detail_no, order_product_amount, 
 			fk_order_detail_status_code, fk_order_no, fk_product_id)
-				values(seq_order_detail_no.nextval, #{product_count}, 1, (select (max(order_no)+1) from tal_order),#{product_id})
+				values(seq_order_detail_no.nextval, #{product_count}, 1, (select (max(order_no)) from tal_order),#{product_id})
 	</insert>
 	
 	

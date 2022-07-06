@@ -183,7 +183,7 @@ public class ManagerController {
 		boolean memberCreation_result = managerService.createMember(memberVo);
 		System.out.println("memberCreation_result"+memberCreation_result);
 		rttr.addFlashAttribute("memberCreation_result", memberCreation_result);
-		return "redirect:/manager/stock_list";
+		return "redirect:/manager/managerForm";
 	}
 	
 	
