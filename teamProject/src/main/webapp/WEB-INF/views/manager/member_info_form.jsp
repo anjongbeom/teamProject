@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="/WEB-INF/views/include/manager_header.jsp"%>      
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- 데이트피커 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -16,10 +16,10 @@
 $(document).ready(function() {
 	
 	$("#bandate").datepicker({
-		dateFormat: 'yy/mm/dd', //날짜 표시 형식 설정                
+		dateFormat: 'yymmdd', //날짜 표시 형식 설정                
 		showOtherMonths: true, //이전 달과 다음 달 날짜를 표시              
 		showMonthAfterYear:true, //연도 표시 후 달 표시               
-		changeYear: true, //연도 선택 콤보박스               
+		changeYear: true, //연도 선택 콤보박스
 		changeMonth: true, //월 선택 콤보박스                               
 		showOn: "both", //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시                 
 		yearSuffix: "년", //연도 뒤에 나오는 텍스트 지정                
@@ -52,60 +52,61 @@ $(document).ready(function() {
 						id="member_id" name="member_id" value="${memberVo.member_id}"
 						 style="width:100%;"><td>
 				</tr>
+				
 				<tr>
 					<td><label>멤버 비밀번호(MEMBER_PW)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.member_pw}"
 						id="member_pw" name="member_pw"><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>멤버 이름(MEMBER_NAME)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.member_name}"
 						id="member_name" name="member_name"><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>닉네임(NICKNAME)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.nickname}"
 						id="nickname" name="nickname"><td>
 				</tr>
-		
+				
 				<tr>
 					<td><label>이메일(EMAIL)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.email}"
 						id="email" name="email"><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>선호주류(FAVORITE)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.favorite}"
 						id="favorite" name="favorite"><td>
 				</tr>
-		
+				
 				<tr>
 					<td><label>등록일(REGDATE)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.regdate}"
 						id="regdate" ><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>수정일(UPDATEDATE)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.updatedate}"
 						id="updatedate" ><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>주소(ADDRESS)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.address}"
 						id="address" name="address"><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>전화번호(MEMBER_TEL)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.member_tel}"
 						id="member_tel" name="member_tel"><td>
 				</tr>
-			
+				
 				<tr>
 					<td><label>보유 포인트(MEMBER_POINT)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.member_point}"

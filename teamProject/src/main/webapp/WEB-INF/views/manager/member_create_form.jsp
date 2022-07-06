@@ -21,9 +21,7 @@ $(document).ready(function() {
 	<div class="row">
 		<div class="col-md-7">
 		
-		
 		<h2>멤버 등록</h2>
-
 		<form role="form" action="/manager/memberCreation" method="post" id="frmRegistApproval">
 
 		<table class="table">

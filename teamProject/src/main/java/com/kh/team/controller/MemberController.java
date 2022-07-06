@@ -117,5 +117,14 @@ public class MemberController {
 	}
 	
 	
+	// 마이페이지
+	@RequestMapping(value = "/myPageForm", method = RequestMethod.GET)
+	public String myPage() {
+		System.out.println("MemberController, joinForm ");
+		return "/member/join_form";
+		
+	}
+	
+	
 	
 }

@@ -2,6 +2,7 @@ package com.kh.team.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,59 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.service.CartService;
+import com.kh.team.service.ManagerService;
+import com.kh.team.service.MyPageService;
 import com.kh.team.vo.CartDto;
 import com.kh.team.vo.CartVo;
 import com.kh.team.vo.MemberVo;
+import com.kh.team.vo.OrderedDetailDto;
 import com.kh.team.vo.PagingDto;
 import com.kh.team.vo.SummaryDto;
 
 @Controller
-@RequestMapping("/mypage")
+@RequestMapping("/myPage")
 public class MypageController {
 
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private ManagerService managerService;
+	
+	
+	@Autowired
+	private MyPageService myPageService;
+	
+	
+	
+	
+	@RequestMapping(value= "/myPageForm", method = RequestMethod.GET)
+	public String myPageForm(HttpSession session, OrderedDetailDto orderedDtailDto, 
+							Model model, MemberVo memberVo, HttpServletRequest request) {
+//		MemberVo loginVo = request.getParameter("loginVo");
+//		MemberVo loginVo = (MemberVo) request.getAttribute("loginVo");
+		MemberVo loginVo = (MemberVo) session.getAttribute("loginVo");
+	
+		System.out.println("MypageController, myPageForm, loginVo: " + loginVo);
+		
+		return "myPage/my_page";
+		
+	}
+	
+	
+	// 주문된 상세 목록  쓰고 지우기
+	@RequestMapping(value = "/orderedDetailList", method = RequestMethod.GET)
+	public String orderedDetailList(HttpSession session, PagingDto pagingDto,
+							OrderedDetailDto orderedDtailDto, int order_no) {
+		List<OrderedDetailDto> ordered_detail_List = managerService.getOrderedDetailList(order_no); 
+		System.out.println("ordered_detail_List" + ordered_detail_List);
+		session.setAttribute("ordered_detail_List", ordered_detail_List);
+		
+		return "/manager/ordered_detail_list";
+	}
+	
+	
+	
 	
 	
 	@RequestMapping(value= "/mypageList", method = RequestMethod.GET)
@@ -129,9 +171,6 @@ public class MypageController {
 	}
 	
 	
-	
-	
-	
 //	@RequestMapping(value = "/add", method = RequestMethod.POST)
 //	@ResponseBody
 //	public String addCartPOST(CartVo cartVo, HttpSession session) {
@@ -149,6 +188,9 @@ public class MypageController {
 //		
 //		return String.valueOf(result);
 //	}
+	
+	
+	
 	
 	
 	

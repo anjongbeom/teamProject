@@ -206,9 +206,11 @@ public class ManagerController {
 	// 멤버 정보 폼
 	@RequestMapping(value = "/memberInfoForm", method = RequestMethod.GET)
 	public String memberInfoForm(String member_id, Model model, PagingDto pagingDto) {
-		System.out.println("managerController, memberInfoForm: " + member_id);
-		
+//		System.out.println("managerController, memberInfoForm: " + member_id);
 		MemberVo memberVo = managerService.getMemberInfoById(member_id);
+		System.out.println("memberVo: " + memberVo);
+		
+		
 		model.addAttribute("memberVo", memberVo);
 		return "/manager/member_info_form";
 	}

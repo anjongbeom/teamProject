@@ -114,12 +114,12 @@
 						</button>
                     
                     
-<!--                     	<button class="btn btn-outline-dark" type="button" -->
-<!--                         	 onclick="location.href='/mypage/mypageList'"> -->
-<!--                             <i class="fa-solid fa-house-user"></i> -->
-<!-- 							My -->
-<!--                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span> -->
-<!--                         </button> -->
+                    	<button class="btn btn-outline-dark" type="button"
+                        	 onclick="location.href='/myPage/myPageForm'">
+                            <i class="fa-solid fa-house-user"></i>
+							My
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                        </button>
                     
                     
                     	<!-- 수정중 -->

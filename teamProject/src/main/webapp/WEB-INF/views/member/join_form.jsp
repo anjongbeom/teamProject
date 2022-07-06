@@ -11,7 +11,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
 <script src="/resources/js/member_script.js"></script>
 
 <script>
@@ -20,18 +19,23 @@
 $(document).ready(function() {
 	var frm_join = document.getElementById("frm_join");
 	
-// 	var member_id_validity = "false";
+	var is_usable_id = "false";
+	var oldVal;
+	
+	$("#member_id").on("propertychange change keyup paste input", function() {
+	    var currentVal = $(this).val();
+	    if(currentVal == oldVal) {
+	        return;
+	    }
+	    oldVal = currentVal;
+	    is_usable_id = "false";
+	});
 	
 	$("#btn_id_check").click(function() {
-// 		member_id = document.getElementById("member_id").value;
-// 		member_id_validity = idOverlap();
-// 		console.log("member_id_validity: ", member_id_validity);
 		
 		var id_duplication = document.getElementById("id_duplication");
 		var member_id = document.getElementById("member_id").value;
 		
-// 		console.log("id_duplication.value : ", id_duplication.attr("value"));
-// 		id_duplication.attr("value", "id_checked");
 		console.log("id_duplication : ", id_duplication); // value="id_unchecked"
 		console.log("아이디 입력 값 : ", member_id);
 		
@@ -46,7 +50,7 @@ $(document).ready(function() {
 				console.log("rdata: ", rdata);
 				if(rdata == "null"){
 					alert("이 아이디는 사용 가능합니다.");
-					member_id_validity = "true";
+					is_usable_id = "true";
 				} else{	//ajax가 제대로 안됐을 때 .
 					alert("이 아이디는 사용 불가능합니다.");
 				}
@@ -55,12 +59,17 @@ $(document).ready(function() {
 				alert("아이디 중복 확인 ajax 실행 실패");
 			}
 		});
-		
-// 		console.log("member_id_validity: " , member_id_validity);
-// 		console.log("document.frm_join.id_duplication.value: " , document.frm_join.id_duplication.value);
-		
 	});
 	
+	
+	// 폼 서브밋 이벤트 / is_usable_id 중복이 아닐 때 true가 되고 member_id를 수정하는 순간 false가 된다.
+	$("#frm_join").submit(function() {
+		if (is_usable_id == "true") {
+			return true;
+		} else {
+			return false;
+		}
+	});
 
 	
 });
@@ -190,7 +199,8 @@ $(document).ready(function() {
 							<span style="color: red;">*</span>
 							<button class="btn btn-primary" type="button" id="btn_id_check" >중복 확인
 							</button>
-							<input type="text" class="form-control" id="member_id" name="member_id" value="" required/>
+							<input type="text" class="form-control" id="member_id" name="member_id" value="" 
+								onkeydown="" required />
 						</div>
 						<!-- 아이디 유효성 & 중복체크 -->
 						<p id="idValid"></p>
