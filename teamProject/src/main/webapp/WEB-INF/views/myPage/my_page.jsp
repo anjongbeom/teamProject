@@ -77,9 +77,11 @@ $(document).ready(function() {
 <%-- 								<td style="vertical-align:middle; text-align: center;">${orderedDto.member_id}</td> --%>
 								<td style="vertical-align:middle; text-align: center; font-size: 15px; color: #CF492C;" 
 																					>${orderedDto.order_detail_status_descript}</td>
-								<td>
-									<div">
-										<button type="button" id="btn_return" style="line-height: 20px;" class="btn btn-danger"  data-oid="${orderedDto.order_detail_no}">반품 신청</button>
+								<td style="vertical-align: middle;">
+									<div>
+										<button type="button" id="btn_return" 
+										 class="btn btn-danger"  
+										data-oid="${orderedDto.order_detail_no}">반품 신청</button>
 									</div>
 									
 								</td>
