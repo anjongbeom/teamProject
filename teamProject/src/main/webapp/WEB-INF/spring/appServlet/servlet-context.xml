@@ -66,6 +66,7 @@
 			<mapping path="/product/**/*/"/>
 			<mapping path="/cart/**/*/"/>
 			<mapping path="/board/**/*/"/>
+			<mapping path="/myPage/**/*/"/>
 			
 <!-- 			<mapping path="/comment/**/*/"/> -->
 			<exclude-mapping path="/board/list"/>
@@ -81,6 +82,7 @@
 <!-- 			<exclude-mapping path="/board/map"/> -->
 			<beans:ref bean="AuthInterceptor"/>
 		</interceptor>
+		
 	</interceptors>
 	
 	

@@ -44,11 +44,12 @@ public class MypageController {
 	@RequestMapping(value= "/myPageForm", method = RequestMethod.GET)
 	public String myPageForm(HttpSession session, OrderedDetailDto orderedDtailDto, 
 							Model model, MemberVo memberVo, HttpServletRequest request) {
-//		MemberVo loginVo = request.getParameter("loginVo");
-//		MemberVo loginVo = (MemberVo) request.getAttribute("loginVo");
 		MemberVo loginVo = (MemberVo) session.getAttribute("loginVo");
-	
 		System.out.println("MypageController, myPageForm, loginVo: " + loginVo);
+		// member_id로 구매목록 가져오기
+		List<OrderedDetailDto> my_ordered_detail_List = 
+				myPageService.getOrderedDetailList(loginVo.getMember_id());
+		session.setAttribute("my_ordered_detail_List", my_ordered_detail_List);
 		
 		return "myPage/my_page";
 		
@@ -65,6 +66,11 @@ public class MypageController {
 		
 		return "/manager/ordered_detail_list";
 	}
+	
+	
+	
+	
+	
 	
 	
 	

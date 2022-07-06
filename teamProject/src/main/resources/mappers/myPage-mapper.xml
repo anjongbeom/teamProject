@@ -10,17 +10,15 @@
 	
 	
 	
-	
-	
-	
-	
-	
 	<!-- 주문된 제품 상세 목록 -->
 	<select id="getOrderedDetailList" resultType="OrderedDetailDto">
 		<include refid="getDtoJoin"></include>
-		and member_id = #{member_id}
+		and o.fk_member_id = #{member_id}
 		order by order_detail_no desc
 	</select>
+	
+	
+	
 	
 	
 	<!-- 주문된 제품 상세 하나 얻기 -->
@@ -40,6 +38,7 @@
 		    p.product_kor_name,
 		    p.product_price,
 		    od.order_product_amount,
+		    to_char(o.order_date, 'YYYY/MM/DD') as order_date, 
 		    o.fk_member_id as member_id, 
 		    o.fk_order_status_code as order_status_code, 
 		    od.fk_order_detail_status_code as order_detail_status_code,
@@ -56,7 +55,7 @@
 
 
 
-
+	<!-- 아래 삭제 예정 -->
 
 	<!-- 제품 등록 -->
 	<insert id="createStock">

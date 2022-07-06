@@ -4,6 +4,7 @@ public class OrderedDetailDto {
 	
 	private int order_no;
 	private int order_detail_no;
+	private String order_date;
 	private String product_image;
 	private String product_id;
 	private int product_price;
@@ -19,12 +20,13 @@ public class OrderedDetailDto {
 	}
 
 
-	public OrderedDetailDto(int order_no, int order_detail_no, String product_image, String product_id,
-			int product_price, int order_product_amount, String member_id, String order_status_code,
+	public OrderedDetailDto(int order_no, int order_detail_no, String order_date, String product_image,
+			String product_id, int product_price, int order_product_amount, String member_id, String order_status_code,
 			String order_detail_status_code, String product_kor_name, String order_detail_status_descript) {
 		super();
 		this.order_no = order_no;
 		this.order_detail_no = order_detail_no;
+		this.order_date = order_date;
 		this.product_image = product_image;
 		this.product_id = product_id;
 		this.product_price = product_price;
@@ -54,6 +56,16 @@ public class OrderedDetailDto {
 
 	public void setOrder_detail_no(int order_detail_no) {
 		this.order_detail_no = order_detail_no;
+	}
+
+
+	public String getOrder_date() {
+		return order_date;
+	}
+
+
+	public void setOrder_date(String order_date) {
+		this.order_date = order_date;
 	}
 
 
@@ -140,20 +152,21 @@ public class OrderedDetailDto {
 	public String getOrder_detail_status_descript() {
 		return order_detail_status_descript;
 	}
-	
-	
+
+
 	public void setOrder_detail_status_descript(String order_detail_status_descript) {
 		this.order_detail_status_descript = order_detail_status_descript;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
-		return "OrderedDetailDto [order_no=" + order_no + ", order_detail_no=" + order_detail_no + ", product_image="
-				+ product_image + ", product_id=" + product_id + ", product_price=" + product_price
-				+ ", order_product_amount=" + order_product_amount + ", member_id=" + member_id + ", order_status_code="
-				+ order_status_code + ", order_detail_status_code=" + order_detail_status_code + ", product_kor_name="
-				+ product_kor_name + ", order_detail_status_descript=" + order_detail_status_descript + "]";
+		return "OrderedDetailDto [order_no=" + order_no + ", order_detail_no=" + order_detail_no + ", order_date="
+				+ order_date + ", product_image=" + product_image + ", product_id=" + product_id + ", product_price="
+				+ product_price + ", order_product_amount=" + order_product_amount + ", member_id=" + member_id
+				+ ", order_status_code=" + order_status_code + ", order_detail_status_code=" + order_detail_status_code
+				+ ", product_kor_name=" + product_kor_name + ", order_detail_status_descript="
+				+ order_detail_status_descript + "]";
 	}
 	
 	
