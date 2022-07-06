@@ -263,9 +263,9 @@
 	
 	<!-- 멤버 등록 -->
 	<insert id="createMember">
-		insert into tal_member
+		insert into tal_member(member_id, member_pw, member_name, nickname, email, favorite, regdate, updatedate, address, member_tel, member_point)
 		values(#{member_id}, #{member_pw}, #{member_name}, #{nickname}, #{email},
-			#{favorite}, #{regdate}, #{updatedate}, #{member_tel}, #{member_point}, #{address},#{bandate})
+			#{favorite}, to_date(#{regdate}, 'yyyy-MM-dd'), to_date(#{updatedate}, 'yyyy-MM-dd'), #{address}, #{member_tel}, #{member_point})
 	</insert>
 	
 	
