@@ -13,11 +13,16 @@ import com.kh.team.vo.ProductVo;
 public interface MyPageDao {
 
 	
-	
+	// 주문 내역 member_id로 얻기
 	public List<OrderedDetailDto> getOrderedDetailList(String member_id); // 주문된 상세 목록 얻기 by member_id
 	
-	// 삭제 예정
 	
+	
+	// 반품 신청하기
+	public boolean requestReturn(int order_detail_no); // order_detail_no에 해당하는 상태코드 반품 신청으로 변경
+	
+	
+	// 아래 삭제 예정
 	
 	public boolean createStock(ProductVo productVo); // 제품 등록 실행
 	public List<ProductVo> getStockList(PagingDto pagingDto); // 제품 목록 얻기

@@ -5,106 +5,159 @@
 
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<%@ include file="/WEB-INF/views/include/manager_paging.jsp" %>
+<%@ include file="/WEB-INF/views/include/manager_paging.jsp"%>
 
+<style>
+
+th {
+	
+	justify-content:center;
+	align-items:center;
+	text-align: center;
+	line-height: middle;
+	vertical-align: middle;
+}
+
+
+td {
+	
+	justify-content:center;
+	align-items:center;
+	text-align: center;
+	line-height: middle;
+	vertical-align: middle;
+}
+
+
+</style>
 
 <script>
 $(document).ready(function() {
-	var frmApproval = $("#frmApproval");
-	$("#submitConfirm").click(function(e){
-		e.preventDefault();
-		alert("주문 요청이 승인되었습니다.");
-		frmApproval.submit();
-	});
 	
-	
-	$("#btn_return").click(function() {
+	// 주문 목록 얻기
+	function getOrderedList(){
+		var loginVo_member_id = "${loginVo.member_id}";
 		
+		var url = "/myPage/getOrderedDetailList/";
+		$.get(url, function(rData){
+			$("#table_ordered_list tr:gt(0)").remove(); //
+			$.each(rData, function(){
+				var tr = $("#table_clone tr").clone();
+				var tds = tr.find("td");
+				tds.eq(0).text(this.order_detail_no);
+				tds.eq(1).text(this.order_date);
+// 				tds.eq(2).text(this.product_image);
+				tds.eq(2).html
+				('<img src="/product/displayImage?filename=' + this.product_image 
+					+ '" alt="..." style="display: block; margin: auto; width: 122px; height: 182px;">');
+				tds.eq(3).text(this.product_kor_name);
+				tds.eq(4).text(this.order_product_amount);
+				tds.eq(5).text(this.order_detail_status_descript);
+				
+				tds.find(".btnRequestReturn").attr("data-odn", this.order_detail_no);
+				
+				if (this.order_detail_status_descript == '반품요청') {
+					
+				} else {
+					console.log("this.order_detail_status_descript" , this.order_detail_status_descript);
+// 					tds.find(".btnRequestReturn").attr("disabled", "disabled");
+				}
+				
+				$("#table_ordered_list").append(tr);
+			});
+		});
+	}
+	
+	// 반품 신청 버튼
+	$("#table_ordered_list").on("click", ".btnRequestReturn", function(){
+		var that = $(this);
+		var tr = $(this).parents("tr");
+		var td = tr.find("td").eq(1);
+		var input = td.find("input");
+		var content = input.val();
+		var odn = $(this).attr("data-odn");
+		console.log("content:",content);
+		var sData = {
+				"order_detail_no"	  : odn
+		};
+		console.log("sData",sData)
+		var url = "/myPage/requestReturn";
+		$.post(url, sData, function(rData){
+			console.log(rData);
+			if (rData == "true"){
+ 				alert("반품 신청 완료");
+ 				var thatText = that.parent().prev().text();
+ 				alert("thatText: ", thatText);
+//  				that.prop("disabled", true);
+				getOrderedList();
+			}
+		})
 	});
 	
+	getOrderedList();
 	
 });
 </script>
-	
-	<!-- Page content-->
-	<div class="container">
-		<div class="row">
 
-			<!-- Side widgets-->
-			<div class="col-lg-12">
-				<!-- Side widget-->
-				<div class="mb-4">
-		
-				<form action="/manager/orderApproval" method="get" id="frmApproval">
+<!-- Page content-->
+<div class="container">
+	<div class="row">
+
+		<!-- Side widgets-->
+		<div class="col-lg-12">
+			<!-- Side widget-->
+			<div class="mb-4">
+
+				<form action="#" method="get" id="frm_my_page">
 					<!--  <div class="card-header">Side Widget</div> -->
 					<h2 class="card-title">주문한 품목</h2>
 					<div style="margin-left: 10px;" class="small text-muted"></div>
-<!-- 					<a href="/manager/orderedList" class="btn btn-success">목록으로 이동</a> -->
-		
-					<table class="table table-sm">
-						<thead>
+
+					<!-- 클론 테이블 -->
+					<div class="row" style="margin-top: 30px;">
+					<div class="col-md-12" >
+						<table style="display: none;" id="table_clone">
 							<tr>
-								<th scope="row" width="5%"></th>
-								<th scope="row" colspan="1" width="10%" style="text-align: center">상세 주문 번호</th>
-								<th scope="row" colspan="1" width="10%" style="text-align: center">주문 날짜</th>
-								<th scope="row" colspan="1" width="15%" style="text-align: center">상품 이미지</th>
-								<th scope="row" width="20%" style="text-align: center">상품명</th>
-								<th scope="row" width="10%" style="text-align: center">주문 수량</th>
-<!-- 								<th scope="row" width="20%" style="text-align: center">주문자 아이디</th> -->
-								<th scope="row" width="20%" style="text-align: center">주문 상태</th>
-								<th scope="row" width="15%" style="text-align: center">반품  신청</th>
-								
-							</tr>
-						</thead>
-						
-						<tbody class="table-group-divider">
-						<c:forEach items="${sessionScope.my_ordered_detail_List}" var="orderedDto">
-							<tr>
-						
-								<td style="vertical-align:middle">
-									<input type="checkbox" name="checked_list" value="${orderedDto.order_detail_no}" 
-										data-order_detail_no="${orderedDto.order_detail_no}" checked></td>
-								<td style="vertical-align:middle; text-align: center;">${orderedDto.order_detail_no}</td>
-								<td style="vertical-align:middle; text-align: center;">${orderedDto.order_date}</td>
-								
-								
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
-									<img class="card-img-top" src="/product/displayImage?filename=${orderedDto.product_image}"  
-									alt="..." style="display:block; margin:auto; width: 122px; height: 182px;" />
+									<button type="button" 
+									class="btn btn-sm btn-danger btnRequestReturn">반품</button>
 								</td>
-								<td style="vertical-align:middle; text-align: center;">${orderedDto.product_kor_name}</td>
-								<td style="vertical-align:middle; text-align: center;">${orderedDto.order_product_amount}</td>
-<%-- 								<td style="vertical-align:middle; text-align: center;">${orderedDto.member_id}</td> --%>
-								<td style="vertical-align:middle; text-align: center; font-size: 15px; color: #CF492C;" 
-																					>${orderedDto.order_detail_status_descript}</td>
-								<td style="vertical-align: middle;">
-									<div>
-										<button type="button" id="btn_return" 
-										 class="btn btn-danger"  
-										data-oid="${orderedDto.order_detail_no}">반품 신청</button>
-									</div>
-									
-								</td>
-																													
 							</tr>
-						</c:forEach>
-						</tbody>
-					</table>
-					
-<!-- 					<button type="button" style="float: right; margin-right: 10px;" id="submitConfirm" -->
-<!-- 						class="btn btn-primary">체크된 항목 승인</button> -->
-					
-				</form>
-					
-				<br> 
-				<br> 
-					
+						</table>
+						<table class="table" id="table_ordered_list">
+						
+							<tr>
+								<th>상세 주문 번호</th>
+								<th>주문 날짜</th>
+								<th>상품 이미지</th>
+								<th>상품명</th>
+								<th>주문 수량</th>
+								<th>주문 상태</th>
+								<th>반품 신청</th>
+							</tr>
+						</table>
+					</div>
 				</div>
+
+				<!-- // 클론 테이블 -->
+				</form>
+
+				<br> <br>
+
 			</div>
-		
-			
-		</div> <!-- <div class="row">  -->
-	</div> <!-- // Container -->
+		</div>
+
+
+	</div>
+	<!-- <div class="row">  -->
+</div>
+<!-- // Container -->
 
 
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
