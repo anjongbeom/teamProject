@@ -361,7 +361,7 @@
             </div>
             
         </footer>
-        <!-- Scroll to Top Button-->
+        <!-- Scroll to Top Button 홈화면 제일 위로옮김-->
         <a class="scroll-to-top rounded" href="#page-top"><i class="fa-solid fa-angles-up"></i></a>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
