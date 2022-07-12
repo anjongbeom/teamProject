@@ -41,22 +41,22 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/resources/css/main_styles.css" rel="stylesheet" />
-		
-		 <!-- Bootstrap icons 헤더 추가-->
+      
+       <!-- Bootstrap icons 헤더 추가-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS 헤더 추가 (includes Bootstrap)-->
         <link href="/resources/css/menu_styles.css" rel="stylesheet" />
         
         
         
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-	  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-	  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-	  <script language="javascript" src="/resources/js/pop_up.js"></script>
-	  
-	  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	  <script src="/resources/js/openWin.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+     <script language="javascript" src="/resources/js/pop_up.js"></script>
+     
+     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+     <script src="/resources/js/openWin.js"></script>
     </head>
     <body id="page-top">
     
@@ -76,7 +76,7 @@
                                 <li><a class="dropdown-item" href="/product/list">주류 종류</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <c:forEach items="${sessionScope.cateList}" var="productCate">
-                                	<li><a class="dropdown-item" href="/product/list?cate_code=${productCate.cate_code}">${productCate.cate_name}</a></li>
+                                   <li><a class="dropdown-item" href="/product/list?cate_code=${productCate.cate_code}">${productCate.cate_name}</a></li>
                                 </c:forEach>
                             </ul>                            
                         </li>
@@ -84,50 +84,50 @@
  -->                    </ul>
                     <form class="d-flex">
                     
-                    	<!-- 사용자 아이디 -->
-                    	<!-- 로그인 상태이면 -->
-                    	<button id=""
-                    		<c:choose>
-								<c:when test="${loginVo != null || loginVo==''}"> 
-	                        		class="btn btn-light"  
-	                        		onclick="location.href='/member/logout'"
-	                        	</c:when>
-	                        	<c:otherwise>
-	                        		class="btn btn-outline-white" 
-	                        		onclick="location.href='/member/loginForm'"
-	                        	</c:otherwise>
-	                        </c:choose>
-							type="button" style="margin-left: 5px;">
-                       	 	
-	                        <c:choose>
-	                        	<c:when test="${loginVo != null || loginVo==''}">
-	                        		<i class="bi bi-globe"></i>
-	                        		${loginVo.member_id} 님 반갑습니다
-	                        	</c:when>
-	                        	<c:otherwise>
-	                        	
-	                        	</c:otherwise>
-                        	</c:choose>
- 							
-                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>	
-	                        	
-						</button>
+                       <!-- 사용자 아이디 -->
+                       <!-- 로그인 상태이면 -->
+                       <button id=""
+                          <c:choose>
+                        <c:when test="${loginVo != null || loginVo==''}"> 
+                                 class="btn btn-light"  
+                                 onclick="location.href='/member/logout'"
+                              </c:when>
+                              <c:otherwise>
+                                 class="btn btn-outline-white" 
+                                 onclick="location.href='/member/loginForm'"
+                              </c:otherwise>
+                           </c:choose>
+                     type="button" style="margin-left: 5px;">
+                              
+                           <c:choose>
+                              <c:when test="${loginVo != null || loginVo==''}">
+                                 <i class="bi bi-globe"></i>
+                                 ${loginVo.member_id} 님 반갑습니다
+                              </c:when>
+                              <c:otherwise>
+                              
+                              </c:otherwise>
+                           </c:choose>
+                      
+                           <span class="badge bg-dark text-white ms-1 rounded-pill"></span>   
+                              
+                  </button>
                     
                     
-                    	<button class="btn btn-outline-dark" type="button"
-                        	 onclick="location.href='/myPage/myPageForm'">
+                       <button class="btn btn-outline-dark" type="button"
+                            onclick="location.href='/myPage/myPageForm'">
                             <i class="fa-solid fa-house-user"></i>
-							My
+                     My
                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                     
                     
-                    	<!-- 수정중 -->
-                    	<!-- 장바구니 -->
-                    	<!-- 추후 카트에 담길 갯수 추가 -->
-                    	<!-- 카트에는 물건에 담은 정보만 표시 하면 페이지를 누를시 장바구니 담긴 정보 출력 구매누를시 구매페이지 전환 -->
+                       <!-- 수정중 -->
+                       <!-- 장바구니 -->
+                       <!-- 추후 카트에 담길 갯수 추가 -->
+                       <!-- 카트에는 물건에 담은 정보만 표시 하면 페이지를 누를시 장바구니 담긴 정보 출력 구매누를시 구매페이지 전환 -->
                         <button class="btn btn-outline-dark" type="button" style="margin-left: 5px;"
-                        	 onclick="location.href='/cart/orderList'">
+                            onclick="location.href='/cart/orderList'">
 <%--                         onclick="location.href='/product/basket/${loginVo.member_id}"> --%>
                             <i class="bi-cart-fill me-1"></i>
                             Cart
@@ -138,36 +138,36 @@
                         
                         <!-- 로그인 -->
                         <button id="" 
-                        	<c:choose>
-								<c:when test="${loginVo != null || loginVo==''}">
-	                        		class="btn btn-dark" 
-	                        		onclick="location.href='/member/logout'"
-	                        	</c:when>
-	                        	<c:otherwise>
-	                        		class="btn btn-outline-dark" 
-	                        		onclick="location.href='/member/loginForm'"
-	                        	</c:otherwise>
-                        	</c:choose>
-                       	 	type="button" style="margin-left: 5px;">
-                        	<i class="bi bi-door-open"></i>
-                        	<c:choose>
-	                        	<c:when test="${loginVo != null || loginVo==''}">
-	                        		Logout
-	                        	</c:when>
-	                        	<c:otherwise>
-	                        		Login
-	                        	</c:otherwise>
-                        	</c:choose>
- 							
-                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                           <c:choose>
+                        <c:when test="${loginVo != null || loginVo==''}">
+                                 class="btn btn-dark" 
+                                 onclick="location.href='/member/logout'"
+                              </c:when>
+                              <c:otherwise>
+                                 class="btn btn-outline-dark" 
+                                 onclick="location.href='/member/loginForm'"
+                              </c:otherwise>
+                           </c:choose>
+                              type="button" style="margin-left: 5px;">
+                           <i class="bi bi-door-open"></i>
+                           <c:choose>
+                              <c:when test="${loginVo != null || loginVo==''}">
+                                 Logout
+                              </c:when>
+                              <c:otherwise>
+                                 Login
+                              </c:otherwise>
+                           </c:choose>
+                      
+                           <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                         
                         <!-- 회원가입 -->
                          <button id="" class="btn btn-outline-dark" type="button" style="margin-left: 5px;"
-                         	onclick="location.href='/member/joinForm'">
-                        	<i class="bi bi-people-fill"></i>
- 							Sign Up
-                        	<span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                            onclick="location.href='/member/joinForm'">
+                           <i class="bi bi-people-fill"></i>
+                      Sign Up
+                           <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                         </button>
                     </form>
                 </div>
@@ -190,76 +190,76 @@
             </ul>
         </nav>
        <div id="demo" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ul class="carousel-indicators">
-		    <li data-target="#demo" data-slide-to="0" class="active"></li>
-		    <li data-target="#demo" data-slide-to="1"></li>
-		    <li data-target="#demo" data-slide-to="2"></li>
-		  </ul>
-		  
-		  <!-- The slideshow -->
-		  <div class="carousel-inner">
-		  
-	
-		    <div class="carousel-item active">
-		      <img src="/resources/images/main/main1.png" alt="main1" width="100%" height="auto">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="/resources/images/main/main2.png" alt="main2" width="100%" height="auto">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="/resources/images/main/main3.png" alt="main3" width="100%" height="auto">
-		    </div>
-		    
-		  </div>
-	
-		  <!-- Left and right controls -->
-		  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-		    <span class="carousel-control-prev-icon"></span>
-		  </a>
-		  <a class="carousel-control-next" href="#demo" data-slide="next">
-		    <span class="carousel-control-next-icon"></span>
-		  </a>
-		</div>
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+        
+   
+          <div class="carousel-item active">
+            <img src="/resources/images/main/main1.png" alt="main1" width="100%" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="/resources/images/main/main2.png" alt="main2" width="100%" height="auto">
+          </div>
+          <div class="carousel-item">
+            <img src="/resources/images/main/main3.png" alt="main3" width="100%" height="auto">
+          </div>
+          
+        </div>
+   
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
         <!-- 헤더 수정 -->
         
         
          <!-- Portfolio-->
         <section class="content-section" id="portfolio">
-        	  <!-- 팝업 -->
+             <!-- 팝업 -->
      <a href = "javascript:popup()" target = "blank"></a>
      <!-- <body onload="openwindow('/resources/popup/pop.jsp', 450, 600)"> -->
      
      
      
-	<form name="notice_form">
-		<div id="divpop1" class="divpop"> 
-			<div id="link" style="text-align: center; font-size: 28px;">
-				<a href="/product/detail?product_id=${productVo.product_id}" 
-					target="_blank"  style="text-decoration: none; color: #E9330F;" 
-					onmouseover="this.style.color='orange';" 
-					onmouseout="this.style.color='#E9330F';">오늘의 추천 주류는?</a>
-			</div>
-			<br>
-			<a href="/product/detail?product_id=${productVo.product_id}" 
-			target="_blank">
-				<img class="card-img-top" 
-				src="/product/displayImage?filename=${productVo.product_image}" alt="..." 
-				style="display: block; margin: 0 auto;" width="250" height="328"/>
-			</a>
-			<br>
-			<div style="text-align: center; font-size: 20px;">
-				${productVo.product_name}
-			</div>
-	         <div class="button_area">
-	             <input type='checkbox' name='chkbox' 
-	             id='todaycloseyn' value='Y'>오늘 하루 이 창을 열지 않음    
-	             <a href='#' onclick="javascript:closeWin(1);" 
-	             onclick="window.close();"><B style="float: right;
-	              margin-left: 40px;">[닫기]</B></a>
-	         </div>
-	    </div>
-	</form>
+   <form name="notice_form">
+      <div id="divpop1" class="divpop"> 
+         <div id="link" style="text-align: center; font-size: 28px;">
+            <a href="/product/detail?product_id=${productVo.product_id}" 
+               target="_blank"  style="text-decoration: none; color: #E9330F;" 
+               onmouseover="this.style.color='orange';" 
+               onmouseout="this.style.color='#E9330F';">오늘의 추천 주류는?</a>
+         </div>
+         <br>
+         <a href="/product/detail?product_id=${productVo.product_id}" 
+         target="_blank">
+            <img class="card-img-top" 
+            src="/product/displayImage?filename=${productVo.product_image}" alt="..." 
+            style="display: block; margin: 0 auto;" width="250" height="328"/>
+         </a>
+         <br>
+         <div style="text-align: center; font-size: 20px;">
+            ${productVo.product_name}
+         </div>
+            <div class="button_area">
+                <input type='checkbox' name='chkbox' 
+                id='todaycloseyn' value='Y'>오늘 하루 이 창을 열지 않음    
+                <a href='#' onclick="javascript:closeWin(1);" 
+                onclick="window.close();"><B style="float: right;
+                 margin-left: 40px;">[닫기]</B></a>
+            </div>
+       </div>
+   </form>
      
      <!-- 팝업 -->
         
@@ -270,7 +270,7 @@
                 </div>
                 <div class="row gx-0">
                 <c:forEach items="${sessionScope.cateList}" var="productCate">
-                	<div class="col-lg-6">
+                   <div class="col-lg-6">
                         <a class="portfolio-item" href="/product/list?cate_code=${productCate.cate_code}">
                             <div class="caption">
                                 <div class="caption-content">
@@ -332,19 +332,19 @@
         
         <div class="map" id="contact">
         <div class="tit-sec text-center">
-				<h2>오시는길</h2><br>
-				
-			</div>
+            <h2>오시는길</h2><br>
+            
+         </div>
         <iframe src="/resources/map_test.jsp" width="100%" height="450px"></iframe>
         </div> 
         <!-- Footer-->
         <footer class="footer text-center">
-        	<div class="text-center" style="line-height: 22px;">
-						<br><h3>테이스팅 포 유를 찾아주세요.</h3>
-						<p>주소 : 울산광역시 남구 삼산로35번길 19 테이스팅 포 유</p>
-						<p>전화번호 : 052-257-7600</p>
-						<p>이메일 : ajb5209@naver.com</p>
-			</div>
+           <div class="text-center" style="line-height: 22px;">
+                  <br><h3>테이스팅 포 유를 찾아주세요.</h3>
+                  <p>주소 : 울산광역시 남구 삼산로35번길 19 테이스팅 포 유</p>
+                  <p>전화번호 : 052-257-7600</p>
+                  <p>이메일 : ajb5209@naver.com</p>
+         </div>
             <div class="container px-4 px-lg-5">
                 <ul class="list-inline mb-5">
                     <li class="list-inline-item">

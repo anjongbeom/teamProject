@@ -41,16 +41,10 @@ public class MyPageController {
 	
 	
 	
-	
+	// 마이페이지 요청
 	@RequestMapping(value= "/myPageForm", method = RequestMethod.GET)
 	public String myPageForm(HttpSession session, HttpServletRequest request) {
-//		MemberVo loginVo = (MemberVo) session.getAttribute("loginVo");
-//		System.out.println("MypageController, myPageForm, loginVo: " + loginVo);
-		// member_id로 구매목록 가져오기
-//		List<OrderedDetailDto> my_ordered_detail_List = 
-//				myPageService.getOrderedDetailList(loginVo.getMember_id());
-//		session.setAttribute("my_ordered_detail_List", my_ordered_detail_List);
-		
+
 		return "myPage/my_page";
 	}
 	
@@ -64,8 +58,8 @@ public class MyPageController {
 		List<OrderedDetailDto> my_ordered_detail_List = 
 				myPageService.getOrderedDetailList(loginVo.getMember_id());
 		session.setAttribute("my_ordered_detail_List", my_ordered_detail_List);
-		
 		System.out.println("my_ordered_detail_List : " + my_ordered_detail_List);
+		
 		return my_ordered_detail_List;
 	}
 	

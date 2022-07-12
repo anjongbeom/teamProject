@@ -262,6 +262,7 @@ public class ManagerDaoImpl implements ManagerDao{
 	// 멤버 정보 수정
 	@Override
 	public boolean memberModify(MemberVo memberVo) {
+		System.out.println("멤버 수정 memberVo: " + memberVo);
 		int update_count = sqlSession.update(NAMESPACE + "memberModify", memberVo);
 		if (update_count > 0) {
 			return true;

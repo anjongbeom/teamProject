@@ -336,13 +336,13 @@
 			nickname = #{nickname}, 
 			email = #{email}, 
 			favorite = #{favorite}, 
-			regdate = to_date(#{regdate}, 'yyyy-MM-dd'), 
-			updatedate = to_date(#{updatedate}, 'yyyy-MM-dd'), 
+			regdate = to_date(#{regdate}, 'yyyy/MM/dd'), 
+			updatedate = to_date(#{updatedate}, 'yyyy/MM/dd'), 
 			address = #{address}, 
 			member_tel = #{member_tel}, 
 			member_point = #{member_point},
-			bandate = #{bandate}
-		where member_id = to_date(#{member_id}, 'yyyy-MM-dd')
+			bandate = to_date(#{bandate}, 'yyyy/MM/dd')
+		where member_id = #{member_id}
 	</update>
 	
 	

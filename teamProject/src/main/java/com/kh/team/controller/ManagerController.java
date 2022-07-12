@@ -147,12 +147,12 @@ public class ManagerController {
 	@RequestMapping(value = "/returnList", method = RequestMethod.GET)
 	public String returnList(HttpSession session, PagingDto pagingDto,
 							OrderedDetailDto orderedDtailDto, Model model) {
-		int order_detail_status_code = 5; // 가져올 상태코드
+		int order_detail_status_code = 3; // 가져올 상태코드
 		List<OrderedDetailDto> return_list = managerService.getReturnedList(order_detail_status_code);
 		System.out.println("return_list" + return_list);
 		
 		model.addAttribute("return_list", return_list);
-//		session.setAttribute("returned_list", value);
+//		session.setAttribute("returned_list", return_list);
 		return "/manager/return_list";
 	}
 	

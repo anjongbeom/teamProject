@@ -56,10 +56,11 @@ $(document).ready(function() {
 				
 				tds.find(".btnRequestReturn").attr("data-odn", this.order_detail_no);
 				
+// 				console.log(this.order_detail_status_descript);
 				if (this.order_detail_status_descript == '반품요청') {
 					
 				} else {
-					console.log("this.order_detail_status_descript" , this.order_detail_status_descript);
+					console.log("this.order_detail_status_descript: " , this.order_detail_status_descript);
 // 					tds.find(".btnRequestReturn").attr("disabled", "disabled");
 				}
 				
@@ -87,9 +88,10 @@ $(document).ready(function() {
 			if (rData == "true"){
  				alert("반품 신청 완료");
  				var thatText = that.parent().prev().text();
- 				alert("thatText: ", thatText);
+//  				alert("thatText: " +  thatText);
+//  				console.log("thatText" , thatText);
 //  				that.prop("disabled", true);
-				getOrderedList();
+// 				getOrderedList();
 			}
 		})
 	});

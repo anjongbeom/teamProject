@@ -43,7 +43,7 @@ $(document).ready(function() {
 		<div class="col-md-7">
 		
 		
-		<h2>멤버 정보(member_info_form)</h2>
+		<h2>멤버 정보</h2>
 		<form action="/manager/memberModifyRun" method="get">
 			<table class="table">
 				<tr>
@@ -86,13 +86,13 @@ $(document).ready(function() {
 				<tr>
 					<td><label>등록일(REGDATE)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.regdate}"
-						id="regdate" ><td>
+						id="regdate" name="regdate" ><td>
 				</tr>
 				
 				<tr>
 					<td><label>수정일(UPDATEDATE)</label><td>
 					<td><input type="text" class="form-control" value="${memberVo.updatedate}"
-						id="updatedate" ><td>
+						id="updatedate" name="updatedate" ><td>
 				</tr>
 				
 				<tr>
@@ -116,7 +116,7 @@ $(document).ready(function() {
 				<tr>
 					<td><label>정지기간(BANDATE)</label><td>
 					<td>
-						<input type="text" id="bandate" class="form-control col-xs-12" />
+						<input type="text" id="bandate" name="bandate" class="form-control col-xs-12" />
 					<td>
 				</tr>
 			

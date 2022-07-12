@@ -108,20 +108,7 @@ public class ManagerServiceImpl implements ManagerService {
 		for (String order_detail_no : checked_list) { // 체크된 항목들의 detail_no를 배열로 향상된 for
 			int parse_order_detail_no = Integer.parseInt(order_detail_no);
 
-			// 테스트 중 (ORDER_STATUS_CODE 세분화(폐기 예정 ^^)를 위해)
-//			List<Map<String, Object>> codes 
-//				= managerDao.getNumberOfOrderDetailStatusCode(parse_order_detail_no); // parse_order_detail_no로 // 얻기
-//			System.out.println("codes: " + codes + order_detail_no);
-//			String order_no_num = codes.get(1).get("FK_ORDER_DETAIL_STATUS_CODE").toString();
-//			System.out.println("order_no_num: " + order_no_num);
-//			int sum_of_fk_order_detail_status_code = 0;
-//			for (Map map : codes) {
-//				System.out.println("Map > FK_ORDER_DETAIL_STATUS_CODE : " + map.get("FK_ORDER_DETAIL_STATUS_CODE"));
-//				sum_of_fk_order_detail_status_code += Integer
-//						.parseInt(map.get("FK_ORDER_DETAIL_STATUS_CODE").toString());
-//			}
-//			System.out.println("sum_of_fk_order_detail_status_code : " + sum_of_fk_order_detail_status_code);
-
+			
 			OrderedDetailDto ordered_detail_dto = 
 					managerDao.getOneOrderedDetail(parse_order_detail_no); // ! order_detail_no에 대한 정보 1개 가져오기(ordered_detail_dto)
 			System.out.println("ordered_detail: " + ordered_detail_dto); // 확인
@@ -205,14 +192,14 @@ public class ManagerServiceImpl implements ManagerService {
 			
 			boolean apporoval_result = managerDao.orderRefund(ordered_detail_dto); // ! 반품 승인(재고 증가)
 			//~
-			ordered_detail_dto.setOrder_detail_status_code("7");
-			managerDao.updateOrderDetailStatusCode(ordered_detail_dto); // ! 해당 ORDER_DETAIL_STATUS_CODE  5 -> 7로
+			ordered_detail_dto.setOrder_detail_status_code("4");
+			managerDao.updateOrderDetailStatusCode(ordered_detail_dto); // ! 해당 ORDER_DETAIL_STATUS_CODE  3 -> 4로
 			// ~//
 			
 			// ordered_detail_dto를 넘겨줘서 반품한 member_id, product_id, product_price, product_amount 사용하기 (회원에게 포인트 환급)
 			managerDao.updateRefundPointForMember(ordered_detail_dto); // ! 반품 회원의 포인트 환불
-			ordered_detail_dto.setOrder_status_code("6");
-			managerDao.updateOrderStatusCode(ordered_detail_dto);// ! order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 6로 변경 
+			ordered_detail_dto.setOrder_status_code("4");
+			managerDao.updateOrderStatusCode(ordered_detail_dto);// ! order_no의 주문 상태 코드(ORDER_STATUS_CODE)를 4로 변경 
 			
 		}
 	}
