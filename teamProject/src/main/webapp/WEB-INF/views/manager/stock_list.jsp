@@ -99,7 +99,7 @@ td {
 			<div class="jumbotron">
 				<h2>제품 목록</h2>
 				<p>
-					<a class="btn btn-primary btn-large" href="/manager/stockCreation">제품
+					<a class="btn btn-primary btn-large" href="/manager/stockCreateForm">제품
 						등록</a>
 				</p>
 			</div>
