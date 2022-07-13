@@ -49,15 +49,10 @@ public class HomeController {
 		session.setAttribute("cateList", cateList);
 		
 		
-		
 		// 홈에서 로그인 한 것처럼만들기
 //		MemberVo memberVo = memberService.getMemberByIdAndPw("user01", "1234");
 //		session.setAttribute("loginVo", memberVo);
 		
-		
-		
-//		System.out.println("HomeController, product_id: " + product_id);
-//		System.out.println("HomeController, productVo: " + productVo);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);

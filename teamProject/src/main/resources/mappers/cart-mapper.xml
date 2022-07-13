@@ -14,19 +14,11 @@
 	</insert>
 	
 	
-	<!-- 카트 삭제 -->
-<!-- 	<delete id="deleteCart">	 -->
-<!-- 		delete from tal_cart where cart_id = #{cart_id} -->
-	
-<!-- 	</delete> -->
-	
 	<!-- 카트 수량 수정 -->
 	<update id="modifyCount">	
 		update tal_cart set product_Count=#{product_Count} where cart_id = #{cart_id}
 	
 	</update>
-	
-	
 	
 	
 	<!-- 카트 확인 -->
@@ -82,6 +74,7 @@
 		(select distinct member_id from tal_cart
  			where member_id = #{member_id}), 1)
 	</insert>
+	
 	
 	<insert id="insertOrderDetail">
 		insert into tal_order_detail

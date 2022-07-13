@@ -10,30 +10,30 @@
 
 <!-- Responsive navbar-->
 <script>
-	$(document).ready(function() {
+$(document).ready(function() {
 
-		//	구매 버튼에도 이정보 넘겨줄것
-		$("#selectpurchase_btn").click(function(e) {
-			e.preventDefault();
-			var product_id = "${productVo.product_id}";
-			var product_count = "${param.amount}";
+	//	구매 버튼에도 이정보 넘겨줄것
+	$("#selectpurchase_btn").click(function(e) {
+		e.preventDefault();
+		var product_id = "${productVo.product_id}";
+		var product_count = "${param.amount}";
 
-			// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
-			var sData = {
-				"product_id" : product_id,
-				"product_count" : product_count
-			};
-			console.log(sData);
-			var url = "/product/sellProduct";
-			$.get(url, sData, function(rData) {
-				//			console.log(rData);
-				if (rData == "true") {
-					alert("주문 완료");
-				}
-			});
+		// AJAX로 장바구니 추가에 필요한 데이터 넘겨주기
+		var sData = {
+			"product_id" : product_id,
+			"product_count" : product_count
+		};
+		console.log(sData);
+		var url = "/product/sellProduct";
+		$.get(url, sData, function(rData) {
+			if (rData == "true") {
+				alert("주문 완료");
+			}
 		});
-
 	});
+
+});
+
 </script>
 <%-- member_id : ${loginVo.member_id} --%>
 <%-- param.amount: ${param.amount} --%>
@@ -86,8 +86,7 @@
 							</td>
 
 							<td style="vertical-align: middle; text-align: center;">${productVo.product_kor_name}</td>
-							<td style="vertical-align: middle; text-align: center;">KA
-								주류교육원</td>
+							<td style="vertical-align: middle; text-align: center;">테이스팅 포 유</td>
 							<td style="vertical-align: middle; text-align: center;">${param.amount}
 								개</td>
 							<td style="vertical-align: middle; text-align: center;">${Math.floor(param.totalPrice*0.05)}Point</td>

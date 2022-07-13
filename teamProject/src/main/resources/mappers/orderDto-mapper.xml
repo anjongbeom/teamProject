@@ -6,12 +6,10 @@
 
 <mapper namespace="com.kh.team.mappers.order">
 
-
 	<!-- 글 등록  -->
 	<insert id="create">
 		insert into tal_cart(login_id, product_id, product_price, product_amount)
 		values(#{login_id}, #{product_id}, #{product_price}, #{product_amount}) 	
 	</insert>
-	
 	
 </mapper>

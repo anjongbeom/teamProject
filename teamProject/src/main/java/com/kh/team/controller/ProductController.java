@@ -77,6 +77,7 @@ public class ProductController {
 	@ResponseBody
 	public String sellProduct(HttpSession session, ProductVo productVo, int product_count) throws Exception {
 		MemberVo loginVo = (MemberVo) session.getAttribute("loginVo");
+		System.out.println("sellProduct, loginVo: " + loginVo);
 		String member_id = loginVo.getMember_id();
 		System.out.println("productVo:" + productVo);
 		System.out.println("product_count:" + product_count);

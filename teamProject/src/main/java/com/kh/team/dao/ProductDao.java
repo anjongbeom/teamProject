@@ -15,12 +15,7 @@ public interface ProductDao {
 	public ProductVo basket(String product_id);
 	public List<ProductCate> cateList();
 	
-	public List<ProductVo> brandyList();
-	public List<ProductVo> whiskyList();
-	public List<ProductVo> beerList();
-	public List<ProductVo> traditionalList();
 	public ProductVo read(String product_id);
-	
 	
 	public boolean addCart(CartVo cartDto) ;
 	
@@ -29,4 +24,5 @@ public interface ProductDao {
 	public void insertOrder(String member_id) throws Exception;
 	
 	public boolean insertOrderDetail(String product_id, int product_count) throws Exception;
+	
 }
