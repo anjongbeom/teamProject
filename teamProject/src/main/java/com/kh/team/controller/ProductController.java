@@ -137,8 +137,8 @@ public class ProductController {
 			String member_id = loginVo.getMember_id();
 			System.out.println("productVo:"+productVo);
 			System.out.println("product_count:"+product_count);
-			productService.insertOrder(member_id);
-			System.out.println("sellProduct, member_id"+member_id);
+//			productService.insertOrder(member_id);
+//			System.out.println("sellProduct, member_id"+member_id);
 			boolean result=productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
 			return String.valueOf(result);
 			
