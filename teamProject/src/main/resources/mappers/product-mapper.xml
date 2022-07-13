@@ -58,8 +58,7 @@
   	<insert id="insertOrder">
 		insert into tal_order
 		values(seq_order_no.nextval, sysdate,
-		(select distinct member_id from tal_cart
- 			where member_id = #{member_id}), 1)
+		 #{member_id}, 1)
 	</insert>
 	
 	
