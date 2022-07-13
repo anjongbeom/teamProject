@@ -124,27 +124,4 @@ public class CartController {
 	}
 	
 	
-	
-	
-	
-//	@RequestMapping(value = "/add", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String addCartPOST(CartVo cartVo, HttpSession session) {
-//		
-//		// 로그인 체크
-//		
-//		MemberVo memberVo = (MemberVo)session.getAttribute("loginVo");
-//		System.out.println("CartController,memberVo : "+ memberVo);
-//		if (memberVo == null) {
-//			return "5";
-//		};
-//		
-//		// 카트 등록
-//		boolean result = cartService.addCart(cartVo);
-//		
-//		return String.valueOf(result);
-//	}
-	
-	
-	
 }

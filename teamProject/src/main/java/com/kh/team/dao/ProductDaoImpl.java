@@ -93,14 +93,12 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void deleteCart(String str) throws Exception {
-		System.out.println("발자취 다오 + str:" +str);
 		sqlSession.delete(NAMESPACE+"deleteCart", str);
 		
 	}
 
 	@Override
 	public void insertOrder(String member_id) throws Exception {
-		System.out.println("발자취 다오 + cartDto:" + member_id);
 		sqlSession.insert(NAMESPACE+"insertOrder", member_id);
 		
 	}

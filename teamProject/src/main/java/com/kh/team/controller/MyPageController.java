@@ -31,14 +31,7 @@ import com.kh.team.vo.SummaryDto;
 public class MyPageController {
 
 	@Autowired
-	private CartService cartService;
-	
-	@Autowired
-	private ManagerService managerService;
-	
-	@Autowired
 	private MyPageService myPageService;
-	
 	
 	
 	// 마이페이지 요청
@@ -64,7 +57,6 @@ public class MyPageController {
 	}
 	
 	
-	
 	// 반품 신청하기
 	@RequestMapping(value= "/requestReturn", method = RequestMethod.POST)
 	@ResponseBody
@@ -75,14 +67,6 @@ public class MyPageController {
 		boolean result = myPageService.requestReturn(order_detail_no);
 		return String.valueOf(result);
 	}
-	
-	
-	
-	
-	
-	// 아래 삭제 예정
-	
-
 	
 	
 }
