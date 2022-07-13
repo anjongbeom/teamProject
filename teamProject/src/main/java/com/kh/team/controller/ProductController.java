@@ -72,6 +72,25 @@ public class ProductController {
 		return "/product/purchase";
 	}
 
+
+	
+	
+	//제품 구매창에서 바로 구매 할시 관리자 DB로 바로 넘어감
+		@RequestMapping(value = "/sellProduct", method = RequestMethod.GET)
+		@ResponseBody
+		public String sellProduct(HttpSession session,ProductVo productVo,int product_count) throws Exception {
+			MemberVo loginVo = (MemberVo)session.getAttribute("loginVo");
+			String member_id = loginVo.getMember_id();
+			System.out.println("productVo:"+productVo);
+			System.out.println("product_count:"+product_count);
+//			productService.insertOrder(member_id);
+//			System.out.println("sellProduct, member_id"+member_id);
+			boolean result=productService.transInsertOrder(productVo.getProduct_id(), product_count, member_id);		
+			return String.valueOf(result);
+			
+		}
+
+	
 	// 파일 이름으로 서버에서 이미지 가져오기(제품 이미지 가져올 때 사용)
 	@RequestMapping(value = "/displayImage", method = RequestMethod.GET)
 	@ResponseBody
