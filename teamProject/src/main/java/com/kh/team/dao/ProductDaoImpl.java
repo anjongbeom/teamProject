@@ -71,6 +71,10 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void insertOrder(String member_id) throws Exception {
+//		HashMap<String, Object> parameter = new HashMap<>();
+//		parameter.put("member_id", member_id);
+//		System.out.println("ProductDaoImpl, insertOrder, member_id: " + member_id);
+//		System.out.println("ProductDaoImpl, insertOrder, parameter: " + parameter);
 		sqlSession.insert(NAMESPACE+"insertOrder", member_id);
 		
 	}

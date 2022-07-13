@@ -76,12 +76,12 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	@Override
 	public boolean transInsertOrder(String product_id, int product_count, String member_id) {
+//		System.out.println("transInsertOrder, member_id: " + member_id);
 		try {
 			productDao.insertOrder(member_id);
 			productDao.insertOrderDetail(product_id, product_count);
 			return true;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
