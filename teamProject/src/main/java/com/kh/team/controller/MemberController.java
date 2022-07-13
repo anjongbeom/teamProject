@@ -65,12 +65,12 @@ public class MemberController {
 			if (saveId != null && !saveId.equals("")) {
 				Cookie cookie = new Cookie("saveId", member_id);
 				cookie.setPath("/");
-				cookie.setMaxAge(50 * 50 * 24* 7); // 깨지는지 확인필요
+				cookie.setMaxAge(50 * 50 * 24* 7); 
 				response.addCookie(cookie);
 			} else {
 				Cookie cookie = new Cookie("saveId", member_id);
 				cookie.setPath("/");
-				cookie.setMaxAge(0); // 깨지는지 확인필요
+				cookie.setMaxAge(0); 
 				response.addCookie(cookie);
 			}
 			

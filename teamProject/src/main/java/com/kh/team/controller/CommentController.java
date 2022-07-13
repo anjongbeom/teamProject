@@ -15,7 +15,6 @@ import com.kh.team.service.CommentService;
 import com.kh.team.vo.CommentVo;
 
 
-
 //비동기 방식
 //모든 메서드에 @ResponseBody가 자동으로 붙어 있음.
 @RestController

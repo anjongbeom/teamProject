@@ -14,10 +14,6 @@ public interface ProductService {
 	public ProductVo basket(String product_id);
 	public List<ProductCate> cateList();
 	
-	public List<ProductVo> brandyList();
-	public List<ProductVo> whiskyList();
-	public List<ProductVo> beerList();
-	public List<ProductVo> traditionalList();
 	public ProductVo read(String product_id);
 	
 	

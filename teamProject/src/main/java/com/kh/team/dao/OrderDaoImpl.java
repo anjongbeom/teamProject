@@ -13,7 +13,6 @@ private final String NAMESPACE = "com.kh.ex01.mappers.order.";
 	@Autowired
 	private SqlSession sqlSession;
 	
-	
 	@Override
 	public boolean create(OrderDto orderDto) {
 		int count = sqlSession.insert(NAMESPACE + "create", orderDto);
@@ -22,5 +21,6 @@ private final String NAMESPACE = "com.kh.ex01.mappers.order.";
 		}
 		return false;
 	}
+	
 
 }

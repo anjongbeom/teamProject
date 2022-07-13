@@ -33,7 +33,6 @@ public class ManagerController {
 	@Autowired
 	private ManagerService managerService;
 	
-
 	@Autowired
 	private JavaMailSender mailSender;
 
@@ -224,11 +223,6 @@ public class ManagerController {
 		rttr.addFlashAttribute("update_result", update_result);
 		return "redirect:/manager/memberList";
 	}
-	
-	
-	
-	
-	
 	
 
 }

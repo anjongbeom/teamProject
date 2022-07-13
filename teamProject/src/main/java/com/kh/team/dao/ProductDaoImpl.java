@@ -36,34 +36,7 @@ public class ProductDaoImpl implements ProductDao {
 		return productVo;
 	}
 	
-
-	@Override
-	public List<ProductVo> brandyList() {
-		List<ProductVo> brandyList = sqlSession.selectList(NAMESPACE + "brandyList");
-		return brandyList;
-	}
-
-
-	@Override
-	public List<ProductVo> whiskyList() {
-		List<ProductVo> whiskyList = sqlSession.selectList(NAMESPACE + "whiskyList");
-		return whiskyList;
-	}
-
-
-	@Override
-	public List<ProductVo> beerList() {
-		List<ProductVo> beerList = sqlSession.selectList(NAMESPACE + "beerList");
-		return beerList;
-	}
-
-
-	@Override
-	public List<ProductVo> traditionalList() {
-		List<ProductVo> traditionalList = sqlSession.selectList(NAMESPACE + "traditionalList");
-		return traditionalList;
-	}
-
+	
 	@Override
 	public ProductVo basket(String product_id) {
 		ProductVo productVo = sqlSession.selectOne(NAMESPACE + "basket", product_id);
@@ -93,14 +66,11 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public void deleteCart(String str) throws Exception {
-		System.out.println("발자취 다오 + str:" +str);
 		sqlSession.delete(NAMESPACE+"deleteCart", str);
-		
 	}
 
 	@Override
 	public void insertOrder(String member_id) throws Exception {
-		System.out.println("발자취 다오 + cartDto:" + member_id);
 		sqlSession.insert(NAMESPACE+"insertOrder", member_id);
 		
 	}
@@ -115,6 +85,7 @@ public class ProductDaoImpl implements ProductDao {
 			return true;
 		}
 		return false;
-		
 	}
+	
+	
 }
