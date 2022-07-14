@@ -142,7 +142,7 @@ public class ManagerServiceImpl implements ManagerService {
 		// 메일 전송
 		mailSenderUtil.sendMail("서비스에서 제목 테스트중", content, memberVo.getEmail());
 			 
-		return true; // 결과 수정 필요!!!!
+		return true; 
 	}
 
 	
