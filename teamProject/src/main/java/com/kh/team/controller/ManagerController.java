@@ -33,8 +33,6 @@ public class ManagerController {
 	@Autowired
 	private ManagerService managerService;
 	
-	@Autowired
-	private JavaMailSender mailSender;
 
 	
 	// 매니저 폼

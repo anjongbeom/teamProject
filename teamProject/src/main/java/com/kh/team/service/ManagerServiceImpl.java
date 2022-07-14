@@ -137,10 +137,10 @@ public class ManagerServiceImpl implements ManagerService {
 		List<MessageToSendVo> messageToSendVo = managerDao.getMessageToSendVo();
 		// 메세지 내용을 리스트에서 받아오기
 		String content = messageToSendVo.get(0).getMessage_descript();
-//		smsSendUtil.sendSms(reciever, content);
+		smsSendUtil.sendSms(reciever, content);
 
 		// 메일 전송
-//		mailSenderUtil.sendMail("서비스에서 제목 테스트중", content, memberVo.getEmail());
+		mailSenderUtil.sendMail("서비스에서 제목 테스트중", content, memberVo.getEmail());
 			 
 		return true; // 결과 수정 필요!!!!
 	}

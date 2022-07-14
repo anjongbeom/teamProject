@@ -115,7 +115,7 @@ $(document).ready(function() {
 								</td>
 <!-- 								Math.floor(param.totalPrice*0.05) -->
 								<td style="vertical-align:middle; text-align: center;">${CartDto.product_kor_name} </td>
-								<td style="vertical-align:middle; text-align: center;">테이스티 포 유</td>
+								<td style="vertical-align:middle; text-align: center;">테이스팅 포 유</td>
 								<td style="vertical-align:middle; text-align: center;">${CartDto.product_amount} 개</td>
 								<td style="vertical-align:middle; text-align: center;">Point</td>
 								<td style="vertical-align:middle; text-align: center; font-size: 15px; color: #CF492C;" 
